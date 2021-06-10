@@ -2,13 +2,13 @@
 
 - part: Tema 1 - Datahåndtering og visualisering
   chapters:
-  - file: docs/datahandtering_visualisering/molekylvisualisering
+  - file: docs\datahandtering_visualisering/molekylvisualisering
   - file: docs/datahandtering_visualisering/plotting_data
   - file: docs/datahandtering_visualisering/maskinlaring
   - file: docs/datahandtering_visualisering/forelesning_visualisering
   - file: docs/datahandtering_visualisering/forelesning_plotting_data
 
-- part: Tema 2 - Nullpunkter og likninger
+- part: Tema 2 - Nullpunkter og optimering
   chapters:
   - file: docs/nullpunkter_likninger/likninger
   - file: docs/nullpunkter_likninger/forelesning_likninger
