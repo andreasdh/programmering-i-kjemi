@@ -2,7 +2,7 @@
 
 - part: Tema 1 - Datahåndtering og visualisering
   chapters:
-  - file: docs\datahandtering_visualisering/molekylvisualisering
+  - file: docs/datahandtering_visualisering/molekylvisualisering
   - file: docs/datahandtering_visualisering/plotting_data
   - file: docs/datahandtering_visualisering/maskinlaring
   - file: docs/datahandtering_visualisering/forelesning_visualisering
