@@ -1,6 +1,6 @@
 ﻿- file: docs/intro
 
-- part: Tema 1: Datahåndtering og visualisering
+- part: Tema 1 - Datahåndtering og visualisering
   chapters:
   - file: docs/datahandtering_visualisering/molekylvisualisering
   - file: docs/datahandtering_visualisering/plotting_data
@@ -8,19 +8,19 @@
   - file: docs/datahandtering_visualisering/forelesning_visualisering
   - file: docs/datahandtering_visualisering/forelesning_plotting_data
 
-- part: Tema 2: Nullpunkter og likninger
+- part: Tema 2 - Nullpunkter og likninger
   chapters:
   - file: docs/nullpunkter_likninger/likninger
   - file: docs/nullpunkter_likninger/forelesning_likninger
 
-- part: Tema 3: Derivasjon og integrasjon
+- part: Tema 3 - Derivasjon og integrasjon
   chapters:
   - file: docs/derivasjon_integrasjon/derivasjon
   - file: docs/derivasjon_integrasjon/integrasjon
   - file: docs/derivasjon_integrasjon/forelesning_derivasjon
   - file: docs/derivasjon_integrasjon/forelesning_integrasjon
 
-- part: Tema 4: Modellering
+- part: Tema 4 - Modellering
   chapters:
   - file: docs/modellering/diskret_modellering
   - file: docs/modellering/differensiallikninger
