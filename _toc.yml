@@ -1,25 +1,31 @@
 ﻿- file: docs/intro
 
-- part: Teori
+- part: Tema 1: Datahåndtering og visualisering
   chapters:
-  - file: docs/molekylvisualisering
-  - file: docs/plotting_data
-  - file: docs/diskret_modellering
-  - file: docs/likninger
-  - file: docs/derivasjon
-  - file: docs/integrasjon
-  - file: docs/differensiallikninger
+  - file: docs/datahandtering_visualisering/molekylvisualisering
+  - file: docs/datahandtering_visualisering/plotting_data
+  - file: docs/datahandtering_visualisering/maskinlaring
+  - file: docs/datahandtering_visualisering/forelesning_visualisering
+  - file: docs/datahandtering_visualisering/forelesning_plotting_data
 
-- part: Programmer fra forelesning
+- part: Tema 2: Nullpunkter og likninger
   chapters:
-  - file: docs/tema1
-  - file: docs/tema2
-  - file: docs/tema3
-  - file: docs/tema4
-  - file: docs/tema5
-  - file: docs/tema6
-  - file: docs/tema7
-  - file: docs/losning_proveeksamen_H2020
+  - file: docs/nullpunkter_likninger/likninger
+  - file: docs/nullpunkter_likninger/forelesning_likninger
+
+- part: Tema 3: Derivasjon og integrasjon
+  chapters:
+  - file: docs/derivasjon_integrasjon/derivasjon
+  - file: docs/derivasjon_integrasjon/integrasjon
+  - file: docs/derivasjon_integrasjon/forelesning_derivasjon
+  - file: docs/derivasjon_integrasjon/forelesning_integrasjon
+
+- part: Tema 4: Modellering
+  chapters:
+  - file: docs/modellering/diskret_modellering
+  - file: docs/modellering/differensiallikninger
+  - file: docs/modellering/forelesning_diskret_modellering
+  - file: docs/modellering/forelesning_differensiallikninger
 
 - part: Datafiler
   chapters:
