@@ -1,7 +1,7 @@
 format: jb-book
 root: docs/intro
 parts:
-- caption: "Tema 1 - Datah\xE5ndtering og visualisering"
+- caption: Tema 1 - Datahåndtering og visualisering
   chapters:
   - file: docs/datahandtering_visualisering/molekylvisualisering
   - file: docs/datahandtering_visualisering/plotting_data
