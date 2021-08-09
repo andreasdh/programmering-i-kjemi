@@ -1,19 +1,5 @@
 - file: docs/intro
 
-- part: Grunnleggende programmering
-  chapters:
-  - file: docs/grunnleggende_programmering/tall_variabler
-  - file: docs/grunnleggende_programmering/kontrollstrukturer
-  - file: docs/grunnleggende_programmering/funksjoner
-  - file: docs/grunnleggende_programmering/datasamlinger
-  - file: docs/grunnleggende_programmering/grunnleggende_programmering
-  - file: docs/grunnleggende_programmering/quiz1
-  - file: docs/grunnleggende_programmering/quiz2
-  - file: docs/grunnleggende_programmering/quiz3
-  - file: docs/grunnleggende_programmering/quiz4
-  - file: docs/grunnleggende_programmering/quiz5
-  - file: docs/grunnleggende_programmering/quiz6
-
 - part: Tema 1 - Datahåndtering og visualisering
   chapters:
   - file: docs/datahandtering_visualisering/molekylvisualisering
@@ -40,6 +26,20 @@
   - file: docs/modellering/differensiallikninger
   - file: docs/modellering/forelesning_diskret_modellering
   - file: docs/modellering/forelesning_differensiallikninger
+
+- part: Grunnleggende programmering
+  chapters:
+  - file: docs/grunnleggende_programmering/tall_variabler
+  - file: docs/grunnleggende_programmering/kontrollstrukturer
+  - file: docs/grunnleggende_programmering/funksjoner
+  - file: docs/grunnleggende_programmering/datasamlinger
+  - file: docs/grunnleggende_programmering/grunnleggende_programmering
+  - file: docs/grunnleggende_programmering/quiz1
+  - file: docs/grunnleggende_programmering/quiz2
+  - file: docs/grunnleggende_programmering/quiz3
+  - file: docs/grunnleggende_programmering/quiz4
+  - file: docs/grunnleggende_programmering/quiz5
+  - file: docs/grunnleggende_programmering/quiz6
 
 - part: Datafiler
   chapters:
