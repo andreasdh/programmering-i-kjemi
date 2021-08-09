@@ -1,5 +1,19 @@
 - file: docs/intro
 
+- part: Grunnleggende programmering
+  chapters:
+  - file: docs/grunnleggende_programmering/tall_variabler
+  - file: docs/grunnleggende_programmering/kontrollstrukturer
+  - file: docs/grunnleggende_programmering/funksjoner
+  - file: docs/grunnleggende_programmering/datasamlinger
+  - file: docs/grunnleggende_programmering/grunnleggende_programmering
+  - file: docs/quizer/quiz1
+  - file: docs/quizer/quiz2
+  - file: docs/quizer/quiz3
+  - file: docs/quizer/quiz4
+  - file: docs/quizer/quiz5
+  - file: docs/quizer/quiz6
+
 - part: Tema 1 - Datahåndtering og visualisering
   chapters:
   - file: docs/datahandtering_visualisering/molekylvisualisering
