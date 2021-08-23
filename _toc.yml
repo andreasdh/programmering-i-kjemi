@@ -1,4 +1,4 @@
-- file: docs/intro
+﻿- file: docs/intro
 
 - part: Tema 1 - Datahåndtering og visualisering
   chapters:
@@ -41,6 +41,7 @@
   - file: docs/grunnleggende_programmering/quiz4
   - file: docs/grunnleggende_programmering/quiz5
   - file: docs/grunnleggende_programmering/quiz6
+  - file: docs/r_tutorial
 
 - part: Datafiler
   chapters:
