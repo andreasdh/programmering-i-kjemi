@@ -1,0 +1,552 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Likninger og nullpunkter &#8212; Programmering i kjemi</title>
+    
+  <link href="../../_static/css/theme.css" rel="stylesheet" />
+  <link href="../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.e2363ea40746bee74734a24ffefccd78.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Forelesning: Likninger og nullpunkter" href="forelesning_likninger.html" />
+    <link rel="prev" title="Forelesning: Datahåndtering" href="../datahandtering_visualisering/forelesning_plotting_data.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../_static/qe-logo-large.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Programmering i kjemi</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <p class="caption">
+ <span class="caption-text">
+  Tema 1 - Datahåndtering og visualisering
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../datahandtering_visualisering/molekylvisualisering.html">
+   Molekylvisualisering
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../datahandtering_visualisering/plotting_data.html">
+   Plotting og behandling av eksperimentelle data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../datahandtering_visualisering/maskinlaring.html">
+   Maskinlæring
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../datahandtering_visualisering/forelesning_visualisering.html">
+   Forelesning: Molekylvisualisering
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../datahandtering_visualisering/forelesning_plotting_data.html">
+   Forelesning: Datahåndtering
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Tema 2 - Nullpunkter og optimering
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Likninger og nullpunkter
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="forelesning_likninger.html">
+   Forelesning: Likninger og nullpunkter
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Tema 3 - Derivasjon og integrasjon
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../derivasjon_integrasjon/derivasjon.html">
+   Numerisk derivasjon
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../derivasjon_integrasjon/integrasjon.html">
+   Integrasjon
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../derivasjon_integrasjon/forelesning_derivasjon.html">
+   Forelesning: Numerisk derivasjon
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../derivasjon_integrasjon/forelesning_integrasjon.html">
+   Forelesning: Numerisk integrasjon
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Tema 4 - Modellering
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../modellering/diskret_modellering.html">
+   Differenslikninger
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../modellering/differensiallikninger.html">
+   Differensiallikninger og fartslover
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../modellering/forelesning_differensiallikninger.html">
+   Forelesning: Reaksjonskinetikk og simulering med fartslover
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Grunnleggende programmering
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../grunnleggende_programmering/kom_i_gang.html">
+   En første kodesnutt
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../grunnleggende_programmering/tall_variabler.html">
+   Variabler og datatyper
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../grunnleggende_programmering/quiz1.html">
+     Quiz 1: Variabler og aritmetikk
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../grunnleggende_programmering/lister.html">
+   Lister
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../grunnleggende_programmering/quiz2.html">
+     Quiz 2: Lister
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../grunnleggende_programmering/if-tester.html">
+   Vilkår (if-tester)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../grunnleggende_programmering/quiz3.html">
+     Quiz 3: Vilkår (if-tester)
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../grunnleggende_programmering/lokker.html">
+   Løkker
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../grunnleggende_programmering/quiz4.html">
+     Quiz 4: Løkker
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../grunnleggende_programmering/funksjoner.html">
+   Funksjoner
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../grunnleggende_programmering/quiz5.html">
+     Quiz 5: Funksjoner
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../grunnleggende_programmering/datasamlinger.html">
+   Datasamlinger
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../grunnleggende_programmering/quiz6.html">
+     Quiz 6: Datasamlinger (arrayer og dictionarier)
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Datafiler
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../datafiler.html">
+   Datafiler
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/docs/nullpunkter_likninger/likninger.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/andreasdh/programmering-i-kjemi/master?urlpath=tree/mini_book/docs/nullpunkter_likninger/likninger.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#motivasjon">
+   Motivasjon
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#halveringsmetoden">
+   Halveringsmetoden
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#newtons-metode">
+   Newtons metode
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="likninger-og-nullpunkter">
+<h1>Likninger og nullpunkter<a class="headerlink" href="#likninger-og-nullpunkter" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="motivasjon">
+<h2>Motivasjon<a class="headerlink" href="#motivasjon" title="Permalink to this headline">¶</a></h2>
+<p>Likninger kan løse mange problemer, også de av kjemisk art. Hvis vi for eksempel skal finne ut hvor to funksjoner skjærer hverandre, kan vi løse likningen <span class="math notranslate nohighlight">\(f(x) = g(x)\)</span> som et nullpunktsproblem: <span class="math notranslate nohighlight">\(f(x) - g(x) = 0\)</span>.</p>
+<p>La oss si at vi har to uttrykk som for eksempel beskriver konsentrasjon til to produkter over tid. Disse uttrykkene trenger ikke å være enkle, og da får vi problemer med å løse dem analytisk. Vi tar utgangspunkt i følgende sammenhenger:</p>
+<div class="math notranslate nohighlight">
+\[c_1(t) = e^{-t} + t + 5\]</div>
+<div class="math notranslate nohighlight">
+\[c_2(t) = \ln(0.006t + 1) + t^{0.3} + 10\]</div>
+<p>For å finne ut ved hvilken tid de to produktene har lik konsentrasjon, kan vi løse likningen <span class="math notranslate nohighlight">\(c_1(t) = c_2(t)\)</span>. Formulert som et nullpunktsproblem får vi:</p>
+<div class="math notranslate nohighlight">
+\[e^{-t} + t + 5 - \ln(0.006t + 1) - t^{0.3} - 10 = 0\]</div>
+<p>Dette er en likning som ikke er analytisk løsbar. Her skal vi se på metoder for å finne nullpunktene til funksjoner. Dette er en strategi som også kan brukes til å løse likninger.</p>
+<div class="admonition-laeringsutbytte admonition">
+<p class="admonition-title">Læringsutbytte</p>
+<p>Etter å ha arbeidet med denne delen av emnet, skal du kunne:</p>
+<ol class="simple">
+<li><p>Forklare den teoretisk bakgrunnen for halveringsmetoden og Newtons metode.</p></li>
+<li><p>Implementere halveringsmetoden og Newtons metode som Python-funksjoner.</p></li>
+<li><p>Drøfte feil og begrensninger ved metodene.</p></li>
+<li><p>Bruke metodene til å finne nullpunkter og løse likninger.</p></li>
+</ol>
+</div>
+</div>
+<div class="section" id="halveringsmetoden">
+<h2>Halveringsmetoden<a class="headerlink" href="#halveringsmetoden" title="Permalink to this headline">¶</a></h2>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output text_html"><iframe width="950" height="600" src="https://www.youtube.com/embed/Ut7hUwPrHwo? autoplay=0&rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div></div>
+</div>
+<p>Når du har sett videoen, kan du gjøre følgende oppgave for å sjekke om du forstår innholdet:</p>
+<div class="tip admonition">
+<p class="admonition-title">Underveisoppgave</p>
+<p>Bruk halveringsmetoden og vis at løsningene til likningen <span class="math notranslate nohighlight">\(x^5 = 5x^3 + 3\)</span> er <span class="math notranslate nohighlight">\(x_1 \approx -2.169, x_2 \approx -0.894\)</span> og <span class="math notranslate nohighlight">\(x_3 \approx 2.291\)</span>.</p>
+</div>
+<iframe src="https://trinket.io/embed/python3/8825b599a4" width="100%" height="356" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
+</div>
+<div class="section" id="newtons-metode">
+<h2>Newtons metode<a class="headerlink" href="#newtons-metode" title="Permalink to this headline">¶</a></h2>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output text_html"><iframe width="950" height="600" src="https://www.youtube.com/embed/7gCA5Per73g? autoplay=0&rel=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div></div>
+</div>
+<p>Når du har sett videoen, kan du gjøre følgende oppgave for å sjekke om du forstår innholdet:</p>
+<div class="tip admonition">
+<p class="admonition-title">Underveisoppgave</p>
+<p>Implementer Newtons metode som en Python-funksjon med docstring, toleranse, maks antall iterasjoner og relevant feilhåndtering dersom vi når maks iterasjoner uten å nå gitt toleranse. Test funksjonen på likningen <span class="math notranslate nohighlight">\(x^2 = x^3 - 4\)</span>.</p>
+</div>
+<iframe src="https://trinket.io/embed/python3/7c95157509" width="100%" height="356" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe></div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./docs/nullpunkter_likninger"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="../datahandtering_visualisering/forelesning_plotting_data.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">Forelesning: Datahåndtering</p>
+            </div>
+        </a>
+    </div>
+     <div id="next">
+        <a class="right-next" href="forelesning_likninger.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title">Forelesning: Likninger og nullpunkter</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
+
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By Andreas Haraldsrud<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

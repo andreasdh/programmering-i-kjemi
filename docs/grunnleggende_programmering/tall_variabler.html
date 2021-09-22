@@ -1,0 +1,880 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Variabler og datatyper &#8212; Programmering i kjemi</title>
+    
+  <link href="../../_static/css/theme.css" rel="stylesheet" />
+  <link href="../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.e2363ea40746bee74734a24ffefccd78.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Quiz 1: Variabler og aritmetikk" href="quiz1.html" />
+    <link rel="prev" title="En første kodesnutt" href="kom_i_gang.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../_static/qe-logo-large.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Programmering i kjemi</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <p class="caption">
+ <span class="caption-text">
+  Tema 1 - Datahåndtering og visualisering
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../datahandtering_visualisering/molekylvisualisering.html">
+   Molekylvisualisering
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../datahandtering_visualisering/plotting_data.html">
+   Plotting og behandling av eksperimentelle data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../datahandtering_visualisering/maskinlaring.html">
+   Maskinlæring
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../datahandtering_visualisering/forelesning_visualisering.html">
+   Forelesning: Molekylvisualisering
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../datahandtering_visualisering/forelesning_plotting_data.html">
+   Forelesning: Datahåndtering
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Tema 2 - Nullpunkter og optimering
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../nullpunkter_likninger/likninger.html">
+   Likninger og nullpunkter
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../nullpunkter_likninger/forelesning_likninger.html">
+   Forelesning: Likninger og nullpunkter
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Tema 3 - Derivasjon og integrasjon
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../derivasjon_integrasjon/derivasjon.html">
+   Numerisk derivasjon
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../derivasjon_integrasjon/integrasjon.html">
+   Integrasjon
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../derivasjon_integrasjon/forelesning_derivasjon.html">
+   Forelesning: Numerisk derivasjon
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../derivasjon_integrasjon/forelesning_integrasjon.html">
+   Forelesning: Numerisk integrasjon
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Tema 4 - Modellering
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../modellering/diskret_modellering.html">
+   Differenslikninger
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../modellering/differensiallikninger.html">
+   Differensiallikninger og fartslover
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../modellering/forelesning_differensiallikninger.html">
+   Forelesning: Reaksjonskinetikk og simulering med fartslover
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Grunnleggende programmering
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="kom_i_gang.html">
+   En første kodesnutt
+  </a>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="current reference internal" href="#">
+   Variabler og datatyper
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="quiz1.html">
+     Quiz 1: Variabler og aritmetikk
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="lister.html">
+   Lister
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="quiz2.html">
+     Quiz 2: Lister
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="if-tester.html">
+   Vilkår (if-tester)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="quiz3.html">
+     Quiz 3: Vilkår (if-tester)
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="lokker.html">
+   Løkker
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="quiz4.html">
+     Quiz 4: Løkker
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="funksjoner.html">
+   Funksjoner
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="quiz5.html">
+     Quiz 5: Funksjoner
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="datasamlinger.html">
+   Datasamlinger
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="quiz6.html">
+     Quiz 6: Datasamlinger (arrayer og dictionarier)
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Datafiler
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../datafiler.html">
+   Datafiler
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/docs/grunnleggende_programmering/tall_variabler.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/andreasdh/programmering-i-kjemi/master?urlpath=tree/mini_book/docs/grunnleggende_programmering/tall_variabler.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#variabler">
+   Variabler
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#print-funksjonen">
+   Print-funksjonen
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#kommentarer">
+   Kommentarer
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#aritmetikk">
+   Aritmetikk
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#biblioteker">
+     Biblioteker
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#brukerinput">
+   Brukerinput
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#variabeltyper">
+   Variabeltyper
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#datamaskinen-krever-noyaktige-instrukser">
+   Datamaskinen krever nøyaktige instrukser
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#oppgaver">
+   Oppgaver
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#videoer">
+     Videoer
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="variabler-og-datatyper">
+<h1>Variabler og datatyper<a class="headerlink" href="#variabler-og-datatyper" title="Permalink to this headline">¶</a></h1>
+<div class="admonition-laeringsutbytte admonition">
+<p class="admonition-title">Læringsutbytte</p>
+<p>Etter å ha arbeidet med dette temaet, skal du kunne:</p>
+<ol class="simple">
+<li><p>kjøre enkle programmer med en programmeringseditor</p></li>
+<li><p>definere og gjøre rede for ulike variabeltyper: heltall, flyttall og strenger</p></li>
+<li><p>skrive ut output ved å bruke print-funksjonen</p></li>
+<li><p>gjøre enkel aritmetikk i Python</p></li>
+<li><p>ta input fra brukeren av programmet</p></li>
+<li><p>importere og bruke biblioteker</p></li>
+</ol>
+</div>
+<div class="section" id="variabler">
+<h2>Variabler<a class="headerlink" href="#variabler" title="Permalink to this headline">¶</a></h2>
+<div class="admonition-variabel admonition">
+<p class="admonition-title">Variabel</p>
+<p>En programmeringsvariabel er en størrelse som lagrer en verdi i et program.</p>
+</div>
+<p>Variabler er spesielt nyttig når vi skal bruke samme verdi flere ganger, eller når vi skal oppdatere en verdi underveis i programmet. Et enkelt eksempel er hvis vi ønsker å finne ti tall i en bestemt tallrekke. Dette kan vi beskrive slik med en pseudokode:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>tall = 0
+gjenta 10 ganger:
+    tall = tall + 3
+    vis tall på skjermen
+</pre></div>
+</div>
+<p>Du kan tenke på en variabel som en boks vi kan putte ting i, og som vi kan modifisere, endre og hente informasjon fra underveis.</p>
+<div class="caution dropdown admonition">
+<p class="admonition-title">Hva er en pseudokode?</p>
+<p>En pseudokode er en beskrivelse av en algoritme uten å bruke et bestemt programmeringsspråk. Pseudokode kan skrives på mange måter og kan beskrives med ord, bilder og symboler.</p>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Underveisoppgave</p>
+<p>Nedenfor er et eksempel på en programkode i Python der vi beregner gjennomsnittshastigheten i m/s for ulike legemer som har beveget seg henholdsvis 3, 4.5, 7 og 14 meter i løpet av 3 sekunder. Hva er fordelen med å bruke variablen <em>t</em> her?</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t</span> <span class="o">=</span> <span class="mi">3</span>
+
+<span class="n">v1</span> <span class="o">=</span> <span class="mi">3</span><span class="o">/</span><span class="n">t</span>
+<span class="n">v2</span> <span class="o">=</span> <span class="mf">4.5</span><span class="o">/</span><span class="n">t</span>
+<span class="n">v3</span> <span class="o">=</span> <span class="mi">7</span><span class="o">/</span><span class="n">t</span>
+<span class="n">v4</span> <span class="o">=</span> <span class="mi">14</span><span class="o">/</span><span class="n">t</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="print-funksjonen">
+<h2>Print-funksjonen<a class="headerlink" href="#print-funksjonen" title="Permalink to this headline">¶</a></h2>
+<p>For å få noe ut av programmet vårt, må vi be datamaskinen om å “skrive ut” noe. Dette gjør vi med funksjonen <em>print</em>. Dersom vi ønsker å skrive ut flere variabler, må vi skille dem med anførselstegn i print-funksjonen. Her ser du tre måter å bruke print-funksjonen på:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">v1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">v1</span><span class="p">,</span> <span class="n">v2</span><span class="p">,</span> <span class="n">v3</span><span class="p">,</span> <span class="n">v4</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Gjennomsnittsfarten for legeme 4 er: &quot;</span><span class="p">,</span> <span class="n">v4</span><span class="p">,</span> <span class="s2">&quot;m/s.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.0
+1.0 1.5 2.3333333333333335 4.666666666666667
+Gjennomsnittsfarten for legeme 4 er:  4.666666666666667 m/s.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Underveisoppgave</p>
+<p>Lag et program som regner ut arealet av et rektangel og skriver ut en svarsetning med enheter.</p>
+</div>
+</div>
+<div class="section" id="kommentarer">
+<h2>Kommentarer<a class="headerlink" href="#kommentarer" title="Permalink to this headline">¶</a></h2>
+<p>Bruk av kommentarer i koden er viktig for at en selv skal huske hva koden illustrerer, hvilke enheter som brukes, og liknende. I tillegg er det viktig dersom andre skal bruke koden din til noe, for eksempel i store samarbeidsprosjekter. Kommentarer legges til ved å sette en # foran kommentaren. Eventuelt, dersom du kommenterer over flere linjer, kan du bruke triple anførselstegn før og etter kommentarene. Her er et eksempel:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Regner ut kinetisk energi i én dimensjon </span>
+<span class="sd">for et legeme med masse m og hastighet v</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="n">m</span> <span class="o">=</span> <span class="mf">2.0</span>        <span class="c1"># masse i kg</span>
+<span class="n">v</span> <span class="o">=</span> <span class="mf">1.0</span>        <span class="c1"># fart i m/s</span>
+
+<span class="n">E</span> <span class="o">=</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">m</span><span class="o">*</span><span class="n">v</span><span class="o">**</span><span class="mi">2</span> <span class="c1"># Kinetisk energi i J</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Den kinetiske energien er&quot;</span><span class="p">,</span> <span class="n">E</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Den kinetiske energien er 1.0
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="aritmetikk">
+<h2>Aritmetikk<a class="headerlink" href="#aritmetikk" title="Permalink to this headline">¶</a></h2>
+<p>Vi kan bruke Python som en enkel kalkulator. Vi har blant annet følgende operatorer:</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Operator</p></th>
+<th class="head"><p>Forklaring</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>+</p></td>
+<td><p>Addisjon (a + b)</p></td>
+</tr>
+<tr class="row-odd"><td><p>-</p></td>
+<td><p>Subtraksjon (a - b)</p></td>
+</tr>
+<tr class="row-even"><td><p>*</p></td>
+<td><p>Multiplikasjon (a*b)</p></td>
+</tr>
+<tr class="row-odd"><td><p>/</p></td>
+<td><p>Divisjon (a/b)</p></td>
+</tr>
+<tr class="row-even"><td><p>**</p></td>
+<td><p>Eksponent (a**b)</p></td>
+</tr>
+</tbody>
+</table>
+<div class="tip admonition">
+<p class="admonition-title">Underveisoppgave</p>
+<p>Det finnes også to spesielle operatorer: // og %. Finn ut hva disse operatorene gjør ved å prøve dere fram i koderuta nedenfor. Vi har lagt til fire linjer som du kan bruke som utgangspunkt.</p>
+</div>
+<h4><iframe src="https://trinket.io/embed/python3/1cdda2d57c?font=2em" width="100%" height="356" allowfullscreen="allowfullscreen"></iframe></h4>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Løsning</p>
+<p>// utfører heltallsdivisjon, det vil si at operatoren finner det høyeste heltallet divisjonen går opp i. 24 // 5 = 4 fordi 4 * 5 = 20, som er det nærmeste vi kommer 24 i 5-gangen uten å overskride 24. Resten etter denne divisjonen er 4. Det får vi fram ved å bruke «modulusoperatoren» %, som ikke har noe med prosent å gjøre. 24 % 5 er altså 4.</p>
+</div>
+<div class="section" id="biblioteker">
+<h3>Biblioteker<a class="headerlink" href="#biblioteker" title="Permalink to this headline">¶</a></h3>
+<p>De fleste matematiske operatorer og funksjoner finnes ikke i standard Python. For å få tilgang til mer avansert matematikk, må vi importere <em>biblioteker</em> (eller <em>moduler</em>) inn i Python-programmet vårt. Et bibliotek er en pakke med ekstra kommandoer og funksjoner som vi kan bruke, som <em>sqrt</em>, <em>cos</em>, <em>log</em> og så videre. Det finnes ulike måter å importere på. Her er noen måter vi kan importere det svært nyttige <em>nympy</em>-biblioteket (<strong>num</strong>erical <strong>py</strong>thon):</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Første metode: Importerer kun funksjonene du trenger</span>
+<span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">log10</span>
+
+<span class="n">pH</span> <span class="o">=</span> <span class="o">-</span><span class="n">log10</span><span class="p">(</span><span class="mf">1E-7</span><span class="p">)</span>
+
+<span class="c1"># Andre metode: Importere hele biblioteket</span>
+<span class="kn">import</span> <span class="nn">numpy</span>
+
+<span class="n">A</span> <span class="o">=</span> <span class="mi">2</span> 
+<span class="n">radius</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">A</span><span class="o">/</span><span class="n">numpy</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span>
+
+<span class="c1"># Tredje metode: Importere hele biblioteket med et alias. Dette er den mest brukte metoden.</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">A</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">radius</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">A</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span>
+
+<span class="c1"># Fjerde metode: Importere alt fra biblioteket uten å spesifisere hvor funksjonene kommer fra</span>
+<span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">vinkel</span> <span class="o">=</span> <span class="n">arccos</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span> <span class="c1"># Invers cosinus av 0.5</span>
+<span class="n">pH</span> <span class="o">=</span> <span class="o">-</span><span class="n">log10</span><span class="p">(</span><span class="mf">1E-7</span><span class="p">)</span>    <span class="c1"># pH = -log([H3O+]), log10 er tierlogaritmen</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Underveisoppgave</p>
+<p>Lag et program som regner ut radius til en sirkel med arealet 4 ved å importere sqrt og pi fra numpy-biblioteket. Kunne du gjort beregningene uten disse funksjonene?</p>
+</div>
+</div>
+</div>
+<div class="section" id="brukerinput">
+<h2>Brukerinput<a class="headerlink" href="#brukerinput" title="Permalink to this headline">¶</a></h2>
+<p>Vi kan også få programmet vårt til å spørre brukeren av programmet om å taste inn enkelte variabler selv. Dette gjøres i samme ruta som du får <em>output</em> i editoren din. For å få brukerinput, bruker vi funksjonen <em>input</em>. Kjør programmet nedenfor og beskriv hvordan det fungerer. Prøv å bytte ut ulike kodelinjer og se hva slags output du får. Du må skrive inn input-verdiene i konsollen til høyre i koderuta.</p>
+<iframe src="https://trinket.io/embed/python3/4af0f30f45" width="100%" height="600" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe><p>Input er ikke nødvendig for annet enn å lage et mer interaktivt program. Men hvis du lager et program med input, bør du legge til input helt til slutt. Start med å gi variablene verdier, og test at programmet fungerer. Deretter kan du bruke input på de variablene du ønsker. Dette er for å unngå å måtte taste inn input-verdier hver gang du kjører programmet ditt, spesielt hvis det inneholder feil du må rette opp!</p>
+<div class="tip admonition">
+<p class="admonition-title">Underveisoppgave</p>
+<p>Modifiser programmet fra forrige underveisoppgave slik at det tar arealet som input fra brukeren.</p>
+</div>
+</div>
+<div class="section" id="variabeltyper">
+<h2>Variabeltyper<a class="headerlink" href="#variabeltyper" title="Permalink to this headline">¶</a></h2>
+<p>I matematikk har vi ulike tallmengder, som <em>reelle tall</em>, <em>irrasjonale tall</em>, <em>rasjonale tall</em>, <em>naturlige tall</em>, <em>hele tall</em> og <em>komplekse tall</em>. Disse tallmengdene er uendelig store, som betyr at de ikke kan eksistere på en datamaskin. Vi har derfor en del andre tallmengder og variabeltyper. For eksempel heter desimaltall <em>float</em> fordi ikke alle desimaltall er representert på en datamaskin. Det er altså en annen tallmengde. De viktigste variabeltypene ser du her:</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Datatype</p></th>
+<th class="head"><p>Forklaring</p></th>
+<th class="head"><p>Eksempel</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Heltall (int)</p></td>
+<td><p>Hele tall</p></td>
+<td><p>42</p></td>
+</tr>
+<tr class="row-odd"><td><p>Flyttall (float)</p></td>
+<td><p>Desimaltall</p></td>
+<td><p>3.1415</p></td>
+</tr>
+<tr class="row-even"><td><p>Streng (str)</p></td>
+<td><p>Tekst</p></td>
+<td><p>“Hei!”</p></td>
+</tr>
+<tr class="row-odd"><td><p>Boolsk</p></td>
+<td><p>Sannhet</p></td>
+<td><p>True eller False</p></td>
+</tr>
+</tbody>
+</table>
+<p>Når vi ønsker input fra en bruker av et program, må vi spesifisere hvilken variabeltype vi ønsker at inputen skal bli tolket som. Standard er tekst, men hvis vi for eksempel “adderer” teksten “4” med “2”, får vi “42”, mens tallet 4 + tallet 2 gir tallet 6. Eksempelet nedenfor illustrerer dette.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tekst1</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Skriv et tall: &quot;</span><span class="p">)</span>
+<span class="n">tekst2</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Skriv et tall til: &quot;</span><span class="p">)</span>
+
+<span class="n">tall1</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">tekst1</span><span class="p">)</span>
+<span class="n">tall2</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">tekst2</span><span class="p">)</span>
+
+<span class="n">tullsvar</span> <span class="o">=</span> <span class="n">tekst1</span> <span class="o">+</span> <span class="n">tekst2</span>
+<span class="n">tallsvar</span> <span class="o">=</span> <span class="n">tall1</span> <span class="o">+</span> <span class="n">tall2</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Summen av teksten er:&quot;</span><span class="p">,</span> <span class="n">tullsvar</span><span class="p">,</span> <span class="s2">&quot;og summen av tallene er:&quot;</span><span class="p">,</span> <span class="n">tallsvar</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Skriv et tall: 4
+Skriv et tall til: 2
+Summen av teksten er: 42 og summen av tallene er: 6.0
+</pre></div>
+</div>
+</div>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Underveisoppgave</p>
+<p>Lag et program som skriver “Hei, <em>navn</em>!” til skjermen. Brukeren skal bes om å taste inn navnet sitt. Dette navnet skal lagres i en variabel, og så skrives ut som i setningen ovenfor. Husk også utropstegnet til slutt.</p>
+<p>Utvid programmet til å spørre om alderen din. La programmet skrive ut en kommentar til alderen din til slutt, for eksempel “<em>din alder</em> er jammen gammelt!”</p>
+</div>
+</div>
+<div class="section" id="datamaskinen-krever-noyaktige-instrukser">
+<h2>Datamaskinen krever nøyaktige instrukser<a class="headerlink" href="#datamaskinen-krever-noyaktige-instrukser" title="Permalink to this headline">¶</a></h2>
+<p>Når du lager sammensatte programmer med Python, må du huske på følgende:</p>
+<ul class="simple">
+<li><p>Programmet leses fra topp til bunn og fra venstre til høyre.</p></li>
+<li><p>Små bokstaver er IKKE lik store bokstaver (p <span class="math notranslate nohighlight">\(\neq\)</span> P).</p></li>
+<li><p>Python bryr seg lite om mellomrom, med mindre det er på starten av ei linje. Bruk mellomrom for å gjøre programmet ditt mer lesbart.</p></li>
+<li><p>Øv deg på å lese feilmeldinger: Du får beskjed om linja der feilen befinner seg og typen feil.</p></li>
+</ul>
+<div class="tip admonition">
+<p class="admonition-title">Underveisoppgave</p>
+<p>Forklar hva som er feil med følgende programmer:</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">tall1</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">tall1</span> <span class="o">+</span> <span class="n">tall2</span><span class="p">)</span>
+<span class="n">tall2</span> <span class="o">=</span> <span class="mi">3</span>
+</pre></div>
+</div>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">navn</span> <span class="o">=</span> <span class="s2">&quot;Gunnar&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">Navn</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">3</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Differansen mellom&quot;</span> <span class="n">a</span> <span class="s2">&quot;og&quot;</span> <span class="n">b</span> <span class="s2">&quot;=&quot;</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="figure align-default" id="bug">
+<a class="reference internal image-reference" href="https://live.staticflickr.com/3136/2842497804_f2684b2dcf_c.jpg"><img alt="https://live.staticflickr.com/3136/2842497804_f2684b2dcf_c.jpg" src="https://live.staticflickr.com/3136/2842497804_f2684b2dcf_c.jpg" style="height: 500px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 1 </span><span class="caption-text">En av de første “bugs” ble funnet av Grace Hopper, som også lagde den første kompilatoren, en oversetter fra programmeringsspråk til maskinkode. Bugs var altså faktiske insekter som satt seg fast i de mekaniske delene og lagde krøll. Forhåpentligvis får du ingen feilmeldinger om insekter i datamaskinen din.</span><a class="headerlink" href="#bug" title="Permalink to this image">¶</a></p>
+</div>
+</div>
+<div class="section" id="oppgaver">
+<h2>Oppgaver<a class="headerlink" href="#oppgaver" title="Permalink to this headline">¶</a></h2>
+<div class="tip admonition">
+<p class="admonition-title">Oppgave 1.1</p>
+<p>Bruk kodeboksen nedenfor til å lage relevante variabler slik at programmet regner ut arealet av en trekant med grunnlinje 4 og høyde 2. Programmet inneholder litt kode fra før til å hjelpe deg på vei.</p>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Oppgave 1.2</p>
+<p>Lag et program som regner ut radius til en sirkel med arealet 4.</p>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Ekstra: Oppgave 1.3</p>
+<p>Lag et program som bruker en valgfri formel fra matematikken til å regne ut noe. Bruk input-funksjonen til å hente variabelverdier fra brukeren.</p>
+</div>
+<iframe src="https://trinket.io/embed/python3/201ecb4ca2" width="100%" height="300" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe><div class="section" id="videoer">
+<h3>Videoer<a class="headerlink" href="#videoer" title="Permalink to this headline">¶</a></h3>
+<p>Her kan du se videoer som introduksjon og/eller repetisjon til fagstoffet:</p>
+<div class="tabbed-set docutils">
+<input checked="checked" id="82438e2c-f7df-4feb-aa87-c2120d7b9c66" name="7e6fb9f9-6b6c-42ca-90ea-f2f26ff75c82" type="radio">
+</input><label class="tabbed-label" for="82438e2c-f7df-4feb-aa87-c2120d7b9c66">
+Variabler</label><div class="tabbed-content docutils">
+<iframe width="800" height="600" src="https://www.youtube.com/embed/RKws2FSSa28? autoplay=0&rel=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<p>Når du har sett videoen, kan du gjøre følgende oppgave for å sjekke om du forstår innholdet:</p>
+<div class="tip admonition">
+<p class="admonition-title">Sjekk deg selv</p>
+<p>Lag et program der du definerer to variabler <em>tall1</em> og <em>tall2</em> med hver sitt tall. Regn ut differansen i en egen variabel. Skriv ut “Differansen mellom <em>tall1</em> og *tall2 er <em>differansen</em>”.</p>
+</div>
+<iframe src="https://trinket.io/embed/python3/c16e9a9ea7" width="100%" height="356" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
+</div>
+<input id="f1e035df-0a62-435d-a24b-ca3b26de7cc3" name="7e6fb9f9-6b6c-42ca-90ea-f2f26ff75c82" type="radio">
+</input><label class="tabbed-label" for="f1e035df-0a62-435d-a24b-ca3b26de7cc3">
+Aritmetikk</label><div class="tabbed-content docutils">
+<iframe width="800" height="600" src="https://www.youtube.com/embed/BASO7iHDV54? autoplay=0&rel=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<p>Når du har sett videoen, kan du gjøre følgende oppgave for å sjekke om du forstår innholdet:</p>
+<div class="tip admonition">
+<p class="admonition-title">Underveisoppgave</p>
+<p>Lag et program der du definerer massen til et legeme i en variabel, regner ut energien ved hjelp av formelen <span class="math notranslate nohighlight">\(E = mc^2\)</span> og skriver dette ut.</p>
+</div>
+<iframe src="https://trinket.io/embed/python3/8e4b3a9f07" width="100%" height="356" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
+</div>
+<input id="4a17a16b-1d5a-4ac0-9fe0-5434329e6bf7" name="7e6fb9f9-6b6c-42ca-90ea-f2f26ff75c82" type="radio">
+</input><label class="tabbed-label" for="4a17a16b-1d5a-4ac0-9fe0-5434329e6bf7">
+Biblioteker og matematiske operasjoner</label><div class="tabbed-content docutils">
+<iframe width="800" height="600" src="https://www.youtube.com/embed/VnFNYt2D2Ng? autoplay=0&rel=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<p>Når du har sett videoen, kan du gjøre følgende oppgave for å sjekke om du forstår innholdet:</p>
+<div class="tip admonition">
+<p class="admonition-title">Underveisoppgave</p>
+<p>Lag et program regner ut pH-en i en løsning gitt <span class="math notranslate nohighlight">\([H_3O^+]\)</span>.</p>
+</div>
+<iframe src="https://trinket.io/embed/python3/b8f775f773" width="100%" height="356" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
+</div>
+<input id="ca584802-07c9-4440-a3d5-b5d050913c29" name="7e6fb9f9-6b6c-42ca-90ea-f2f26ff75c82" type="radio">
+</input><label class="tabbed-label" for="ca584802-07c9-4440-a3d5-b5d050913c29">
+Input</label><div class="tabbed-content docutils">
+<iframe width="800" height="600" src="https://www.youtube.com/embed/nwncCwwcV4s? autoplay=0&rel=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<p>Når du har sett videoen, kan du gjøre følgende oppgave for å sjekke om du forstår innholdet:</p>
+<div class="tip admonition">
+<p class="admonition-title">Underveisoppgave</p>
+<p>Lag et program som tar masse og hastighet som input, og som regner ut kinetisk energi vha. formelen <span class="math notranslate nohighlight">\(E_k = \frac{1}{2}mv^2\)</span>.</p>
+</div>
+<iframe src="https://trinket.io/embed/python3/07702bed1b?font=1.5em" width="100%" height="356" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
+</div>
+</div>
+</div>
+</div>
+<div class="toctree-wrapper compound">
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./docs/grunnleggende_programmering"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="kom_i_gang.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">En første kodesnutt</p>
+            </div>
+        </a>
+    </div>
+     <div id="next">
+        <a class="right-next" href="quiz1.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title">Quiz 1: Variabler og aritmetikk</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
+
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By Andreas Haraldsrud<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>
