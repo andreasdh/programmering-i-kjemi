@@ -27,17 +27,25 @@ parts:
 - caption: Grunnleggende programmering
   chapters:
   - file: docs/grunnleggende_programmering/kom_i_gang
-  - file: docs/grunnleggende_programmering/tall_variabler
-  - file: docs/grunnleggende_programmering/kontrollstrukturer
-  - file: docs/grunnleggende_programmering/funksjoner
-  - file: docs/grunnleggende_programmering/datasamlinger
-  - file: docs/grunnleggende_programmering/grunnleggende_programmering
-  - file: docs/grunnleggende_programmering/quiz1
-  - file: docs/grunnleggende_programmering/quiz2
-  - file: docs/grunnleggende_programmering/quiz3
-  - file: docs/grunnleggende_programmering/quiz4
-  - file: docs/grunnleggende_programmering/quiz5
-  - file: docs/grunnleggende_programmering/quiz6
+  - file: docs/tema1_grunnleggende_programmering/tall_variabler
+    sections:
+    - file: docs/tema1_grunnleggende_programmering/quiz1
+  - file: docs/tema1_grunnleggende_programmering/lister
+    sections:
+    - file: docs/tema1_grunnleggende_programmering/quiz2
+  - file: docs/tema1_grunnleggende_programmering/if-tester
+    sections:
+    - file: docs/tema1_grunnleggende_programmering/quiz3
+  - file: docs/tema1_grunnleggende_programmering/lokker
+    sections:
+    - file: docs/tema1_grunnleggende_programmering/quiz4
+  - file: docs/tema2_kodestrukturering/funksjoner
+    sections:
+      - file: docs/tema1_grunnleggende_programmering/quiz5
+  - file: docs/tema3_datahandtering/datasamlinger
+    sections:
+      - file: docs/tema1_grunnleggende_programmering/quiz6
+  - file: docs/tema3_datahandtering/programmeringsverktoy
 - caption: Datafiler
   chapters:
   - file: docs/datafiler
