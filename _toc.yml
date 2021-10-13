@@ -22,7 +22,7 @@ parts:
   - file: docs/grunnleggende_programmering/datasamlinger
     sections:
       - file: docs/grunnleggende_programmering/quiz6
-  - file: docs/grunnleggende_programmeringg/programmeringsverktoy
+  - file: docs/grunnleggende_programmering/programmeringsverktoy
 - caption: Tema 2 - Datahåndtering og visualisering
   chapters:
   - file: docs/datahandtering_visualisering/molekylvisualisering
