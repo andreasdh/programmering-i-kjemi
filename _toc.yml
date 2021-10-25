@@ -26,10 +26,6 @@ parts:
 
 - caption: Tema 2 - Datahåndtering og visualisering
   chapters:
-  - file: docs/forelesninger/forelesninger_1
-    sections:
-      - file: docs/forelesninger/forelesning1_2021
-      - file: docs/forelesninger/forelesning2_2021
   - file: docs/datahandtering_visualisering/molekylvisualisering
   - file: docs/datahandtering_visualisering/plotting
   - file: docs/datahandtering_visualisering/lese_filer
@@ -47,6 +43,11 @@ parts:
   - file: docs/modellering/diskret_modellering
   - file: docs/modellering/differensiallikninger
   - file: docs/modellering/forelesning_diskret_modellering
+
+- caption: Forelesninger
+  chapters:
+  - file: docs/forelesninger/forelesning1_2021
+  - file: docs/forelesninger/forelesning2_2021
 
 - caption: Datafiler
   chapters:
