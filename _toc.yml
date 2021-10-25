@@ -48,6 +48,7 @@ parts:
   chapters:
   - file: docs/forelesninger/forelesning1_2021
   - file: docs/forelesninger/forelesning2_2021
+  - file: docs/datahandtering_visualisering/forelesning3-pingviner
 
 - caption: Datafiler
   chapters:
