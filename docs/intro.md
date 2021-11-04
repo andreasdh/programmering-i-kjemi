@@ -11,4 +11,6 @@ Nettstedet er utformet med bakgrunn i emnet IN-KJM1900 og inneholder følgende:
 - Tilleggsressurser for de som er interessert i å lære mer.
 ```
 
-Fagstoffet tar utgangspunkt i et kompendium: [Kompendium IN-KJM1900](https://www.uio.no/studier/emner/matnat/ifi/IN-KJM1900/h21/pensumliste/kompendium_kjm1900.pdf).
+Fagstoffet tar utgangspunkt i et kompendium: [Kompendium IN-KJM1900](https://www.uio.no/studier/emner/matnat/ifi/IN-KJM1900/h21/pensumliste/kompendium_kjm1900.pdf). Her finner du mye av det samme fagstoffet, men også litt ekstra tilleggsinformasjon.
+
+Når du gjennomgår fagstoffet på sidene, bør du gjøre underveisoppgavene. Da får du øvd deg regelmessig på aktuelle problemer. Dette er mye mer effektivt enn å bare lese om programmering! Noen ganger får du også muligheten til å bruke en interaktiv editor (Trinket) til å gjøre oppgaver, for eksempel fylle inn noe som mangler eller rette opp feil. Nettleseren din husker da hva du har gjort i disse editorene, så hvis du vil tilbakestille programmet, må du trykke på hamburgermenyen (de tre strekene) i editorvinduet og trykke på "reset". God fornøyelse!
