@@ -38,11 +38,10 @@ parts:
   - file: docs/derivasjon_integrasjon/derivasjon
   - file: docs/derivasjon_integrasjon/integrasjon
 
-- caption: Tema 5 - Modellering
+- caption: Tema 4 - Modellering
   chapters:
   - file: docs/modellering/diskret_modellering
   - file: docs/modellering/differensiallikninger
-  - file: docs/modellering/forelesning_diskret_modellering
 
 - caption: Forelesninger
   chapters:
@@ -53,6 +52,8 @@ parts:
   - file: docs/forelesninger/forelesning5_2021
   - file: docs/forelesninger/forelesning6_2021
   - file: docs/forelesninger/forelesning7_2021
+  - file: docs/forelesninger/forelesning8_2021
+
 - caption: Datafiler
   chapters:
   - file: docs/datafiler
