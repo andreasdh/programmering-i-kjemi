@@ -52,7 +52,7 @@ parts:
   - file: docs/forelesninger/forelesning4_2021
   - file: docs/forelesninger/forelesning5_2021
   - file: docs/forelesninger/forelesning6_2021
-
+  - file: docs/forelesninger/forelesning7_2021
 - caption: Datafiler
   chapters:
   - file: docs/datafiler
