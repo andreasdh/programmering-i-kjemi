@@ -43,19 +43,23 @@ parts:
   - file: docs/modellering/diskret_modellering
   - file: docs/modellering/differensiallikninger
 
-- caption: Forelesninger
+- caption: Emneressurser
   chapters:
-      - file: docs/forelesninger/forelesninger
-      sections:
-        - file: docs/forelesninger/forelesning1_2021
-        - file: docs/forelesninger/forelesning2_2021
-        - file: docs/forelesninger/forelesning3_2021
-        - file: docs/forelesninger/forelesning4_2021
-        - file: docs/forelesninger/forelesning5_2021
-        - file: docs/forelesninger/forelesning6_2021
-        - file: docs/forelesninger/forelesning7_2021
-        - file: docs/forelesninger/forelesning8_2021
-
+  - file: docs/forelesninger/forelesninger
+    sections:
+      - file: docs/forelesninger/forelesning1_2021
+      - file: docs/forelesninger/forelesning2_2021
+      - file: docs/forelesninger/forelesning3_2021
+      - file: docs/forelesninger/forelesning4_2021
+      - file: docs/forelesninger/forelesning5_2021
+      - file: docs/forelesninger/forelesning6_2021
+      - file: docs/forelesninger/forelesning7_2021
+      - file: docs/forelesninger/forelesning8_2021
+  - file: docs/forelesninger/workshops
+    sections:
+      - file: docs/forelesninger/workshop1
+      - file: docs/forelesninger/workshop2
+      - file: docs/forelesninger/workshop3
 - caption: Datafiler
   chapters:
   - file: docs/datafiler
