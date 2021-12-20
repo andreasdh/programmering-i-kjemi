@@ -38,7 +38,7 @@ parts:
   - file: docs/derivasjon_integrasjon/derivasjon
   - file: docs/derivasjon_integrasjon/integrasjon
 
-- caption: Tema 4 - Modellering
+- caption: Tema 4 - Dynamiske systemer
   chapters:
   - file: docs/modellering/diskret_modellering
   - file: docs/modellering/differensiallikninger
