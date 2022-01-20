@@ -61,3 +61,7 @@ parts:
       - file: docs/forelesninger/workshop2
       - file: docs/forelesninger/workshop3
   - file: docs/datafiler
+
+- caption: Biokjemi (KJM1140)
+  chapters:
+  - file: docs/biokjemi/enzymkinetikklab
