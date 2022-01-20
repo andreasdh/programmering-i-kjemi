@@ -43,7 +43,7 @@ parts:
   - file: docs/modellering/diskret_modellering
   - file: docs/modellering/differensiallikninger
 
-- caption: Emneressurser
+- caption: Emneressurser (IN-KJM1900)
   chapters:
   - file: docs/forelesninger/forelesninger
     sections:
