@@ -64,4 +64,6 @@ parts:
 
 - caption: Biokjemi (KJM1140)
   chapters:
+  - file: docs/biokjemi/regresjonsmodeller
   - file: docs/biokjemi/enzymkinetikklab
+  
