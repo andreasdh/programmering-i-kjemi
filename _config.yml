@@ -17,6 +17,8 @@ execute:
 # HTML-specific settings
 html:
   home_page_in_navbar         : false
+  comments:
+     hypothesis: true
 
 # #######################################################################################
 # Interact link settings
