@@ -62,8 +62,7 @@ parts:
       - file: docs/forelesninger/workshop3
   - file: docs/obliger/obliger
     sections:
-      - file: docs/obliger/oblig_datahandtering
-      - file: docs/obliger/oblig_titrering
+      - file: docs/obliger/oblig_datahandtering_2022
       - file: docs/obliger/oblig_dynamiske_systemer
   - file: docs/datafiler
 
