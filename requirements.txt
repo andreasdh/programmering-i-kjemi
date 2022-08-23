@@ -1,5 +1,4 @@
 jupyter-book
-setuptools
 matplotlib
 numpy 
 py3Dmol
