@@ -19,10 +19,8 @@ jobs:
       - name: install
         run: |
           python --version
-          python -m pip install setuptools
           python -m pip install -r requirements.txt
           python -m pip install attrs
-          python -m pip install wheel
             
       - name: build 
         env:
