@@ -20,6 +20,7 @@ jobs:
       - name: install
         run: |
           python --version
+          python -m pip install poetry
           python -m pip install -r requirements.txt
           python -m pip install attrs
             
