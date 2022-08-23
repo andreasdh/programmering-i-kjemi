@@ -21,8 +21,11 @@ jobs:
         run: |
           python --version
 <<<<<<< HEAD
+<<<<<<< HEAD
           python -m pip install poetry
 =======
+=======
+>>>>>>> parent of 1fc62b7 (Update main.yml)
           python -m pip install setuptools
 >>>>>>> parent of 1fc62b7 (Update main.yml)
           python -m pip install -r requirements.txt
