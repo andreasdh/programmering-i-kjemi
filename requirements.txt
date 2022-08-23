@@ -1,4 +1,4 @@
-jupyter-book==0.13.0
+jupyter-book
 matplotlib
 numpy 
 py3Dmol
