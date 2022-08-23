@@ -20,21 +20,7 @@ jobs:
       - name: install
         run: |
           python --version
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-          python -m pip install poetry
-=======
-=======
->>>>>>> parent of 1fc62b7 (Update main.yml)
-=======
->>>>>>> parent of 1fc62b7 (Update main.yml)
-=======
-          python -m pip install --upgrade pip
->>>>>>> parent of 303ed02 (Revert "Update main.yml")
           python -m pip install setuptools
->>>>>>> parent of 1fc62b7 (Update main.yml)
           python -m pip install -r requirements.txt
           python -m pip install attrs
             
