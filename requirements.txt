@@ -1,5 +1,4 @@
 jupyter-book
 matplotlib
 numpy 
-py3Dmol
-nglview
+jupyterquiz
