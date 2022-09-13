@@ -1,6 +1,6 @@
 # Programmering i kjemi
 
-Velkommen til disse nettsidene, som handler om programmer i kjemi. Hovedformålet med sidene er å gi deg grunnleggende programmeringskompetanse med språket Python, anvendt på kjemiske problemstillinger. Med programmering får du et nytt verktøy som kan brukes til å utforske kjemiske sammenhenger, effektivisere arbeidet ditt og håndtere data fra eksperimenter. Innsikt i programmering lar deg se løsninger og bli en bedre problemløser. Det viktigste er ikke at du skal bygge alle programmer helt på egen hånd, men at du lærer deg sentrale prinsipper i programmering slik at du blir bedre til å lage og forstå både software og programkode.<br>
+Velkommen til disse nettsidene! Her skal vi se på hvordan vi kan bruke programmering i kjemifaget. Hovedformålet med sidene er å gi deg grunnleggende programmeringskompetanse med språket Python, anvendt på kjemiske problemstillinger. Med programmering får du et nytt verktøy som kan brukes til å utforske kjemiske sammenhenger, effektivisere arbeidet ditt og håndtere data fra eksperimenter. Innsikt i programmering lar deg se løsninger og bli en bedre problemløser. Det viktigste er ikke at du skal bygge alle programmer helt på egen hånd, men at du lærer deg sentrale prinsipper i programmering slik at du blir bedre til å lage og forstå både software og programkode.<br>
 
 
 ```{admonition} Innhold
@@ -9,6 +9,7 @@ Nettstedet er utformet med bakgrunn i emnet IN-KJM1900 og inneholder følgende:
 - Håndtering av eksperimentelle data.
 - Numerisk matematikk med anvendelser i kjemi.
 - Simulering av dynamiske fenomener og modellering med differensiallikninger.
+- Programmer og oppgaver fra forelesninger i IN-KJM1900.
 ```
 
 Fagstoffet tar utgangspunkt i et kompendium: [Kompendium IN-KJM1900](https://www.uio.no/studier/emner/matnat/ifi/IN-KJM1900/h21/pensumliste/kompendium_kjm1900.pdf). Her finner du mye av det samme fagstoffet, men også litt ekstra tilleggsinformasjon.
