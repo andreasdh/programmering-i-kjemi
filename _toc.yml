@@ -49,6 +49,8 @@ parts:
     sections:
       - file: docs/forelesninger/forelesning1_2022
       - file: docs/forelesninger/forelesning2_2022
+      - file: docs/forelesninger/forelesning3_2022
+      - file: docs/forelesninger/forelesning4_2022
   - file: docs/forelesninger/workshops
     sections:
       - file: docs/forelesninger/workshop1
