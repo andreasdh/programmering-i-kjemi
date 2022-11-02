@@ -52,6 +52,7 @@ parts:
       - file: docs/forelesninger/forelesning3_2022
       - file: docs/forelesninger/forelesning4_2022
       - file: docs/forelesninger/forelesning5_2022
+      - file: docs/forelesninger/forelesning6_2022
   - file: docs/forelesninger/workshops
     sections:
       - file: docs/forelesninger/workshop1
@@ -69,4 +70,3 @@ parts:
   - file: docs/biokjemi/datavisualisering
   - file: docs/biokjemi/regresjonsmodeller
   - file: docs/biokjemi/enzymkinetikklab
-  
