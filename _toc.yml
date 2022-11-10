@@ -53,6 +53,7 @@ parts:
       - file: docs/forelesninger/forelesning4_2022
       - file: docs/forelesninger/forelesning5_2022
       - file: docs/forelesninger/forelesning6_2022
+      - file: docs/forelesninger/forelesning7_2022
   - file: docs/forelesninger/workshops
     sections:
       - file: docs/forelesninger/workshop1
