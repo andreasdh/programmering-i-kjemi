@@ -26,6 +26,7 @@ parts:
 
 - caption: Tema 2 - Datahåndtering og visualisering
   chapters:
+  - file: docs/datahandtering_visualisering/kjemiske_biblioteker
   - file: docs/datahandtering_visualisering/molekylvisualisering
   - file: docs/datahandtering_visualisering/plotting
   - file: docs/datahandtering_visualisering/lese_filer
