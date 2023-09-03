@@ -38,7 +38,7 @@
   },
   {
     "question": "Hva gjør dette programmet?",
-    "code": "a = 1 \nwhile a < 11: \n     a += 2 \n    print(a)",
+    "code": "a = 1 \nwhile a < 11: \n    a += 2 \n    print(a)",
     "type": "multiple_choice",
     "answers": [
       {
