@@ -64,7 +64,6 @@ parts:
   - file: docs/obliger/obliger
     sections:
       - file: docs/obliger/oblig_datahandtering_2022
-      - file: docs/obliger/obligatorisk_gruppetime
       - file: docs/obliger/oblig_dynamiske_systemer
   - file: docs/datafiler
 
