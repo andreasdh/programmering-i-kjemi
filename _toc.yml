@@ -48,10 +48,12 @@ parts:
   chapters:
   - file: docs/forelesninger/forelesninger
     sections:
-      - file: docs/forelesninger/forelesning1_2022
-      - file: docs/forelesninger/forelesning2_2022
-      - file: docs/forelesninger/forelesning3_2022
-
+      - file: docs/forelesninger/forelesning1
+      - file: docs/forelesninger/forelesning2
+      - file: docs/forelesninger/forelesning3
+      - file: docs/forelesninger/forelesning4
+      - file: docs/forelesninger/forelesning5
+      - file: docs/forelesninger/forelesning6
 
   - file: docs/forelesninger/workshops
     sections:
