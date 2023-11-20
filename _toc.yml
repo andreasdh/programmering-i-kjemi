@@ -55,6 +55,7 @@ parts:
       - file: docs/forelesninger/forelesning5
       - file: docs/forelesninger/forelesning6
       - file: docs/forelesninger/forelesning7
+      - file: docs/forelesninger/forelesning8
 
 
   - file: docs/forelesninger/workshops
