@@ -49,6 +49,8 @@ parts:
   - file: docs/forelesninger/forelesninger
     sections:
       - file: docs/forelesninger/forelesning1
+      - file: docs/forelesninger/forelesning2
+      - file: docs/forelesninger/forelesning3
   - file: docs/obliger/obliger
     sections:
       - file: docs/obliger/oblig_datahandtering
