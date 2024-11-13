@@ -56,10 +56,15 @@ parts:
       - file: docs/forelesninger/forelesning6
       - file: docs/forelesninger/forelesning7
       - file: docs/forelesninger/forelesning8
+      - file: docs/forelesninger/forelesning9
+  - file: docs/forelesninger/workshops
+    sections:
+      - file: docs/forelesninger/workshop1
   - file: docs/obliger/obliger
     sections:
       - file: docs/obliger/oblig_datahandtering
       - file: docs/obliger/oblig_dynamiske_systemer
+
   - file: docs/datafiler
 
 - caption: Biokjemi (KJM1140)
