@@ -60,6 +60,7 @@ parts:
   - file: docs/forelesninger/workshops
     sections:
       - file: docs/forelesninger/workshop1
+      - file: docs/forelesninger/workshop2
   - file: docs/obliger/obliger
     sections:
       - file: docs/obliger/oblig_datahandtering
