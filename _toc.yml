@@ -74,4 +74,4 @@ parts:
   - file: docs/biokjemi/molekylvisualisering
   - file: docs/biokjemi/datavisualisering
   - file: docs/biokjemi/regresjonsmodeller
-  - file: docs/biokjemi/enzymkinetikklab
+  - file: docs/biokjemi/enzymkinetikklab2025
