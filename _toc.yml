@@ -75,3 +75,5 @@ parts:
   - file: docs/biokjemi/datavisualisering
   - file: docs/biokjemi/regresjonsmodeller
   - file: docs/biokjemi/enzymkinetikklab2025
+  - file: docs/biokjemi/proteinfolding
+
