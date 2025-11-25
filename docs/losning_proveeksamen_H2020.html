@@ -1,0 +1,1039 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Løsningsforslag for prøveeksamen høst 2020 &#8212; Programmering i kjemi</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/losning_proveeksamen_H2020';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/qe-logo-large.png" class="logo__image only-light" alt="Programmering i kjemi - Home"/>
+    <script>document.write(`<img src="../_static/qe-logo-large.png" class="logo__image only-dark" alt="Programmering i kjemi - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tema 1 - Grunnleggende programmering</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="grunnleggende_programmering/kom_i_gang.html">En første kodesnutt</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="grunnleggende_programmering/tall_variabler.html">Variabler og datatyper</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="grunnleggende_programmering/quiz1.html">Quiz 1: Variabler og aritmetikk</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="grunnleggende_programmering/lister.html">Lister</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="grunnleggende_programmering/quiz2.html">Quiz 2: Lister</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="grunnleggende_programmering/if-tester.html">Vilkår (if-tester)</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="grunnleggende_programmering/quiz3.html">Quiz 3: Vilkår (if-tester)</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="grunnleggende_programmering/lokker.html">Løkker</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="grunnleggende_programmering/quiz4.html">Quiz 4: Løkker</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="grunnleggende_programmering/funksjoner.html">Funksjoner</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="grunnleggende_programmering/quiz5.html">Quiz 5: Funksjoner</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="grunnleggende_programmering/datasamlinger.html">Datasamlinger</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="grunnleggende_programmering/quiz6.html">Quiz 6: Datasamlinger (arrayer og dictionarier)</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tema 2 - Datahåndtering og visualisering</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="datahandtering_visualisering/kjemiske_biblioteker.html">Kjemiske biblioteker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="datahandtering_visualisering/molekylvisualisering.html">Molekylvisualisering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="datahandtering_visualisering/plotting.html">Datahåndtering I: Visualisering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="datahandtering_visualisering/lese_filer.html">Datahåndering II: Håndtere og visualisere data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="datahandtering_visualisering/statistikk.html">Datahåndering III: Statistikk</a></li>
+<li class="toctree-l1"><a class="reference internal" href="datahandtering_visualisering/maskinlaring.html">Datahåndtering IV: Maskinlæring</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tema 3 - Numeriske metoder</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="nullpunkter_likninger/likninger.html">Likninger og nullpunkter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="derivasjon_integrasjon/derivasjon.html">Numerisk derivasjon</a></li>
+<li class="toctree-l1"><a class="reference internal" href="derivasjon_integrasjon/integrasjon.html">Numerisk integrasjon</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tema 4 - Dynamiske systemer</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="modellering/diskret_modellering.html">Differenslikninger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modellering/differensiallikninger.html">Differensiallikninger og fartslover</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Emneressurser (IN-KJM1900)</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="forelesninger/forelesninger.html">Forelesninger</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="forelesninger/forelesning1.html">Forelesning 1: Programmering i kjemi</a></li>
+<li class="toctree-l2"><a class="reference internal" href="forelesninger/forelesning2.html">Forelesning 2: Plotting og datahåndtering</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="forelesninger/forelesning3.html">Forelesning 3: Statistisk analyse</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="forelesninger/forelesning4.html">Forelesning 4: Statistikk II</a></li>
+<li class="toctree-l2"><a class="reference internal" href="forelesninger/forelesning5.html">Forelesning 5: Numerisk derivasjon og likninger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="forelesninger/forelesning6.html">Forelesning 6: Numerisk integrasjon</a></li>
+<li class="toctree-l2"><a class="reference internal" href="forelesninger/forelesning7.html">Forelesning 7: Numerisk løsing av likninger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="forelesninger/forelesning8.html">Forelesning 8: Differensiallikninger og reaksjonskinetikk</a></li>
+<li class="toctree-l2"><a class="reference internal" href="forelesninger/forelesning9.html">Forelesning 9: Reaksjonskinetikk II</a></li>
+<li class="toctree-l2"><a class="reference internal" href="forelesninger/forelesning10.html">Forelesning 10: Molekylmekanikk</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="forelesninger/workshops.html">Eksamensverksted</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="forelesninger/workshop1.html">Workshop 1: Datahåndtering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="forelesninger/workshop2.html">Workshop 2: Numeriske metoder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="forelesninger/workshop3.html">Workshop 3: Dynamiske systemer</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="obliger/obliger.html">Obligatoriske oppgaver</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="obliger/oblig_datahandtering.html">Oblig 1: Håndtering av kjemiske data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="obliger/oblig_dynamiske_systemer.html">Oblig 2: Dynamiske systemer og integrasjon</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="datafiler.html">Datafiler</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Biokjemi (KJM1140)</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="biokjemi/molekylvisualisering.html">Molekylvisualisering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="biokjemi/datavisualisering.html">Datavisualisering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="biokjemi/regresjonsmodeller.html">Regresjonsmodeller</a></li>
+<li class="toctree-l1"><a class="reference internal" href="biokjemi/enzymkinetikklab2025.html">Analyse av enzymkinetikkdata</a></li>
+<li class="toctree-l1"><a class="reference internal" href="biokjemi/proteinfolding.html">Del 1: Monte-Carlo-simuleringer</a></li>
+
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/docs/losning_proveeksamen_H2020.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Løsningsforslag for prøveeksamen høst 2020</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-1">Oppgave 1</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-2">Oppgave 2</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-3">Oppgave 3</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-4">Oppgave 4</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-5">Oppgave 5</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-6">Oppgave 6</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-7">Oppgave 7</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-8">Oppgave 8</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-9">Oppgave 9</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-10">Oppgave 10</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-11">Oppgave 11</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-12">Oppgave 12</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-13">Oppgave 13</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-14">Oppgave 14</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a">a)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b">b)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#c">c)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d">d)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-15">Oppgave 15</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-16">Oppgave 16</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-17">Oppgave 17</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">a)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">b)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">c)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-18">Oppgave 18</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-19">Oppgave 19</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-20">Oppgave 20</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-21">Oppgave 21</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="losningsforslag-for-proveeksamen-host-2020">
+<h1>Løsningsforslag for prøveeksamen høst 2020<a class="headerlink" href="#losningsforslag-for-proveeksamen-host-2020" title="Permalink to this heading">#</a></h1>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output text_html"><iframe width="850" height="500" src="https://www.youtube.com/embed/F0WawcemEjs? autoplay=0&rel=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div></div>
+</div>
+<section id="oppgave-1">
+<h2>Oppgave 1<a class="headerlink" href="#oppgave-1" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">fortynning</span><span class="p">(</span><span class="n">c1</span><span class="p">,</span> <span class="n">c2</span><span class="p">,</span> <span class="n">V2</span><span class="p">):</span>
+    <span class="n">V1</span> <span class="o">=</span> <span class="n">c2</span><span class="o">*</span><span class="n">V2</span><span class="o">/</span><span class="n">c1</span>
+    <span class="k">return</span> <span class="n">V1</span>
+
+<span class="n">volum</span> <span class="o">=</span> <span class="n">fortynning</span><span class="p">(</span><span class="mf">0.50</span><span class="p">,</span> <span class="mf">0.0125</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Volumet som må pipetteres ut er </span><span class="si">{</span><span class="n">volum</span><span class="si">}</span><span class="s1"> L&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Volumet som må pipetteres ut er 0.025 L
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="oppgave-2">
+<h2>Oppgave 2<a class="headerlink" href="#oppgave-2" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="c1"># Vilkårlig liste/array med tall</span>
+<span class="n">oksonium</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.00001</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+<span class="n">pH</span> <span class="o">=</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">oksonium</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="oppgave-3">
+<h2>Oppgave 3<a class="headerlink" href="#oppgave-3" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">piecewise</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="o">-</span><span class="mf">1.0</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mf">1.0</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="oppgave-4">
+<h2>Oppgave 4<a class="headerlink" href="#oppgave-4" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">piecewise</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">piecewise</span><span class="p">(</span><span class="mf">0.5</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-1.0
+1.0
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="oppgave-5">
+<h2>Oppgave 5<a class="headerlink" href="#oppgave-5" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">exp_approx</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">n</span><span class="p">):</span>
+    <span class="n">taylor_exp</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+        <span class="n">taylor_exp</span> <span class="o">+=</span> <span class="n">x</span><span class="o">**</span><span class="n">k</span><span class="o">/</span><span class="n">math</span><span class="o">.</span><span class="n">factorial</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">taylor_exp</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="oppgave-6">
+<h2>Oppgave 6<a class="headerlink" href="#oppgave-6" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">plot_approx</span><span class="p">(</span><span class="n">n_values</span><span class="p">):</span>
+    <span class="n">xliste</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">n_values</span><span class="p">:</span>
+        <span class="n">exp_values</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">xliste</span><span class="p">:</span>
+            <span class="n">e</span> <span class="o">=</span> <span class="n">exp_approx</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">n</span><span class="p">)</span>
+            <span class="n">exp_values</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xliste</span><span class="p">,</span><span class="n">exp_values</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;n = </span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+    
+<span class="n">plot_approx</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/6d5920e7853cf374522e7300d1f0bc039506003ef19c8f5cc09b45ab35c4cf59.png" src="../_images/6d5920e7853cf374522e7300d1f0bc039506003ef19c8f5cc09b45ab35c4cf59.png" />
+</div>
+</div>
+</section>
+<section id="oppgave-7">
+<h2>Oppgave 7<a class="headerlink" href="#oppgave-7" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">S_liste</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">,</span> <span class="mf">5.1</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">]</span> <span class="c1"># Entropi i JK^-1mol^-1</span>
+<span class="n">H_liste</span> <span class="o">=</span> <span class="p">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="o">-</span><span class="mi">100</span><span class="p">,</span> <span class="o">-</span><span class="mi">75</span><span class="p">,</span> <span class="o">-</span><span class="mi">20</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="o">-</span><span class="mi">35</span><span class="p">,</span> <span class="mi">49</span><span class="p">,</span> <span class="o">-</span><span class="mi">10</span><span class="p">]</span>    <span class="c1"># Entalpi i Jmol^-1</span>
+<span class="n">T</span> <span class="o">=</span> <span class="mi">298</span> <span class="c1"># Temperatur i K</span>
+<span class="n">spontane_reaksjoner</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">reaksjoner</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="k">for</span> <span class="n">S</span> <span class="ow">in</span> <span class="n">S_liste</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">H</span> <span class="ow">in</span> <span class="n">H_liste</span><span class="p">:</span>
+        <span class="n">G</span> <span class="o">=</span> <span class="n">H</span> <span class="o">-</span> <span class="n">T</span><span class="o">*</span><span class="n">S</span>
+        <span class="k">if</span> <span class="n">G</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">spontane_reaksjoner</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="n">reaksjoner</span> <span class="o">+=</span> <span class="mi">1</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">spontane_reaksjoner</span><span class="si">}</span><span class="s1"> av </span><span class="si">{</span><span class="n">reaksjoner</span><span class="si">}</span><span class="s1"> reaksjoner var spontane.&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>71 av 100 reaksjoner var spontane.
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="oppgave-8">
+<h2>Oppgave 8<a class="headerlink" href="#oppgave-8" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.interpolate</span><span class="w"> </span><span class="kn">import</span> <span class="n">interp1d</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s1">&#39;Datafiler-innhold/titrering.txt&#39;</span><span class="p">,</span> <span class="n">skiprows</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">delimiter</span> <span class="o">=</span> <span class="s1">&#39;,&#39;</span><span class="p">)</span>
+<span class="k">except</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Kan ikke lese fila. Sjekk at alle parametre stemmer, og at fila ligger der den skal.&quot;</span><span class="p">)</span>
+
+<span class="n">volum</span> <span class="o">=</span> <span class="n">data</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">pH</span> <span class="o">=</span> <span class="n">data</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="n">f</span> <span class="o">=</span> <span class="n">interp1d</span><span class="p">(</span><span class="n">volum</span><span class="p">,</span><span class="n">pH</span><span class="p">,</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;linear&#39;</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">volum</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">volum</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="mi">1000</span><span class="p">)</span>
+<span class="n">y_interpol</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">volum</span><span class="p">,</span><span class="n">pH</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Titrerdata&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;forestgreen&#39;</span><span class="p">,</span><span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;.&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y_interpol</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Interpolerte data&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Titrering av eddiksyre med NaOH&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Volum (mL)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;pH&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/11e2019d1fdf78ac8545fa2ecc221e26fe46bd3772c652c9d954033eb57a322a.png" src="../_images/11e2019d1fdf78ac8545fa2ecc221e26fe46bd3772c652c9d954033eb57a322a.png" />
+</div>
+</div>
+</section>
+<section id="oppgave-9">
+<h2>Oppgave 9<a class="headerlink" href="#oppgave-9" title="Permalink to this heading">#</a></h2>
+<p>Vi kan bruke interpolerte data til å skaffe flere datapunkter mellom målepunktene våre. Dette kan vi for eksempel gjøre i områder der vi mangler data, og der det er viktig å ha tettere måletetthet. I titreranalyser kan det være nyttig å ha informasjon om pH-en ved ekvivalenspunktet. Rundt ekvivalenspunktet er det som regel få målepunkter fordi pH-en stiger så raskt her. Da er det nyttig å interpolere dataene og bruke disse til å bestemme pH-en.</p>
+</section>
+<section id="oppgave-10">
+<h2>Oppgave 10<a class="headerlink" href="#oppgave-10" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tall</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">summen</span> <span class="o">=</span> <span class="n">tall</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mi">10000</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="n">tall</span> <span class="o">=</span> <span class="n">tall</span><span class="o">/</span><span class="mi">3</span>
+    <span class="n">summen</span> <span class="o">+=</span> <span class="n">tall</span>
+    
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Summen av rekka er: </span><span class="si">{</span><span class="n">summen</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Vi kan ikke summere en uendelig rekke på en datamaskin. </span>
+<span class="sd">Derfor må vi tilnærme &quot;uendeligheten&quot; ved å summere et stort antall ledd n.</span>
+<span class="sd">Vi har valgt n = 10 000, men dette kan vi eksperimentere litt med underveis</span>
+<span class="sd">for å se om rekka konvergerer mot en sum.</span>
+
+<span class="sd">Vi finner at tallmønsteret er slik at neste tall er lik forrige tall/3 og bruker</span>
+<span class="sd">dette for å finne summen av rekka.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Summen av rekka er: 4.499999999999999
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;\nVi kan ikke summere en uendelig rekke på en datamaskin. \nDerfor må vi tilnærme &quot;uendeligheten&quot; ved å summere et stort antall ledd n.\nVi har valgt n = 10 000, men dette kan vi eksperimentere litt med underveis\nfor å se om rekka konvergerer mot en sum.\nVi finner at tallmønsteret er slik at neste tall er lik forrige tall/3 og bruker\n&#39;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="oppgave-11">
+<h2>Oppgave 11<a class="headerlink" href="#oppgave-11" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="n">N</span> <span class="o">=</span> <span class="mi">1000</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="n">N</span><span class="p">)</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="n">N</span><span class="p">)</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">a</span><span class="o">+</span><span class="n">b</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Vektorisering betyr å benytte seg av komponentvise operasjoner hos arrayer istedenfor å bruke løkker. </span>
+<span class="sd">Her benytter vi komponentvis addisjon for å beregne c istedenfor å beregne hver verdi i en Python-løkke.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;\nVektorisering betyr å benytte seg av komponentvise operasjoner hos arrayer istedenfor å bruke løkker. \nHer benytter vi komponentvis addisjon for å beregne c istedenfor å beregne hver verdi i en Python-løkke.\n&#39;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="oppgave-12">
+<h2>Oppgave 12<a class="headerlink" href="#oppgave-12" title="Permalink to this heading">#</a></h2>
+<p>Lister er datastrukturer i Python som kan tilordnes en samling variabler av samme eller ulik type. Når vi adderer lister til hverandre, legges listene etter hverandre (som når vi bruker <em>append</em>). Arrayer er datastrukturer som tillater flere matematiske operasjoner. Dersom vi for eksempel ganger eller adderer to arrayer, får vi <em>komponentvis</em> multiplikasjon og addisjon av arrayene:</p>
+<p>array1 = [1, 2, 3]</p>
+<p>array2 = [2, 2, 3]</p>
+<p>array3 = array1*array2 = [1*2, 2*2, 3*3] = [2, 4, 9]</p>
+<p>Vi kan ikke utføre komponentvis matematiske operasjoner med lister. Siden arrayer kan manipuleres komponentvis, er det nyttig når vi skal f.eks. plotte funksjoner:</p>
+<p>x = np.linspace(-100, 100, 10000)</p>
+<p>y = x**2 - 2</p>
+<p>eller</p>
+<p>def f(x):
+return x**2 - 2</p>
+<p>y = f(x)</p>
+</section>
+<section id="oppgave-13">
+<h2>Oppgave 13<a class="headerlink" href="#oppgave-13" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># a)</span>
+<span class="n">grunnstoffer</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;hydrogen&#39;</span><span class="p">:</span> <span class="mf">1.01</span><span class="p">,</span> <span class="s1">&#39;helium&#39;</span><span class="p">:</span> <span class="mf">4.00</span><span class="p">,</span> <span class="s1">&#39;litium&#39;</span><span class="p">:</span> <span class="mf">6.94</span><span class="p">}</span>
+<span class="c1"># b)</span>
+<span class="n">grunnstoffer</span><span class="p">[</span><span class="s1">&#39;beryllium&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">9.012</span>
+<span class="c1"># c)</span>
+<span class="n">nøkler</span> <span class="o">=</span> <span class="n">grunnstoffer</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">nøkler</span><span class="p">)</span>
+<span class="n">verdier</span> <span class="o">=</span> <span class="n">grunnstoffer</span><span class="o">.</span><span class="n">values</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">verdier</span><span class="p">)</span>
+<span class="c1"># d)</span>
+<span class="k">for</span> <span class="n">nøkkel</span><span class="p">,</span> <span class="n">verdi</span> <span class="ow">in</span> <span class="n">grunnstoffer</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Massen til&quot;</span><span class="p">,</span> <span class="n">nøkkel</span><span class="p">,</span> <span class="s2">&quot;er&quot;</span><span class="p">,</span> <span class="n">verdi</span><span class="p">)</span>
+<span class="c1"># e)</span>
+<span class="n">grunnstoffer</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;H&quot;</span> <span class="p">:</span> <span class="p">{</span><span class="s2">&quot;masse&quot;</span><span class="p">:</span><span class="mf">1.008</span><span class="p">,</span> <span class="s2">&quot;atomnummer&quot;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;gruppe&quot;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;periode&quot;</span><span class="p">:</span><span class="mi">1</span><span class="p">},</span>
+    <span class="s2">&quot;He&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;masse&quot;</span><span class="p">:</span><span class="mf">4.003</span><span class="p">,</span> <span class="s2">&quot;atomnummer&quot;</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;gruppe&quot;</span><span class="p">:</span><span class="mi">18</span><span class="p">,</span> <span class="s2">&quot;periode&quot;</span><span class="p">:</span><span class="mi">1</span><span class="p">},</span>
+    <span class="s2">&quot;Li&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;masse&quot;</span><span class="p">:</span><span class="mf">6.940</span><span class="p">,</span> <span class="s2">&quot;atomnummer&quot;</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;gruppe&quot;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;periode&quot;</span><span class="p">:</span><span class="mi">2</span><span class="p">},</span>
+    <span class="s2">&quot;Be&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;masse&quot;</span><span class="p">:</span><span class="mf">9.012</span><span class="p">,</span> <span class="s2">&quot;atomnummer&quot;</span><span class="p">:</span><span class="mi">4</span><span class="p">,</span> <span class="s2">&quot;gruppe&quot;</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;periode&quot;</span><span class="p">:</span><span class="mi">2</span><span class="p">},</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dict_keys([&#39;hydrogen&#39;, &#39;helium&#39;, &#39;litium&#39;, &#39;beryllium&#39;])
+dict_values([1.01, 4.0, 6.94, 9.012])
+Massen til hydrogen er 1.01
+Massen til helium er 4.0
+Massen til litium er 6.94
+Massen til beryllium er 9.012
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="oppgave-14">
+<h2>Oppgave 14<a class="headerlink" href="#oppgave-14" title="Permalink to this heading">#</a></h2>
+<section id="a">
+<h3>a)<a class="headerlink" href="#a" title="Permalink to this heading">#</a></h3>
+<p>I Newtons metode ønsker vi å bruke nullpunktet til tangenten som en tilnærming til nullpunktet til funksjonen. Det vil si at:</p>
+<div class="math notranslate nohighlight">
+\[y = 0\]</div>
+<div class="math notranslate nohighlight">
+\[f(x_0) + f'(x_0)(x-x_0) = 0\]</div>
+<p>Siden vi ønsker å finne et uttryk for hvilken <em>x</em>-verdi som gir <span class="math notranslate nohighlight">\(y = 0\)</span>, må vi omforme uttrykket:</p>
+<div class="math notranslate nohighlight">
+\[f'(x_0)(x-x_0) = - f(x_0) \]</div>
+<div class="math notranslate nohighlight">
+\[x-x_0 = - \frac{f(x_0)}{f'(x_0)}\]</div>
+<div class="math notranslate nohighlight">
+\[ x = x_0 - \frac{f(x_0)}{f'(x_0)}\]</div>
+<p>som er Newtons metode. Vi ønsker å gjenta denne metoden, så vi formulerer gjerne metoden <em>iterativt</em> som en differenslikning:</p>
+<div class="math notranslate nohighlight">
+\[ x_{n+1} = x_n - \frac{f(x_n)}{f'(x_n)}\]</div>
+</section>
+<section id="b">
+<h3>b)<a class="headerlink" href="#b" title="Permalink to this heading">#</a></h3>
+<p>Vi kan bruke metoden til å finne nullpunkter til funksjoner. Siden likninger også kan skrives som venstreside <span class="math notranslate nohighlight">\(–\)</span> høyreside = 0, kan vi også løse likninger med denne metoden. I kjemi kan metoden for eksempel brukes til å finne ut ved hvilken tid konsentrasjonen til to stoffer er lik gitt to funksjonsuttrykk som beskriver konsentrasjonen som funksjon av tid, <span class="math notranslate nohighlight">\(c_1(t)\)</span> og <span class="math notranslate nohighlight">\(c_2(t)\)</span>. Da kan vi løse likningen <span class="math notranslate nohighlight">\(c_1(t) - c_2(t) = 0\)</span> ned Newtons metode. Dette gjelder også dersom funksjonene er analytisk uløselige.</p>
+</section>
+<section id="c">
+<h3>c)<a class="headerlink" href="#c" title="Permalink to this heading">#</a></h3>
+<p>Vi bruker en toleranseparameter fordi numeriske metoder som Newtons metode sjeldent gir eksakte svar. Vi bør derfor ikke sjekke om f(x) = 0, men heller sjekke om f(x) ligger nærme null. Det er toleransen som angir hvor nærme vi ønsker at vi skal være. Hvis vi ikke bruker en toleranseparameter, konvergerer metoden sjeldent.</p>
+</section>
+<section id="d">
+<h3>d)<a class="headerlink" href="#d" title="Permalink to this heading">#</a></h3>
+<p>Vi kan bruke en tellevariabel i tilleg til toleransen. Da angir vi maks antall iterasjoner som metoden skal utføre. Funksjonen bør derimot gi beskjed til brukeren dersom maks antall iterasjoner er nådd uten at toleransen er nådd.</p>
+</section>
+</section>
+<section id="oppgave-15">
+<h2>Oppgave 15<a class="headerlink" href="#oppgave-15" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s1">&#39;ftalater.txt&#39;</span><span class="p">,</span> <span class="n">skiprows</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">konsentrasjon</span> <span class="o">=</span> <span class="n">data</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">signal</span> <span class="o">=</span> <span class="n">data</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">polyfit</span><span class="p">(</span><span class="n">konsentrasjon</span><span class="p">,</span> <span class="n">signal</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">konsentrasjon</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">konsentrasjon</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="mi">1000</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">a</span><span class="o">*</span><span class="n">x</span> <span class="o">+</span> <span class="n">b</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">konsentrasjon</span><span class="p">,</span> <span class="n">signal</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Datapunkter&#39;</span><span class="p">,</span> <span class="n">linestyle</span> <span class="o">=</span> <span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="n">marker</span> <span class="o">=</span> <span class="s1">&#39;.&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Tilpasset kurve&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Konsentrasjon (mg/mL)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Instrumentsignal (V)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="n">ukjent</span> <span class="o">=</span> <span class="p">[</span><span class="mf">1.15</span><span class="p">,</span> <span class="mf">1.15</span><span class="p">,</span> <span class="mf">1.16</span><span class="p">,</span> <span class="mf">1.13</span><span class="p">]</span>
+<span class="n">snitt</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">ukjent</span><span class="p">)</span>
+<span class="n">kons_ukjent</span> <span class="o">=</span> <span class="p">(</span><span class="n">snitt</span> <span class="o">-</span> <span class="n">b</span><span class="p">)</span><span class="o">/</span><span class="n">a</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="oppgave-16">
+<h2>Oppgave 16<a class="headerlink" href="#oppgave-16" title="Permalink to this heading">#</a></h2>
+<p>Arealet under kurvene kan regnes ut ved bestemt integrasjon. Siden vi har å gjøre med datapunkter og ikke funksjoner, må vi bruke numerisk integrasjon. Da tilnærmer vi arealet under kurvene med arealet til et visst antall <span class="math notranslate nohighlight">\(n\)</span> geometriske figurer. Det enkleste er å ta utgangspunkt i rektangler, men vi får ofte bedre resultater ved å bruke trapeser eller tilnærme toppen av de geometriske figurene med for eksempel en andregradsfunksjon (Simpsons metode). En enkel og relativt nøyaktig metode, er å benytte rektangler, der høyden i rektanglene beregnes ut fra midtpunktet på rektangelet.</p>
+</section>
+<section id="oppgave-17">
+<h2>Oppgave 17<a class="headerlink" href="#oppgave-17" title="Permalink to this heading">#</a></h2>
+<section id="id1">
+<h3>a)<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
+<p>Den numeriske tilnærmingen er slik basert på en framoverdifferanse av funksjonsverdier:</p>
+<div class="math notranslate nohighlight">
+\[f'(x) \approx \frac{f(x+dx)-f(x)}{dx}\]</div>
+<p>Her tilnærmer vi grenseverdien i den analytisk deriverte med en endelig differanse <span class="math notranslate nohighlight">\(dx\)</span>.</p>
+</section>
+<section id="id2">
+<h3>b)<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h3>
+<p>Dersom vi deriverer funksjonen, får vi den momentane endringen i reaksjonen. I toppunktet er det ingen endring, som betyr at <span class="math notranslate nohighlight">\(f'(x) = 0\)</span>. Dersom vi setter den deriverte lik 0, kan vi altså finne <em>x</em>-verdien til toppunktet <span class="math notranslate nohighlight">\(x_{topp}\)</span>, som vi igjen kan regne ut den potensielle energien med ved å sette <span class="math notranslate nohighlight">\(f(x_{topp})\)</span>.</p>
+</section>
+<section id="id3">
+<h3>c)<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h3>
+<p>Vi kan tilnærme y-verdidifferansen med differansen mellom neste punkt og nåværende punkt (f(x+dx) - f(x)). Dette er framoverdifferansen. Hvis vi isteden tar differansen mellom nåværende punkt og forrige punkt (f(x) - f(x-dx)), får vi bakoverdifferansen. Tar vi snittet av disse to metodene, får vi midtpunktsdifferansen: (f(x + dx) - f(x - dx))/2. Midtpunktstilnærmingen gir den beste tilnærmingen til den numerisk deriverte av disse metodene.</p>
+</section>
+</section>
+<section id="oppgave-18">
+<h2>Oppgave 18<a class="headerlink" href="#oppgave-18" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="c1"># Konstanter og variabler</span>
+<span class="n">k</span> <span class="o">=</span> <span class="mf">7.30E-4</span>          <span class="c1"># Ratekonstanten (s^-1)</span>
+<span class="n">c0_peroksid</span> <span class="o">=</span> <span class="mf">1.0</span>    <span class="c1"># mol/L</span>
+<span class="n">c0_oksygengass</span> <span class="o">=</span> <span class="mi">0</span>   <span class="c1"># mol/L</span>
+<span class="n">c0_vann</span> <span class="o">=</span> <span class="mi">0</span>          <span class="c1"># mol/L</span>
+
+<span class="c1"># Tidssteg</span>
+<span class="n">dt</span> <span class="o">=</span> <span class="mf">1E-2</span>  <span class="c1"># s</span>
+<span class="n">tid</span> <span class="o">=</span> <span class="mi">3600</span> <span class="c1"># s</span>
+<span class="n">N</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">tid</span><span class="o">/</span><span class="n">dt</span><span class="p">)</span> <span class="c1"># Antall intervaller</span>
+
+<span class="c1"># Arrayer og initialisering</span>
+<span class="n">c_H2O2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">N</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">c_O2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">N</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">c_H2O</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">N</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">N</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">c_H2O2</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">c0_peroksid</span>
+<span class="n">c_O2</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">c0_oksygengass</span>
+<span class="n">c_H2O</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">c0_vann</span>
+
+<span class="c1"># Eulers metode</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
+    <span class="n">cder_H2O2</span> <span class="o">=</span> <span class="o">-</span><span class="n">k</span><span class="o">*</span><span class="n">c_H2O2</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="n">cder_O2</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.5</span><span class="o">*</span><span class="n">cder_H2O2</span>
+    <span class="n">cder_H2O</span> <span class="o">=</span> <span class="o">-</span><span class="n">cder_H2O2</span>
+    <span class="n">c_H2O2</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">c_H2O2</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">cder_H2O2</span><span class="o">*</span><span class="n">dt</span>
+    <span class="n">c_O2</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">c_O2</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">cder_O2</span><span class="o">*</span><span class="n">dt</span>
+    <span class="n">c_H2O</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">c_H2O</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">cder_H2O</span><span class="o">*</span><span class="n">dt</span>
+    <span class="n">t</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">dt</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">c_H2O2</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;$H_2O_2$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">c_O2</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;$O_2$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">c_H2O</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;$H_2O$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Tid (s)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Konsentrasjon (mol/L)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/6781dc35c8efb2e489481397832a1578cc926022dca677ddf93f67fc1e6cb4ec.png" src="../_images/6781dc35c8efb2e489481397832a1578cc926022dca677ddf93f67fc1e6cb4ec.png" />
+</div>
+</div>
+</section>
+<section id="oppgave-19">
+<h2>Oppgave 19<a class="headerlink" href="#oppgave-19" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Definerer funksjon for å beregne det bestemte integralet med n rektangler mellom a og b vha. midtpunktstilnærmingen.</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">rektangelmetoden_midt</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+<span class="c1"># Definerer arealet</span>
+    <span class="n">A</span> <span class="o">=</span> <span class="mf">0.0</span>        
+<span class="c1"># Regner ut bredden av hvert rektangel</span>
+    <span class="n">h</span> <span class="o">=</span> <span class="p">(</span><span class="n">b</span><span class="o">-</span><span class="n">a</span><span class="p">)</span><span class="o">/</span><span class="n">n</span> 
+<span class="c1"># For hvert rektangel...</span>
+    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span> <span class="p">(</span><span class="n">n</span><span class="p">):</span>    
+    <span class="c1"># beregn høyden til rektangelet som høyden i midtpunktet til rektangelet</span>
+        <span class="n">A</span> <span class="o">=</span> <span class="n">A</span> <span class="o">+</span> <span class="n">f</span><span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="mi">2</span><span class="o">*</span><span class="n">k</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">h</span><span class="o">/</span><span class="mi">2</span><span class="p">))</span>
+    <span class="c1"># Beregn til slutt arealet ved å gange med bredden av hvert rektangel</span>
+    <span class="k">return</span> <span class="n">A</span><span class="o">*</span><span class="n">h</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="oppgave-20">
+<h2>Oppgave 20<a class="headerlink" href="#oppgave-20" title="Permalink to this heading">#</a></h2>
+<p>Likningen er en tredjegradslikning som beskriver konsentrasjon av oksoniumioner. Dersom vi har syrekonstanten Ka, volumet tilsatt syre ved ekvivalenspunktet, volumet base vi startet med og totalvolumet (syre + base), er den eneste ukjente konsentrasjonen av oksoniumioner. Dette kan vi løse som en likning <span class="math notranslate nohighlight">\(T([H_3O^+]) = 0\)</span>, som vi for eksempel kan løse med halveringsmetoden eller Newtons metode.</p>
+</section>
+<section id="oppgave-21">
+<h2>Oppgave 21<a class="headerlink" href="#oppgave-21" title="Permalink to this heading">#</a></h2>
+<p>I linja “y[i+1] = y[i] + yder(x, y)*dx” må <span class="math notranslate nohighlight">\(x\)</span> og <span class="math notranslate nohighlight">\(y\)</span> indekseres siden vi her mater inn hele arrayer i funksjonen. Vi er bare interessert i verdi <span class="math notranslate nohighlight">\(i\)</span>: “…+ yder(x[i], y[i])”.</p>
+<p>x[i+1] + = dx innebærer at vi tar x[i+1] = x[i+1] + dx. Vi er her ute etter den forrige verdier + dx, altså x[i] + dx.</p>
+<p>Når vi kaller på funksjonen <em>integrate_ODE</em>, må vi huske på å lagre verdiene i variabler. Nå lager vi verdiene, men vi <em>lagrer</em> dem ingen steder. Vi kan f.eks. skrive “x, y = integrate_ODE(dy_dt,0,4,1,1E-5)”.</p>
+<p>Vi kan heller ikke sette y0 = y, fordi y er en array. Parameteren y i funksjonen burde derfor vært y0.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./docs"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-1">Oppgave 1</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-2">Oppgave 2</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-3">Oppgave 3</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-4">Oppgave 4</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-5">Oppgave 5</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-6">Oppgave 6</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-7">Oppgave 7</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-8">Oppgave 8</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-9">Oppgave 9</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-10">Oppgave 10</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-11">Oppgave 11</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-12">Oppgave 12</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-13">Oppgave 13</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-14">Oppgave 14</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a">a)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b">b)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#c">c)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d">d)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-15">Oppgave 15</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-16">Oppgave 16</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-17">Oppgave 17</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">a)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">b)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">c)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-18">Oppgave 18</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-19">Oppgave 19</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-20">Oppgave 20</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-21">Oppgave 21</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Andreas Haraldsrud
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

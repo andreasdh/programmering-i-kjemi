@@ -1,0 +1,741 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Differenslikninger &#8212; Programmering i kjemi</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/modellering/diskret_modellering';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Differensiallikninger og fartslover" href="differensiallikninger.html" />
+    <link rel="prev" title="Numerisk integrasjon" href="../derivasjon_integrasjon/integrasjon.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/qe-logo-large.png" class="logo__image only-light" alt="Programmering i kjemi - Home"/>
+    <script>document.write(`<img src="../../_static/qe-logo-large.png" class="logo__image only-dark" alt="Programmering i kjemi - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tema 1 - Grunnleggende programmering</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../grunnleggende_programmering/kom_i_gang.html">En første kodesnutt</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../grunnleggende_programmering/tall_variabler.html">Variabler og datatyper</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../grunnleggende_programmering/quiz1.html">Quiz 1: Variabler og aritmetikk</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../grunnleggende_programmering/lister.html">Lister</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../grunnleggende_programmering/quiz2.html">Quiz 2: Lister</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../grunnleggende_programmering/if-tester.html">Vilkår (if-tester)</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../grunnleggende_programmering/quiz3.html">Quiz 3: Vilkår (if-tester)</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../grunnleggende_programmering/lokker.html">Løkker</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../grunnleggende_programmering/quiz4.html">Quiz 4: Løkker</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../grunnleggende_programmering/funksjoner.html">Funksjoner</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../grunnleggende_programmering/quiz5.html">Quiz 5: Funksjoner</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../grunnleggende_programmering/datasamlinger.html">Datasamlinger</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../grunnleggende_programmering/quiz6.html">Quiz 6: Datasamlinger (arrayer og dictionarier)</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tema 2 - Datahåndtering og visualisering</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../datahandtering_visualisering/kjemiske_biblioteker.html">Kjemiske biblioteker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../datahandtering_visualisering/molekylvisualisering.html">Molekylvisualisering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../datahandtering_visualisering/plotting.html">Datahåndtering I: Visualisering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../datahandtering_visualisering/lese_filer.html">Datahåndering II: Håndtere og visualisere data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../datahandtering_visualisering/statistikk.html">Datahåndering III: Statistikk</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../datahandtering_visualisering/maskinlaring.html">Datahåndtering IV: Maskinlæring</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tema 3 - Numeriske metoder</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../nullpunkter_likninger/likninger.html">Likninger og nullpunkter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../derivasjon_integrasjon/derivasjon.html">Numerisk derivasjon</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../derivasjon_integrasjon/integrasjon.html">Numerisk integrasjon</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tema 4 - Dynamiske systemer</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Differenslikninger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="differensiallikninger.html">Differensiallikninger og fartslover</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Emneressurser (IN-KJM1900)</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../forelesninger/forelesninger.html">Forelesninger</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../forelesninger/forelesning1.html">Forelesning 1: Programmering i kjemi</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../forelesninger/forelesning2.html">Forelesning 2: Plotting og datahåndtering</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../forelesninger/forelesning3.html">Forelesning 3: Statistisk analyse</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../forelesninger/forelesning4.html">Forelesning 4: Statistikk II</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../forelesninger/forelesning5.html">Forelesning 5: Numerisk derivasjon og likninger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../forelesninger/forelesning6.html">Forelesning 6: Numerisk integrasjon</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../forelesninger/forelesning7.html">Forelesning 7: Numerisk løsing av likninger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../forelesninger/forelesning8.html">Forelesning 8: Differensiallikninger og reaksjonskinetikk</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../forelesninger/forelesning9.html">Forelesning 9: Reaksjonskinetikk II</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../forelesninger/forelesning10.html">Forelesning 10: Molekylmekanikk</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../forelesninger/workshops.html">Eksamensverksted</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../forelesninger/workshop1.html">Workshop 1: Datahåndtering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../forelesninger/workshop2.html">Workshop 2: Numeriske metoder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../forelesninger/workshop3.html">Workshop 3: Dynamiske systemer</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../obliger/obliger.html">Obligatoriske oppgaver</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../obliger/oblig_datahandtering.html">Oblig 1: Håndtering av kjemiske data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../obliger/oblig_dynamiske_systemer.html">Oblig 2: Dynamiske systemer og integrasjon</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../datafiler.html">Datafiler</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Biokjemi (KJM1140)</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../biokjemi/molekylvisualisering.html">Molekylvisualisering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../biokjemi/datavisualisering.html">Datavisualisering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../biokjemi/regresjonsmodeller.html">Regresjonsmodeller</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../biokjemi/enzymkinetikklab2025.html">Analyse av enzymkinetikkdata</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../biokjemi/proteinfolding.html">Del 1: Monte-Carlo-simuleringer</a></li>
+
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/docs/modellering/diskret_modellering.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Differenslikninger</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#folger-og-rekker">Følger og rekker</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#medisinakkumulering">Medisinakkumulering</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#videoer">Videoer</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="differenslikninger">
+<h1>Differenslikninger<a class="headerlink" href="#differenslikninger" title="Permalink to this heading">#</a></h1>
+<p>Her får du en kort innføring i differenslikninger. Slike likninger kan brukes til diskret modellering, det vil si at vi bruker modeller som benytter seg av verdier ved diskrete tidssteg istedenfor å tilnærme dette med kontinuerlige funksjoner. Kapitlet fungerer også som en repetisjon av de mest grunnleggende programmeringsteknikkene.</p>
+<div class="admonition-laeringsutbytte admonition">
+<p class="admonition-title">Læringsutbytte</p>
+<p>Etter å ha arbeidet med denne delen av emnet, skal du kunne:</p>
+<ol class="arabic simple">
+<li><p>Forklare hva differenslikninger er og hva vi kan bruke dem til.</p></li>
+<li><p>Bruke løkker til å tilnærme problemer på en iterativ måte.</p></li>
+<li><p>Bruke differenslikninger og programmering til å utforske tallmønstre i følger og finne rekkesummer.</p></li>
+<li><p>Modellere biologisk nedbrytning av kjemiske stoffer.</p></li>
+</ol>
+</div>
+<p>Mange prosesser i naturen kan modelleres ved å formulere en sammenheng mellom et system ved tida <span class="math notranslate nohighlight">\(t\)</span> og tida <span class="math notranslate nohighlight">\(t + \Delta t\)</span>. Denne sammenhengen, eller <em>regelen</em>, er ofte en prosedyre som skal gjentas mange ganger. Et eksempel er en harepopulasjon som øker med en viss prosent i løpet av tida <span class="math notranslate nohighlight">\(\Delta t\)</span> eller en pengesum som står i banken og øker med en viss andel (renta) hvert år. I matematikken har vi også en del sammenhenger der neste tall er avhengig av foregående tall, for eksempel tallfølger.</p>
+<p>Siden vi kan ha å gjøre med svært mange ledd i slike prosesser, kan vi få bruk for løkker for å utforske disse prosessene. Siden prosessen inni ei løkke kalles for en <em>iterasjon</em>, sier vi at vi løser et problem <em>iterativt</em> når vi repeterer en prosess flere ganger.</p>
+<p>Siden vi ikke kjenner tilstanden til systemet ved hvert tidssteg, har vi med en <em>diskret</em> modell å gjøre. Dette står i motsetning til <em>kontinuerlige</em> modeller, der vi kjenner tilstanden ved hvert eneste tidssteg. Egentlig er alle prosesser diskrete på en datamaskin, siden vi ikke kan ha uendelig små tidssteg. Likevel skiller vi på kontinuerlig og diskret på samme måte som i matematikken, selv om forskjellen på datamaskinen egentlig bare er størrelsen mellom verdiene.</p>
+<p>I dette kapitlet skal vi se på hvordan vi kan utforske diskrete modeller av dynamiske systemer, og hvordan disse systemene kan beskrives og løses iterativt. Mange av problemene vi skal se på, kan løses analytisk. Men styrken til metodene vi bruker her, er at de også kan benyttes på analytisk uløselige systemer. Du introduseres dermed til en løsningsstrategi som gjør deg i stand til å <em>tenke iterativt</em>, altså tenke i stegvise gjentakende operasjoner, i tillegg til å løse problemer med formler og algebra.</p>
+<p>Kontinuerlige modeller for systemer som utvikler seg med tid, beskrives ofte av <em>differensiallikninger</em>, mens diskrete modeller kan beskrives av <em>differenslikninger</em>. Et eksempel på  sammenhenger som kan beskrives som differenslikninger, er mønsteret i tallfølger.</p>
+<div class="admonition-differenslikninger admonition">
+<p class="admonition-title">Differenslikninger</p>
+<p>En differenslikning er en likning som beskriver forskjellen mellom etterfølgende verdier til en funksjon av diskrete variabler.</p>
+</div>
+<section id="folger-og-rekker">
+<h2>Følger og rekker<a class="headerlink" href="#folger-og-rekker" title="Permalink to this heading">#</a></h2>
+<p>Ta som eksempel en aritmetisk følge der hvert ledd er 3 større enn det forrige leddet:</p>
+<div class="math notranslate nohighlight">
+\[1, 4, 7, 10, 13, 16, 19, ...\]</div>
+<p>Det neste ({n+1}-te) leddet <em>x</em> i denne følgen kan beskrives ut fra det forrige ({n}-te) leddet ved følgende differenslikning:</p>
+<div class="math notranslate nohighlight">
+\[x_{n+1} = x_n + 3\]</div>
+<p>Indeksen <em>n</em> står her for det <em>n</em>-te elementet av <em>x</em>. Dersom vi følger Python-konvensjonen og starter på element nr. 0, blir element nr. 1 (det andre i følgen) lik:</p>
+<div class="math notranslate nohighlight">
+\[x_1 = x_0 + 3 = 1 + 3 = 4\]</div>
+<p>Vi kan se at element <em>k</em> i følgen vil bli <span class="math notranslate nohighlight">\(x_k = x_0 + 3(n-1) = 1 + 3(n-1)\)</span>, men vi kan også finne element <em>k</em> iterativt:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x0</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">x0</span>
+
+<span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">n</span><span class="p">):</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">3</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>10
+</pre></div>
+</div>
+</div>
+</div>
+<p>Programmet ovenfor regner ut det fjerde tallet i følgen. Vi ser at programmet benytter er en relativt enkel framgangsmåte, men ofte er hovedutfordringen å formulere regelen som beskriver sammenhengen. Dessuten må vi passe på at vi bruker korrekte indekser.</p>
+<div class="tip admonition">
+<p class="admonition-title">Underveisoppgave</p>
+<p>Finn det hundrede tallet i denne geometriske tallfølgen:</p>
+<div class="math notranslate nohighlight">
+\[1, 2, 4, 8, 16, ...\]</div>
+</div>
+<p>Vi kan også summere alle leddene ved å innføre en summevariabel. Med andre ord kan vi finne <em>rekkesummer</em> ved hjelp av iterasjon. Ta for eksempel følgende geometriske rekke:</p>
+<div class="math notranslate nohighlight">
+\[2 + 1 + 1/2 + 1/4 + 1/8 + 1/16 + ...\]</div>
+<p>Vi kan formulere denne rekka som en sum av <em>n</em> ledd:</p>
+<div class="math notranslate nohighlight">
+\[\sum_{k=0}^{n-1} 2\cdot\left(\frac{1}{2}\right)^k\]</div>
+<p>Slike summeformler er ikke alltid like enkle å formulere. Her ser vi at hvert ledd er halvparten av det andre. Derfor kan vi summere dem iterativt slik:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x0</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">x0</span>
+<span class="n">s</span> <span class="o">=</span> <span class="n">x0</span>
+
+<span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">n</span><span class="p">):</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">*</span><span class="mf">0.5</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="n">s</span> <span class="o">+</span> <span class="n">x</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Summen av de </span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s1"> første leddene er </span><span class="si">{</span><span class="n">s</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Summen av de 3 første leddene er 3.5
+</pre></div>
+</div>
+</div>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Underveisoppgave</p>
+<p>Finn summen av de 100 første tallene i følgende rekke:</p>
+<p><span class="math notranslate nohighlight">\(1 + \frac{2}{3} + \frac{4}{9} + \frac{8}{27} + ...\)</span></p>
+</div>
+<p>På 1800-tallet gikk mange med hatt. Hatteindustrien blomstret, og en fant stadig opp nye metoder som forbedret hattematerialene. En særskilt god – og dårlig, skulle det vise seg – metode, var å bruke kvikksølvnitrat til å stive av hattebremmen i filthatter. Hattemakerne begynte etter hvert å oppleve symptomer som nummenhet, humørsvingninger, muskelspasmer og andre nevrologiske effekter. Noen har til og med blitt beskrevet som gale.</p>
+<figure class="align-default" id="hattemaker">
+<a class="reference internal image-reference" href="https://live.staticflickr.com/4067/4229410034_cdaf994803_c.jpg"><img alt="https://live.staticflickr.com/4067/4229410034_cdaf994803_c.jpg" src="https://live.staticflickr.com/4067/4229410034_cdaf994803_c.jpg" style="height: 400px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 2 </span><span class="caption-text">Kvikksølv i hatten var ikke særlig lurt.</span><a class="headerlink" href="#hattemaker" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Heldigvis sluttet en å bruke kvikksølv i hattene, men hvor lang tid kan det ta før kvikksølvforgiftningen er ute av kroppen? Tida det tar før halvparten av et stoff mister sin biologiske effekt i kroppen, kalles <em>biologisk halveringstid</em>. Det er mange studier på den biologiske halveringstida til uorganisk kvikksølv i hjernen, med estimater fra noen uker til flere år, avhengig av hvordan det blir målt. Mye tyder på at et godt estimat kan være 27.4 år. Det betyr at massen kvikksølv <span class="math notranslate nohighlight">\(m_{Hg}\)</span> etter <span class="math notranslate nohighlight">\(t\)</span> år kan gis ved:</p>
+<div class="math notranslate nohighlight">
+\[m_{Hg, t+1} = m_{Hg, t}\cdot 0.5^{t/H}\]</div>
+<p>Dersom vi sløyfer <em>t</em> i eksponenten, men heller gjentar prosessen for hvert år, kan vi løse dette iterativt:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m0</span> <span class="o">=</span> <span class="mi">1200</span> <span class="c1"># Startmasse i mg</span>
+<span class="n">m</span> <span class="o">=</span> <span class="n">m0</span>    
+<span class="n">tid</span> <span class="o">=</span> <span class="mi">100</span> <span class="c1"># Tid i år</span>
+<span class="n">H</span> <span class="o">=</span> <span class="mf">27.4</span>  <span class="c1"># Halveringstid i år</span>
+
+<span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">tid</span><span class="p">):</span>
+    <span class="n">m</span> <span class="o">=</span> <span class="n">m</span><span class="o">*</span><span class="mf">0.5</span><span class="o">**</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="n">H</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Etter </span><span class="si">{</span><span class="n">tid</span><span class="si">}</span><span class="s1"> år er det </span><span class="si">{</span><span class="n">m</span><span class="si">:</span><span class="s1">.0f</span><span class="si">}</span><span class="s1"> mg kvikksølv igjen i hjernen&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Etter 100 år er det 96 mg kvikksølv igjen i hjernen
+</pre></div>
+</div>
+</div>
+</div>
+<p>Siden vi har en formel for konsentrasjonen etter tida <span class="math notranslate nohighlight">\(t\)</span>, trenger vi strengt tatt ikke egentlig å bruke løkker her. Men ved å løse dette iterativt, kan vi lettere ta inn andre faktorer i modellen vår og studere effekten av dem. La oss si at vi etter 12 år finner en medisin som gradvis endrer halveringstida, eller at vi finner ut at noen næringsstoffer gir positiv effekt over tid. Dersom halveringstida endrer seg underveis, <em>må</em> vi faktisk benytte en iterativ modell, spesielt hvis den endrer seg uregelmessig. Her er et eksempel på en enkel modifikasjon:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m0</span> <span class="o">=</span> <span class="mi">1200</span>           <span class="c1"># Startmasse i mg</span>
+<span class="n">m</span> <span class="o">=</span> <span class="n">m0</span>    
+<span class="n">tid</span> <span class="o">=</span> <span class="mi">100</span>          <span class="c1"># Tid i år</span>
+<span class="n">H</span> <span class="o">=</span> <span class="mf">27.4</span>           <span class="c1"># Halveringstid i år</span>
+<span class="n">tid_medisin</span> <span class="o">=</span> <span class="mi">12</span> <span class="c1"># Medisin inntatt ved år</span>
+
+<span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">tid</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">t</span> <span class="o">&gt;=</span> <span class="n">tid_medisin</span><span class="p">:</span>
+        <span class="n">H</span> <span class="o">=</span> <span class="n">H</span><span class="o">*</span><span class="mf">0.98</span>
+    <span class="n">m</span> <span class="o">=</span> <span class="n">m</span><span class="o">*</span><span class="mf">0.5</span><span class="o">**</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="n">H</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Etter </span><span class="si">{</span><span class="n">tid</span><span class="si">}</span><span class="s1"> år er det </span><span class="si">{</span><span class="n">m</span><span class="si">:</span><span class="s1">.0f</span><span class="si">}</span><span class="s1"> mg kvikksølv igjen i hjernen&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Etter 100 år er det 2 mg kvikksølv igjen i hjernen
+</pre></div>
+</div>
+</div>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Underveisoppgave</p>
+<p>Hva er effekten til medisinen i programmet ovenfor?</p>
+</div>
+<p>Den samme framgangsmåten kan brukes på for eksempel radioaktiv halveringstid og akkumulering av miljøgifter i en næringskjede. For radioaktive isotoper er halveringstida konstant, så her har vi ikke så mye igjen for å bruke programmering. Men med for eksempel miljøgifter kan vi dra nytte av at vi kan endre ulike spredningsfaktorer og dermed lage en mer fleksibel og dynamisk modell.</p>
+</section>
+<section id="medisinakkumulering">
+<h2>Medisinakkumulering<a class="headerlink" href="#medisinakkumulering" title="Permalink to this heading">#</a></h2>
+<p>Vi kan også bruke iterative metoder til å estimere virkningen av stoffer med fysiologisk effekt, som kosttilskudd, medisiner og gift. Dersom for eksempel 20 % av en medisin brytes ned i kroppen hver dag, hvor mye medisin har vi i kroppen til enhver tid dersom vi tar 100 mg medisin hver morgen? Programmet nedenfor beregner total mengde medisin i kroppen i løpet av 30 dager:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="n">dose</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">medisin</span> <span class="o">=</span> <span class="n">dose</span>
+<span class="n">nedbrytning</span> <span class="o">=</span> <span class="mf">0.80</span> <span class="c1"># Andel medisin igjen i kroppen</span>
+<span class="n">tid</span> <span class="o">=</span> <span class="mi">30</span>
+
+<span class="n">t</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">total</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">t</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">total</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">dose</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">tid</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+    <span class="n">medisin</span> <span class="o">=</span> <span class="n">medisin</span><span class="o">*</span><span class="n">nedbrytning</span> <span class="o">+</span> <span class="n">dose</span>
+    <span class="n">total</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">medisin</span><span class="p">)</span>
+    <span class="n">t</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+    
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">total</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;crimson&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Tid (dager)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Medisin (mg)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/e4e11247877cd8a3aafe8c736e17c767510b3d09c8d469a8f2b8ad4d9d182252.png" src="../../_images/e4e11247877cd8a3aafe8c736e17c767510b3d09c8d469a8f2b8ad4d9d182252.png" />
+</div>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Underveisoppgave</p>
+<p>Bivirkninger av medisinen kan oppstå dersom vi får over 350 mg medisin i blodet. Modifiser programmet slik at det finner ut hvor lenge vi kan gå på medisinen dersom vi bruker 100 mg hver dag. Finn også ut hvor mye medisin vi kan ta hver dag uten at vi får bivirkninger.</p>
+</div>
+</section>
+<section id="videoer">
+<h2>Videoer<a class="headerlink" href="#videoer" title="Permalink to this heading">#</a></h2>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-0">
+Differenslikninger</label><div class="sd-tab-content docutils">
+<iframe width="850" height="450" src="https://www.youtube.com/embed/u6wgr0GRoLM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./docs/modellering"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../derivasjon_integrasjon/integrasjon.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Numerisk integrasjon</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="differensiallikninger.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Differensiallikninger og fartslover</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#folger-og-rekker">Følger og rekker</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#medisinakkumulering">Medisinakkumulering</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#videoer">Videoer</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Andreas Haraldsrud
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
