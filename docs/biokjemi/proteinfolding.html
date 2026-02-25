@@ -1,0 +1,1171 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Del 1: Monte-Carlo-simuleringer &#8212; Programmering i kjemi</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/biokjemi/proteinfolding';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="prev" title="Analyse av enzymkinetikkdata" href="enzymkinetikklab2025.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/qe-logo-large.png" class="logo__image only-light" alt="Programmering i kjemi - Home"/>
+    <script>document.write(`<img src="../../_static/qe-logo-large.png" class="logo__image only-dark" alt="Programmering i kjemi - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tema 1 - Grunnleggende programmering</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../grunnleggende_programmering/kom_i_gang.html">En første kodesnutt</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../grunnleggende_programmering/tall_variabler.html">Variabler og datatyper</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../grunnleggende_programmering/quiz1.html">Quiz 1: Variabler og aritmetikk</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../grunnleggende_programmering/lister.html">Lister</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../grunnleggende_programmering/quiz2.html">Quiz 2: Lister</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../grunnleggende_programmering/if-tester.html">Vilkår (if-tester)</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../grunnleggende_programmering/quiz3.html">Quiz 3: Vilkår (if-tester)</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../grunnleggende_programmering/lokker.html">Løkker</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../grunnleggende_programmering/quiz4.html">Quiz 4: Løkker</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../grunnleggende_programmering/funksjoner.html">Funksjoner</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../grunnleggende_programmering/quiz5.html">Quiz 5: Funksjoner</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../grunnleggende_programmering/datasamlinger.html">Datasamlinger</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../grunnleggende_programmering/quiz6.html">Quiz 6: Datasamlinger (arrayer og dictionarier)</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tema 2 - Datahåndtering og visualisering</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../datahandtering_visualisering/kjemiske_biblioteker.html">Kjemiske biblioteker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../datahandtering_visualisering/molekylvisualisering.html">Molekylvisualisering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../datahandtering_visualisering/plotting.html">Datahåndtering I: Visualisering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../datahandtering_visualisering/lese_filer.html">Datahåndering II: Håndtere og visualisere data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../datahandtering_visualisering/statistikk.html">Datahåndering III: Statistikk</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../datahandtering_visualisering/maskinlaring.html">Datahåndtering IV: Maskinlæring</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tema 3 - Numeriske metoder</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../nullpunkter_likninger/likninger.html">Likninger og nullpunkter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../derivasjon_integrasjon/derivasjon.html">Numerisk derivasjon</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../derivasjon_integrasjon/integrasjon.html">Numerisk integrasjon</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tema 4 - Dynamiske systemer</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../modellering/diskret_modellering.html">Differenslikninger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modellering/differensiallikninger.html">Differensiallikninger og fartslover</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Emneressurser (IN-KJM1900)</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../forelesninger/forelesninger.html">Forelesninger</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../forelesninger/forelesning1.html">Forelesning 1: Programmering i kjemi</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../forelesninger/forelesning2.html">Forelesning 2: Plotting og datahåndtering</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../forelesninger/forelesning3.html">Forelesning 3: Statistisk analyse</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../forelesninger/forelesning4.html">Forelesning 4: Statistikk II</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../forelesninger/forelesning5.html">Forelesning 5: Numerisk derivasjon og likninger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../forelesninger/forelesning6.html">Forelesning 6: Numerisk integrasjon</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../forelesninger/forelesning7.html">Forelesning 7: Numerisk løsing av likninger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../forelesninger/forelesning8.html">Forelesning 8: Differensiallikninger og reaksjonskinetikk</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../forelesninger/forelesning9.html">Forelesning 9: Reaksjonskinetikk II</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../forelesninger/forelesning10.html">Forelesning 10: Molekylmekanikk</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../forelesninger/workshops.html">Eksamensverksted</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../forelesninger/workshop1.html">Workshop 1: Datahåndtering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../forelesninger/workshop2.html">Workshop 2: Numeriske metoder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../forelesninger/workshop3.html">Workshop 3: Dynamiske systemer</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../obliger/obliger.html">Obligatoriske oppgaver</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../obliger/oblig_datahandtering.html">Oblig 1: Håndtering av kjemiske data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../obliger/oblig_dynamiske_systemer.html">Oblig 2: Dynamiske systemer og integrasjon</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../datafiler.html">Datafiler</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Biokjemi (KJM1140)</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="molekylvisualisering.html">Molekylvisualisering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="datavisualisering.html">Datavisualisering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="regresjonsmodeller.html">Regresjonsmodeller</a></li>
+<li class="toctree-l1"><a class="reference internal" href="enzymkinetikklab2025.html">Analyse av enzymkinetikkdata</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Del 1: Monte-Carlo-simuleringer</a></li>
+
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/docs/biokjemi/proteinfolding.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Del 1: Monte-Carlo-simuleringer</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Del 1: Monte-Carlo-simuleringer</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#del-2-proteinfolding-med-kunstig-intelligens">Del 2: Proteinfolding med kunstig intelligens</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-a-influensavirus-og-legemiddelutvikling">Oppgave A: Influensavirus og legemiddelutvikling</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-b-influensamedisin">Oppgave B: Influensamedisin</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mutasjoner">Mutasjoner</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-c-kroppens-naturlige-forsvar">Oppgave C: Kroppens naturlige forsvar</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-d-ukjente-proteiner">Oppgave D: Ukjente proteiner</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#oppsummering">Oppsummering</a></li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section id="del-1-monte-carlo-simuleringer">
+<h1>Del 1: Monte-Carlo-simuleringer<a class="headerlink" href="#del-1-monte-carlo-simuleringer" title="Permalink to this heading">#</a></h1>
+<p>Kjør koden nedenfor. Denne implementerer en enkel foldealgoritme med hydrofobe residuer (H) og hydrofile/polare residuer (P). Se animasjonen og beskriv hva du observerer:</p>
+<ul class="simple">
+<li><p>Observer foldingen. Hvordan endrer proteinets konformasjon seg over tid?</p></li>
+<li><p>Hvordan varierer energien under simuleringen? Legg merke til både den nåværende energien og den beste energien som oppnås underveis.</p></li>
+<li><p>Hvilken rolle spiller tilfeldige bevegelser i prosessen?</p></li>
+<li><p>Hvilke faktorer tar modellen hensyn til?</p></li>
+<li><p>Hva mangler for å gjøre simuleringen mer realistisk?</p></li>
+</ul>
+<p>Endre parameteren “sequence” systematisk og kjør simuleringen. Prøv ulike sekvenser: En med flere/bare hydrofobe (H) aminosyrer, en med flere/bare polare (P) aminosyrer, og blandede sekvenser.</p>
+<ul class="simple">
+<li><p>Diskuter hvordan aminosyresekvensen påvirker den endelige foldingen. Hvilke faktorer er viktige i denne modellen, og hvilke effekter er viktige i virkeligheten?
+Hvordan påvirker antall H og P den endelige energien?</p></li>
+</ul>
+<p><strong>Tips:</strong> Det kan være lurt å bruke plot_best_configuration-funksjonen (som plottes til slutt) for å visualisere den beste konformasjonen for hver sekvens du tester.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">random</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">mpl_toolkits.mplot3d</span><span class="w"> </span><span class="kn">import</span> <span class="n">Axes3D</span>  <span class="c1"># Required for 3D plotting</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib.animation</span><span class="w"> </span><span class="kn">import</span> <span class="n">FuncAnimation</span>
+
+<span class="o">%</span><span class="k">matplotlib</span> ipympl
+
+<span class="c1">### ENERGY FUNCTION (Continuous, Gaussian well) ###</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">compute_energy_continuous</span><span class="p">(</span><span class="n">positions</span><span class="p">,</span> <span class="n">sequence</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Computes the total energy of the conformation using a continuous Gaussian</span>
+<span class="sd">    potential between every pair of non-adjacent H residues.</span>
+
+<span class="sd">    For each pair (i,j) such that j&gt;=i+2 and both residues are H:</span>
+<span class="sd">      - If their Euclidean distance r is less than &#39;cutoff&#39; (here 3.0), they </span>
+<span class="sd">        contribute an energy term: -exp(-((r-1)^2)/0.5).</span>
+<span class="sd">      - This potential is minimum (–1) when r = 1 and decays smoothly as r deviates from 1.</span>
+
+<span class="sd">    The resulting energy is a smooth, non-integer number.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">energy</span> <span class="o">=</span> <span class="mf">0.0</span>
+    <span class="n">length</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">sequence</span><span class="p">)</span>
+    <span class="n">cutoff</span> <span class="o">=</span> <span class="mf">3.0</span>  <span class="c1"># only consider H–H pairs with r &lt; cutoff</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">length</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">2</span><span class="p">,</span> <span class="n">length</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">sequence</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;H&#39;</span> <span class="ow">and</span> <span class="n">sequence</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;H&#39;</span><span class="p">:</span>
+                <span class="n">dx</span> <span class="o">=</span> <span class="n">positions</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">positions</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+                <span class="n">dy</span> <span class="o">=</span> <span class="n">positions</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">positions</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
+                <span class="n">dz</span> <span class="o">=</span> <span class="n">positions</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span> <span class="o">-</span> <span class="n">positions</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span>
+                <span class="n">r</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">dx</span><span class="o">*</span><span class="n">dx</span> <span class="o">+</span> <span class="n">dy</span><span class="o">*</span><span class="n">dy</span> <span class="o">+</span> <span class="n">dz</span><span class="o">*</span><span class="n">dz</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">r</span> <span class="o">&lt;</span> <span class="n">cutoff</span><span class="p">:</span>
+                    <span class="c1"># Gaussian potential: minimum of -1 at r=1, width parameter = 0.5.</span>
+                    <span class="n">energy</span> <span class="o">+=</span> <span class="o">-</span><span class="n">math</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">((</span><span class="n">r</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="mf">0.5</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">energy</span>
+
+<span class="c1">### INITIAL CONFIGURATION ###</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">generate_initial_positions</span><span class="p">(</span><span class="n">sequence</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Generates an initial linear configuration for the chain in 3D.</span>
+<span class="sd">    Each residue is placed consecutively along the x-axis.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">positions</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">sequence</span><span class="p">)):</span>
+        <span class="n">positions</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">i</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">positions</span>
+
+<span class="c1">### BOUNDARY CHECKS ###</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">is_within_boundaries</span><span class="p">(</span><span class="n">pos</span><span class="p">,</span> <span class="n">boundaries</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Checks whether position pos (x,y,z) is within the specified boundaries.</span>
+<span class="sd">    boundaries is a dictionary with keys &#39;x&#39;, &#39;y&#39;, and &#39;z&#39;; each is a tuple (min, max).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="n">pos</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">boundaries</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">x</span> <span class="o">&lt;=</span> <span class="n">boundaries</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="ow">and</span>
+            <span class="n">boundaries</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">y</span> <span class="o">&lt;=</span> <span class="n">boundaries</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="ow">and</span>
+            <span class="n">boundaries</span><span class="p">[</span><span class="s1">&#39;z&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">z</span> <span class="o">&lt;=</span> <span class="n">boundaries</span><span class="p">[</span><span class="s1">&#39;z&#39;</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">valid_move</span><span class="p">(</span><span class="n">positions</span><span class="p">,</span> <span class="n">new_pos</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">boundaries</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Checks that the proposed new position for the residue at index:</span>
+<span class="sd">      - lies within the boundaries, and</span>
+<span class="sd">      - does not overlap any other residue.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">is_within_boundaries</span><span class="p">(</span><span class="n">new_pos</span><span class="p">,</span> <span class="n">boundaries</span><span class="p">):</span>
+        <span class="k">return</span> <span class="kc">False</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">pos</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">positions</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">i</span> <span class="o">!=</span> <span class="n">index</span> <span class="ow">and</span> <span class="n">pos</span> <span class="o">==</span> <span class="n">new_pos</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span>
+    <span class="k">return</span> <span class="kc">True</span>
+
+<span class="c1">### MOVES: SINGLE-RESIDUE AND PIVOT ###</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">apply_rotation</span><span class="p">(</span><span class="n">vec</span><span class="p">,</span> <span class="n">matrix</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Rotates a 3D vector &#39;vec&#39; using the provided 3x3 rotation matrix.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="n">vec</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">matrix</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">x</span> <span class="o">+</span> <span class="n">matrix</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">y</span> <span class="o">+</span> <span class="n">matrix</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span><span class="o">*</span><span class="n">z</span><span class="p">,</span>
+            <span class="n">matrix</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">x</span> <span class="o">+</span> <span class="n">matrix</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">y</span> <span class="o">+</span> <span class="n">matrix</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span><span class="o">*</span><span class="n">z</span><span class="p">,</span>
+            <span class="n">matrix</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">x</span> <span class="o">+</span> <span class="n">matrix</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">y</span> <span class="o">+</span> <span class="n">matrix</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span><span class="o">*</span><span class="n">z</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">attempt_pivot_move</span><span class="p">(</span><span class="n">positions</span><span class="p">,</span> <span class="n">sequence</span><span class="p">,</span> <span class="n">temperature</span><span class="p">,</span> <span class="n">boundaries</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Attempts a pivot move:</span>
+<span class="sd">      - Select a pivot (not an endpoint).</span>
+<span class="sd">      - Choose a random rotation (90°, 180°, or 270° about one axis).</span>
+<span class="sd">      - Rotate the chain segment beyond the pivot.</span>
+<span class="sd">      - Reject the move if any residue goes outside the boundaries or if overlaps occur.</span>
+<span class="sd">      - Accept/reject according to the Metropolis criterion.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">length</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">positions</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">length</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">positions</span><span class="p">,</span> <span class="kc">False</span>
+    <span class="n">pivot_index</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">length</span> <span class="o">-</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="n">pivot_point</span> <span class="o">=</span> <span class="n">positions</span><span class="p">[</span><span class="n">pivot_index</span><span class="p">]</span>
+    
+    <span class="n">allowed_rotations</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]],</span>   <span class="c1"># x-axis 90°</span>
+        <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]],</span>   <span class="c1"># x-axis 180°</span>
+        <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]],</span>    <span class="c1"># x-axis 270°</span>
+        <span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]],</span>     <span class="c1"># y-axis 90°</span>
+        <span class="p">[[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]],</span>    <span class="c1"># y-axis 180°</span>
+        <span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]],</span>     <span class="c1"># y-axis 270°</span>
+        <span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]],</span>     <span class="c1"># z-axis 90°</span>
+        <span class="p">[[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]],</span>    <span class="c1"># z-axis 180°</span>
+        <span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]</span>      <span class="c1"># z-axis 270°</span>
+    <span class="p">]</span>
+    <span class="n">rotation</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">allowed_rotations</span><span class="p">)</span>
+
+    <span class="n">new_positions</span> <span class="o">=</span> <span class="n">positions</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="c1"># Rotate every residue beyond the pivot point</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">pivot_index</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">length</span><span class="p">):</span>
+        <span class="n">rel</span> <span class="o">=</span> <span class="p">(</span><span class="n">positions</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="n">pivot_point</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+               <span class="n">positions</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="n">pivot_point</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+               <span class="n">positions</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span><span class="o">-</span><span class="n">pivot_point</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+        <span class="n">rotated_rel</span> <span class="o">=</span> <span class="n">apply_rotation</span><span class="p">(</span><span class="n">rel</span><span class="p">,</span> <span class="n">rotation</span><span class="p">)</span>
+        <span class="n">new_positions</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">pivot_point</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">rotated_rel</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+                            <span class="n">pivot_point</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">rotated_rel</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+                            <span class="n">pivot_point</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">+</span> <span class="n">rotated_rel</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+    
+    <span class="c1"># Check for overlaps and boundary violations</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">new_positions</span><span class="p">))</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">new_positions</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">positions</span><span class="p">,</span> <span class="kc">False</span>
+    <span class="k">for</span> <span class="n">pos</span> <span class="ow">in</span> <span class="n">new_positions</span><span class="p">:</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">is_within_boundaries</span><span class="p">(</span><span class="n">pos</span><span class="p">,</span> <span class="n">boundaries</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">positions</span><span class="p">,</span> <span class="kc">False</span>
+
+    <span class="n">old_energy</span> <span class="o">=</span> <span class="n">compute_energy_continuous</span><span class="p">(</span><span class="n">positions</span><span class="p">,</span> <span class="n">sequence</span><span class="p">)</span>
+    <span class="n">new_energy</span> <span class="o">=</span> <span class="n">compute_energy_continuous</span><span class="p">(</span><span class="n">new_positions</span><span class="p">,</span> <span class="n">sequence</span><span class="p">)</span>
+    <span class="n">delta_e</span> <span class="o">=</span> <span class="n">new_energy</span> <span class="o">-</span> <span class="n">old_energy</span>
+
+    <span class="k">if</span> <span class="n">delta_e</span> <span class="o">&lt;=</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span> <span class="o">&lt;</span> <span class="n">math</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">delta_e</span> <span class="o">/</span> <span class="n">temperature</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">new_positions</span><span class="p">,</span> <span class="kc">True</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">positions</span><span class="p">,</span> <span class="kc">False</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">attempt_move</span><span class="p">(</span><span class="n">positions</span><span class="p">,</span> <span class="n">sequence</span><span class="p">,</span> <span class="n">temperature</span><span class="p">,</span> <span class="n">pivot_probability</span><span class="p">,</span> <span class="n">boundaries</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    With probability pivot_probability attempt a pivot move; otherwise, attempt a</span>
+<span class="sd">    single-residue move. Uses the continuous energy function.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span> <span class="o">&lt;</span> <span class="n">pivot_probability</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">attempt_pivot_move</span><span class="p">(</span><span class="n">positions</span><span class="p">,</span> <span class="n">sequence</span><span class="p">,</span> <span class="n">temperature</span><span class="p">,</span> <span class="n">boundaries</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">length</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">sequence</span><span class="p">)</span>
+        <span class="n">index</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">length</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">old_pos</span> <span class="o">=</span> <span class="n">positions</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
+        <span class="n">moves</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">)]</span>
+        <span class="n">dx</span><span class="p">,</span> <span class="n">dy</span><span class="p">,</span> <span class="n">dz</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">moves</span><span class="p">)</span>
+        <span class="n">new_pos</span> <span class="o">=</span> <span class="p">(</span><span class="n">old_pos</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">dx</span><span class="p">,</span> <span class="n">old_pos</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">dy</span><span class="p">,</span> <span class="n">old_pos</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">+</span> <span class="n">dz</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">valid_move</span><span class="p">(</span><span class="n">positions</span><span class="p">,</span> <span class="n">new_pos</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">boundaries</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">positions</span><span class="p">,</span> <span class="kc">False</span>
+        <span class="n">old_energy</span> <span class="o">=</span> <span class="n">compute_energy_continuous</span><span class="p">(</span><span class="n">positions</span><span class="p">,</span> <span class="n">sequence</span><span class="p">)</span>
+        <span class="n">positions_trial</span> <span class="o">=</span> <span class="n">positions</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="n">positions_trial</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">=</span> <span class="n">new_pos</span>
+        <span class="n">new_energy</span> <span class="o">=</span> <span class="n">compute_energy_continuous</span><span class="p">(</span><span class="n">positions_trial</span><span class="p">,</span> <span class="n">sequence</span><span class="p">)</span>
+        <span class="n">delta_e</span> <span class="o">=</span> <span class="n">new_energy</span> <span class="o">-</span> <span class="n">old_energy</span>
+        <span class="k">if</span> <span class="n">delta_e</span> <span class="o">&lt;=</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span> <span class="o">&lt;</span> <span class="n">math</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">delta_e</span> <span class="o">/</span> <span class="n">temperature</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">positions_trial</span><span class="p">,</span> <span class="kc">True</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">positions</span><span class="p">,</span> <span class="kc">False</span>
+
+<span class="c1">### SIMULATED ANNEALING SIMULATION ###</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">run_simulation_annealing</span><span class="p">(</span><span class="n">sequence</span><span class="o">=</span><span class="s2">&quot;HPPPHHHHHHHH&quot;</span><span class="p">,</span> 
+                             <span class="n">max_attempts</span><span class="o">=</span><span class="mi">5000</span><span class="p">,</span> 
+                             <span class="n">initial_temperature</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span>
+                             <span class="n">final_temperature</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span>
+                             <span class="n">record_interval</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+                             <span class="n">stop_threshold</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span>
+                             <span class="n">pivot_probability</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span>
+                             <span class="n">boundaries</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Runs the Monte Carlo simulation with simulated annealing.</span>
+<span class="sd">    The temperature decreases linearly from initial_temperature to final_temperature.</span>
+<span class="sd">    </span>
+<span class="sd">    Uses the continuous energy function (compute_energy_continuous) so that the energy</span>
+<span class="sd">    is a smooth, non-integer quantity. Also, moves that place any residue outside the</span>
+<span class="sd">    specified boundaries are rejected.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">boundaries</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="c1"># Set boundaries so the chain remains visible.</span>
+        <span class="n">boundaries</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;x&#39;</span><span class="p">:</span> <span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">sequence</span><span class="p">)</span><span class="o">+</span><span class="mi">10</span><span class="p">),</span>
+                      <span class="s1">&#39;y&#39;</span><span class="p">:</span> <span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span>
+                      <span class="s1">&#39;z&#39;</span><span class="p">:</span> <span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">)}</span>
+    
+    <span class="n">positions</span> <span class="o">=</span> <span class="n">generate_initial_positions</span><span class="p">(</span><span class="n">sequence</span><span class="p">)</span>
+    <span class="n">energy</span> <span class="o">=</span> <span class="n">compute_energy_continuous</span><span class="p">(</span><span class="n">positions</span><span class="p">,</span> <span class="n">sequence</span><span class="p">)</span>
+    <span class="n">energy_history</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">positions_history</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">best_energy</span> <span class="o">=</span> <span class="n">energy</span>
+    <span class="n">best_positions</span> <span class="o">=</span> <span class="n">positions</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">consecutive_no_improvement</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="k">for</span> <span class="n">step</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">max_attempts</span><span class="p">):</span>
+        <span class="c1"># Use a gentle, linear cooling schedule.</span>
+        <span class="n">temperature</span> <span class="o">=</span> <span class="n">initial_temperature</span> <span class="o">+</span> <span class="p">(</span><span class="n">final_temperature</span> <span class="o">-</span> <span class="n">initial_temperature</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">step</span> <span class="o">/</span> <span class="n">max_attempts</span><span class="p">)</span>
+        <span class="n">positions</span><span class="p">,</span> <span class="n">accepted</span> <span class="o">=</span> <span class="n">attempt_move</span><span class="p">(</span><span class="n">positions</span><span class="p">,</span> <span class="n">sequence</span><span class="p">,</span> <span class="n">temperature</span><span class="p">,</span> <span class="n">pivot_probability</span><span class="p">,</span> <span class="n">boundaries</span><span class="p">)</span>
+        <span class="n">new_energy</span> <span class="o">=</span> <span class="n">compute_energy_continuous</span><span class="p">(</span><span class="n">positions</span><span class="p">,</span> <span class="n">sequence</span><span class="p">)</span>
+        
+        <span class="k">if</span> <span class="n">new_energy</span> <span class="o">&lt;</span> <span class="n">best_energy</span><span class="p">:</span>
+            <span class="n">best_energy</span> <span class="o">=</span> <span class="n">new_energy</span>
+            <span class="n">best_positions</span> <span class="o">=</span> <span class="n">positions</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+            <span class="n">consecutive_no_improvement</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">consecutive_no_improvement</span> <span class="o">+=</span> <span class="mi">1</span>
+        
+        <span class="k">if</span> <span class="n">step</span> <span class="o">%</span> <span class="n">record_interval</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">energy_history</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">new_energy</span><span class="p">)</span>
+            <span class="n">positions_history</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">positions</span><span class="o">.</span><span class="n">copy</span><span class="p">())</span>
+        
+        <span class="k">if</span> <span class="n">consecutive_no_improvement</span> <span class="o">&gt;=</span> <span class="n">stop_threshold</span><span class="p">:</span>
+            <span class="n">energy_history</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">new_energy</span><span class="p">)</span>
+            <span class="n">positions_history</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">positions</span><span class="o">.</span><span class="n">copy</span><span class="p">())</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Stopped early at step </span><span class="si">{</span><span class="n">step</span><span class="si">}</span><span class="s2"> with energy </span><span class="si">{</span><span class="n">new_energy</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="k">break</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">energy_history</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">new_energy</span><span class="p">)</span>
+        <span class="n">positions_history</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">positions</span><span class="o">.</span><span class="n">copy</span><span class="p">())</span>
+
+    <span class="k">return</span> <span class="n">best_positions</span><span class="p">,</span> <span class="n">best_energy</span><span class="p">,</span> <span class="n">positions_history</span><span class="p">,</span> <span class="n">energy_history</span>
+
+<span class="c1">### ANIMATION ###</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">animate_folding</span><span class="p">(</span><span class="n">sequence</span><span class="o">=</span><span class="s2">&quot;HPPPHHHHHHHH&quot;</span><span class="p">,</span> 
+                    <span class="n">max_attempts</span><span class="o">=</span><span class="mi">5000</span><span class="p">,</span> 
+                    <span class="n">initial_temperature</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span>
+                    <span class="n">final_temperature</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span>
+                    <span class="n">record_interval</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+                    <span class="n">stop_threshold</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span>
+                    <span class="n">pivot_probability</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span>
+                    <span class="n">boundaries</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Runs the annealing simulation and creates an animation of the folding process.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">best_positions</span><span class="p">,</span> <span class="n">best_energy</span><span class="p">,</span> <span class="n">positions_history</span><span class="p">,</span> <span class="n">energy_history</span> <span class="o">=</span> <span class="n">run_simulation_annealing</span><span class="p">(</span>
+        <span class="n">sequence</span><span class="o">=</span><span class="n">sequence</span><span class="p">,</span>
+        <span class="n">max_attempts</span><span class="o">=</span><span class="n">max_attempts</span><span class="p">,</span>
+        <span class="n">initial_temperature</span><span class="o">=</span><span class="n">initial_temperature</span><span class="p">,</span>
+        <span class="n">final_temperature</span><span class="o">=</span><span class="n">final_temperature</span><span class="p">,</span>
+        <span class="n">record_interval</span><span class="o">=</span><span class="n">record_interval</span><span class="p">,</span>
+        <span class="n">stop_threshold</span><span class="o">=</span><span class="n">stop_threshold</span><span class="p">,</span>
+        <span class="n">pivot_probability</span><span class="o">=</span><span class="n">pivot_probability</span><span class="p">,</span>
+        <span class="n">boundaries</span><span class="o">=</span><span class="n">boundaries</span>
+    <span class="p">)</span>
+
+    <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">,</span> <span class="n">projection</span><span class="o">=</span><span class="s1">&#39;3d&#39;</span><span class="p">)</span>
+    <span class="n">color_map</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;H&#39;</span><span class="p">:</span> <span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="s1">&#39;P&#39;</span><span class="p">:</span> <span class="s1">&#39;blue&#39;</span><span class="p">}</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">update</span><span class="p">(</span><span class="n">frame</span><span class="p">):</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+        <span class="n">current_positions</span> <span class="o">=</span> <span class="n">positions_history</span><span class="p">[</span><span class="n">frame</span><span class="p">]</span>
+        <span class="n">x_data</span> <span class="o">=</span> <span class="p">[</span><span class="n">p</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">current_positions</span><span class="p">]</span>
+        <span class="n">y_data</span> <span class="o">=</span> <span class="p">[</span><span class="n">p</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">current_positions</span><span class="p">]</span>
+        <span class="n">z_data</span> <span class="o">=</span> <span class="p">[</span><span class="n">p</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">current_positions</span><span class="p">]</span>
+        <span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="n">color_map</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">res</span><span class="p">,</span> <span class="s1">&#39;black&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">res</span> <span class="ow">in</span> <span class="n">sequence</span><span class="p">]</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x_data</span><span class="p">,</span> <span class="n">y_data</span><span class="p">,</span> <span class="n">z_data</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="n">colors</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">80</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">current_positions</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+            <span class="n">xline</span> <span class="o">=</span> <span class="p">[</span><span class="n">current_positions</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="n">current_positions</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]]</span>
+            <span class="n">yline</span> <span class="o">=</span> <span class="p">[</span><span class="n">current_positions</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">],</span> <span class="n">current_positions</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">]]</span>
+            <span class="n">zline</span> <span class="o">=</span> <span class="p">[</span><span class="n">current_positions</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">2</span><span class="p">],</span> <span class="n">current_positions</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">][</span><span class="mi">2</span><span class="p">]]</span>
+            <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xline</span><span class="p">,</span> <span class="n">yline</span><span class="p">,</span> <span class="n">zline</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="n">boundaries</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">])</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="n">boundaries</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">])</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_zlim</span><span class="p">(</span><span class="n">boundaries</span><span class="p">[</span><span class="s1">&#39;z&#39;</span><span class="p">])</span>
+        <span class="n">best_so_far</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">energy_history</span><span class="p">[:</span><span class="n">frame</span><span class="o">+</span><span class="mi">1</span><span class="p">])</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Step: </span><span class="si">{</span><span class="n">frame</span><span class="o">*</span><span class="n">record_interval</span><span class="si">}</span><span class="se">\n</span><span class="s2">Current Energy: </span><span class="si">{</span><span class="n">energy_history</span><span class="p">[</span><span class="n">frame</span><span class="p">]</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="se">\n</span><span class="s2">Best Energy: </span><span class="si">{</span><span class="n">best_so_far</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;X&quot;</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Y&quot;</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_zlabel</span><span class="p">(</span><span class="s2">&quot;Z&quot;</span><span class="p">)</span>
+    
+    <span class="n">anim</span> <span class="o">=</span> <span class="n">FuncAnimation</span><span class="p">(</span><span class="n">fig</span><span class="p">,</span> <span class="n">update</span><span class="p">,</span> <span class="n">frames</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">positions_history</span><span class="p">),</span> <span class="n">interval</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">blit</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">repeat</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Best energy reached: </span><span class="si">{</span><span class="n">best_energy</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">anim</span><span class="p">,</span> <span class="n">best_positions</span><span class="p">,</span> <span class="n">best_energy</span>
+
+<span class="c1">### PLOT BEST CONFIGURATION ###</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">plot_best_configuration</span><span class="p">(</span><span class="n">best_positions</span><span class="p">,</span> <span class="n">best_energy</span><span class="p">,</span> <span class="n">sequence</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Plots the best (lowest-energy) configuration achieved during the simulation.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">,</span> <span class="n">projection</span><span class="o">=</span><span class="s1">&#39;3d&#39;</span><span class="p">)</span>
+    <span class="n">color_map</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;H&#39;</span><span class="p">:</span> <span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="s1">&#39;P&#39;</span><span class="p">:</span> <span class="s1">&#39;blue&#39;</span><span class="p">}</span>
+    <span class="n">x_data</span> <span class="o">=</span> <span class="p">[</span><span class="n">p</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">best_positions</span><span class="p">]</span>
+    <span class="n">y_data</span> <span class="o">=</span> <span class="p">[</span><span class="n">p</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">best_positions</span><span class="p">]</span>
+    <span class="n">z_data</span> <span class="o">=</span> <span class="p">[</span><span class="n">p</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">best_positions</span><span class="p">]</span>
+    <span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="n">color_map</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">res</span><span class="p">,</span> <span class="s1">&#39;black&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">res</span> <span class="ow">in</span> <span class="n">sequence</span><span class="p">]</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x_data</span><span class="p">,</span> <span class="n">y_data</span><span class="p">,</span> <span class="n">z_data</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="n">colors</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">80</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">best_positions</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="n">xline</span> <span class="o">=</span> <span class="p">[</span><span class="n">best_positions</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="n">best_positions</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]]</span>
+        <span class="n">yline</span> <span class="o">=</span> <span class="p">[</span><span class="n">best_positions</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">],</span> <span class="n">best_positions</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">]]</span>
+        <span class="n">zline</span> <span class="o">=</span> <span class="p">[</span><span class="n">best_positions</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">2</span><span class="p">],</span> <span class="n">best_positions</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">][</span><span class="mi">2</span><span class="p">]]</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xline</span><span class="p">,</span> <span class="n">yline</span><span class="p">,</span> <span class="n">zline</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">((</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">sequence</span><span class="p">)</span><span class="o">+</span><span class="mi">10</span><span class="p">))</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">((</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_zlim</span><span class="p">((</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;X&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Y&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_zlabel</span><span class="p">(</span><span class="s2">&quot;Z&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Best Configuration</span><span class="se">\n</span><span class="s2">Energy: </span><span class="si">{</span><span class="n">best_energy</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sequence</span> <span class="o">=</span> <span class="s2">&quot;HPPPHHHHPPHHHH&quot;</span>
+<span class="n">boundaries</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;x&#39;</span><span class="p">:</span> <span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">sequence</span><span class="p">)</span><span class="o">+</span><span class="mi">10</span><span class="p">),</span>
+                <span class="s1">&#39;y&#39;</span><span class="p">:</span> <span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span>
+                <span class="s1">&#39;z&#39;</span><span class="p">:</span> <span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">)}</span>
+
+<span class="n">anim</span><span class="p">,</span> <span class="n">best_positions</span><span class="p">,</span> <span class="n">best_energy</span> <span class="o">=</span> <span class="n">animate_folding</span><span class="p">(</span>
+    <span class="n">sequence</span><span class="o">=</span><span class="n">sequence</span><span class="p">,</span>
+    <span class="n">max_attempts</span><span class="o">=</span><span class="mi">5000</span><span class="p">,</span>
+    <span class="n">initial_temperature</span><span class="o">=</span><span class="mf">273.15</span><span class="p">,</span>
+    <span class="n">final_temperature</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span>
+    <span class="n">record_interval</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+    <span class="n">stop_threshold</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span>
+    <span class="n">pivot_probability</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span>
+    <span class="n">boundaries</span><span class="o">=</span><span class="n">boundaries</span>
+<span class="p">)</span>
+
+<span class="c1"># In Jupyter Notebook, to display the animation interactively:</span>
+<span class="c1"># from IPython.display import HTML</span>
+<span class="c1"># HTML(anim.to_jshtml())</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Now plot the best configuration using the returned variables</span>
+<span class="n">plot_best_configuration</span><span class="p">(</span><span class="n">best_positions</span><span class="p">,</span> <span class="n">best_energy</span><span class="p">,</span> <span class="n">sequence</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="del-2-proteinfolding-med-kunstig-intelligens">
+<h1>Del 2: Proteinfolding med kunstig intelligens<a class="headerlink" href="#del-2-proteinfolding-med-kunstig-intelligens" title="Permalink to this heading">#</a></h1>
+<p>Simuleringen ovenfor illustrerer proteinfolding ved hjelp av en sterkt forenklet modell. Å modellere folding av store proteiner er langt mer utfordrende, blant annet fordi det krever presis beskrivelse av en rekke ikke-kovalente interaksjoner – som hydrogenbindinger, hydrofobe effekter, van der Waals-krefter og elektrostatiske interaksjoner – samt en vurdering av hvilke som dominerer i ulike kontekster. Selve foldingen skjer gjennom en sekvens av konformasjonsendringer, hvor tidligere strukturelle valg begrenser de påfølgende mulighetene. Denne prosessen beskrives ofte som en bevegelse gjennom et komplekst konformasjons- eller energilandskap. Til tross for betydelige fremskritt, er mekanismene bak hvordan proteiner finner sin biologisk aktive struktur fortsatt et aktivt forskningsfelt.</p>
+<p>Kunstig intelligens (AI) har revolusjonert feltet proteinfolding, spesielt med utviklingen av AlphaFold, som bruker dype læringsmetoder for å forutsi proteinstrukturer med høy nøyaktighet. AlphaFold er trent på store datasett av kjente proteinstrukturer og deres sekvenser, og bruker denne informasjonen til å lage prediksjoner om hvordan nye proteiner vil folde seg. Dette har ført til betydelige fremskritt innen biomedisinsk forskning, legemiddelutvikling og forståelse av sykdomsmekanismer.</p>
+<p>AlphaFold er en AI-modell utviklet av DeepMind som har gjort betydelige fremskritt innen proteinfolding. Den bruker dype nevrale nettverk for å forutsi proteinstrukturer basert på aminosyresekvenser. AlphaFold er i stand til å forutsi proteinstrukturer med høy nøyaktighet, selv for store og komplekse proteiner. Dette er en betydelig forbedring sammenlignet med tidligere metoder, som ofte var tidkrevende og krevde mye eksperimentering. AlphaFold bruker en kombinasjon av dype nevrale nettverk og fysikkbaserte modeller for å lage prediksjoner om proteinfolding. Dette gjør det mulig å forutsi strukturer på en raskere og mer effektiv måte enn tidligere metoder.</p>
+<p>AlphaFold har blitt brukt til å forutsi strukturer av mange kjente proteiner, og har også vært nyttig i legemiddelutvikling og forståelse av sykdomsmekanismer. Det er imidlertid viktig å merke seg at AlphaFold ikke er en perfekt løsning, og det er fortsatt utfordringer knyttet til å forutsi strukturer av store og komplekse proteiner. I tillegg er det fortsatt behov for eksperimentelle metoder for å validere prediksjonene gjort av AlphaFold.</p>
+<ul class="simple">
+<li><p>Ta utgangspunkt i simuleringen du har brukt ovenfor og diskuter hva som er noen utfordringer med simuleringer av proteinfolding.</p></li>
+<li><p>Hvordan kan metoder basert på kunstig intelligens, slik som AlphaFold, hjelpe til med å løse disse utfordringene?</p></li>
+</ul>
+<section id="oppgave-a-influensavirus-og-legemiddelutvikling">
+<h2>Oppgave A: Influensavirus og legemiddelutvikling<a class="headerlink" href="#oppgave-a-influensavirus-og-legemiddelutvikling" title="Permalink to this heading">#</a></h2>
+<p>Influensaviruset har to glykoproteiner på overflaten: hemagglutinin og neuraminidase. Hemagglutinin er ansvarlig for binding til sialinsyrereseptorer og initiering av infeksjon, mens neuraminidase kløyver av sialinsyre og gjør at viruset kan spre seg videre i kroppen.</p>
+<p>Vi skal bruke AlphaFold til å forutsi strukturen til neuraminidase, et protein som er viktig for influensavirusets evne til å infisere celler. Neuraminidase er et enzym som bryter ned sialinsyre, en sukkerart som finnes på overflaten av celler. Dette enzymet er avgjørende for virusets evne til å spre seg i vertscellen. Studiet av neuraminidase er viktig for forståelsen av influensavirusets biologi og utviklingen av antivirale legemidler. Neuraminidase er også et mål for vaksiner mot influensa, og forståelsen av proteinets struktur og funksjon kan bidra til utviklingen av mer effektive vaksiner.</p>
+<p>Du skal bruke Pymol til å visualisere molekylene i denne oppgaven, og du skal bruke <a class="reference external" href="http://alphafoldserver.com">alphafoldserver.com</a> til å gjøre strukturprediksjone AlphaFold. Siden AlphaFold tar utgangspunkt i aminosyresekvensen, skal vi bruke FASTA-formatet for å representere sekvensen. FASTA er en vanlig måte å representere biologiske sekvenser på, og det brukes ofte i bioinformatikk for å lagre og dele sekvenser av DNA, RNA og proteiner. En FASTA-fil inneholder en eller flere sekvenser, hver med en beskrivelse som begynner med et “&gt;”-tegn etterfulgt av en identifikator og eventuelt annen informasjon. Sekvensen følger deretter på neste linje med enbokstavekodene som representerer aminosyrene i proteinet.</p>
+<p>Kopier FASTA-sekvensen for neuraminidase: <a class="reference external" href="https://www.rcsb.org/fasta/entry/2HT8/display">https://www.rcsb.org/fasta/entry/2HT8/display</a>. Merk deg hvordan du finner FASTA-sekvensen fra PDB-strukturen. Du kan bruke RCSB PDB-nettstedet til å søke etter strukturen og deretter laste ned sekvensen i FASTA-format.</p>
+<p>Gå til <a class="reference external" href="http://alphafoldserver.com">alphafoldserver.com</a> og lim inn FASTA-sekvensen. Trykk på “Continue and preview job” og deretter “Confirm and submit”. Vent til jobben er fullført.
+Last deretter ned prediksjonsdataene. Det inneholder flere modeller som Alphafold har prediktert, og data om prediksjonen (i .json-format). Vi er her interesserte i strukturfilene (i .cif-format). Åpne den første modellen (modell 0) i Pymol og gi den det nye navnet “prediksjon”. Vi skal sammenligne denne med den eksperimentelt bestemte strukturen (PDB 2HT8). Last ned PDB-filen fra RCSB PDB-nettstedet og åpne den også i Pymol. Gi dem ulike navn i Pymol, slik at du kan skille dem fra hverandre.</p>
+<p>Vi ønsker kun å sammenligne de to strukturene i proteinet, uten alle tilleggsmolekyler. For å gjøre dette, må vi velge ut de atomene vi er interessert i. I dette tilfellet ønsker vi å sammenligne alfa-karbonatomene (CA) i de to strukturene. Dette kan gjøres ved å bruke seleksjonsverktøyet i Pymol:</p>
+<div class="highlight-{code-block}raw notranslate"><div class="highlight"><pre><span></span>align 2ht8 and polymer and name CA, prediksjon and polymer and name CA, object=alnObj, cycles=5, transform=1
+</pre></div>
+</div>
+<p>Her betyr “name CA” at du kun velger atomer med navnet “CA” (alfa-karbonatomer). Alfa-karbonatomene er standarden når vi skal beregne gjennomsnittlig avstand mellom prediksjon og eksperimentelle data, siden de finnes i alle aminosyrer og gir et konsistent mål på strukturell likhet.</p>
+<p>Selve kommandoen “align” brukes til å sammenligne og overlappe to strukturer basert på posisjonene til alfa-karbonatomene. I dette tilfellet sammenlignes strukturen med PDB-ID 2ht8 (eksperimentell struktur) med prediksjon (en modellert eller beregnet struktur). Begge begrenses til kun å inkludere polymerkjeder og alfa-karbonatomer. Argumentet object=alnObj angir at resultatet av justeringen skal lagres i et nytt PyMOL-objekt kalt alnObj, slik at man visuelt kan se overlappet etterpå. Videre sier cycles=5 at PyMOL skal gjøre fem iterasjoner med superposisjonering og utvalg av samsvarende atomer for å optimalisere justeringen. Til slutt betyr transform=1 at prediksjon-strukturen faktisk blir flyttet (transformert) slik at den best overlapper med 2ht8. Hvis transform=0, ville ingen strukturer blitt flyttet, og vi ville kun fått RMSD-verdien (avstanden mellom strukturene) uten visuell justering.</p>
+<p>Når du bruker align-funksjonen i Pymol, får du automatisk en beregning av RMSD (Root Mean Square Deviation). Noter denne verdien. Dette er et mål på den gjennomsnittlige avstanden (i Å) mellom tilsvarende atomer i to overlappende strukturene. RMSD blir beregnet som kvadratroten av gjennomsnittet av de kvadrerte avstandene mellom hvert par tilsvarende atomer:</p>
+<div class="math notranslate nohighlight">
+\[
+\text{RMSD} = \sqrt{ \frac{1}{N} \sum_{i=1}^{N} \left\| \mathbf{x}_i - \mathbf{y}_i \right\|^2 }
+\]</div>
+<p>Her er <span class="math notranslate nohighlight">\(N\)</span> antall atomer (for eksempel Cα-atomer), og <span class="math notranslate nohighlight">\(\mathbf{x}_i\)</span> og <span class="math notranslate nohighlight">\(\mathbf{y}_i\)</span> er posisjonsvektorene til det <span class="math notranslate nohighlight">\(i\)</span>-te atomet i henholdsvis den eksperimentelle strukturen og modellen. Dobbeltstrekene <span class="math notranslate nohighlight">\(\left\| \cdot \right\|\)</span> markerer euklidisk norm, altså vanlig avstand i rommet mellom to punkter.</p>
+<p>Normen <span class="math notranslate nohighlight">\(\left\| \mathbf{x}_i - \mathbf{y}_i \right\|\)</span> er avstanden mellom to punkter i rommet, og kan skrives som:</p>
+<div class="math notranslate nohighlight">
+\[
+\left\| \mathbf{x}_i - \mathbf{y}_i \right\| = \sqrt{(x_{ix} - y_{ix})^2 + (x_{iy} - y_{iy})^2 + (x_{iz} - y_{iz})^2}
+\]</div>
+<p>hvor <span class="math notranslate nohighlight">\(x_{ix}, x_{iy}, x_{iz}\)</span> er x-, y- og z-koordinatene til det <span class="math notranslate nohighlight">\(i\)</span>-te atomet i den ene strukturen, og <span class="math notranslate nohighlight">\(y_{ix}, y_{iy}, y_{iz}\)</span> er koordinatene til det tilsvarende atomet i den andre strukturen. Vi regner først ut forskjellen i hver retning, kvadrerer dem, summerer, og tar kvadratroten.</p>
+<p>RMSD-verdien uttrykker hvor godt to strukturer overlapper etter superposisjon – jo lavere verdi, desto mer lik er den modellerte strukturen den eksperimentelle.</p>
+<ul class="simple">
+<li><p>Hva er RMSD-verdien for neuraminidase? Hvordan tolker du denne verdien?</p></li>
+<li><p>Hvordan kan du bruke RMSD til å vurdere kvaliteten på en proteinmodell?</p></li>
+</ul>
+</section>
+<section id="oppgave-b-influensamedisin">
+<h2>Oppgave B: Influensamedisin<a class="headerlink" href="#oppgave-b-influensamedisin" title="Permalink to this heading">#</a></h2>
+<p>Når har vi sett hvordan vi kan forutsi strukturer med kunstig intelligens og hvordan vi kan validere dette med eksperimentelle data. Vi kan selvsagt også bruke de samme modellene for å forutsi strukturen på proteiner vi ikke kjenner strukturen til, eller undersøke hvordan små endringer i sekvensen – som en mutasjon i én enkelt aminosyre – kan påvirke den tredimensjonale formen. Dette gir oss et kraftig verktøy for å utforske sammenhengen mellom proteinets primærstruktur og dets funksjon, og for å forstå hvordan mutasjoner kan føre til tap av funksjon, sykdom eller endret legemiddelrespons.</p>
+<p>Vi skal nå se hvordan en enkelt mutasjon i influensavirusets overflateprotein gjør at legemiddelet Tamiflu ikke lenger binder seg effektivt. Ved hjelp av AlphaFold kan vi sammenligne den muterte strukturen med den opprinnelige, og analysere hvordan bindingslommen endres som følge av mutasjonen.</p>
+<p>Neruaminidase binder seg som nevnt til sialinsyre i kroppen vår, som er en type sukker som finnes på celleoverflater i kroppen vår, blant annet som en del av glykoproteiner og glykolipider. Sialinsyre bidrar til å gi cellene en negativ ladning og spiller en viktig rolle i cellecellekommunikasjon/signalering og immunsystemfunksjoner. Neuraminidase kløyver sialinsyre fra disse strukturene, noe som hjelper viruset å unngå immunsystemet og spre seg effektivt.</p>
+<p>Strukturen til sialinsyre er vist nedenfor. I Pymol-strukturen som du har lastet ned, finnes istedenfor <em>oseltamivir</em> (ofte under merkenavnet “Tamiflu”), som er et legemiddel som hemmer enzymet slik at det ikke kan kløyve sialinsyre. Vis den i Pymol og se hvordan den binder seg til neuraminidase, gjerne ved å visualisere alle residuer som befinner seg innen 4 Å fra sialinsyre.</p>
+<ul class="simple">
+<li><p>Hva betyr det at oseltamivir er en substratanalog?</p></li>
+<li><p>Hvilke typer interaksjoner er det mellom oseltamivir og enzymet?</p></li>
+<li><p>Kan du forklare hvorfor oselatiminivir binder bedre enn sialinsyre?</p></li>
+</ul>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">py3Dmol</span>
+
+<span class="n">sialinsyre</span> <span class="o">=</span> <span class="n">py3Dmol</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">query</span><span class="o">=</span><span class="s1">&#39;cid:129878003&#39;</span><span class="p">)</span>
+<span class="n">sialinsyre</span><span class="o">.</span><span class="n">setStyle</span><span class="p">({</span><span class="s2">&quot;stick&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;color&quot;</span><span class="p">:</span><span class="s2">&quot;spectrum&quot;</span><span class="p">}})</span>
+<span class="c1">#sialinsyre.zoomTo()</span>
+<span class="n">sialinsyre</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output text_html"><div id="3dmolviewer_1745475190759916"  style="position: relative; width: 640px; height: 480px;">
+        <p id="3dmolwarning_1745475190759916" style="background-color:#ffcccc;color:black">3Dmol.js failed to load for some reason.  Please check your browser console for error messages.<br></p>
+        </div>
+<script>
+
+var loadScriptAsync = function(uri){
+  return new Promise((resolve, reject) => {
+    //this is to ignore the existence of requirejs amd
+    var savedexports, savedmodule;
+    if (typeof exports !== 'undefined') savedexports = exports;
+    else exports = {}
+    if (typeof module !== 'undefined') savedmodule = module;
+    else module = {}
+
+    var tag = document.createElement('script');
+    tag.src = uri;
+    tag.async = true;
+    tag.onload = () => {
+        exports = savedexports;
+        module = savedmodule;
+        resolve();
+    };
+  var firstScriptTag = document.getElementsByTagName('script')[0];
+  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+});
+};
+
+if(typeof $3Dmolpromise === 'undefined') {
+$3Dmolpromise = null;
+  $3Dmolpromise = loadScriptAsync('https://cdnjs.cloudflare.com/ajax/libs/3Dmol/2.4.2/3Dmol-min.js');
+}
+
+var viewer_1745475190759916 = null;
+var warn = document.getElementById("3dmolwarning_1745475190759916");
+if(warn) {
+    warn.parentNode.removeChild(warn);
+}
+$3Dmolpromise.then(function() {
+viewer_1745475190759916 = $3Dmol.createViewer(document.getElementById("3dmolviewer_1745475190759916"),{backgroundColor:"white"});
+$3Dmol.download("cid:129878003", viewer_1745475190759916, {}, function() {
+viewer_1745475190759916.zoomTo();
+	viewer_1745475190759916.setStyle({"stick": {"color": "spectrum"}});
+viewer_1745475190759916.render();
+})
+});
+</script></div></div>
+</div>
+<section id="mutasjoner">
+<h3>Mutasjoner<a class="headerlink" href="#mutasjoner" title="Permalink to this heading">#</a></h3>
+<p>Virus og andre patogener muterer og tilpasser seg miljøet, noe som kan gjøre dem resistente overfor naturlig forsvar eller legemidler. Vi skal nå se på hva som skjer med bindingen av legemidlet oseltamivir til neuraminidase dersom vi får en mutasjon i influensaviruset.</p>
+<p>Nedenfor finner du Python-funksjoner som henter aminosyresekvensen til et protein fra en PDB-fil og endrer en spesifikk aminosyre til en annen. Du kan bruke disse funksjonene til å lage en ny sekvens med en mutasjon i neuraminidase-strukturen. Kjør funksjonene. De returnerer en FASTA-sekvens som du kan bruke videre i AlphaFold.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">Bio.PDB</span><span class="w"> </span><span class="kn">import</span> <span class="n">PDBParser</span>
+
+<span class="n">trebokstav_til_enbokstav</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;ALA&#39;</span><span class="p">:</span> <span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;CYS&#39;</span><span class="p">:</span> <span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="s1">&#39;ASP&#39;</span><span class="p">:</span> <span class="s1">&#39;D&#39;</span><span class="p">,</span> <span class="s1">&#39;GLU&#39;</span><span class="p">:</span> <span class="s1">&#39;E&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;PHE&#39;</span><span class="p">:</span> <span class="s1">&#39;F&#39;</span><span class="p">,</span> <span class="s1">&#39;GLY&#39;</span><span class="p">:</span> <span class="s1">&#39;G&#39;</span><span class="p">,</span> <span class="s1">&#39;HIS&#39;</span><span class="p">:</span> <span class="s1">&#39;H&#39;</span><span class="p">,</span> <span class="s1">&#39;ILE&#39;</span><span class="p">:</span> <span class="s1">&#39;I&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;LYS&#39;</span><span class="p">:</span> <span class="s1">&#39;K&#39;</span><span class="p">,</span> <span class="s1">&#39;LEU&#39;</span><span class="p">:</span> <span class="s1">&#39;L&#39;</span><span class="p">,</span> <span class="s1">&#39;MET&#39;</span><span class="p">:</span> <span class="s1">&#39;M&#39;</span><span class="p">,</span> <span class="s1">&#39;ASN&#39;</span><span class="p">:</span> <span class="s1">&#39;N&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;PRO&#39;</span><span class="p">:</span> <span class="s1">&#39;P&#39;</span><span class="p">,</span> <span class="s1">&#39;GLN&#39;</span><span class="p">:</span> <span class="s1">&#39;Q&#39;</span><span class="p">,</span> <span class="s1">&#39;ARG&#39;</span><span class="p">:</span> <span class="s1">&#39;R&#39;</span><span class="p">,</span> <span class="s1">&#39;SER&#39;</span><span class="p">:</span> <span class="s1">&#39;S&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;THR&#39;</span><span class="p">:</span> <span class="s1">&#39;T&#39;</span><span class="p">,</span> <span class="s1">&#39;VAL&#39;</span><span class="p">:</span> <span class="s1">&#39;V&#39;</span><span class="p">,</span> <span class="s1">&#39;TRP&#39;</span><span class="p">:</span> <span class="s1">&#39;W&#39;</span><span class="p">,</span> <span class="s1">&#39;TYR&#39;</span><span class="p">:</span> <span class="s1">&#39;Y&#39;</span>
+<span class="p">}</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">hent_modellert_sekvens_og_kobling</span><span class="p">(</span><span class="n">pdb_fil</span><span class="p">,</span> <span class="n">kjede_id</span><span class="p">):</span>
+    <span class="n">parser</span> <span class="o">=</span> <span class="n">PDBParser</span><span class="p">(</span><span class="n">QUIET</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">struktur</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">get_structure</span><span class="p">(</span><span class="s2">&quot;protein&quot;</span><span class="p">,</span> <span class="n">pdb_fil</span><span class="p">)</span>
+    <span class="n">kjede</span> <span class="o">=</span> <span class="n">struktur</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">kjede_id</span><span class="p">]</span>
+
+    <span class="n">sekvens</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+    <span class="n">kobling</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1"># (FASTA_indeks, PDB_posisjon, aa)</span>
+
+    <span class="k">for</span> <span class="n">resid</span> <span class="ow">in</span> <span class="n">kjede</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">resid</span><span class="o">.</span><span class="n">id</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot; &quot;</span><span class="p">:</span>
+            <span class="n">atomer</span> <span class="o">=</span> <span class="p">[</span><span class="n">atom</span><span class="o">.</span><span class="n">get_id</span><span class="p">()</span> <span class="k">for</span> <span class="n">atom</span> <span class="ow">in</span> <span class="n">resid</span><span class="p">]</span>
+            <span class="k">if</span> <span class="nb">all</span><span class="p">(</span><span class="n">atom</span> <span class="ow">in</span> <span class="n">atomer</span> <span class="k">for</span> <span class="n">atom</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;N&quot;</span><span class="p">,</span> <span class="s2">&quot;CA&quot;</span><span class="p">,</span> <span class="s2">&quot;C&quot;</span><span class="p">)):</span>  <span class="c1"># modellerte residuer</span>
+                <span class="n">aa</span> <span class="o">=</span> <span class="n">trebokstav_til_enbokstav</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">resid</span><span class="o">.</span><span class="n">get_resname</span><span class="p">(),</span> <span class="s2">&quot;X&quot;</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">aa</span> <span class="o">!=</span> <span class="s2">&quot;X&quot;</span><span class="p">:</span>
+                    <span class="n">sekvens</span> <span class="o">+=</span> <span class="n">aa</span>
+                    <span class="n">posisjon</span> <span class="o">=</span> <span class="n">resid</span><span class="o">.</span><span class="n">id</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+                    <span class="n">kobling</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">sekvens</span><span class="p">),</span> <span class="n">posisjon</span><span class="p">,</span> <span class="n">aa</span><span class="p">))</span>  <span class="c1"># 1-basert indeks</span>
+
+    <span class="k">return</span> <span class="n">sekvens</span><span class="p">,</span> <span class="n">kobling</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">skriv_fasta</span><span class="p">(</span><span class="n">sekvens</span><span class="p">,</span> <span class="n">filnavn</span><span class="p">,</span> <span class="n">header</span><span class="p">):</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filnavn</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">header</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">sekvens</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Nå skal vi bruke funksjonene til å lage en ny sekvens med en mutasjon i neuraminidase-strukturen. Finn pdb-fila “2ht8.pdb” på RCSB PDB-nettstedet og last den ned. Vi velger igjen å bare se på alfa-kjeden (A) i proteinet. Muter aminosyren Arg292 til Lys292. Du får da en ny sekvens lagret i FASTA-format som du kan bruke i AlphaFold. Denne finner du i samme mappe som programmet/notebooken din.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pdb_fil</span> <span class="o">=</span> <span class="s2">&quot;2ht8.pdb&quot;</span>
+<span class="n">kjede_id</span> <span class="o">=</span> <span class="s2">&quot;A&quot;</span>
+<span class="n">sekvens</span><span class="p">,</span> <span class="n">kobling</span> <span class="o">=</span> <span class="n">hent_modellert_sekvens_og_kobling</span><span class="p">(</span><span class="n">pdb_fil</span><span class="p">,</span> <span class="n">kjede_id</span><span class="p">)</span>
+
+<span class="c1"># Finn hvilken FASTA-indeks som tilsvarer PDB-posisjon 292</span>
+<span class="k">for</span> <span class="n">fasta_indeks</span><span class="p">,</span> <span class="n">pdb_pos</span><span class="p">,</span> <span class="n">aa</span> <span class="ow">in</span> <span class="n">kobling</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">pdb_pos</span> <span class="o">==</span> <span class="mi">292</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;PDB-posisjon 292 finnes på FASTA-indeks </span><span class="si">{</span><span class="n">fasta_indeks</span><span class="si">}</span><span class="s2"> og er </span><span class="si">{</span><span class="n">aa</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Muter aminosyre ved riktig FASTA-indeks (f.eks. til K)</span>
+<span class="n">fasta_indeks_292</span> <span class="o">=</span> <span class="p">[</span><span class="n">f</span> <span class="k">for</span> <span class="n">f</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">kobling</span> <span class="k">if</span> <span class="n">p</span> <span class="o">==</span> <span class="mi">292</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span>
+<span class="n">mutert</span> <span class="o">=</span> <span class="n">sekvens</span><span class="p">[:</span><span class="n">fasta_indeks_292</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot;K&quot;</span> <span class="o">+</span> <span class="n">sekvens</span><span class="p">[</span><span class="n">fasta_indeks_292</span><span class="o">+</span><span class="mi">1</span><span class="p">:]</span>
+
+<span class="n">skriv_fasta</span><span class="p">(</span><span class="n">mutert</span><span class="p">,</span> <span class="s2">&quot;mutert.fasta&quot;</span><span class="p">,</span> <span class="s2">&quot;&gt;mutert_protein | R292K&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Bruk FASTA-fila til det muterte proteinet i AlphaFold og sammenlign med den opprinnelige strukturen ved å bruke Pymol på samme måte som beskrevet tidligere.</p>
+<ul class="simple">
+<li><p>Hvordan endrer den muterte strukturen seg i forhold til den opprinnelige?</p></li>
+<li><p>Hvorfor tror du at denne mutasjonen fører til redusert binding av legemiddelet?</p></li>
+<li><p>Hvordan kan dette påvirke virusets evne til å spre seg i kroppen?</p></li>
+<li><p>Hvordan kan dette påvirke utviklingen av antivirale legemidler?</p></li>
+</ul>
+</section>
+</section>
+<section id="oppgave-c-kroppens-naturlige-forsvar">
+<h2>Oppgave C: Kroppens naturlige forsvar<a class="headerlink" href="#oppgave-c-kroppens-naturlige-forsvar" title="Permalink to this heading">#</a></h2>
+<p>Kroppens immunforsvar produserer antistoffer som gjenkjenner bestemte strukturer, for eksempel hemagglutinin på overflaten av influensavirus. For å unngå å bli oppdaget og nøytralisert, kan viruset endre deler av overflateproteinet sitt slik at antistoffene binder seg dårligere.</p>
+<p>Antistoffet 2D1 (PDB ID: 3LZF) er i stand til å feste seg både til hemagglutininvarianten som fantes hos spanskesykeviruset i 1918, og til svineinfluensaviruset som sirkulerte i 2009. Nå skal vi undersøke hvordan en enkelt aminosyresubstitusjon kan påvirke denne bindingen. I følgende sekvens er aminosyren lysin (L, Lys) i posisjon 166 erstattet med glutamat (E, Glu), markert med asterisk i sekvensen nedenfor:</p>
+<div class="highlight-{code-block}raw notranslate"><div class="highlight"><pre><span></span>ADPGDTICIGYHANNSTDTVDTVLEKNVTVTHSVNLLEDSHNGKLCKLKGIAPLQLGKCNIAGWLLGNPECDLLLTASSWSYIVETSNSENGTCYPGDFIDYEELREQLSSVSSFEKFEIFPKTSSWPNHETTKGVTAACSYAGASSFYRNLLWLTKKGSSYPKLS*E*SYVNNKGKEVLVLWGVHHPPTGTDQQSLYQNADAYVSVGSSKYNRRFTPEIAARPKVRDQAGRMNYYWTLLEPGDTITFEATGNLIAPWYAFALNRGSGSGIITSDAPVHDCNTKCQTPHGAINSSLPFQNIHPVTIGECPKYVRSTKLRMATGLRNIPSIQSR
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Formuler en hypotese om hvordan denne mutasjonen kan påvirke bindingen av antistoffet til hemagglutinin.</p></li>
+<li><p>Gjør nødvendige analyser for å forutsi hvordan denne mutasjonen påvirker bindingen av antistoffet til hemagglutinin. Bruk det du har lært tidligere i laboppgaven.</p></li>
+<li><p>Vurder hvordan denne mutasjonen kan påvirke virusets evne til å unngå immunresponsen ut fra de resultatene du får.</p></li>
+</ul>
+</section>
+<section id="oppgave-d-ukjente-proteiner">
+<h2>Oppgave D: Ukjente proteiner<a class="headerlink" href="#oppgave-d-ukjente-proteiner" title="Permalink to this heading">#</a></h2>
+<p>Når vi lager nye proteiner eller undersøker et protein vi ikke kjenner fra før, kan vi ikke beregne RMSD eller tilsvarende for å validere modellen vi får fra AlphaFold. I stedet bruker vi ofte såkalte “tillitsområder” (confidence regions) for å vurdere hvor sikre vi er på at modellen er korrekt. Dette er områder i proteinet der AlphaFold har høy tillit til at strukturen er riktig, og områder der den har lav tillit.</p>
+<p>En vanlig måte å validere usikkerhet på, er å bruke pLDDT (Predicted Local Distance Difference Test). AlphaFold gir oss en pLDDT-score for hver aminosyre – et mål på hvor sikker modellen er på plasseringen av denne residuen. pLDDT  er en verdi mellom 0 og 100:</p>
+<ul class="simple">
+<li><p>Over 90: Høy konfidens – strukturen er sannsynligvis korrekt.</p></li>
+<li><p>70–90: God konfidens – brukbar modell.</p></li>
+<li><p>50–70: Lav konfidens – modellen er usikker.</p></li>
+<li><p>Under 50: Svært lav konfidens – regionen kan være ustrukturert.</p></li>
+</ul>
+<p>pLDDT er altså et mål AlphaFold bruker for å uttrykke hvor sikker modellen er på plasseringen av hver enkelt aminosyre i den tredimensjonale strukturen. Modellen estimerer pLDDT ved at den lærer statistisk hvilke typer aminosyrer, posisjoner, kontaktmønstre og evolusjonære homologer som gir stabil struktur. Den bruker disse mønstrene til å forutsi hvor mye avstandene mellom residuer sannsynligvis vil variere, hvis man hadde hatt mange eksperimentelle eller predikerte strukturer. Jo mindre forventet variasjon, desto høyere pLDDT. pLDDT er altså et mål på <strong>geometrisk troverdighet</strong> i modellen. Det er viktig å merke seg at pLDDT-verdier gir en indikasjon på  modellens nøyaktighet, men er ikke et mål på om modellen er <em>riktig</em>.</p>
+<p>Ta utgangspunkt i følgende aminsoyresekvens og last opp til AlphaFold:</p>
+<div class="highlight-{code-block}raw notranslate"><div class="highlight"><pre><span></span>ADPGDTICHANNYVLNDGGPTDTVDTVLEKNVTVTHSVNLLEDSHNGKLCKLKGIAPLQLGKCNIAGWLLGNPECDLLLTASSWSYIVETSNSENGTCYPGDFIDYEELREQLSSVSSFEKFEIFPKTSSWPNHETTKGVTAACSYAGASSFYRNLLWLTKKGSSYPKLSESYVNNKGKEVLVLWGVHHPPTGTDQQSLYQNADAYVSVGSSKAIEPPGDTIWYRRNGSIITLLEPGDTITFEATGNLIAPWYAFALNRGSGSGIITSDAPVHDCNTKCQTPHGAINSSLPFQNIHPVTIGECPKYVRSTKLRMATGLRNIPSIQSR
+</pre></div>
+</div>
+<p>AlphaFold har innebygde metoder for å estimere og visualisere usikkerhet i prediksjonen, men vi skal bruke PyMOL til å gjøre dette. Last ned CIF-filen med prediksjonen og åpne den i PyMOL. Du kan bruke følgende kommandoer for å laste opp CIF-filen du får fra AlphaFold:</p>
+<div class="highlight-{code-block}pymol notranslate"><div class="highlight"><pre><span></span>load alphafold_model.cif 
+</pre></div>
+</div>
+<p>For å visualisere pLDDT-verdiene, kan du bruke følgende kommandoer i PyMOL:</p>
+<div class="highlight-{code-block}pymol notranslate"><div class="highlight"><pre><span></span>spectrum b, blue_white_red, minimum=0, maximum=100
+show cartoon
+bg_color white
+set ray_opaque_background, off
+</pre></div>
+</div>
+<p>Nå kan du se hvordan pLDDT-verdiene er fordelt i strukturen. Du kan også bruke følgende kommandoer for å lage to utvalg av områder med høy og lav tillit:</p>
+<div class="highlight-{code-block}pymol notranslate"><div class="highlight"><pre><span></span>select lav_tillit, b &lt; 50
+select hoy_tillit, b &gt; 90
+</pre></div>
+</div>
+<p>Bruk gjerne ulike representasjoner for å visualisere de ulike områdene. Du kan for eksempel bruke staver for lavtillitsområder og tegne dem i rødt, mens du kan bruke en mer detaljert representasjon (f.eks. “cartoon”) for høy tillit og tegne dem i blått:</p>
+<div class="highlight-{code-block}pymol notranslate"><div class="highlight"><pre><span></span>show sticks, lav_tillit
+color red, lav_tillit
+
+show cartoon, hoy_tillit
+color blue, hoy_tillit
+</pre></div>
+</div>
+<p>Vi kan også visualisere hele proteinet med en overflate for å se hvordan det ser ut i sin helhet. Dette kan gjøres med følgende kommandoer:</p>
+<div class="highlight-{code-block}pymol notranslate"><div class="highlight"><pre><span></span>show surface
+set transparency, 0.5
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Hvorfor kan vi ikke bruke RMSD for å validere modeller vi ikke kjenner strukturen til fra før?</p></li>
+<li><p>Hva er pLDDT, og hvordan kan det brukes til å vurdere kvaliteten på en proteinmodell?</p></li>
+<li><p>Hvor i proteinet finner du lavtillitsområder? Hvordan passer dette med det du vet om fleksibilitet og struktur i proteiner?</p></li>
+<li><p>På hvilke områder av proteinet er det viktigst å ha høy tillit?</p></li>
+</ul>
+</section>
+</section>
+<section id="oppsummering">
+<h1>Oppsummering<a class="headerlink" href="#oppsummering" title="Permalink to this heading">#</a></h1>
+<ul class="simple">
+<li><p>Hva er de viktigste faktorene som påvirker proteinfolding?</p></li>
+<li><p>Hvilke utfordringer har vi når vi skal simuleringe proteinfolding?</p></li>
+<li><p>Hvordan kan kunstig intelligens brukes til å forutsi proteinstrukturer?</p></li>
+<li><p>Hvordan kan vi bruke simuleringer til legemiddelutvikling?</p></li>
+</ul>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./docs/biokjemi"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="enzymkinetikklab2025.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Analyse av enzymkinetikkdata</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Del 1: Monte-Carlo-simuleringer</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#del-2-proteinfolding-med-kunstig-intelligens">Del 2: Proteinfolding med kunstig intelligens</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-a-influensavirus-og-legemiddelutvikling">Oppgave A: Influensavirus og legemiddelutvikling</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-b-influensamedisin">Oppgave B: Influensamedisin</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mutasjoner">Mutasjoner</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-c-kroppens-naturlige-forsvar">Oppgave C: Kroppens naturlige forsvar</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgave-d-ukjente-proteiner">Oppgave D: Ukjente proteiner</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#oppsummering">Oppsummering</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Andreas Haraldsrud
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

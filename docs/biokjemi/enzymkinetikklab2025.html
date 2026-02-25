@@ -1,0 +1,900 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Analyse av enzymkinetikkdata &#8212; Programmering i kjemi</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/biokjemi/enzymkinetikklab2025';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Del 1: Monte-Carlo-simuleringer" href="proteinfolding.html" />
+    <link rel="prev" title="Regresjonsmodeller" href="regresjonsmodeller.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/qe-logo-large.png" class="logo__image only-light" alt="Programmering i kjemi - Home"/>
+    <script>document.write(`<img src="../../_static/qe-logo-large.png" class="logo__image only-dark" alt="Programmering i kjemi - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tema 1 - Grunnleggende programmering</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../grunnleggende_programmering/kom_i_gang.html">En første kodesnutt</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../grunnleggende_programmering/tall_variabler.html">Variabler og datatyper</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../grunnleggende_programmering/quiz1.html">Quiz 1: Variabler og aritmetikk</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../grunnleggende_programmering/lister.html">Lister</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../grunnleggende_programmering/quiz2.html">Quiz 2: Lister</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../grunnleggende_programmering/if-tester.html">Vilkår (if-tester)</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../grunnleggende_programmering/quiz3.html">Quiz 3: Vilkår (if-tester)</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../grunnleggende_programmering/lokker.html">Løkker</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../grunnleggende_programmering/quiz4.html">Quiz 4: Løkker</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../grunnleggende_programmering/funksjoner.html">Funksjoner</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../grunnleggende_programmering/quiz5.html">Quiz 5: Funksjoner</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../grunnleggende_programmering/datasamlinger.html">Datasamlinger</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../grunnleggende_programmering/quiz6.html">Quiz 6: Datasamlinger (arrayer og dictionarier)</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tema 2 - Datahåndtering og visualisering</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../datahandtering_visualisering/kjemiske_biblioteker.html">Kjemiske biblioteker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../datahandtering_visualisering/molekylvisualisering.html">Molekylvisualisering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../datahandtering_visualisering/plotting.html">Datahåndtering I: Visualisering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../datahandtering_visualisering/lese_filer.html">Datahåndering II: Håndtere og visualisere data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../datahandtering_visualisering/statistikk.html">Datahåndering III: Statistikk</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../datahandtering_visualisering/maskinlaring.html">Datahåndtering IV: Maskinlæring</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tema 3 - Numeriske metoder</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../nullpunkter_likninger/likninger.html">Likninger og nullpunkter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../derivasjon_integrasjon/derivasjon.html">Numerisk derivasjon</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../derivasjon_integrasjon/integrasjon.html">Numerisk integrasjon</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tema 4 - Dynamiske systemer</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../modellering/diskret_modellering.html">Differenslikninger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modellering/differensiallikninger.html">Differensiallikninger og fartslover</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Emneressurser (IN-KJM1900)</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../forelesninger/forelesninger.html">Forelesninger</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../forelesninger/forelesning1.html">Forelesning 1: Programmering i kjemi</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../forelesninger/forelesning2.html">Forelesning 2: Plotting og datahåndtering</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../forelesninger/forelesning3.html">Forelesning 3: Statistisk analyse</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../forelesninger/forelesning4.html">Forelesning 4: Statistikk II</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../forelesninger/forelesning5.html">Forelesning 5: Numerisk derivasjon og likninger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../forelesninger/forelesning6.html">Forelesning 6: Numerisk integrasjon</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../forelesninger/forelesning7.html">Forelesning 7: Numerisk løsing av likninger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../forelesninger/forelesning8.html">Forelesning 8: Differensiallikninger og reaksjonskinetikk</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../forelesninger/forelesning9.html">Forelesning 9: Reaksjonskinetikk II</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../forelesninger/forelesning10.html">Forelesning 10: Molekylmekanikk</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../forelesninger/workshops.html">Eksamensverksted</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../forelesninger/workshop1.html">Workshop 1: Datahåndtering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../forelesninger/workshop2.html">Workshop 2: Numeriske metoder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../forelesninger/workshop3.html">Workshop 3: Dynamiske systemer</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../obliger/obliger.html">Obligatoriske oppgaver</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../obliger/oblig_datahandtering.html">Oblig 1: Håndtering av kjemiske data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../obliger/oblig_dynamiske_systemer.html">Oblig 2: Dynamiske systemer og integrasjon</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../datafiler.html">Datafiler</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Biokjemi (KJM1140)</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="molekylvisualisering.html">Molekylvisualisering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="datavisualisering.html">Datavisualisering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="regresjonsmodeller.html">Regresjonsmodeller</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Analyse av enzymkinetikkdata</a></li>
+<li class="toctree-l1"><a class="reference internal" href="proteinfolding.html">Del 1: Monte-Carlo-simuleringer</a></li>
+
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/docs/biokjemi/enzymkinetikklab2025.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Analyse av enzymkinetikkdata</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#steg-1-finne-initialhastighetene">Steg 1: Finne initialhastighetene</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#importere-data">Importere data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lineaertilpasning-av-dataene">Lineærtilpasning av dataene</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#handtering-av-flere-datafiler">Håndtering av flere datafiler</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#steg-2-finne-vmaks-og-km">Steg 2: Finne vmaks og Km</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#michaelis-menten-modellen">Michaelis-Menten-modellen</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#enzymhemming">Enzymhemming</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ph-optimum">pH-optimum</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rapport">Rapport</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="analyse-av-enzymkinetikkdata">
+<h1>Analyse av enzymkinetikkdata<a class="headerlink" href="#analyse-av-enzymkinetikkdata" title="Permalink to this heading">#</a></h1>
+<p>I forrige laboratorieoppgave gjorde dere kinetikkmålinger på enzymet alkalisk fosfatase, som er vist nedenfor.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">py3Dmol</span>
+
+<span class="n">d</span> <span class="o">=</span> <span class="n">py3Dmol</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">query</span><span class="o">=</span><span class="s2">&quot;pdb:1ANJ&quot;</span><span class="p">)</span>
+<span class="n">d</span><span class="o">.</span><span class="n">setStyle</span><span class="p">({</span><span class="s2">&quot;cartoon&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;color&quot;</span><span class="p">:</span> <span class="s2">&quot;spectrum&quot;</span><span class="p">}})</span>
+<span class="n">d</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output text_html"><div id="3dmolviewer_1709298774445472"  style="position: relative; width: 640px; height: 480px">
+        <p id="3dmolwarning_1709298774445472" style="background-color:#ffcccc;color:black">You appear to be running in JupyterLab (or JavaScript failed to load for some other reason).  You need to install the 3dmol extension: <br>
+        <tt>jupyter labextension install jupyterlab_3dmol</tt></p>
+        </div>
+<script>
+
+var loadScriptAsync = function(uri){
+  return new Promise((resolve, reject) => {
+    //this is to ignore the existence of requirejs amd
+    var savedexports, savedmodule;
+    if (typeof exports !== 'undefined') savedexports = exports;
+    else exports = {}
+    if (typeof module !== 'undefined') savedmodule = module;
+    else module = {}
+
+    var tag = document.createElement('script');
+    tag.src = uri;
+    tag.async = true;
+    tag.onload = () => {
+        exports = savedexports;
+        module = savedmodule;
+        resolve();
+    };
+  var firstScriptTag = document.getElementsByTagName('script')[0];
+  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+});
+};
+
+if(typeof $3Dmolpromise === 'undefined') {
+$3Dmolpromise = null;
+  $3Dmolpromise = loadScriptAsync('https://cdnjs.cloudflare.com/ajax/libs/3Dmol/2.0.1/3Dmol-min.js');
+}
+
+var viewer_1709298774445472 = null;
+var warn = document.getElementById("3dmolwarning_1709298774445472");
+if(warn) {
+    warn.parentNode.removeChild(warn);
+}
+$3Dmolpromise.then(function() {
+viewer_1709298774445472 = $3Dmol.createViewer(document.getElementById("3dmolviewer_1709298774445472"),{backgroundColor:"white"});
+$3Dmol.download("pdb:1ANJ", viewer_1709298774445472, {}, function() {
+viewer_1709298774445472.zoomTo();
+	viewer_1709298774445472.setStyle({"cartoon": {"color": "spectrum"}});
+viewer_1709298774445472.render();
+})
+});
+</script></div></div>
+</div>
+<p>Du skal nå lære hvordan du kan visualisere og analysere enzymkinetikkdata med Python. Du kan bruke en valgfri editor til å lage programmene som gjør analysen av data fra enzymkinetikklaben, for eksempel Jupyter Notebook. Figurene og resultatene skal brukes i labrapporten. Hvis du står fast, kan du spørre generativ kunstig intelligens (<a class="reference external" href="http://gpt.uio.no">gpt.uio.no</a>) om hjelp. Da kan det være lurt å spesifisere hvilken del av koden du trenger hjelp til ved å lime inn koden og formatet på datafilene dine. Hvis dette heller ikke hjelper, kan du spørre labansvarlige om hjelp (veiledningstime uka etter laben).</p>
+<p>NB: For alle oppgaven nedenfor anbefaler vi at dere enten prøver helt selv først (hvis du er komfortabel med programmering), eller at du prøver å generere koden med KI, og leser og evaluerer denne. Deretter kan du eventuelt se på løsningsforslaget. All kode skal legges som vedlegg til rapporten.</p>
+<section id="steg-1-finne-initialhastighetene">
+<h2>Steg 1: Finne initialhastighetene<a class="headerlink" href="#steg-1-finne-initialhastighetene" title="Permalink to this heading">#</a></h2>
+<p>Før vi kan begynne å analysere en Michaelis-Menten-modell for dataene våre, må vi finne initialhastigheten til reaksjonen som en funksjon av substratkonsentrasjonen fra dataene våre av absorbansøkning over tid.</p>
+<section id="importere-data">
+<h3>Importere data<a class="headerlink" href="#importere-data" title="Permalink to this heading">#</a></h3>
+<p>Du har lagret data fra enzymkinetikklaben som separate csv-filer. Fila inneholder to kolonner: tid og absorbans. Vi skal bruke disse dataene til å finne initialhastigheten til reaksjonen som en funksjon av substratkonsentrasjonen.</p>
+<p>La oss se på hvordan vi kan lese av fila. Det finnes mange måter å importere filer på i Python. Du kan velge den metoden du er mest komfortabel med. Det enkleste metoden er å bruke <em>read_csv</em> fra pandas-biblioteket:</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;Absorbans_tid.csv&quot;</span><span class="p">)</span> <span class="c1"># Leser fila</span>
+
+<span class="n">tid</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;tid&quot;</span><span class="p">]</span>
+<span class="n">absorbans</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;absorbans&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Fila du skal lese av, må ligge i samme mappe som programmet som skal analysere og lese fila. Eventuelt kan vi angi filbanen, f.eks. “datafiler/Absorbans_tid.csv”. Vi kan også lese direkte fra internett. Da erstatter du filnavnet med en lenke.</p>
+<p>Du skal lese fem filer, en for hver substratkonsentrasjon. Du kan bruke en løkke for å lese alle filene.</p>
+<div class="tip admonition">
+<p class="admonition-title">Oppgave</p>
+<p>Lag et program som leser alle filene og lagrer dataene i lister. Du kan ta utgangspunkt i programmet nedenfor. Prøv selv før du kikker på løsningsforslaget!</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="c1"># Liste over filnavn</span>
+<span class="n">data_files</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;data</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">.csv&quot;</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">)]</span> <span class="c1"># Denne lista kan også lages manuelt ([&quot;data1.csv&quot;, &quot;data2.csv&quot;, ...])</span>
+
+<span class="c1"># Les og plott data fra alle filer med en løkke som går over alle filnavnene</span>
+<span class="c1"># Fyll inn koden her</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Tid (min)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Absorbans&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Løsningsforslag</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="c1"># Liste over filnavn</span>
+<span class="n">data_files</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;data</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">.csv&quot;</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">)]</span> <span class="c1"># Denne lista kan også lages manuelt ([&quot;data1.csv&quot;, &quot;data2.csv&quot;, ...])</span>
+
+<span class="c1"># Les og plott data fra alle filer</span>
+<span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">data_files</span><span class="p">:</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s2">&quot;;&quot;</span><span class="p">)</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;tid_min&quot;</span><span class="p">]</span>
+    <span class="n">A</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;abs&quot;</span><span class="p">]</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">file</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Tid (min)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Absorbans&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Absorbansmålinger uten hemmer&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="lineaertilpasning-av-dataene">
+<h3>Lineærtilpasning av dataene<a class="headerlink" href="#lineaertilpasning-av-dataene" title="Permalink to this heading">#</a></h3>
+<p>Lineær regresjon betyr å finne et polynom av første grad (en førstegradsfunksjon) som gir minst mulig gjennomsnittlig varians til et sett med datapunkter. Metodene vi skal bruke, benytter minste kvadraters metode for å estimere en slik funksjon. En funksjon som er ganske enkel å bruke til dette, er <em>polyfit</em> fra numpy-biblioteket. Du kjenner kanskje til og med denne funksjonen fra før (f.eks. fra IN-KJM1900). Denne funksjonen utfører polynomregresjon med en vilkårlig grad av polynomet.</p>
+<p>Det polyfit-funksjonen derimot ikke kan estimere direkte, er andre typer regresjonsmodeller enn lineære, slik som eksponentialfunksjoner, logaritmefunksjoner eller logistiske funksjoner. Vi skal gjøre en logistisk regresjon seinere, og derfor benytter vi heller en annen funksjon som heter <em>curve_fit</em> fra scipy-biblioteket også når vi skal gjøre lineær regresjon i denne laben. Denne funksjonen returnerer både koeffisientene i regresjonslinja og et mål på hvor godt modellen passer dataene (såkalt kovarians). Det er koeffisientene <em>a</em> og <em>b</em> i uttrykket <span class="math notranslate nohighlight">\(f(x) = ax + b\)</span> som estimeres når vi gjør en linær regresjon.</p>
+<p>I <em>curve_fit</em> må vi definere en funksjonsmodell på formen <span class="math notranslate nohighlight">\(f(x, a, b, c, ...)\)</span> som brukes som utgangspunkt for regresjonen. Her skal vi definere en funksjon <span class="math notranslate nohighlight">\(f(x, a, b) = ax + b\)</span>.</p>
+<p>Nå skal du gjøre en oppgavene/nivåene nedenfor. Velg kun én av nivåene. Dersom du mener du behersker enkel plotting og regresjon med curve_fit, velger du nivå 1. Dersom du er usikker på hvordan dette gjøres, kan du velge nivå 2. Prøv gjerne på nivå 1 før du prøver på nivå 2 - da lærer du enda mer! Du kan laste ned filene fra Canvas og bruke dem i en valgfri editor, som Jupyter Notebook eller Spyder.</p>
+<div class="tip admonition">
+<p class="admonition-title">Oppgave</p>
+<ol class="arabic simple">
+<li><p>Se på programmmet nedenfor og forklar hva det gjør, trinn for trinn.</p></li>
+<li><p>Hva beskriver variabelen <em>koeff</em>?</p></li>
+<li><p>Forklar hvordan vi kan plotte originaldataene sammen med regresjonslinja?</p></li>
+</ol>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">scipy.optimize</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">opt</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;Absorbans_tid.csv&quot;</span><span class="p">)</span>
+
+<span class="n">tid</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;tid&quot;</span><span class="p">]</span>
+<span class="n">absorbans</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;absorbans&quot;</span><span class="p">]</span>
+
+<span class="c1"># Definerer formen på modellen vi ønsker</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">modell</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">a</span><span class="o">*</span><span class="n">x</span> <span class="o">+</span> <span class="n">b</span>
+
+<span class="n">koeff</span><span class="p">,</span> <span class="n">covar</span> <span class="o">=</span> <span class="n">opt</span><span class="o">.</span><span class="n">curve_fit</span><span class="p">(</span><span class="n">modell</span><span class="p">,</span> <span class="n">tid</span><span class="p">,</span> <span class="n">absorbans</span><span class="p">)</span>
+<span class="c1"># Finner a og b her</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">koeff</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">koeff</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="c1"># Beregner funksjonsverdier til den lineære tilpasningen</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">35</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span> <span class="c1"># Nye x-verdier å plotte med</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">a</span><span class="o">*</span><span class="n">x</span> <span class="o">+</span> <span class="n">b</span>               <span class="c1"># Regresjonsmodellens y-verdier</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="handtering-av-flere-datafiler">
+<h3>Håndtering av flere datafiler<a class="headerlink" href="#handtering-av-flere-datafiler" title="Permalink to this heading">#</a></h3>
+<p>Vi skal nå kombinere de to stegene ovenfor for å analysere alle dataene våre. Vi skal gjøre en lineær regresjon for hver fil og plotte regresjonslinjene sammen med originaldataene.</p>
+<div class="tip admonition">
+<p class="admonition-title">Oppgave</p>
+<p>Prøv å kombinere løkka som leser alle dataene med regresjonen av dataene. Du kan ta utgangspunkt i programmene ovenfor. Prøv selv før du kikker på løsningsforslaget!</p>
+</div>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Løsningsforslag</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">scipy.optimize</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">opt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="c1"># Liste over filnavn</span>
+<span class="n">data_files</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;data</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">.csv&quot;</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">)]</span> <span class="c1"># Denne lista kan også lages manuelt ([&quot;data1.csv&quot;, &quot;data2.csv&quot;, ...])</span>
+<span class="n">S</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.257</span><span class="p">,</span> <span class="mf">0.0634</span><span class="p">,</span> <span class="mf">0.0343</span><span class="p">,</span> <span class="mf">0.0171</span><span class="p">,</span> <span class="mf">0.0114</span><span class="p">]</span> <span class="c1"># Konsentrasjoner (mg/mL). </span>
+<span class="c1"># Definerer formen på modellen vi ønsker</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">modell</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">a</span><span class="o">*</span><span class="n">x</span> <span class="o">+</span> <span class="n">b</span>
+
+<span class="n">V0</span> <span class="o">=</span> <span class="p">[]</span> <span class="c1"># Initialhastigheter</span>
+
+<span class="c1"># Les og plott data fra alle filer</span>
+<span class="k">for</span> <span class="n">file</span><span class="p">,</span> <span class="n">kons</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">data_files</span><span class="p">,</span> <span class="n">konsentrasjoner</span><span class="p">):</span> <span class="c1"># kan også bruke for fole in data_files: dersom du ikke har med navnelapper på konsentrasjonene</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s2">&quot;;&quot;</span><span class="p">)</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;tid_min&quot;</span><span class="p">]</span>
+    <span class="n">A</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;abs&quot;</span><span class="p">]</span>
+
+    <span class="n">koeff</span><span class="p">,</span> <span class="n">covar</span> <span class="o">=</span> <span class="n">opt</span><span class="o">.</span><span class="n">curve_fit</span><span class="p">(</span><span class="n">modell</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">A</span><span class="p">)</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="n">koeff</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="n">koeff</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    
+    <span class="c1"># Beregner funksjonsverdier til den lineære tilpasningen</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">15</span><span class="p">)</span> <span class="c1"># Nye x-verdier å plotte med</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">a</span><span class="o">*</span><span class="n">x</span> <span class="o">+</span> <span class="n">b</span>               <span class="c1"># Regresjonsmodellens y-verdier</span>
+
+    <span class="n">v0</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="c1"># Legger til initialhastigheten i lista</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">kons</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot; mg/mL&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;y = </span><span class="si">{</span><span class="n">a</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">x + </span><span class="si">{</span><span class="n">b</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Tid (min)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Absorbans&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Absorbansmålinger av alkalisk fosfatase med PNPP&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Oppgave</p>
+<p>Lagre grafen som et høyoppløselig bilde, og lagre dataene dine  i en ny csv-fil. Dette kan du gjøre ved å legge til følgende kode nederst i programmet ditt (men før plt.show()):</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;initialhastigheter.tiff&quot;</span><span class="p">)</span> <span class="c1"># kan også angi oppløsning med f.eks. dpi=500 (500 piksler per tomme)</span>
+
+<span class="c1"># Lagrer dataene i en dataframe og skriver dem til en csv-fil</span>
+<span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;Hastighet&quot;</span><span class="p">:</span> <span class="n">V0</span><span class="p">,</span> <span class="s2">&quot;Substratkonsentrasjon&quot;</span><span class="p">:</span> <span class="n">S</span><span class="p">}</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;Reaksjonshastigheter.csv&quot;</span><span class="p">,</span> <span class="n">index</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</section>
+</section>
+<section id="steg-2-finne-vmaks-og-km">
+<h2>Steg 2: Finne vmaks og Km<a class="headerlink" href="#steg-2-finne-vmaks-og-km" title="Permalink to this heading">#</a></h2>
+<section id="michaelis-menten-modellen">
+<h3>Michaelis-Menten-modellen<a class="headerlink" href="#michaelis-menten-modellen" title="Permalink to this heading">#</a></h3>
+<p>Vi skal nå plotte og analysere resultatene fra første analyse. Vi skal altså lage et Michaelis-Menten-plott og tilpasse Michaelis-Menten-likningen til verdiene vi fant for initialhastighetene. Vi har lagret substratkonsentrasjonene og de tilhørende initialhastighetene i en .csv-fil (reaksjonshastigheter.csv), og vi skal bruke denne fila videre.</p>
+<div class="tip admonition">
+<p class="admonition-title">Oppgave</p>
+<ol class="arabic simple">
+<li><p>Les av fila som du lagde i forrige program, og skriv ut initialhastighetene og tilhørende substratkonsentrasjoner for å se at du har lest inn fila korrekt.</p></li>
+<li><p>Plott dataene (gjerne med scatter, slik at du får punkter istedenfor linjer) slik at du får et Michaelis-Menten-plott (husk hvilken form grafen skal ha!). Husk aksetitler med korrekte enheter.</p></li>
+</ol>
+</div>
+<p>Nå skal vi lage en modellkurve som er basert på Michaelis-Menten-likningen. Denne kan vi definere som en Python-funksjon, slik (på samme måte som du definerte den lineære funksjonen i del 1):</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">michaelis_menten</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">Vmax</span><span class="p">,</span> <span class="n">Km</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">Vmax</span><span class="o">*</span><span class="n">x</span><span class="o">/</span><span class="p">(</span><span class="n">Km</span> <span class="o">+</span> <span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Oppgave</p>
+<ol class="arabic simple">
+<li><p>Bruk funksjonen ovenfor og gjør en regresjon av initialhastighetene med <em>curve_fit</em> på samme måte som med den lineære funksjonen (men nå skal du bruke michaelis-menten-funksjonen som regresjonsmodell isteden).</p></li>
+<li><p>Plott regresjonskurven i samme koordinatsystem som dataene dine.</p></li>
+<li><p>Modifiser programmet slik at Km får enheten mol/L (M) og Vmax får enheten mol/L/min (M/min) (dette er ikke gjort i løsningsforslaget, så det må du gjøre selv). Ekstinksjonskoeffisienten, ε, til produktet er 18 000 M/cm. Lysveien, l (lengden av kyvetten), er 1 cm.</p></li>
+</ol>
+</div>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Løsningsforslag</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;reaksjonshastigheter.csv&quot;</span><span class="p">)</span>
+
+<span class="n">S</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;Substratkonsentrasjon&quot;</span><span class="p">]</span>
+<span class="n">V0</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;Initialhastighet&quot;</span><span class="p">]</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">michaelis_menten</span><span class="p">(</span><span class="n">S</span><span class="p">,</span> <span class="n">Vmax</span><span class="p">,</span> <span class="n">Km</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">Vmax</span><span class="o">*</span><span class="n">S</span><span class="o">/</span><span class="p">(</span><span class="n">Km</span> <span class="o">+</span> <span class="n">S</span><span class="p">)</span>
+
+<span class="n">koeff</span><span class="p">,</span> <span class="n">covar</span> <span class="o">=</span> <span class="n">opt</span><span class="o">.</span><span class="n">curve_fit</span><span class="p">(</span><span class="n">michaelis_menten</span><span class="p">,</span> <span class="n">S</span><span class="p">,</span> <span class="n">V0</span><span class="p">)</span>
+<span class="n">Vmax</span> <span class="o">=</span> <span class="n">koeff</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">Km</span> <span class="o">=</span> <span class="n">koeff</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="c1"># Beregner funksjonsverdier til Michaelis-Menten-tilpasningen</span>
+<span class="n">S</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mf">0.3</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span> <span class="c1"># Nye x-verdier å plotte med</span>
+<span class="n">V</span> <span class="o">=</span> <span class="n">michaelis_menten</span><span class="p">(</span><span class="n">S</span><span class="p">,</span> <span class="n">Vmax</span><span class="p">,</span> <span class="n">Km</span><span class="p">)</span> <span class="c1"># Regresjonsmodellens y-verdier</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">S</span><span class="p">,</span> <span class="n">V0</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Data&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">S</span><span class="p">,</span> <span class="n">V</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Michaelis-Menten: Vmax = </span><span class="si">{</span><span class="n">Vmax</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">, Km = </span><span class="si">{</span><span class="n">Km</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Substratkonsentrasjon (mg/mL)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Initialhastighet (mg/mL/min)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Michaelis-Menten-plot&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="enzymhemming">
+<h3>Enzymhemming<a class="headerlink" href="#enzymhemming" title="Permalink to this heading">#</a></h3>
+<p>For å avgjøre om en hemmer er ikke-konkurrerende eller konkurrerende, kan vi plotte en modell for initalhastigheter med og uten hemmer i samme koordinatsystem. Du kan bruke samme framgangsmåte som i del 1, der du lagde en løkke som gikk igjennom flere filer med data, analyserte og plottet dataene. Vi skal bruke et Lineweaver-Burk-plott for å sammenlikne resultatene for et enzym med og uten hemmer.</p>
+<div class="tip admonition">
+<p class="admonition-title">Oppgave</p>
+<p>Bruk generativ kunstig intelligens, som <a class="reference external" href="http://gpt.uio.no">gpt.uio.no</a> til å lage et program som genererer et Lineweaver-Burk-plott av dataene dine med og uten hemmer. Husk å spesifisere følgende for KI-en:</p>
+<ul class="simple">
+<li><p>Hva skal plottet vise?</p></li>
+<li><p>Hvilket format er dataene dine i? Gi gjerne et utsnitt av datafilene som skal leses.</p></li>
+<li><p>Hvordan ønsker du at programmet skal se ut? Skal det bruke funksjoner eller ikke? Ønsker du at det bruker Pandas? Polyfit for lineær regresjon, kanskje? Prøv å få programmet til å bruke programmeringsstrukturer du er kjent med og som du klarer å forstå.</p></li>
+</ul>
+<p>Husk å evaluere det du får, og gå tilbake til KI-en og be den endre programmet dersom det ikke gir det plottet du ønsker.</p>
+</div>
+</section>
+<section id="ph-optimum">
+<h3>pH-optimum<a class="headerlink" href="#ph-optimum" title="Permalink to this heading">#</a></h3>
+<p>I dette forsøket har du målt absorbansen kun ved start og slutt. Det betyr at du her ikke skal gjøre en kurvetilpassing for å beregne hastigheten, men istedenfor bruke differansen i absorbans og dividere med tiden. Husk å korrigere de siste avlesningsverdiene for fortynningen med Tris (hint: fortynningsfaktor).</p>
+<div class="tip admonition">
+<p class="admonition-title">Oppgave</p>
+<p>Lag et program som plotter en grafisk fremstilling av reaksjonshastigheten som funksjon av pH. Du kan gjøre alle beregninger i programmet. Et hint er å lagre alle dataene dine i arrayer. Dette gjør det enkelt å behandle dataene matematisk, for eksempel for å ta hensyn til fortynningen med Tris.</p>
+</div>
+</section>
+</section>
+<section id="rapport">
+<h2>Rapport<a class="headerlink" href="#rapport" title="Permalink to this heading">#</a></h2>
+<div class="tip admonition">
+<p class="admonition-title">Rapport</p>
+<p>Lagre alle figurer du trenger med <em>savefig</em>-kommandoen og print ut eller lagre alle koeffisientene du har funnet. Bruk gjerne en tabell for å presentere resultatene. Skriv labrapporten din basert på resultatene du har funnet. Du kan bruke malen for labrapporten som ligger på Canvas. Husk å sette riktige enheter på alle verdier og grafer! Her er en veiledning for skriving av rapporten:</p>
+<ul class="simple">
+<li><p>Forsøk 1: Fremstill initialhastigheten for de forskjellige prøvene uttrykt som absorbansøkning pr. min (= hastigheten) ved å plotte absorbansen som funksjon av tiden. Pass på at punktene du skal bruke for kurvetilpassing, fremdeles er i det lineære området. Gjør en lineærtilpasning for å finne initialhastighetene. Lag en figur som presenterer de eksperimentelle dataene og de tilhørende tilpasningene. Lag deretter en visualisering av initialhastigheten som funksjon av substratkonsentrasjonen, som kan angis som mg PNPP (dinatriumsaltet) i 3,5 ml inkubasjonsblanding (mg/3,5 mL). Dette er Michaelis-Menten-plottet. Gjør en kurvetilpasning i Python for å finne <span class="math notranslate nohighlight">\(v_{maks}\)</span> og <span class="math notranslate nohighlight">\(K_m\)</span>. Molekylvekten for dinatriumsaltet av p-nitrofenylfosfat heksahydrat settes lik 371,2 g/mol. Oppgi resultatet for <span class="math notranslate nohighlight">\(K_m\)</span> i mol/L.</p></li>
+<li><p>Forsøk 2: Plott absorbansen som funksjon av tiden for hemmet og uhemmet reaksjon. Finn <span class="math notranslate nohighlight">\(K_m\)</span> og <span class="math notranslate nohighlight">\(v_{maks}\)</span>, og avgjør hva slags hemmer vi har brukt her.</p></li>
+<li><p>Forsøk 3: Lag en grafisk fremstilling av reaksjonshastigheten som funksjon av pH. Husk å ta hensyn til fortynning med Tris-buffer.</p></li>
+</ul>
+<p>Dere skal levere inn en individuell rapport som skal inneholde:</p>
+<ol class="arabic simple">
+<li><p>Introduksjon: En kort innledning for de fire delforsøkene hvor du skriver teori, bakgrunn og hensikten med forsøkene (ca. 1 side, maks 2)</p></li>
+<li><p>Metoder: Et kort felles sammendrag av metodene (ca. 1/2 side – for detaljert prosedyre henviser du til laboppgaveteksten).</p></li>
+<li><p>Resultater: En resultatdel som skal inneholde tabeller (med tabelltekst over tabellen) og grafer (med figurtekst under) av alle forsøkene.</p></li>
+<li><p>Diskusjon: En kort diskusjon/analyse av resultatene (dette vil vanligvis være lengste del av rapporten).</p></li>
+<li><p>Utregninger og rådata puttes i appendiks på slutten av rapporten</p></li>
+</ol>
+<p>På Canvas ligger det en rapportmal som beskriver hvordan rapporten burde legges opp med lab 2+3 som eksempel og vurderingsmatrise som brukes for vurdering av rapportene. Dere har 2 forsøk på å få godkjent labrapport. Lever inn rapporten (1 per person) for lab 4 i Canvas senest to uker etter labøvelsen er gjennomført.</p>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./docs/biokjemi"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="regresjonsmodeller.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Regresjonsmodeller</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="proteinfolding.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Del 1: Monte-Carlo-simuleringer</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#steg-1-finne-initialhastighetene">Steg 1: Finne initialhastighetene</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#importere-data">Importere data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lineaertilpasning-av-dataene">Lineærtilpasning av dataene</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#handtering-av-flere-datafiler">Håndtering av flere datafiler</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#steg-2-finne-vmaks-og-km">Steg 2: Finne vmaks og Km</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#michaelis-menten-modellen">Michaelis-Menten-modellen</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#enzymhemming">Enzymhemming</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ph-optimum">pH-optimum</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rapport">Rapport</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Andreas Haraldsrud
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

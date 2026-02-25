@@ -1,0 +1,1036 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Kjemiske biblioteker &#8212; Programmering i kjemi</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/datahandtering_visualisering/kjemiske_biblioteker';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Molekylvisualisering" href="molekylvisualisering.html" />
+    <link rel="prev" title="Quiz 6: Datasamlinger (arrayer og dictionarier)" href="../grunnleggende_programmering/quiz6.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/qe-logo-large.png" class="logo__image only-light" alt="Programmering i kjemi - Home"/>
+    <script>document.write(`<img src="../../_static/qe-logo-large.png" class="logo__image only-dark" alt="Programmering i kjemi - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tema 1 - Grunnleggende programmering</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../grunnleggende_programmering/kom_i_gang.html">En første kodesnutt</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../grunnleggende_programmering/tall_variabler.html">Variabler og datatyper</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../grunnleggende_programmering/quiz1.html">Quiz 1: Variabler og aritmetikk</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../grunnleggende_programmering/lister.html">Lister</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../grunnleggende_programmering/quiz2.html">Quiz 2: Lister</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../grunnleggende_programmering/if-tester.html">Vilkår (if-tester)</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../grunnleggende_programmering/quiz3.html">Quiz 3: Vilkår (if-tester)</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../grunnleggende_programmering/lokker.html">Løkker</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../grunnleggende_programmering/quiz4.html">Quiz 4: Løkker</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../grunnleggende_programmering/funksjoner.html">Funksjoner</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../grunnleggende_programmering/quiz5.html">Quiz 5: Funksjoner</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../grunnleggende_programmering/datasamlinger.html">Datasamlinger</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../grunnleggende_programmering/quiz6.html">Quiz 6: Datasamlinger (arrayer og dictionarier)</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tema 2 - Datahåndtering og visualisering</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Kjemiske biblioteker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="molekylvisualisering.html">Molekylvisualisering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plotting.html">Datahåndtering I: Visualisering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lese_filer.html">Datahåndering II: Håndtere og visualisere data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="statistikk.html">Datahåndering III: Statistikk</a></li>
+<li class="toctree-l1"><a class="reference internal" href="maskinlaring.html">Datahåndtering IV: Maskinlæring</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tema 3 - Numeriske metoder</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../nullpunkter_likninger/likninger.html">Likninger og nullpunkter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../derivasjon_integrasjon/derivasjon.html">Numerisk derivasjon</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../derivasjon_integrasjon/integrasjon.html">Numerisk integrasjon</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tema 4 - Dynamiske systemer</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../modellering/diskret_modellering.html">Differenslikninger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modellering/differensiallikninger.html">Differensiallikninger og fartslover</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Emneressurser (IN-KJM1900)</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../forelesninger/forelesninger.html">Forelesninger</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../forelesninger/forelesning1.html">Forelesning 1: Programmering i kjemi</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../forelesninger/forelesning2.html">Forelesning 2: Plotting og datahåndtering</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../forelesninger/forelesning3.html">Forelesning 3: Statistisk analyse</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../forelesninger/forelesning4.html">Forelesning 4: Statistikk II</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../forelesninger/forelesning5.html">Forelesning 5: Numerisk derivasjon og likninger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../forelesninger/forelesning6.html">Forelesning 6: Numerisk integrasjon</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../forelesninger/forelesning7.html">Forelesning 7: Numerisk løsing av likninger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../forelesninger/forelesning8.html">Forelesning 8: Differensiallikninger og reaksjonskinetikk</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../forelesninger/forelesning9.html">Forelesning 9: Reaksjonskinetikk II</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../forelesninger/forelesning10.html">Forelesning 10: Molekylmekanikk</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../forelesninger/workshops.html">Eksamensverksted</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../forelesninger/workshop1.html">Workshop 1: Datahåndtering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../forelesninger/workshop2.html">Workshop 2: Numeriske metoder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../forelesninger/workshop3.html">Workshop 3: Dynamiske systemer</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../obliger/obliger.html">Obligatoriske oppgaver</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../obliger/oblig_datahandtering.html">Oblig 1: Håndtering av kjemiske data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../obliger/oblig_dynamiske_systemer.html">Oblig 2: Dynamiske systemer og integrasjon</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../datafiler.html">Datafiler</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Biokjemi (KJM1140)</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../biokjemi/molekylvisualisering.html">Molekylvisualisering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../biokjemi/datavisualisering.html">Datavisualisering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../biokjemi/regresjonsmodeller.html">Regresjonsmodeller</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../biokjemi/enzymkinetikklab2025.html">Analyse av enzymkinetikkdata</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../biokjemi/proteinfolding.html">Del 1: Monte-Carlo-simuleringer</a></li>
+
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/docs/datahandtering_visualisering/kjemiske_biblioteker.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Kjemiske biblioteker</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mendeleev">Mendeleev</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#trender-i-elektrongativitet">Trender i elektrongativitet</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stokiometriske-beregninger">Støkiometriske beregninger</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stoffmengdeberegninger">Stoffmengdeberegninger</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#losninger-og-fortynning">Løsninger og fortynning</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kjemiske-reaksjoner">Kjemiske reaksjoner</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#elektrokjemi">Elektrokjemi</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#galvaniske-elementer">Galvaniske elementer</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#elektrolyse">Elektrolyse</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="kjemiske-biblioteker">
+<h1>Kjemiske biblioteker<a class="headerlink" href="#kjemiske-biblioteker" title="Permalink to this heading">#</a></h1>
+<p>Det finnes mange Python-biblioteker som inneholder funksjonalitet rettet mot kjemi. Vi har til og med visualiserings- og simuleringsverktøy som er utviklet her på UiO! Her skal vi derimot se på noen eksternt utviklete biblioteker som kan brukes til enkle beregninger og visualiseringer.</p>
+<p>Først ser vi litt på biblioteket Mendeleev, som inneholder svært mye informasjon om grunnstoffene våre, og som dermed kan brukes til å visualisere og studere sammenhenger i periodesystemet. Deretter ser vi på biblioteket Chemlib, som også inneholder en del informasjon om grunnstoffene, men som også kan brukes til støkiometrisk beregninger og beregninger knyttet til elektrokjemiske celler. Til slutt ser vi på pHcalc, som brukes til å beregne pH i både enkle og sammensatte løsninger.</p>
+<p>For å installere disse bibliotekene fra en notebook, skriver du følgende i en kodelinje:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>mendeleev<span class="w"> </span>chemlib
+</pre></div>
+</div>
+</div>
+</div>
+<section id="mendeleev">
+<h2>Mendeleev<a class="headerlink" href="#mendeleev" title="Permalink to this heading">#</a></h2>
+<p>Grunnenheten i Mendeleev-biblioteket er <em>element</em>. Dette er en såkalt <em>klasse</em>, som fungerer som en oppskrift for å opprette ulike grunnstoff-<em>objekter</em>. Hvert grunnstoffobjekt har en del felles egenskaper fordi de er laget med samme oppskrift/klasse. For eksempel har de elektronegativitet, kokepunkt, smeltepunkt, atomnummer osv. Vi oppretter et grunnstoffobjekt ved å bruke denne klassen på samme måte som vi bruker en funksjon. Parameteren skal være enten atomnummeret eller atomsymbolet:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">mendeleev</span><span class="w"> </span><span class="kn">import</span> <span class="n">element</span>
+
+<span class="n">hydrogen</span> <span class="o">=</span> <span class="n">element</span><span class="p">(</span><span class="s2">&quot;H&quot;</span><span class="p">)</span> <span class="c1"># Eller: grunnstoff = element(1)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Nå har vi et grunnstoffobjekt som representerer hydrogen. Vi kan finne ulike egenskaper til hydrogen ved å bruke <em>metoder</em> som er bygd inn i <em>element</em>-klassen (oppskriften på grunnstoffet). Disse metodene gir oss informasjon om akkurat denne utgaven av klassen. Her er noen eksempler:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">navn</span> <span class="o">=</span> <span class="n">hydrogen</span><span class="o">.</span><span class="n">name</span>
+<span class="n">symbol</span> <span class="o">=</span> <span class="n">hydrogen</span><span class="o">.</span><span class="n">symbol</span>
+<span class="n">elektronegativitet</span> <span class="o">=</span> <span class="n">hydrogen</span><span class="o">.</span><span class="n">electronegativity</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Navn: </span><span class="si">{</span><span class="n">navn</span><span class="si">}</span><span class="s2">, Symbol: </span><span class="si">{</span><span class="n">symbol</span><span class="si">}</span><span class="s2">, Elektronegativitet: </span><span class="si">{</span><span class="n">elektronegativitet</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Navn: Hydrogen, Symbol: H, Elektronegativitet: 2.2
+</pre></div>
+</div>
+</div>
+</div>
+<p>Dette er bare et lite utvalg egenskaper vi kan se på. Dersom du undersøkeret grunnstoffobjektet, får du en oversikt over alle egenskapene som er registrert for grunnstoffet:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hydrogen</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Element(
+	abundance_crust=1400.0,
+ 	abundance_sea=108000.0,
+ 	annotation=&#39;density(@ -253C), evaporation_heat(H-H), fusion_heat(H-H), &#39;,
+ 	atomic_number=1,
+ 	atomic_radius=25.0,
+ 	atomic_radius_rahm=154.0,
+ 	atomic_volume=14.1,
+ 	atomic_weight=1.008,
+ 	atomic_weight_uncertainty=None,
+ 	block=&#39;s&#39;,
+ 	c6=6.499026705,
+ 	c6_gb=6.51,
+ 	cas=&#39;1333-74-0&#39;,
+ 	covalent_radius_bragg=None,
+ 	covalent_radius_cordero=31.0,
+ 	covalent_radius_pyykko=32.0,
+ 	covalent_radius_pyykko_double=None,
+ 	covalent_radius_pyykko_triple=None,
+ 	cpk_color=&#39;#ffffff&#39;,
+ 	density=8.2e-05,
+ 	description=&#39;Colourless, odourless gaseous chemical element. Lightest and most abundant element in the universe. Present in water and in all organic compounds. Chemically reacts with most elements. Discovered by Henry Cavendish in 1776.&#39;,
+ 	dipole_polarizability=4.50711,
+ 	dipole_polarizability_unc=3e-05,
+ 	discoverers=&#39;Henry Cavendish&#39;,
+ 	discovery_location=&#39;England&#39;,
+ 	discovery_year=1766,
+ 	ec=&lt;ElectronicConfiguration(conf=&quot;1s1&quot;)&gt;,
+ 	econf=&#39;1s&#39;,
+ 	electron_affinity=0.754195,
+ 	en_allen=13.61,
+ 	en_ghosh=0.2638,
+ 	en_pauling=2.2,
+ 	evaporation_heat=0.904,
+ 	fusion_heat=0.117,
+ 	gas_basicity=None,
+ 	geochemical_class=&#39;volatile&#39;,
+ 	glawe_number=103,
+ 	goldschmidt_class=&#39;atmophile&#39;,
+ 	group=&lt;Group(symbol=IA, name=Alkali metals)&gt;,
+ 	group_id=1,
+ 	heat_of_formation=217.998,
+ 	ionic_radii=[IonicRadius(
+	atomic_number=1,
+ 	charge=1,
+ 	coordination=&#39;I&#39;,
+ 	crystal_radius=-24.0,
+ 	econf=&#39;1s0&#39;,
+ 	id=172,
+ 	ionic_radius=-38.0,
+ 	most_reliable=False,
+ 	origin=&#39;&#39;,
+ 	spin=&#39;&#39;,
+), IonicRadius(
+	atomic_number=1,
+ 	charge=1,
+ 	coordination=&#39;II&#39;,
+ 	crystal_radius=-4.0,
+ 	econf=&#39;1s0&#39;,
+ 	id=173,
+ 	ionic_radius=-18.0,
+ 	most_reliable=False,
+ 	origin=&#39;&#39;,
+ 	spin=&#39;&#39;,
+)],
+ 	is_monoisotopic=None,
+ 	is_radioactive=False,
+ 	isotopes=[&lt;Isotope(Z=1, A=1, mass=1.00782503190(1), abundance=99.986(8))&gt;, &lt;Isotope(Z=1, A=2, mass=2.01410177784(2), abundance=0.015(8))&gt;, &lt;Isotope(Z=1, A=3, mass=3.01604928132(8), abundance=None)&gt;, &lt;Isotope(Z=1, A=4, mass=4.0264(1), abundance=None)&gt;, &lt;Isotope(Z=1, A=5, mass=5.03531(10), abundance=None)&gt;, &lt;Isotope(Z=1, A=6, mass=6.0450(3), abundance=None)&gt;, &lt;Isotope(Z=1, A=7, mass=7.053(1), abundance=None)&gt;],
+ 	jmol_color=&#39;#ffffff&#39;,
+ 	lattice_constant=3.75,
+ 	lattice_structure=&#39;HEX&#39;,
+ 	mendeleev_number=105,
+ 	metallic_radius=None,
+ 	metallic_radius_c12=78.0,
+ 	molar_heat_capacity=28.836,
+ 	molcas_gv_color=&#39;#f2f2f2&#39;,
+ 	name=&#39;Hydrogen&#39;,
+ 	name_origin=&#39;Greek: hydro (water) and genes (generate)&#39;,
+ 	period=1,
+ 	pettifor_number=103,
+ 	phase_transitions=[1 Tm=13.989999999999952 Tb=20.270999999999987],
+ 	proton_affinity=None,
+ 	screening_constants=[&lt;ScreeningConstant(Z=   1, n=  1, s=s, screening=    0.0000)&gt;],
+ 	sources=&#39;Commercial quantities are produced by reacting superheated steam with methane or carbon. In lab work from reaction of metals with acid solutions or electrolysis.&#39;,
+ 	specific_heat_capacity=14.304,
+ 	symbol=&#39;H&#39;,
+ 	thermal_conductivity=0.1815,
+ 	uses=&#39;Most hydrogen is used in the production of ammonia. Also used in balloons and in metal refining. Also used as fuel in rockets. Its two heavier isotopes are: deuterium (D) and tritium (T) used respectively for nuclear fission and fusion.&#39;,
+ 	vdw_radius=110.00000000000001,
+ 	vdw_radius_alvarez=120.0,
+ 	vdw_radius_batsanov=None,
+ 	vdw_radius_bondi=120.0,
+ 	vdw_radius_dreiding=319.5,
+ 	vdw_radius_mm3=162.0,
+ 	vdw_radius_rt=110.00000000000001,
+ 	vdw_radius_truhlar=None,
+ 	vdw_radius_uff=288.6,
+)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Elektronegativitet er en spesiell størrelse her, og fungerer som en egen metode som krever at vi enten avslutter med en tom parentes, eller en parentes med en parameter inni. Siden vi kan beregne elektronegativitet med utgangspunkt i ulike skalaer, kan vi f.eks. skrive:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">hydrogen</span><span class="o">.</span><span class="n">electronegativity</span><span class="p">(</span><span class="s2">&quot;pauling&quot;</span><span class="p">))</span>    <span class="c1"># Paulings skala</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">hydrogen</span><span class="o">.</span><span class="n">electronegativity</span><span class="p">(</span><span class="s2">&quot;allen&quot;</span><span class="p">))</span>      <span class="c1"># Allens skala</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">hydrogen</span><span class="o">.</span><span class="n">electronegativity</span><span class="p">(</span><span class="s2">&quot;mulliken&quot;</span><span class="p">))</span>   <span class="c1"># Mullikens skala</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.2
+13.61
+7.176314502567999
+</pre></div>
+</div>
+</div>
+</div>
+<p>For å få en komplett liste over funksjonaliteten i Mendeleev, kan du undersøke <a class="reference external" href="https://mendeleev.readthedocs.io/en/stable/%5D">dokumentasjonen til mendeleev-biblioteket</a>.</p>
+<div class="tip admonition">
+<p class="admonition-title">Underveisoppgave</p>
+<p>Lag et program som skriver ut navn, symbol og elektronegativitet for de 18 letteste grunnstoffene.</p>
+</div>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Løsningsforslag</p>
+<p>Du trenger ikke å skrive ut en like oversiktlig tabell som nedenfor - det viktigste er at du har brukt en løkke for å iterere gjennom de 18 første grunnstoffene i periodesystemet.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">mendeleev</span><span class="w"> </span><span class="kn">import</span> <span class="n">element</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Navn       Symbol    Elektronegativitet&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;---------------------------------------&quot;</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">Z</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">19</span><span class="p">):</span>
+    <span class="n">grunnstoff</span> <span class="o">=</span> <span class="n">element</span><span class="p">(</span><span class="n">Z</span><span class="p">)</span>
+    <span class="n">navn</span> <span class="o">=</span> <span class="n">grunnstoff</span><span class="o">.</span><span class="n">name</span>
+    <span class="n">symbol</span> <span class="o">=</span> <span class="n">grunnstoff</span><span class="o">.</span><span class="n">symbol</span>
+    <span class="n">elektronegativitet</span> <span class="o">=</span> <span class="n">grunnstoff</span><span class="o">.</span><span class="n">electronegativity</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">navn</span><span class="si">:</span><span class="s2">11</span><span class="si">}</span><span class="s2">|</span><span class="si">{</span><span class="n">symbol</span><span class="si">:</span><span class="s2">9</span><span class="si">}</span><span class="s2">|</span><span class="si">{</span><span class="n">elektronegativitet</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<section id="trender-i-elektrongativitet">
+<h3>Trender i elektrongativitet<a class="headerlink" href="#trender-i-elektrongativitet" title="Permalink to this heading">#</a></h3>
+<p>Vi kan bruke lister eller tilsvarende datasamlinger for å spare på verdiene underveis i løkka. Da kan vi plotte ulike egenskaper mot hverandre og utforske trender i periodesystemet:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">mendeleev</span><span class="w"> </span><span class="kn">import</span> <span class="n">element</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="n">atomnumre</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">el_neg</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">Z</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">119</span><span class="p">):</span>
+    <span class="n">grunnstoff</span> <span class="o">=</span> <span class="n">element</span><span class="p">(</span><span class="n">Z</span><span class="p">)</span>
+    <span class="n">elektronegativitet</span> <span class="o">=</span> <span class="n">grunnstoff</span><span class="o">.</span><span class="n">electronegativity</span><span class="p">()</span>
+    <span class="n">atomnumre</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Z</span><span class="p">)</span>
+    <span class="n">el_neg</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">elektronegativitet</span><span class="p">)</span>
+    
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">atomnumre</span><span class="p">,</span> <span class="n">el_neg</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;hotpink&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Elektronegativitetstrender i periodesystemet&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Atomnummer&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Elektronegativitet&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/5739b699b30a3e39cd918cc1bd048058e1ddd423963ab452498365691d70701f.png" src="../../_images/5739b699b30a3e39cd918cc1bd048058e1ddd423963ab452498365691d70701f.png" />
+</div>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Underveisoppgave</p>
+<p>Modifiser programmet slik at det kun plotter grunnstoffene i andre periode. Forklar trenden du ser.</p>
+</div>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Løsningsforslag</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">mendeleev</span><span class="w"> </span><span class="kn">import</span> <span class="n">element</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="n">atomnumre</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">el_neg</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">gruppe2</span> <span class="o">=</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">38</span><span class="p">,</span> <span class="mi">56</span><span class="p">,</span> <span class="mi">88</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">Z</span> <span class="ow">in</span> <span class="n">gruppe2</span><span class="p">:</span>
+    <span class="n">grunnstoff</span> <span class="o">=</span> <span class="n">element</span><span class="p">(</span><span class="n">Z</span><span class="p">)</span>
+    <span class="n">elektronegativitet</span> <span class="o">=</span> <span class="n">grunnstoff</span><span class="o">.</span><span class="n">electronegativity</span><span class="p">()</span>
+    <span class="n">atomnumre</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Z</span><span class="p">)</span>
+    <span class="n">el_neg</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">elektronegativitet</span><span class="p">)</span>
+    
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">atomnumre</span><span class="p">,</span> <span class="n">el_neg</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;navy&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Elektronegativitetstrender i gruppe 2&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Atomnummer&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Elektronegativitet&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</section>
+</section>
+<section id="stokiometriske-beregninger">
+<h2>Støkiometriske beregninger<a class="headerlink" href="#stokiometriske-beregninger" title="Permalink to this heading">#</a></h2>
+<p>La oss nå se på hvordan vi kan bruke biblioteket Chemlib til støkiometriske beregninger. Først definerer vi en kjemisk forbindelse med klassen <em>Compound</em>. Dette er et objekt av Compound-klassen. Deretter kan vi bruke ulike metoder på dette objektet. For eksempel kan vi gjør enkle beregninger på stoffmengde og masse.</p>
+<section id="stoffmengdeberegninger">
+<h3>Stoffmengdeberegninger<a class="headerlink" href="#stoffmengdeberegninger" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">chemlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Compound</span>
+
+<span class="n">butan1ol</span> <span class="o">=</span> <span class="n">Compound</span><span class="p">(</span><span class="s2">&quot;C4H9OH&quot;</span><span class="p">)</span>
+<span class="n">NH3</span> <span class="o">=</span> <span class="n">Compound</span><span class="p">(</span><span class="s2">&quot;NH3&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">butan1ol</span><span class="o">.</span><span class="n">get_amounts</span><span class="p">(</span><span class="n">grams</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>     <span class="c1"># Finner stoffmengden og antall molekyler/formelenheter</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;grams&#39;: 2,
+ &#39;molecules&#39;: 1.6243271319293604e+22,
+ &#39;moles&#39;: 0.026982178271251833}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">butan1ol</span><span class="o">.</span><span class="n">get_amounts</span><span class="p">(</span><span class="n">molecules</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span> <span class="c1"># Finner stoffmengden og massen</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;molecules&#39;: 2,
+ &#39;moles&#39;: 3.322259136212625e-24,
+ &#39;grams&#39;: 2.4625581395348844e-22}
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="losninger-og-fortynning">
+<h3>Løsninger og fortynning<a class="headerlink" href="#losninger-og-fortynning" title="Permalink to this heading">#</a></h3>
+<p>Vi kan også lage en løsning med klassen <em>Solution</em>. Dette blir et objekt som vi kan finne konsentrasjonen til og fortynne. Det gjør du slik:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">chemlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Solution</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sol1</span> <span class="o">=</span> <span class="n">Solution</span><span class="p">(</span><span class="s2">&quot;NaNO3&quot;</span><span class="p">,</span> <span class="mf">0.24</span><span class="p">)</span>                                      <span class="c1"># Lager en løsning med 0.24 mol/L NaNO3</span>
+<span class="n">sol2</span> <span class="o">=</span> <span class="n">Solution</span><span class="o">.</span><span class="n">by_grams_per_liters</span><span class="p">(</span><span class="s2">&quot;NaOH&quot;</span><span class="p">,</span> <span class="n">grams</span> <span class="o">=</span> <span class="mi">40</span><span class="p">,</span> <span class="n">liters</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span> <span class="c1"># Lager en løsning med en viss masse i et gitt volum</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">sol2</span><span class="o">.</span><span class="n">molarity</span><span class="p">)</span> <span class="c1"># Finner molariteten til løsning 2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.000075005625422
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">C2</span> <span class="o">=</span> <span class="n">sol1</span><span class="o">.</span><span class="n">dilute</span><span class="p">(</span><span class="n">V1</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">,</span> <span class="n">V2</span> <span class="o">=</span> <span class="mf">3.44</span><span class="p">)</span> <span class="c1"># Fortynner løsningen</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">C2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;Solute&#39;: &#39;Na₁N₁O₃&#39;, &#39;Molarity&#39;: 0.0069767441860465115, &#39;Volume&#39;: 3.44}
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="kjemiske-reaksjoner">
+<h3>Kjemiske reaksjoner<a class="headerlink" href="#kjemiske-reaksjoner" title="Permalink to this heading">#</a></h3>
+<p>Det er ganske rett fram å definere kjemiske reaksjoner når vi først har lagd noen forbindelser. Deretter kan vi sjekke om reaksjonen er balansert, og eventuelt få programmet til å balansere dem for oss.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">chemlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Reaction</span>
+
+<span class="n">H2</span> <span class="o">=</span> <span class="n">Compound</span><span class="p">(</span><span class="s2">&quot;H2&quot;</span><span class="p">)</span>
+<span class="n">I2</span> <span class="o">=</span> <span class="n">Compound</span><span class="p">(</span><span class="s2">&quot;I2&quot;</span><span class="p">)</span>
+<span class="n">HI</span> <span class="o">=</span> <span class="n">Compound</span><span class="p">(</span><span class="s2">&quot;HI&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">reaksjon</span> <span class="o">=</span> <span class="n">Reaction</span><span class="p">([</span><span class="n">H2</span><span class="p">,</span> <span class="n">I2</span><span class="p">],[</span><span class="n">HI</span><span class="p">])</span> <span class="c1"># Reaktanter i liste til venstre, produkter i liste til høyre</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">reaksjon</span><span class="o">.</span><span class="n">formula</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">reaksjon</span><span class="o">.</span><span class="n">is_balanced</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1H₂ + 1I₂ --&gt; 1H₁I₁
+False
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">reaksjon</span><span class="o">.</span><span class="n">balance</span><span class="p">()</span>
+<span class="n">reaksjon</span><span class="o">.</span><span class="n">formula</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;1H₂ + 1I₂ --&gt; 2H₁I₁&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Oppgave: Bruk chemlib til å balansere ufullstendig forbrenning av benzen (vi får vann og CO)</p></li>
+</ul>
+</section>
+</section>
+<section id="elektrokjemi">
+<h2>Elektrokjemi<a class="headerlink" href="#elektrokjemi" title="Permalink to this heading">#</a></h2>
+<p>Chemlib kan også brukes til å regne på og visualisere elektrokjemiske reaksjoner. Noen eksempler er gitt nedenfor.</p>
+<section id="galvaniske-elementer">
+<h3>Galvaniske elementer<a class="headerlink" href="#galvaniske-elementer" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">chemlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Galvanic_Cell</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">celle</span> <span class="o">=</span> <span class="n">Galvanic_Cell</span><span class="p">(</span><span class="s2">&quot;Pb&quot;</span><span class="p">,</span> <span class="s2">&quot;Zn&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">egenskaper</span> <span class="o">=</span> <span class="n">celle</span><span class="o">.</span><span class="n">properties</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">egenskaper</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;Cell&#39;: &#39;Zn | Zn2+ || Pb2+ | Pb&#39;, &#39;Anode&#39;: &#39;Zn&#39;, &#39;Cathode&#39;: &#39;Pb&#39;, &#39;Cell Potential&#39;: 0.63}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">egenskaper</span><span class="p">[</span><span class="s2">&quot;Cell Potential&quot;</span><span class="p">]</span> <span class="c1"># trekker ut kun cellepotensialet</span>
+<span class="c1"># celle.draw() #Tegner celle</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.63
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="elektrolyse">
+<h3>Elektrolyse<a class="headerlink" href="#elektrolyse" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">chemlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">electrolysis</span>
+
+<span class="n">elektrolyse</span> <span class="o">=</span> <span class="n">electrolysis</span><span class="p">(</span><span class="s2">&quot;Cu&quot;</span><span class="p">,</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span> <span class="n">amps</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="n">seconds</span> <span class="o">=</span> <span class="mi">3600</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">elektrolyse</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;element&#39;: &#39;Cu&#39;,
+ &#39;n&#39;: 2,
+ &#39;seconds&#39;: 3600,
+ &#39;amps&#39;: 10,
+ &#39;grams&#39;: 11.854982639788567}
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Oppgave: Finn ut hvor lang tid det minimum tar å dekke en gjenstand med 30 g sølv med en løsning AgNO<span class="math notranslate nohighlight">\(_3\)</span> når vi bruker en strømstyrke på 10 A.</p></li>
+</ul>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./docs/datahandtering_visualisering"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../grunnleggende_programmering/quiz6.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Quiz 6: Datasamlinger (arrayer og dictionarier)</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="molekylvisualisering.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Molekylvisualisering</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mendeleev">Mendeleev</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#trender-i-elektrongativitet">Trender i elektrongativitet</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stokiometriske-beregninger">Støkiometriske beregninger</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stoffmengdeberegninger">Stoffmengdeberegninger</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#losninger-og-fortynning">Løsninger og fortynning</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kjemiske-reaksjoner">Kjemiske reaksjoner</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#elektrokjemi">Elektrokjemi</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#galvaniske-elementer">Galvaniske elementer</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#elektrolyse">Elektrolyse</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Andreas Haraldsrud
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
