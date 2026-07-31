@@ -3,7 +3,7 @@ root: docs/intro
 parts:
 - caption: Tema 1 - Grunnleggende programmering
   chapters:
-  - file: docs/grunnleggende_programmering/kom_i_gang
+  - file: docs/grunnleggende_programmering/introduksjon
   - file: docs/grunnleggende_programmering/tall_variabler
     sections:
     - file: docs/grunnleggende_programmering/quiz1
