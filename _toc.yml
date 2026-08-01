@@ -10,7 +10,7 @@ parts:
   - file: docs/grunnleggende_programmering/lister
     sections:
     - file: docs/grunnleggende_programmering/quiz2
-  - file: docs/grunnleggende_programmering/if-tester
+  - file: docs/grunnleggende_programmering/vilkar
     sections:
     - file: docs/grunnleggende_programmering/quiz3
   - file: docs/grunnleggende_programmering/lokker
