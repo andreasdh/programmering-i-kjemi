@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Parsons problems</title>
+<style>
+  :root{
+    --ink:#141C26;
+    --ink-soft:#4A5A6B;
+    --paper:#F5F7FA;
+    --panel:#FFFFFF;
+    --rule:#D5DCE5;
+    --tick:#C7D1DC;
+    --blue:#1F4FA8;
+    --blue-soft:#E8EEF9;
+    --ok:#0E7C5A;
+    --ok-soft:#E4F2ED;
+    --off:#B4531B;
+    --off-soft:#FBECE1;
+    --ind:#6B4BA8;
+    --ind-soft:#EEEAF8;
+    --mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+    --serif: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+    --step: 28px;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0; background:var(--paper); color:var(--ink);
+    font-family:var(--mono); font-size:14px; line-height:1.5;
+    -webkit-text-size-adjust:100%;
+  }
+  .wrap{max-width:1000px;margin:0 auto;padding:24px 20px 64px}
+
+  /* ---------- widget ---------- */
+  .parsons{
+    background:var(--panel); border:1px solid var(--rule); border-radius:3px;
+    padding:20px; margin:0 0 28px;
+  }
+  .parsons .eyebrow{
+    font-size:11px; letter-spacing:.14em; text-transform:uppercase;
+    color:var(--ink-soft); margin:0 0 10px;
+  }
+  .parsons .prompt{
+    font-family:var(--serif); font-size:17px; line-height:1.45;
+    margin:0 0 18px; max-width:62ch;
+  }
+  .cols{display:grid; grid-template-columns:1fr 1fr; gap:18px}
+  @media (max-width:720px){ .cols{grid-template-columns:1fr} }
+  .col h3{
+    font-size:11px; letter-spacing:.14em; text-transform:uppercase; font-weight:600;
+    color:var(--ink-soft); margin:0 0 8px; display:flex; justify-content:space-between;
+  }
+  .scale{
+    display:flex; height:14px; margin-left:11px; color:var(--tick);
+    font-size:10px; letter-spacing:0;
+  }
+  .scale span{width:var(--step); flex:none}
+  .listwrap{position:relative}
+  ul.list{
+    list-style:none; margin:0; padding:10px; min-height:180px;
+    border:1px solid var(--rule); border-radius:2px; background:#FCFDFE;
+    position:relative;
+  }
+  ul.list.sol{background:var(--panel)}
+  .ruler{
+    position:absolute; inset:11px; pointer-events:none;
+    background-image:repeating-linear-gradient(90deg,var(--tick) 0 1px,transparent 1px var(--step));
+  }
+  .ruler b{
+    position:absolute; top:0; bottom:0; width:1px; background:var(--blue);
+    opacity:0; transition:opacity .12s;
+  }
+  ul.list.over{border-color:var(--blue); background:var(--blue-soft)}
+  .blk{
+    position:relative; background:var(--panel); border:1px solid var(--rule);
+    border-left:3px solid var(--ink-soft); border-radius:2px;
+    padding:7px 10px; margin:0 0 6px; cursor:grab;
+    white-space:pre; overflow-x:auto; touch-action:none;
+    font-size:13.5px; z-index:1;
+  }
+  .blk:last-child{margin-bottom:0}
+  .blk:focus-visible{outline:2px solid var(--blue); outline-offset:2px}
+  .blk.ghost{opacity:.28}
+  .blk.flying{
+    position:fixed; z-index:9999; cursor:grabbing; pointer-events:none;
+    box-shadow:0 10px 24px rgba(20,28,38,.18); border-left-color:var(--blue);
+    margin:0; opacity:1;
+  }
+  .blk.ok{border-left-color:var(--ok); background:var(--ok-soft)}
+  .blk.off{border-left-color:var(--off); background:var(--off-soft)}
+  .blk.ind{border-left-color:var(--ind); background:var(--ind-soft)}
+  .blk .flag{
+    float:right; margin-left:14px; font-size:10.5px; letter-spacing:.06em;
+    text-transform:uppercase; opacity:.85;
+  }
+  .empty{
+    color:var(--ink-soft); font-size:12px; padding:6px 2px; opacity:.7;
+    font-style:normal;
+  }
+  .bar{display:flex; gap:8px; flex-wrap:wrap; align-items:center; margin-top:16px}
+  button{
+    font-family:var(--mono); font-size:12.5px; letter-spacing:.02em;
+    padding:8px 14px; border-radius:2px; border:1px solid var(--ink);
+    background:var(--ink); color:#fff; cursor:pointer;
+  }
+  button.ghostbtn{background:transparent; color:var(--ink); border-color:var(--rule)}
+  button:hover{opacity:.88}
+  button:focus-visible{outline:2px solid var(--blue); outline-offset:2px}
+  .verdict{
+    margin-top:14px; padding:10px 12px; border-left:3px solid var(--rule);
+    background:#FBFCFD; font-size:13px; display:none;
+  }
+  .verdict.show{display:block}
+  .verdict.good{border-left-color:var(--ok); background:var(--ok-soft)}
+  .verdict.bad{border-left-color:var(--off); background:var(--off-soft)}
+  .verdict ul{margin:6px 0 0; padding-left:18px}
+  .hint{margin-top:10px; font-size:11.5px; color:var(--ink-soft)}
+
+  /* ---------- builder ---------- */
+  .builder{border:1px solid var(--rule); background:var(--panel); padding:20px; border-radius:3px}
+  .builder h2{font-size:13px; letter-spacing:.14em; text-transform:uppercase; margin:0 0 4px}
+  .builder p.lede{font-family:var(--serif); font-size:15px; color:var(--ink-soft); margin:0 0 18px; max-width:60ch}
+  .field{margin-bottom:14px}
+  .field label{display:block; font-size:11px; letter-spacing:.12em; text-transform:uppercase; color:var(--ink-soft); margin-bottom:5px}
+  .field .sub{text-transform:none; letter-spacing:0; font-size:11.5px; opacity:.85}
+  textarea,input[type=text]{
+    width:100%; font-family:var(--mono); font-size:13px; padding:9px 10px;
+    border:1px solid var(--rule); border-radius:2px; background:#FCFDFE; color:var(--ink);
+    resize:vertical;
+  }
+  textarea:focus,input:focus{outline:2px solid var(--blue); outline-offset:-1px; border-color:var(--blue)}
+  .checks{display:flex; gap:18px; flex-wrap:wrap; font-size:12.5px; margin-bottom:16px}
+  .checks label{display:flex; gap:6px; align-items:center; cursor:pointer}
+  .out{margin-top:16px}
+  .toast{font-size:12px; color:var(--ok); margin-left:6px}
+  header.top{display:flex; justify-content:space-between; align-items:baseline; margin-bottom:22px; gap:16px; flex-wrap:wrap}
+  header.top h1{font-family:var(--serif); font-size:24px; font-weight:600; margin:0}
+  header.top .sub{font-size:11.5px; color:var(--ink-soft)}
+  @media (prefers-reduced-motion:reduce){ *{transition:none !important} }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="top">
+  <h1>Parsons problems</h1>
+  <div class="sub">One file. No dependencies. Works offline.</div>
+</header>
+
+<!-- ============ PROBLEMS ============
+     Add as many .parsons boxes as you like.
+     Indentation inside "code" defines the expected indentation (4 spaces = one level).
+     "distractors" are lines that do not belong in the solution.
+     End a line with  #=name  to let it swap places with any other line
+     carrying the same name. The marker is never shown to the student.
+=================================================== -->
+
+<div class="parsons">
+<script type="application/json">
+{
+  "label": "Chemistry programming · problem 1",
+  "prompt": "Write a program that computes the mean absorbance of a list of measurements and prints the answer to two decimal places.",
+  "code": "absorbances = [0.412, 0.398, 0.421, 0.405]  #=setup\ntotal = 0  #=setup\nfor a in absorbances:\n    total = total + a\nmean = total / len(absorbances)\nprint(f\"Mean: {mean:.2f}\")",
+  "distractors": [
+    "total = total + absorbances",
+    "mean = total / len(a)"
+  ],
+  "indent": true,
+  "showSolution": true
+}
+</script>
+</div>
+
+<!-- ============ BYGGER ============ -->
+<div class="builder" id="builder">
+  <h2>Build a problem</h2>
+  <p class="lede">Paste in working code. The indentation you write becomes the expected answer. You get back a link to share, or a snippet to paste into a web page.</p>
+
+  <div class="field">
+    <label for="b-label">Label <span class="sub">(shown above the problem, optional)</span></label>
+    <input type="text" id="b-label" placeholder="Chemistry programming · problem 2">
+  </div>
+
+  <div class="field">
+    <label for="b-prompt">Task description</label>
+    <textarea id="b-prompt" rows="2" placeholder="Write a program that ..."></textarea>
+  </div>
+
+  <div class="field">
+    <label for="b-code">Solution <span class="sub">— one line per block, 4 spaces per indentation level. End a line with <code>#=name</code> to let it swap places with others.</span></label>
+    <textarea id="b-code" rows="9" spellcheck="false" placeholder="a = 1  #=setup&#10;b = 2  #=setup&#10;for i in range(10):&#10;    print(a + b)"></textarea>
+  </div>
+
+  <div class="field">
+    <label for="b-dist">Distractors <span class="sub">— one per line, optional. Near-variants of correct lines work best.</span></label>
+    <textarea id="b-dist" rows="3" spellcheck="false" placeholder="print(i))"></textarea>
+  </div>
+
+  <div class="checks">
+    <label><input type="checkbox" id="b-indent" checked> Require correct indentation</label>
+    <label><input type="checkbox" id="b-sol" checked> Let students reveal the answer</label>
+  </div>
+
+  <div class="bar">
+    <button id="b-preview">Preview</button>
+    <button class="ghostbtn" id="b-link">Copy shareable link</button>
+    <button class="ghostbtn" id="b-embed">Copy embed code</button>
+    <span class="toast" id="b-toast"></span>
+  </div>
+
+  <div class="out" id="b-out"></div>
+</div>
+
+</div>
+
+<script>
+(function(){
+"use strict";
+
+var STEP = 28, MAXIND = 6;
+
+/* ---------- helpers ---------- */
+function el(tag, cls, txt){ var n=document.createElement(tag); if(cls) n.className=cls; if(txt!=null) n.textContent=txt; return n; }
+function b64enc(s){ var b=new TextEncoder().encode(s), t=""; for(var i=0;i<b.length;i++) t+=String.fromCharCode(b[i]);
+  return btoa(t).replace(/\+/g,"-").replace(/\//g,"_").replace(/=+$/,""); }
+function b64dec(s){ s=s.replace(/-/g,"+").replace(/_/g,"/"); var t=atob(s), b=new Uint8Array(t.length);
+  for(var i=0;i<t.length;i++) b[i]=t.charCodeAt(i); return new TextDecoder().decode(b); }
+function shuffle(a){ for(var i=a.length-1;i>0;i--){ var j=Math.floor(Math.random()*(i+1)); var t=a[i]; a[i]=a[j]; a[j]=t; } return a; }
+function copy(txt, node){
+  var done=function(){ if(node){ node.textContent="Copied."; setTimeout(function(){node.textContent="";},2200); } };
+  if(navigator.clipboard && window.isSecureContext){ navigator.clipboard.writeText(txt).then(done, function(){fallback(txt,done);}); }
+  else fallback(txt, done);
+}
+function fallback(txt, done){
+  var ta=el("textarea"); ta.value=txt; ta.style.position="fixed"; ta.style.opacity="0";
+  document.body.appendChild(ta); ta.select(); try{ document.execCommand("copy"); done(); }catch(e){} document.body.removeChild(ta);
+}
+
+/* ---------- parsing ---------- */
+function parseCode(code){
+  var raw = String(code||"").replace(/\t/g,"    ").split("\n").filter(function(l){ return l.trim().length; });
+  var units = raw.map(function(l){ return l.match(/^ */)[0].length; }).filter(function(n){ return n>0; });
+  var unit = units.length ? Math.min.apply(null, units) : 4;
+  if(unit < 1) unit = 4;
+  return raw.map(function(l){
+    var lead = l.match(/^ */)[0].length;
+    var g = null;
+    var body = l.replace(/\s*#=([^\s#]+)\s*$/, function(m, name){ g = name; return ""; });
+    return { code: body.trim(), indent: Math.round(lead/unit), group: g };
+  });
+}
+
+/* ---------- longest common subsequence ---------- */
+function lcsPairs(a, b){
+  var n=a.length, m=b.length, i, j;
+  var dp=[]; for(i=0;i<=n;i++) dp.push(new Int32Array(m+1));
+  for(i=n-1;i>=0;i--) for(j=m-1;j>=0;j--)
+    dp[i][j] = (a[i]===b[j]) ? dp[i+1][j+1]+1 : Math.max(dp[i+1][j], dp[i][j+1]);
+  var out=[]; i=0; j=0;
+  while(i<n && j<m){
+    if(a[i]===b[j]){ out.push([i,j]); i++; j++; }
+    else if(dp[i+1][j] >= dp[i][j+1]) i++;
+    else j++;
+  }
+  return out;
+}
+
+/* ---------- interchangeable lines ----------
+   Lines sharing a group name may appear in any order among themselves.
+   The expected answer is reordered within that group's own slots to
+   follow the order the student chose; everything else stays fixed.     */
+function adaptSolution(solution, given){
+  var groups = {}, i;
+  for(i=0;i<solution.length;i++){
+    var g = solution[i].group;
+    if(g){ (groups[g] = groups[g] || []).push(i); }
+  }
+  var keys = Object.keys(groups);
+  if(!keys.length) return solution;
+  var out = solution.slice();
+  keys.forEach(function(g){
+    var slots = groups[g];
+    var lines = slots.map(function(i){ return solution[i]; });
+    var taken = new Array(lines.length), ordered = [];
+    given.forEach(function(code){
+      for(var k=0;k<lines.length;k++){
+        if(!taken[k] && lines[k].code === code){ taken[k]=true; ordered.push(lines[k]); return; }
+      }
+    });
+    for(var k=0;k<lines.length;k++) if(!taken[k]) ordered.push(lines[k]);
+    slots.forEach(function(slot, j){ out[slot] = ordered[j]; });
+  });
+  return out;
+}
+
+/* ---------- widget ---------- */
+function mount(root, spec){
+  var solution = parseCode(spec.code);
+  var useIndent = spec.indent !== false;
+  var showSol = spec.showSolution !== false;
+  root.innerHTML = "";
+
+  if(spec.label) root.appendChild(el("p","eyebrow",spec.label));
+  if(spec.prompt) root.appendChild(el("p","prompt",spec.prompt));
+
+  var cols = el("div","cols");
+  var cA = el("div","col"), cB = el("div","col");
+  var hA = el("h3"); hA.appendChild(el("span",null,"Blocks"));
+  var hB = el("h3"); hB.appendChild(el("span",null,"Your program"));
+  cA.appendChild(hA); cB.appendChild(hB);
+
+  if(useIndent){
+    var scale = el("div","scale");
+    for(var s=0;s<5;s++) scale.appendChild(el("span",null,String(s)));
+    hB.appendChild(scale);
+  }
+
+  var wrapA = el("div","listwrap"), wrapB = el("div","listwrap");
+  var bank = el("ul","list bank"), sol = el("ul","list sol");
+  wrapA.appendChild(bank); wrapB.appendChild(sol);
+  cA.appendChild(wrapA); cB.appendChild(wrapB);
+  cols.appendChild(cA); cols.appendChild(cB);
+  root.appendChild(cols);
+
+  var ruler = null, rulerLine = null;
+  if(useIndent){
+    ruler = el("div","ruler"); rulerLine = el("b"); ruler.appendChild(rulerLine);
+    wrapB.appendChild(ruler);
+  }
+
+  var pieces = solution.map(function(l){ return l.code; })
+    .concat((spec.distractors||[]).map(function(d){ return String(d).trim(); }).filter(Boolean));
+  shuffle(pieces).forEach(function(code){ bank.appendChild(makeBlock(code)); });
+
+  function makeBlock(code){
+    var li = el("li","blk");
+    li.appendChild(el("span","txt",code));
+    li.dataset.code = code;
+    li.dataset.indent = "0";
+    li.tabIndex = 0;
+    li.setAttribute("role","button");
+    li.addEventListener("pointerdown", onDown);
+    li.addEventListener("keydown", onKey);
+    return li;
+  }
+  function setIndent(li, n){
+    n = Math.max(0, Math.min(MAXIND, n));
+    li.dataset.indent = String(n);
+    li.style.marginLeft = (li.parentNode === sol ? n*STEP : 0) + "px";
+  }
+  function clearMarks(){
+    root.querySelectorAll(".blk").forEach(function(b){
+      b.classList.remove("ok","off","ind");
+      var f=b.querySelector(".flag"); if(f) f.remove();
+    });
+    verdict.className = "verdict";
+  }
+  function refreshEmpty(){
+    [bank, sol].forEach(function(list){
+      var ph = list.querySelector(".empty");
+      var has = list.querySelector(".blk");
+      if(!has && !ph){
+        var p = el("li","empty", list===bank ? "Every block is in use." : "Drag blocks here.");
+        list.appendChild(p);
+      } else if(has && ph){ ph.remove(); }
+    });
+  }
+
+  /* --- drag and drop (mouse + touch) --- */
+  var drag = null;
+  function onDown(e){
+    if(e.button != null && e.button !== 0 && e.pointerType === "mouse") return;
+    var li = e.currentTarget, r = li.getBoundingClientRect();
+    drag = { li:li, x0:e.clientX, y0:e.clientY, dx:r.left-e.clientX, dy:r.top-e.clientY,
+             w:r.width, startIndent:parseInt(li.dataset.indent,10)||0, active:false, id:e.pointerId };
+    li.setPointerCapture(e.pointerId);
+    li.addEventListener("pointermove", onMove);
+    li.addEventListener("pointerup", onUp);
+    li.addEventListener("pointercancel", onUp);
+  }
+  function onMove(e){
+    if(!drag) return;
+    var dx = e.clientX-drag.x0, dy = e.clientY-drag.y0;
+    if(!drag.active){
+      if(Math.abs(dx)+Math.abs(dy) < 5) return;
+      drag.active = true;
+      clearMarks();
+      drag.clone = drag.li.cloneNode(true);
+      drag.clone.className = "blk flying";
+      drag.clone.style.width = drag.w+"px";
+      document.body.appendChild(drag.clone);
+      drag.li.classList.add("ghost");
+    }
+    e.preventDefault();
+    drag.clone.style.left = (e.clientX+drag.dx)+"px";
+    drag.clone.style.top  = (e.clientY+drag.dy)+"px";
+
+    var over = listAt(e.clientX, e.clientY);
+    bank.classList.toggle("over", over===bank);
+    sol.classList.toggle("over", over===sol);
+    var target = over || drag.li.parentNode;
+    placeBefore(target, e.clientY);
+
+    if(useIndent && drag.li.parentNode === sol){
+      var n = drag.startIndent + Math.round(dx/STEP);
+      setIndent(drag.li, n);
+      if(rulerLine){
+        rulerLine.style.left = (parseInt(drag.li.dataset.indent,10)*STEP)+"px";
+        rulerLine.style.opacity = "1";
+      }
+    } else setIndent(drag.li, 0);
+  }
+  function onUp(e){
+    if(!drag) return;
+    var li = drag.li;
+    li.removeEventListener("pointermove", onMove);
+    li.removeEventListener("pointerup", onUp);
+    li.removeEventListener("pointercancel", onUp);
+    if(drag.active){
+      if(drag.clone) drag.clone.remove();
+      li.classList.remove("ghost");
+      bank.classList.remove("over"); sol.classList.remove("over");
+      if(rulerLine) rulerLine.style.opacity = "0";
+      setIndent(li, li.parentNode===sol ? parseInt(li.dataset.indent,10) : 0);
+      refreshEmpty();
+    }
+    drag = null;
+  }
+  function listAt(x,y){
+    var r1 = bank.getBoundingClientRect(), r2 = sol.getBoundingClientRect();
+    var pad = 40;
+    if(x>=r1.left-pad && x<=r1.right+pad && y>=r1.top-pad && y<=r1.bottom+pad) return bank;
+    if(x>=r2.left-pad && x<=r2.right+pad && y>=r2.top-pad && y<=r2.bottom+pad) return sol;
+    return null;
+  }
+  function placeBefore(list, y){
+    var kids = Array.prototype.filter.call(list.children, function(c){
+      return c.classList.contains("blk") && c !== drag.li;
+    });
+    var before = null;
+    for(var i=0;i<kids.length;i++){
+      var r = kids[i].getBoundingClientRect();
+      if(y < r.top + r.height/2){ before = kids[i]; break; }
+    }
+    if(before) list.insertBefore(drag.li, before);
+    else list.appendChild(drag.li);
+    var ph = list.querySelector(".empty"); if(ph) ph.remove();
+    refreshEmpty();
+  }
+
+  /* --- keyboard --- */
+  function onKey(e){
+    var li = e.currentTarget, list = li.parentNode, k = e.key;
+    if(k==="Enter" || k===" "){
+      e.preventDefault(); clearMarks();
+      var to = (list===bank) ? sol : bank;
+      to.appendChild(li); setIndent(li, list===bank ? parseInt(li.dataset.indent,10) : 0);
+      refreshEmpty(); li.focus();
+    } else if(k==="ArrowUp" || k==="ArrowDown"){
+      e.preventDefault(); clearMarks();
+      var sibs = Array.prototype.filter.call(list.children, function(c){ return c.classList.contains("blk"); });
+      var i = sibs.indexOf(li);
+      if(k==="ArrowUp" && i>0) list.insertBefore(li, sibs[i-1]);
+      if(k==="ArrowDown" && i<sibs.length-1) list.insertBefore(sibs[i+1], li);
+      li.focus();
+    } else if((k==="ArrowLeft" || k==="ArrowRight") && useIndent && list===sol){
+      e.preventDefault(); clearMarks();
+      setIndent(li, (parseInt(li.dataset.indent,10)||0) + (k==="ArrowRight"?1:-1));
+    }
+  }
+
+  /* --- buttons --- */
+  var bar = el("div","bar");
+  var bCheck = el("button",null,"Check answer");
+  var bReset = el("button","ghostbtn","Start over");
+  bar.appendChild(bCheck); bar.appendChild(bReset);
+  var bShow = null;
+  if(showSol){ bShow = el("button","ghostbtn","Show answer"); bar.appendChild(bShow); }
+  root.appendChild(bar);
+
+  var verdict = el("div","verdict");
+  root.appendChild(verdict);
+  root.appendChild(el("p","hint", useIndent
+    ? "Drag sideways to change indentation. Keyboard: arrow keys move and indent, space switches column."
+    : "Keyboard: arrow keys move blocks, space switches column."));
+
+  bReset.addEventListener("click", function(){
+    clearMarks();
+    var all = Array.prototype.slice.call(root.querySelectorAll(".blk"));
+    shuffle(all).forEach(function(b){ setIndent(b,0); bank.appendChild(b); });
+    refreshEmpty();
+    verdict.classList.remove("show");
+  });
+
+  if(bShow) bShow.addEventListener("click", function(){
+    clearMarks();
+    var pool = Array.prototype.slice.call(root.querySelectorAll(".blk"));
+    solution.forEach(function(line){
+      for(var i=0;i<pool.length;i++){
+        if(pool[i].dataset.code === line.code){
+          sol.appendChild(pool[i]); setIndent(pool[i], line.indent); pool.splice(i,1); return;
+        }
+      }
+    });
+    pool.forEach(function(b){ setIndent(b,0); bank.appendChild(b); });
+    refreshEmpty();
+    verdict.className = "verdict show";
+    verdict.textContent = "Answer shown. Press \u201cStart over\u201d to try it yourself.";
+  });
+
+  bCheck.addEventListener("click", function(){
+    clearMarks();
+    var given = Array.prototype.filter.call(sol.children, function(c){ return c.classList.contains("blk"); });
+    if(!given.length){
+      verdict.className = "verdict show";
+      verdict.textContent = "Your program is empty. Drag some blocks across first.";
+      return;
+    }
+    var gCodes = given.map(function(b){ return b.dataset.code; });
+    var expected = adaptSolution(solution, gCodes);
+    var sCodes = expected.map(function(l){ return l.code; });
+    var pairs = lcsPairs(gCodes, sCodes);
+    var matched = {}, wrongIndent = 0;
+    pairs.forEach(function(p){
+      matched[p[0]] = true;
+      var li = given[p[0]];
+      if(useIndent && (parseInt(li.dataset.indent,10)||0) !== expected[p[1]].indent){
+        li.classList.add("ind");
+        li.appendChild(el("span","flag","indent"));
+        wrongIndent++;
+      } else li.classList.add("ok");
+    });
+    var misplaced = 0;
+    given.forEach(function(li,i){
+      if(!matched[i]){ li.classList.add("off"); li.appendChild(el("span","flag","misplaced")); misplaced++; }
+    });
+    var missing = solution.length - pairs.length;
+    var perfect = (misplaced===0 && wrongIndent===0 && missing===0 && given.length===solution.length);
+
+    verdict.innerHTML = "";
+    verdict.className = "verdict show " + (perfect ? "good" : "bad");
+    if(perfect){
+      verdict.appendChild(el("strong",null,"Correct. The program is complete and correctly assembled."));
+    } else {
+      verdict.appendChild(el("strong",null,"Not quite yet."));
+      var ul = el("ul");
+      if(misplaced) ul.appendChild(el("li",null, misplaced + (misplaced===1?" line is in the wrong place, or does not belong in the program.":" lines are in the wrong place, or do not belong in the program.")));
+      if(wrongIndent) ul.appendChild(el("li",null, wrongIndent + (wrongIndent===1?" line is in the right place, but at the wrong indentation level.":" lines are in the right place, but at the wrong indentation level.")));
+      if(missing>0) ul.appendChild(el("li",null, "You are missing " + missing + (missing===1?" line.":" lines.")));
+      verdict.appendChild(ul);
+    }
+  });
+
+  refreshEmpty();
+  return root;
+}
+
+/* ---------- start-up ---------- */
+function specFromNode(node){
+  var s = node.querySelector('script[type="application/json"]');
+  if(!s) return null;
+  try { return JSON.parse(s.textContent); } catch(e){ console.error("Invalid JSON in .parsons:", e); return null; }
+}
+
+function boot(){
+  var hash = location.hash.match(/[#&]p=([^&]+)/);
+  if(hash){
+    try{
+      var spec = JSON.parse(b64dec(hash[1]));
+      document.querySelectorAll(".parsons").forEach(function(n,i){ if(i>0) n.remove(); });
+      var host = document.querySelector(".parsons") || document.querySelector(".wrap").appendChild(el("div","parsons"));
+      mount(host, spec);
+      var b = document.getElementById("builder");
+      if(b && !/[#&]edit/.test(location.hash)) b.style.display = "none";
+      return;
+    }catch(e){ console.error("Could not read the problem from the link:", e); }
+  }
+  document.querySelectorAll(".parsons").forEach(function(n){
+    var spec = specFromNode(n);
+    if(spec) mount(n, spec);
+  });
+}
+
+/* ---------- builder ---------- */
+function currentSpec(){
+  return {
+    label: document.getElementById("b-label").value.trim() || undefined,
+    prompt: document.getElementById("b-prompt").value.trim(),
+    code: document.getElementById("b-code").value.replace(/\s+$/,""),
+    distractors: document.getElementById("b-dist").value.split("\n").map(function(s){return s.trim();}).filter(Boolean),
+    indent: document.getElementById("b-indent").checked,
+    showSolution: document.getElementById("b-sol").checked
+  };
+}
+function initBuilder(){
+  var out = document.getElementById("b-out"), toast = document.getElementById("b-toast");
+  document.getElementById("b-preview").addEventListener("click", function(){
+    var spec = currentSpec();
+    if(!spec.code.trim()){ out.innerHTML=""; out.appendChild(el("p","hint","Add a solution first.")); return; }
+    out.innerHTML = "";
+    var box = el("div","parsons");
+    out.appendChild(box);
+    mount(box, spec);
+    box.scrollIntoView({behavior:"smooth", block:"nearest"});
+  });
+  document.getElementById("b-link").addEventListener("click", function(){
+    var url = location.href.split("#")[0] + "#p=" + b64enc(JSON.stringify(currentSpec()));
+    copy(url, toast);
+    out.innerHTML = "";
+    var f = el("div","field");
+    f.appendChild(el("label",null,"Shareable link"));
+    var ta = el("textarea"); ta.rows=3; ta.value=url; f.appendChild(ta);
+    out.appendChild(f);
+  });
+  document.getElementById("b-embed").addEventListener("click", function(){
+    var json = JSON.stringify(currentSpec(), null, 2);
+    var snippet =
+      '<div class="parsons">\n<script type="application/json">\n' + json + '\n<\/script>\n</div>';
+    copy(snippet, toast);
+    out.innerHTML = "";
+    var f = el("div","field");
+    f.appendChild(el("label",null,"Paste this into this file (or a copy of it), just above the builder"));
+    var ta = el("textarea"); ta.rows=10; ta.value=snippet; f.appendChild(ta);
+    out.appendChild(f);
+  });
+}
+
+document.addEventListener("DOMContentLoaded", function(){
+  boot();
+  if(document.getElementById("builder")) initBuilder();
+});
+window.addEventListener("hashchange", function(){ location.reload(); });
+})();
+</script>
+</body>
+</html>
