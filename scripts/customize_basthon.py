@@ -44,7 +44,6 @@ TRANSLATIONS = {
     "Exécuter": "Kjør",
     "Annuler": "Avbryt",
     "Erreur": "Feil",
-    "Module": "Modul",
 }
 
 
@@ -60,7 +59,9 @@ def customize_javascript(path):
     for source, target in sorted(
         TRANSLATIONS.items(), key=lambda item: len(item[0]), reverse=True
     ):
-        content = content.replace(source, target)
+        source_literal = '"' + source.replace('"', '\\"') + '"'
+        target_literal = '"' + target.replace('"', '\\"') + '"'
+        content = content.replace(source_literal, target_literal)
 
     if "Exécuter" in content:
         raise RuntimeError("Den franske teksten 'Exécuter' finnes fortsatt i Basthon-fila")
