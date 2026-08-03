@@ -1,4 +1,4 @@
-"""Tilpass en nedlastet Basthon Console for Programmering i kjemi."""
+"""Customize a downloaded Basthon Console for Programming in Chemistry."""
 
 from pathlib import Path
 import sys
@@ -6,44 +6,44 @@ import sys
 
 TRANSLATIONS = {
     "Ouvrir un script, charger un module ou un fichier":
-        "Åpne et program eller last inn en modul eller fil",
+        "Open a script or load a module or file",
     "Il semble que Basthon ait rencontré un problème à sa dernière utilisation. "
     "Que voulez-vous faire ?":
-        "Det oppstod et problem forrige gang editoren ble brukt. Hva vil du gjøre?",
+        "The editor encountered a problem the last time it was used. What would you like to do?",
     "Il n'y a aucune sauvegarde à restaurer !":
-        "Det finnes ingen lagret versjon å gjenopprette!",
+        "There is no saved version to restore!",
     "Revenir à une version précédente du script":
-        "Gå tilbake til en tidligere versjon",
+        "Return to a previous version of the script",
     "Erreur de chargement de Basthon !!!<br>Vérifiez que votre navigateur est à jour."
     "<br>Version détectée :":
-        "Kunne ikke laste Python-editoren.<br>Kontroller at nettleseren er oppdatert."
-        "<br>Oppdaget versjon:",
-    "Changer le thème (sombre/lumineux)": "Bytt tema (mørkt/lyst)",
-    "Échanger l'éditeur et la console": "Bytt plass på editoren og konsollen",
-    "Afficher l'éditeur et la console": "Vis editoren og konsollen",
-    "Afficher seulement l'éditeur": "Vis bare editoren",
-    "Afficher seulement la console": "Vis bare konsollen",
-    "Chargement des fichiers auxiliaires...": "Laster tilleggsfiler...",
-    "Chargement des modules annexes...": "Laster tilleggsmoduler...",
-    "Aucune sauvegarde à restaurer": "Ingen lagret versjon å gjenopprette",
-    "Copier dans le presse-papier": "Kopier til utklippstavlen",
-    "Afficher la vue graphique": "Vis grafikk",
-    "Afficher la console": "Vis konsollen",
-    "Charger dans l'éditeur": "Last inn i editoren",
-    "Choisir une sauvegarde": "Velg en lagret versjon",
-    "Redémarrer le noyau": "Start Python-kjernen på nytt",
-    "Télécharger le script": "Last ned programmet",
-    "Partager ce document": "Del dokumentet",
-    "Exécuter le script": "Kjør programmet",
-    "Installer le module": "Installer modulen",
-    "Chargement de Basthon...": "Laster Python-editoren...",
-    "Un bac à sable pour ": "Nettbasert editor for ",
-    "Partager ce code": "Del koden",
-    "Propulsé par ": "Drevet av ",
-    "Récupération": "Gjenoppretting",
-    "Exécuter": "Kjør",
-    "Annuler": "Avbryt",
-    "Erreur": "Feil",
+        "Could not load the Python editor.<br>Make sure your browser is up to date."
+        "<br>Detected version:",
+    "Changer le thème (sombre/lumineux)": "Switch theme (dark/light)",
+    "Échanger l'éditeur et la console": "Swap the editor and console",
+    "Afficher l'éditeur et la console": "Show the editor and console",
+    "Afficher seulement l'éditeur": "Show only the editor",
+    "Afficher seulement la console": "Show only the console",
+    "Chargement des fichiers auxiliaires...": "Loading auxiliary files...",
+    "Chargement des modules annexes...": "Loading additional modules...",
+    "Aucune sauvegarde à restaurer": "No saved version to restore",
+    "Copier dans le presse-papier": "Copy to clipboard",
+    "Afficher la vue graphique": "Show graphical view",
+    "Afficher la console": "Show console",
+    "Charger dans l'éditeur": "Load into the editor",
+    "Choisir une sauvegarde": "Choose a saved version",
+    "Redémarrer le noyau": "Restart the Python kernel",
+    "Télécharger le script": "Download the script",
+    "Partager ce document": "Share this document",
+    "Exécuter le script": "Run the script",
+    "Installer le module": "Install the module",
+    "Chargement de Basthon...": "Loading the Python editor...",
+    "Un bac à sable pour ": "Online editor for ",
+    "Partager ce code": "Share this code",
+    "Propulsé par ": "Powered by ",
+    "Récupération": "Recovery",
+    "Exécuter": "Run",
+    "Annuler": "Cancel",
+    "Erreur": "Error",
 }
 
 
@@ -53,7 +53,7 @@ def customize_javascript(path):
     missing = [text for text in required if text not in content]
     if missing:
         raise RuntimeError(
-            "Basthon-grensesnittet har endret seg; fant ikke: " + ", ".join(missing)
+            "The Basthon interface has changed; could not find: " + ", ".join(missing)
         )
 
     for source, target in sorted(
@@ -64,15 +64,15 @@ def customize_javascript(path):
         content = content.replace(source_literal, target_literal)
 
     if "Exécuter" in content:
-        raise RuntimeError("Den franske teksten 'Exécuter' finnes fortsatt i Basthon-fila")
+        raise RuntimeError("The French text 'Exécuter' is still present in the Basthon file")
 
     path.write_text(content, encoding="utf-8")
 
 
 def customize_html(path):
     content = path.read_text(encoding="utf-8")
-    content = content.replace('<html lang="fr">', '<html lang="nb">')
-    content = content.replace("<title>Basthon Console</title>", "<title>Python-editor</title>")
+    content = content.replace('<html lang="fr">', '<html lang="en">')
+    content = content.replace("<title>Basthon Console</title>", "<title>Python editor</title>")
 
     marker = "programmering-i-kjemi-basthon"
     if marker not in content:
@@ -90,7 +90,7 @@ def customize_html(path):
 
 def main():
     if len(sys.argv) != 3:
-        raise SystemExit("Bruk: customize_basthon.py INDEX_HTML MAIN_JS")
+        raise SystemExit("Usage: customize_basthon.py INDEX_HTML MAIN_JS")
 
     html_path = Path(sys.argv[1])
     javascript_path = Path(sys.argv[2])
