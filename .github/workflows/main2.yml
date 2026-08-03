@@ -36,6 +36,20 @@ jobs:
 
           git checkout master
           jupyter-book build .
+      - name: Install and customize Basthon
+        run: |
+          basthon_dir="_build/html/basthon"
+          mkdir -p "$basthon_dir"
+          curl --fail --location --silent --show-error --retry 3 \
+            https://console.basthon.fr/basthon-console.tgz \
+            | tar -xz -C "$basthon_dir"
+          mkdir -p "$basthon_dir/examples"
+          cp docs/_static/basthon_examples/*.py "$basthon_dir/examples/"
+          basthon_js=$(find "$basthon_dir/assets" -maxdepth 1 -type f \
+            -name 'main.*.js' ! -name '*.map' -print -quit)
+          test -n "$basthon_js"
+          python scripts/customize_basthon.py \
+            "$basthon_dir/index.html" "$basthon_js"
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
