@@ -56,6 +56,19 @@ def customize_javascript(path):
             "The Basthon interface has changed; could not find: " + ", ".join(missing)
         )
 
+    # Basthon stores an explicit user choice in browser storage. This only changes
+    # the initial value for users who have not selected a theme themselves.
+    dark_default = 'theme:"dark",viewMode:"default",rightPanel:"terminal"'
+    light_default = 'theme:"light",viewMode:"default",rightPanel:"terminal"'
+    dark_count = content.count(dark_default)
+    light_count = content.count(light_default)
+    if dark_count == 1 and light_count == 0:
+        content = content.replace(dark_default, light_default, 1)
+    elif not (dark_count == 0 and light_count == 1):
+        raise RuntimeError(
+            "The Basthon interface has changed; could not set a unique light-theme default"
+        )
+
     for source, target in sorted(
         TRANSLATIONS.items(), key=lambda item: len(item[0]), reverse=True
     ):
