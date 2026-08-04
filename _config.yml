@@ -38,3 +38,12 @@ latex:
   latex_engine                : "xelatex"
   latex_documents:
     targetname: book.tex
+
+#######################################################################################
+# Quizmotor (kjemiquiz)
+sphinx:
+  config:
+    html_css_files:
+      - kjemiquiz.css
+    html_js_files:
+      - kjemiquiz.js

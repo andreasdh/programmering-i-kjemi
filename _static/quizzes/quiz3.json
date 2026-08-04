@@ -1,0 +1,184 @@
+[
+  {
+    "question": "Hva er output fra følgende kode?",
+    "code": "liste1 = [-1, 2, 4, 4, -3]\nif liste1[3] > 0:\n    liste1[1] = 1\nif liste1[2] < 2:\n    liste1.append(3)\nelse:\n    del liste1[2:4]\nprint(liste1)",
+    "type": "multiple_choice",
+    "answers": [
+      {"answer": "[-1, 1, -3]", "correct": true, "feedback": "Riktig. Første if er sann, så element 1 blir 1. Andre if er usann (4 er ikke mindre enn 2), så else kjøres og element 2 og 3 slettes."},
+      {"answer": "[-1, 1, 4, 4, -3, 3]", "correct": false, "feedback": "Feil. `liste1[2]` er 4, som ikke er mindre enn 2 — det er else-grenen som kjøres."},
+      {"answer": "[-1, 2, -3]", "correct": false, "feedback": "Feil. Den første if-testen er sann, så element 1 endres fra 2 til 1."},
+      {"answer": "[-1, 1, 4, 4, -3]", "correct": false, "feedback": "Feil. Begge if-setningene utføres — den andre sletter to elementer."}
+    ]
+  },
+  {
+    "question": "Hva er output fra følgende kode?",
+    "code": "a = 7\nif a >= 7:\n    print(\"Tallet er større enn eller lik 7.\")\nif a == 7:\n    print(\"Tallet er 7.\")\nelse:\n    print(\"Tallet er ikke 7.\")",
+    "type": "multiple_choice",
+    "answers": [
+      {"answer": "Tallet er større enn eller lik 7.", "correct": false, "feedback": "Feil. Begge if-testene utføres, for de er uavhengige av hverandre."},
+      {"answer": "Tallet er 7.", "correct": false, "feedback": "Feil. Begge if-testene utføres."},
+      {"answer": "Tallet er større enn eller lik 7.\nTallet er 7.", "correct": true, "feedback": "Riktig. Dette er to selvstendige if-setninger, så begge testes."},
+      {"answer": "Tallet er ikke 7.", "correct": false, "feedback": "Feil. Else-grenen kjøres bare når if-testen rett over er usann."}
+    ]
+  },
+  {
+    "question": "Hva er output fra følgende kode?",
+    "code": "a = 7\nif a >= 7:\n    print(\"Tallet er større enn eller lik 7.\")\nelif a == 7:\n    print(\"Tallet er 7.\")\nelse:\n    print(\"Tallet er ikke 7.\")",
+    "type": "multiple_choice",
+    "answers": [
+      {"answer": "Tallet er større enn eller lik 7.", "correct": true, "feedback": "Riktig. Når en if-test er sann, hopper vi over alle påfølgende elif og else."},
+      {"answer": "Tallet er 7.", "correct": false, "feedback": "Feil. Den første if-testen er sann, så elif-grenen testes aldri."},
+      {"answer": "Tallet er større enn eller lik 7.\nTallet er 7.", "correct": false, "feedback": "Feil. I en if–elif–else-kjede kjøres bare én gren."},
+      {"answer": "Tallet er ikke 7.", "correct": false, "feedback": "Feil. Else kjøres bare når ingen av de foregående testene er sanne."}
+    ]
+  },
+  {
+    "question": "Hva er output fra følgende kode?",
+    "code": "a = 6\nif a > 7:\n    print(\"Tallet er større enn 7.\")\nelif a == 7:\n    print(\"Tallet er 7.\")\nelse:\n    print(\"Tallet er ikke 7.\")",
+    "type": "multiple_choice",
+    "answers": [
+      {"answer": "Tallet er større enn 7.", "correct": false, "feedback": "Feil. 6 er ikke større enn 7."},
+      {"answer": "Tallet er 7.", "correct": false, "feedback": "Feil. `a` er 6."},
+      {"answer": "Tallet er større enn 7.\nTallet er 7.", "correct": false, "feedback": "Feil. Ingen av vilkårene er sanne."},
+      {"answer": "Tallet er ikke 7.", "correct": true, "feedback": "Riktig. Ingen av vilkårene er sanne, så else-grenen kjøres."}
+    ]
+  },
+  {
+    "question": "Vi har `a = \"potet\"`. Hvilken av følgende kodelinjer sjekker om a er en streng?",
+    "type": "multiple_choice",
+    "answers": [
+      {"answer": "if type(a) = str:", "correct": false, "feedback": "Feil. Likhet sjekkes med doble likhetstegn. Enkelt likhetstegn er tilordning."},
+      {"answer": "if type(a) = string:", "correct": false, "feedback": "Feil. Datatypen heter `str`, og likhet sjekkes med `==`."},
+      {"answer": "if type(a) == str:", "correct": true, "feedback": "Riktig. Datatypen for streng heter `str`."},
+      {"answer": "if type(a) == string:", "correct": false, "feedback": "Feil. Datatypen heter `str`, ikke `string`."}
+    ]
+  },
+  {
+    "question": "Hva blir output fra følgende program?",
+    "code": "a = 10\nb = 3\nc = 9\nif a > b:\n    a = b\nif a > c:\n    c = a + b\nif b != a:\n    c = a\nprint(a, b, c)",
+    "type": "multiple_choice",
+    "answers": [
+      {"answer": "10 3 13", "correct": false, "feedback": "Feil. Første if endrer `a` til 3."},
+      {"answer": "10 3 9", "correct": false, "feedback": "Feil. Første if er sann, så `a` blir 3."},
+      {"answer": "3 3 13", "correct": false, "feedback": "Feil. Etter at `a` er blitt 3, er ikke `a > c` lenger sann."},
+      {"answer": "3 3 9", "correct": true, "feedback": "Riktig. `a` blir 3, og de to siste testene er begge usanne."}
+    ]
+  },
+  {
+    "question": "Hva må vi sette inn i koden for å få 15 som output?",
+    "code": "a = 10\nb = 5\nif a ___ b:\n    print(a + b)",
+    "type": "many_choice",
+    "answers": [
+      {"answer": "<", "correct": false, "feedback": "Feil. 10 er ikke mindre enn 5."},
+      {"answer": "==", "correct": false, "feedback": "Feil. 10 er ikke lik 5."},
+      {"answer": "!=", "correct": true, "feedback": "Riktig. `!=` betyr \"ikke lik\", og 10 er ikke lik 5."},
+      {"answer": ">", "correct": true, "feedback": "Riktig. 10 er større enn 5."}
+    ]
+  },
+  {
+    "question": "Hva er output fra følgende program?",
+    "code": "a = [1, 3, 4, 5]\nif 3 in a:\n    a.remove(1)\nelse:\n    a.append(2)\nprint(sum(a))",
+    "type": "numeric",
+    "precision": 0,
+    "answers": [
+      {"type": "value", "value": 12, "correct": true, "feedback": "Riktig. 3 finnes i lista, så 1 fjernes: 3 + 4 + 5."},
+      {"type": "value", "value": 13, "correct": false, "feedback": "Feil. Lista er ikke uendret etter vilkåret."},
+      {"type": "value", "value": 15, "correct": false, "feedback": "Feil. Tallet 3 er i lista, så det er if-grenen som kjøres, ikke else."},
+      {"type": "value", "value": 14, "correct": false, "feedback": "Feil. Bare én av grenene kjøres."},
+      {"type": "default", "feedback": "Feil. Sjekk hvilken gren som kjøres, og hva lista inneholder etterpå."}
+    ]
+  },
+  {
+    "question": "Hvilke verdier for a, b, c og d gjør at programmet skriver ut nøyaktig \"Vilkår a, c og d er sann\" og ingenting annet?",
+    "code": "l = [4, 5, 6, 1, 1, 2, 7]\nif a == l[3]:\n    if b == l[0]:\n        print(\"Vilkår a og b er sann\")\n    if c == l[5]:\n        if d == l[2]:\n            print(\"Vilkår a, c og d er sann\")",
+    "type": "multiple_choice",
+    "answers": [
+      {"answer": "a = 1, b = 5, c = 2, d = 6", "correct": true, "feedback": "Riktig. a treffer l[3] = 1, c treffer l[5] = 2 og d treffer l[2] = 6, mens b ikke er 4."},
+      {"answer": "a = 6, b = 1, c = 1, d = 5", "correct": false, "feedback": "Feil. `a` må være lik `l[3]`, altså 1, ellers kjøres ingenting."},
+      {"answer": "a = 1, b = 4, c = 2, d = 3", "correct": false, "feedback": "Feil. Her skrives den første setningen ut, og `d` treffer ikke `l[2]`."},
+      {"answer": "a = 1, b = 4, c = 2, d = 6", "correct": false, "feedback": "Feil. Riktig setning skrives ut, men siden b = 4 = l[0] kommer den første setningen i tillegg."},
+      {"answer": "Ingen kombinasjon kan gi denne outputen.", "correct": false, "feedback": "Feil. Ett av alternativene treffer."}
+    ]
+  },
+  {
+    "question": "Hva skrives ut når dette programmet kjøres?",
+    "code": "l = [0.1, 3, \"molekyl\"]\nif type(l[2]) == str:\n    print(\"Første betingelse sann\")\n    if l[1] <= 0.15:\n        print(\"Andre betingelse sann\")\n    if len(l) == 3:\n        print(\"Tredje betingelse sann\")",
+    "type": "multiple_choice",
+    "answers": [
+      {"answer": "Første betingelse sann", "correct": false, "feedback": "Feil. Også den tredje testen er sann."},
+      {"answer": "Andre betingelse sann", "correct": false, "feedback": "Feil. `l[1]` er 3, som ikke er mindre enn eller lik 0.15."},
+      {"answer": "Første betingelse sann\nTredje betingelse sann", "correct": true, "feedback": "Riktig. `l[2]` er en streng og lista har tre elementer, men `l[1]` er ikke mindre enn 0.15."},
+      {"answer": "Første betingelse sann\nAndre betingelse sann", "correct": false, "feedback": "Feil. `l[1]` er 3, ikke 0.1 — pass på indekseringen."},
+      {"answer": "Andre betingelse sann\nTredje betingelse sann", "correct": false, "feedback": "Feil. De to indre testene ligger inni den første, som også skriver ut noe."},
+      {"answer": "Alle tre betingelsene skrives ut.", "correct": false, "feedback": "Feil. Den andre testen er usann."}
+    ]
+  },
+  {
+    "question": "Hvilket tall vil bli skrevet ut?",
+    "code": "a = 0\nif a == 0:\n    a += 1\nelif a == 1:\n    a += 1\nelse:\n    a += 1\nprint(a)",
+    "type": "multiple_choice",
+    "answers": [
+      {"answer": "0", "correct": false, "feedback": "Feil. Én av grenene kjøres alltid, og alle øker `a` med 1."},
+      {"answer": "1", "correct": true, "feedback": "Riktig. Bare den første grenen kjøres, så `a` økes med 1 én gang."},
+      {"answer": "2", "correct": false, "feedback": "Feil. I en if–elif–else-kjede kjøres bare én gren."},
+      {"answer": "3", "correct": false, "feedback": "Feil. Grenene utelukker hverandre."},
+      {"answer": "4", "correct": false, "feedback": "Feil. Grenene utelukker hverandre."}
+    ]
+  },
+  {
+    "question": "Vi lar variablene `tall1` og `tall2` være tallverdier. Hvilke av testene er gyldige?",
+    "type": "many_choice",
+    "answers": [
+      {"answer": "if tall1 < 0 og tall2 < 0:", "correct": false, "feedback": "Feil. Nøkkelordet heter `and`, ikke `og`."},
+      {"answer": "if tall1 != tall2:", "correct": true, "feedback": "Riktig. `!=` betyr \"ikke lik\"."},
+      {"answer": "if tall1 > 3 and maybe tall2 > 3:", "correct": false, "feedback": "Feil. `maybe` finnes ikke i Python."},
+      {"answer": "if tall1 >= 1 and tall2 < 10:", "correct": true, "feedback": "Riktig. `and` sjekker om to vilkår er sanne samtidig."},
+      {"answer": "if tall1 == 10 or tall2 != 10:", "correct": true, "feedback": "Riktig. `or` sjekker om minst ett av vilkårene er sant."},
+      {"answer": "if tall1 = tall2:", "correct": false, "feedback": "Feil. Likhet krever doble likhetstegn: `==`."}
+    ]
+  },
+  {
+    "question": "Hva skrives ut?",
+    "code": "konsentrasjon = 0\nif konsentrasjon:\n    print(\"Løsningen inneholder stoffet\")\nelse:\n    print(\"Ingen konsentrasjon registrert\")",
+    "type": "multiple_choice",
+    "answers": [
+      {"answer": "Ingen konsentrasjon registrert", "correct": true, "feedback": "Riktig. Tallet 0 regnes som usant i Python, så else-grenen kjøres."},
+      {"answer": "Løsningen inneholder stoffet", "correct": false, "feedback": "Feil. Tallet 0 regnes som usant, mens alle andre tall regnes som sanne."},
+      {"answer": "En feilmelding, siden `konsentrasjon` ikke er en sammenlikning", "correct": false, "feedback": "Feil. En if-test godtar en hvilken som helst verdi, ikke bare sammenlikninger."},
+      {"answer": "Ingenting", "correct": false, "feedback": "Feil. Én av de to grenene kjøres alltid."}
+    ]
+  },
+  {
+    "question": "Hva skrives ut?",
+    "code": "formel = \"NaCl\"\nif \"Na\" in formel:\n    print(\"Inneholder natrium\")\nif \"na\" in formel:\n    print(\"Inneholder også na\")",
+    "type": "multiple_choice",
+    "answers": [
+      {"answer": "Inneholder natrium", "correct": true, "feedback": "Riktig. `in` søker etter en delstreng, og søket skiller mellom store og små bokstaver."},
+      {"answer": "Inneholder natrium\nInneholder også na", "correct": false, "feedback": "Feil. `in` skiller mellom store og små bokstaver, så `\"na\"` finnes ikke i `\"NaCl\"`."},
+      {"answer": "Ingenting", "correct": false, "feedback": "Feil. `\"Na\"` er en del av `\"NaCl\"`."},
+      {"answer": "En feilmelding, siden `in` bare virker på lister", "correct": false, "feedback": "Feil. `in` virker også på strenger, der den leter etter en delstreng."}
+    ]
+  },
+  {
+    "question": "En løsning har pH = 7.0. Hva skrives ut?",
+    "code": "pH = 7.0\nif pH < 7:\n    print(\"sur\")\nelif pH > 7:\n    print(\"basisk\")\nelse:\n    print(\"nøytral\")",
+    "type": "multiple_choice",
+    "answers": [
+      {"answer": "nøytral", "correct": true, "feedback": "Riktig. Verken `<` eller `>` er sann når pH er nøyaktig 7."},
+      {"answer": "sur", "correct": false, "feedback": "Feil. 7.0 er ikke mindre enn 7."},
+      {"answer": "basisk", "correct": false, "feedback": "Feil. 7.0 er ikke større enn 7."},
+      {"answer": "sur\nnøytral", "correct": false, "feedback": "Feil. Bare én gren i en if–elif–else-kjede kjøres."}
+    ]
+  },
+  {
+    "question": "Hvilke av testene nedenfor er sanne når `pH = 4.5`?",
+    "type": "many_choice",
+    "answers": [
+      {"answer": "pH < 7 and pH > 0", "correct": true, "feedback": "Riktig. Begge delene er sanne."},
+      {"answer": "0 < pH < 7", "correct": true, "feedback": "Riktig. Python tillater lenkede sammenlikninger, og de betyr det samme som `and`."},
+      {"answer": "pH > 7 or pH == 4.5", "correct": true, "feedback": "Riktig. Med `or` holder det at én del er sann."},
+      {"answer": "pH > 7 and pH == 4.5", "correct": false, "feedback": "Feil. Med `and` må begge delene være sanne, og pH er ikke over 7."},
+      {"answer": "not pH < 7", "correct": false, "feedback": "Feil. `pH < 7` er sann, og `not` snur den til usann."}
+    ]
+  }
+]

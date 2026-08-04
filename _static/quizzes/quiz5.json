@@ -1,0 +1,135 @@
+[
+  {
+    "question": "Hva blir output når dette programmet kjører?",
+    "code": "def leggtil(a, b):\n    a + b\n\nprint(leggtil(1, 2))",
+    "type": "multiple_choice",
+    "answers": [
+      {"answer": "None", "correct": true, "feedback": "Riktig. Funksjonen regner ut summen, men returnerer den ikke. En funksjon uten `return` gir automatisk `None` tilbake, og det er `None` som skrives ut."},
+      {"answer": "Ingenting", "correct": false, "feedback": "Nesten. Funksjonen returnerer ingen verdi, men `print` skriver likevel ut noe — nemlig `None`."},
+      {"answer": "3", "correct": false, "feedback": "Feil. Nøkkelordet `return` mangler, så summen forlater aldri funksjonen."},
+      {"answer": "1", "correct": false, "feedback": "Feil. Ingen av argumentene returneres."},
+      {"answer": "Vi får en feilmelding.", "correct": false, "feedback": "Feil. Dette er gyldig Python — funksjonen gjør bare ikke noe nyttig."}
+    ]
+  },
+  {
+    "question": "Hva blir output når dette programmet kjører?",
+    "code": "def leggtil(a, b):\n    return a + b\n\nprint(leggtil([1, 2, 3], [2, 1, 2]))",
+    "type": "multiple_choice",
+    "answers": [
+      {"answer": "Ingenting", "correct": false, "feedback": "Feil. Her returnerer funksjonen en verdi som skrives ut."},
+      {"answer": "[2, 3, 4]", "correct": false, "feedback": "Feil. Lister adderes ikke elementvis — det er arrayer som gjør det."},
+      {"answer": "[1, 2, 3, 2, 1, 2]", "correct": true, "feedback": "Riktig. `+` på lister skjøter dem sammen."},
+      {"answer": "11", "correct": false, "feedback": "Feil. Innholdet summeres ikke."},
+      {"answer": "Vi får en feilmelding.", "correct": false, "feedback": "Feil. To lister kan godt adderes."}
+    ]
+  },
+  {
+    "question": "Hva blir output når dette programmet kjører?",
+    "code": "def f(x):\n    return x + 1\n\ndef g(y):\n    return y**2\n\nx = 2\nprint(g(f(g(x))))",
+    "type": "numeric",
+    "precision": 0,
+    "answers": [
+      {"type": "value", "value": 25, "correct": true, "feedback": "Riktig. Innerst først: `g(2) = 4`, så `f(4) = 5`, så `g(5) = 25`."},
+      {"type": "value", "value": 9, "correct": false, "feedback": "Feil. Sjekk rekkefølgen — det er den innerste funksjonen som kjøres først."},
+      {"type": "default", "feedback": "Feil. Regn innenfra og ut: først `g(x)`, så `f` av det, så `g` av det igjen."}
+    ]
+  },
+  {
+    "question": "Hva skal stå på den tomme, understrekede linja i programmet?",
+    "code": "def utskrift(________):\n    print(x)\n\nnum = 42\nutskrift(num)",
+    "type": "multiple_choice",
+    "answers": [
+      {"answer": "num", "correct": false, "feedback": "Feil. Det er `x` som skrives ut i funksjonen, så det er `x` som må være parameternavnet."},
+      {"answer": "Ingenting", "correct": false, "feedback": "Feil. `x` må defineres, enten som parameter eller som variabel."},
+      {"answer": "42", "correct": false, "feedback": "Feil. Parametere må være variabelnavn, ikke verdier."},
+      {"answer": "x", "correct": true, "feedback": "Riktig. Parameteren `x` får verdien til `num` når funksjonen kalles."}
+    ]
+  },
+  {
+    "question": "Hva blir output når dette programmet kjører?",
+    "code": "def func():\n    var = 6\n\nvar = 5\nfunc()\nprint(var)",
+    "type": "multiple_choice",
+    "answers": [
+      {"answer": "5 6", "correct": false, "feedback": "Feil. Det er bare én utskrift i programmet."},
+      {"answer": "5", "correct": true, "feedback": "Riktig. Verdien 6 tilordnes en lokal variabel inne i funksjonen, og den påvirker ikke `var` utenfor."},
+      {"answer": "6", "correct": false, "feedback": "Feil. `var` inne i funksjonen er en egen, lokal variabel."},
+      {"answer": "6 5", "correct": false, "feedback": "Feil. Det er bare én utskrift i programmet."}
+    ]
+  },
+  {
+    "question": "Hva skal stå på de tomme linjene slik at output fra programmet blir 6?",
+    "code": "def multiplikasjon(_____, _____):\n    produkt = a * b\n    _____(produkt)\n\nprint(multiplikasjon(2, 3))",
+    "type": "multiple_choice",
+    "answers": [
+      {"answer": "2, 3, print", "correct": false, "feedback": "Feil. Parametere må være variabelnavn, og funksjonen må returnere verdien siden vi printer den utenfor."},
+      {"answer": "a, b, print", "correct": false, "feedback": "Feil. Vi printer funksjonsverdien i nederste linje, så funksjonen må returnere en verdi, ikke printe den."},
+      {"answer": "a, b, return", "correct": true, "feedback": "Riktig. Parameternavnene må stemme med det som brukes i kroppen, og verdien må returneres."},
+      {"answer": "2, 3, return", "correct": false, "feedback": "Feil. Parametere må være variabelnavn, ikke verdier."}
+    ]
+  },
+  {
+    "question": "Hva er output fra følgende program?",
+    "code": "a = 3\nb = 5\n\ndef prod(a, b):\n    return a * b\n\ns = prod(a, a)\na = 5\n\nprint(a + s)",
+    "type": "numeric",
+    "precision": 0,
+    "answers": [
+      {"type": "value", "value": 14, "correct": true, "feedback": "Riktig. `s` regnes ut med `a = 3`, altså 9, og deretter er `a` blitt 5."},
+      {"type": "value", "value": 12, "correct": false, "feedback": "Feil. `s` er `prod(a, a)`, ikke `prod(a, b)`."},
+      {"type": "value", "value": 34, "correct": false, "feedback": "Feil. `s` regnes ut før `a` får ny verdi."},
+      {"type": "default", "feedback": "Feil. Pass på når `s` regnes ut, og hvilken verdi `a` har på det tidspunktet."}
+    ]
+  },
+  {
+    "question": "Hva er forskjellen på `return` og `print` i en funksjon?",
+    "type": "multiple_choice",
+    "answers": [
+      {"answer": "`return` sender en verdi tilbake som kan regnes videre med, mens `print` bare viser noe på skjermen.", "correct": true, "feedback": "Riktig. En funksjon som bare printer, gir deg ingenting å regne videre på."},
+      {"answer": "De gjør det samme, `return` er bare den nyere skrivemåten.", "correct": false, "feedback": "Feil. De gjør helt ulike ting."},
+      {"answer": "`return` skriver ut med flere desimaler enn `print`.", "correct": false, "feedback": "Feil. Antall desimaler har ingenting med dette å gjøre."},
+      {"answer": "`print` avslutter funksjonen, `return` fortsetter til neste linje.", "correct": false, "feedback": "Feil. Det er motsatt: `return` avslutter funksjonen der og da."}
+    ]
+  },
+  {
+    "question": "Funksjonen regner ut energien som skal til for å varme opp vann. Hva skrives ut?",
+    "code": "def energi(m, dT, c=4.18):\n    return m * c * dT\n\nprint(energi(100, 10))",
+    "type": "numeric",
+    "precision": 0,
+    "answers": [
+      {"type": "value", "value": 4180, "correct": true, "feedback": "Riktig. `c` har standardverdien 4.18 når den ikke oppgis i kallet."},
+      {"type": "value", "value": 1000, "correct": false, "feedback": "Feil. Standardverdien til `c` brukes, den hoppes ikke over."},
+      {"type": "default", "feedback": "Feil. Hvilken verdi får `c` når den ikke er med i funksjonskallet?"}
+    ]
+  },
+  {
+    "question": "Hva skrives ut?",
+    "code": "def analyser(masse):\n    return masse * 2, masse / 2\n\na, b = analyser(10)\nprint(b)",
+    "type": "multiple_choice",
+    "answers": [
+      {"answer": "5.0", "correct": true, "feedback": "Riktig. Funksjonen returnerer to verdier, og `b` får den andre."},
+      {"answer": "20", "correct": false, "feedback": "Feil. `a` får den første verdien, `b` den andre."},
+      {"answer": "(20, 5.0)", "correct": false, "feedback": "Feil. De to verdiene pakkes ut i hver sin variabel på linja `a, b = ...`."},
+      {"answer": "En feilmelding, siden en funksjon bare kan returnere én verdi", "correct": false, "feedback": "Feil. En funksjon kan returnere flere verdier skilt med komma."}
+    ]
+  },
+  {
+    "question": "Hva skjer når dette programmet kjøres?",
+    "code": "print(kelvin(25))\n\ndef kelvin(t):\n    return t + 273.15",
+    "type": "multiple_choice",
+    "answers": [
+      {"answer": "Vi får en feilmelding, siden funksjonen ikke er definert ennå når den kalles.", "correct": true, "feedback": "Riktig. Python leser programmet ovenfra og ned, og `def`-linja må ha kjørt før funksjonen kan brukes."},
+      {"answer": "298.15 skrives ut.", "correct": false, "feedback": "Feil. Definisjonen står under kallet, og Python kjenner ikke navnet ennå."},
+      {"answer": "None skrives ut.", "correct": false, "feedback": "Feil. Python gir en `NameError` for navn den ikke kjenner."},
+      {"answer": "Ingenting skjer.", "correct": false, "feedback": "Feil. Programmet stopper med feilmelding."}
+    ]
+  },
+  {
+    "question": "Du skal skrive en funksjon som regner ut molar masse ut fra en liste med atommasser. Hva er det mest hensiktsmessige å la funksjonen ta imot og gi tilbake?",
+    "type": "multiple_choice",
+    "answers": [
+      {"answer": "Ta imot lista som parameter, og returnere summen.", "correct": true, "feedback": "Riktig. Da kan funksjonen brukes på hvilken som helst liste, og svaret kan regnes videre med."},
+      {"answer": "Ta imot lista som parameter, og printe summen.", "correct": false, "feedback": "Feil. Da ser du svaret, men kan ikke bruke det videre i beregninger."},
+      {"answer": "Hente lista fra en global variabel, og returnere summen.", "correct": false, "feedback": "Feil. Da er funksjonen bundet til én bestemt liste og lar seg ikke gjenbruke."},
+      {"answer": "Ta imot lista, og lagre summen i en global variabel uten `return`.", "correct": false, "feedback": "Feil. Da blir det vanskelig å se hva funksjonen faktisk gjør, og hvor svaret havner."}
+    ]
+  }
+]

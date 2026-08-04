@@ -1,0 +1,24 @@
+SLIK LEGGER DU DETTE INN I REPOET (uten terminal)
+
+1. Åpne GitHub Desktop, velg repoet programmering-i-kjemi.
+   Repository-menyen -> "Show in Finder" (Mac) / "Show in Explorer" (Windows).
+   Der ligger mappa med _config.yml, _toc.yml og docs/.
+
+2. Marker alt INNI denne mappa (_config.yml, _static, docs) og dra det inn
+   i repomappa. Si ja til å slå sammen / erstatte.
+
+3. Gå inn i docs/grunnleggende_programmering/ og slett de seks gamle filene
+   quiz1.ipynb til quiz6.ipynb. De nye quiz1.md til quiz6.md skal bli stående.
+
+4. Tilbake i GitHub Desktop: se over lista til venstre. Den skal vise
+   6 slettede .ipynb, 6 nye .md, 14 nye filer under _static, og en endring
+   i _config.yml (en sphinx-blokk lagt til nederst).
+
+5. Skriv en beskrivelse nederst til venstre, trykk "Commit to master",
+   og deretter "Push origin" øverst.
+
+GitHub Pages bygger sida på nytt av seg selv. Det tar et par minutter.
+
+MERK: _config.yml her er basert på den som ligger i repoet nå. Har du endret
+den nylig, sjekk diffen i GitHub Desktop før du committer -- den viser deg
+nøyaktig hva som blir byttet ut.
