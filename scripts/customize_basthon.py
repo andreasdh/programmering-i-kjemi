@@ -1,6 +1,8 @@
 """Customize a downloaded Basthon Console for Programming in Chemistry."""
 
+from hashlib import sha256
 from pathlib import Path
+import re
 import sys
 
 
@@ -69,6 +71,22 @@ def customize_javascript(path):
             "The Basthon interface has changed; could not set a unique light-theme default"
         )
 
+    # A stored dark preference from the previous deployment would otherwise
+    # override the new default. Force light during initialization; users can still
+    # switch theme for the remainder of the open session.
+    stored_state_init = 'case"init":return null!=i&&(e=se(i)),e.ready=!0,e;'
+    forced_light_init = (
+        'case"init":return null!=i&&(e=se(i)),e.theme="light",e.ready=!0,e;'
+    )
+    stored_count = content.count(stored_state_init)
+    forced_count = content.count(forced_light_init)
+    if stored_count == 1 and forced_count == 0:
+        content = content.replace(stored_state_init, forced_light_init, 1)
+    elif not (stored_count == 0 and forced_count == 1):
+        raise RuntimeError(
+            "The Basthon interface has changed; could not force light theme on startup"
+        )
+
     for source, target in sorted(
         TRANSLATIONS.items(), key=lambda item: len(item[0]), reverse=True
     ):
@@ -82,10 +100,26 @@ def customize_javascript(path):
     path.write_text(content, encoding="utf-8")
 
 
-def customize_html(path):
+def customize_html(path, javascript_path):
     content = path.read_text(encoding="utf-8")
     content = content.replace('<html lang="fr">', '<html lang="en">')
     content = content.replace("<title>Basthon Console</title>", "<title>Python editor</title>")
+
+    # The upstream filename stays unchanged even though this script modifies its
+    # contents. Add a content hash so browsers do not reuse the previous dark bundle.
+    cache_key = sha256(javascript_path.read_bytes()).hexdigest()[:12]
+    script_pattern = re.compile(
+        r'(<script\b[^>]*\bsrc="assets/main\.[^"?]+\.js)(?:\?[^"]*)?(")'
+    )
+    content, replacements = script_pattern.subn(
+        lambda match: f"{match.group(1)}?custom={cache_key}{match.group(2)}",
+        content,
+        count=1,
+    )
+    if replacements != 1:
+        raise RuntimeError(
+            "The Basthon interface has changed; could not update the script cache key"
+        )
 
     marker = "programmering-i-kjemi-basthon"
     if marker not in content:
@@ -107,8 +141,8 @@ def main():
 
     html_path = Path(sys.argv[1])
     javascript_path = Path(sys.argv[2])
-    customize_html(html_path)
     customize_javascript(javascript_path)
+    customize_html(html_path, javascript_path)
 
 
 if __name__ == "__main__":
