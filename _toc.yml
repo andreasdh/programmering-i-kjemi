@@ -1,9 +1,10 @@
 format: jb-book
 root: docs/intro
 parts:
-- caption: Tema 1 - Grunnleggende programmering
+- file: docs/grunnleggende_programmering/introduksjon
+- file: docs/grunnleggende_programmering_vscode
+- caption: Grunnleggende programmering
   chapters:
-  - file: docs/grunnleggende_programmering/introduksjon
   - file: docs/grunnleggende_programmering/tall_variabler
     sections:
     - file: docs/grunnleggende_programmering/quiz1
@@ -24,7 +25,7 @@ parts:
       - file: docs/grunnleggende_programmering/quiz6
   - file: docs/grunnleggende_programmering/programmeringsverktoy
 
-- caption: Tema 2 - Datahåndtering og visualisering
+- caption: Datahåndtering og visualisering
   chapters:
   - file: docs/datahandtering_visualisering/kjemiske_biblioteker
   - file: docs/datahandtering_visualisering/molekylvisualisering
@@ -34,13 +35,13 @@ parts:
   - file: docs/datahandtering_visualisering/kalibrering_og_statistisk_inferens
   - file: docs/datahandtering_visualisering/maskinlaering_i_kjemi
 
-- caption: Tema 3 - Numeriske metoder
+- caption: Numeriske metoder
   chapters:
   - file: docs/nullpunkter_likninger/likninger
   - file: docs/derivasjon_integrasjon/derivasjon
   - file: docs/derivasjon_integrasjon/integrasjon
 
-- caption: Tema 4 - Dynamiske systemer
+- caption: Dynamiske systemer
   chapters:
   - file: docs/modellering/diskret_modellering
   - file: docs/modellering/differensiallikninger
@@ -71,7 +72,7 @@ parts:
 
   - file: docs/datafiler
 
-- caption: Biokjemi (KJM1140)
+- caption: Emneressurser (KJM1140)
   chapters:
   - file: docs/biokjemi/molekylvisualisering
   - file: docs/biokjemi/datavisualisering
