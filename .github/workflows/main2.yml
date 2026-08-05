@@ -20,7 +20,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.10.6'
+          python-version: '3.8'
 
       - name: Install dependencies
         run: |
@@ -29,41 +29,35 @@ jobs:
           python -m pip install -r requirements.txt
           python -m pip install attrs
 
-      - name: Repair exercise sections
-        if: ${{ hashFiles('scripts/repair_exercise_sections.py') != '' }}
-        run: python scripts/repair_exercise_sections.py
-
       - name: Build Jupyter Book
         run: jupyter-book build .
+
+      - name: Verify book output
+        run: |
+          test -f _build/html/index.html
+          test -f _build/html/docs/intro.html
+          test -d _build/html/_static
 
       - name: Prepare Basthon
         run: bash scripts/prepare_basthon.sh "_build/html/basthon"
 
-      - name: Store generated repository changes
+      - name: Verify complete publish directory
         run: |
-          changed=false
+          test -f _build/html/index.html
+          test -f _build/html/docs/intro.html
+          test -f _build/html/basthon/index.html
 
-          if [[ -f scripts/repair_exercise_sections.py ]]; then
-            git add docs/grunnleggende_programmering/lister.ipynb
-            git add docs/grunnleggende_programmering/funksjoner.ipynb
-            git add docs/grunnleggende_programmering/datasamlinger.ipynb
-            git rm scripts/repair_exercise_sections.py
-            changed=true
-          fi
-
+      - name: Store local Basthon backup in the repository
+        run: |
           if [[ -n "$(git status --porcelain -- vendor/basthon/basthon-console-custom.tgz vendor/basthon/basthon-console-custom.tgz.sha256)" ]]; then
-            git add vendor/basthon/basthon-console-custom.tgz
-            git add vendor/basthon/basthon-console-custom.tgz.sha256
-            changed=true
-          fi
-
-          if [[ "$changed" == true ]]; then
             git config user.name "github-actions[bot]"
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-            git commit -m "Repair exercise sections and solutions [skip ci]"
+            git add vendor/basthon/basthon-console-custom.tgz
+            git add vendor/basthon/basthon-console-custom.tgz.sha256
+            git commit -m "Update local Basthon backup [skip ci]"
             git push origin HEAD:master
           else
-            echo "No generated repository changes"
+            echo "The local Basthon backup is already current"
           fi
 
       - name: Deploy
