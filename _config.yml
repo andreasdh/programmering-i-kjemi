@@ -47,3 +47,4 @@ sphinx:
       - kjemiquiz.css
     html_js_files:
       - kjemiquiz.js
+      - turtle_basthon.js
