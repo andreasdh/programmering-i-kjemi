@@ -1,8 +1,12 @@
 (() => {
   "use strict";
 
-  const pagePath = window.location.pathname;
-  if (!pagePath.endsWith("/docs/grunnleggende_programmering/lokker.html")) {
+  const pageName = window.DOCUMENTATION_OPTIONS?.pagename || "";
+  const onLoopsPage =
+    pageName === "docs/grunnleggende_programmering/lokker" ||
+    window.location.pathname.endsWith("/docs/grunnleggende_programmering/lokker.html");
+
+  if (!onLoopsPage) {
     return;
   }
 
@@ -31,6 +35,46 @@
       lead: "Kjør den tilfeldige vandringen flere ganger og undersøk hvordan banen endrer seg.",
       height: 720,
     },
+    {
+      marker: "for måling in range(5)",
+      secondaryMarker: "Gjennomfører måling nummer",
+      file: "loops_for_measurements.py",
+      title: "Interactive Python editor for a basic for loop",
+      lead: "Prøv den enkle for-løkka i editoren nedenfor. Endre antall målinger og undersøk hvilke verdier løkkevariabelen får.",
+      height: 560,
+    },
+    {
+      marker: "for _ in range(5)",
+      secondaryMarker: "Etter fem halveringstider",
+      file: "loops_half_life.py",
+      title: "Interactive Python editor for repeated half-lives",
+      lead: "Kjør halveringstidseksemplet og modifiser det slik at mengden skrives ut etter hver løkkerunde.",
+      height: 600,
+    },
+    {
+      marker: "tid_slutt = 10",
+      secondaryMarker: "endring = k * A * dt",
+      file: "loops_kinetic_model.py",
+      title: "Interactive Python editor for a simple kinetic model",
+      lead: "Utforsk den kinetiske modellen i editoren nedenfor. Sammenlikn særlig resultatene for ulike tidssteg.",
+      height: 720,
+    },
+    {
+      marker: "for antall_halveringstider in range(11)",
+      secondaryMarker: "mengde = mengde / 2",
+      file: "loops_radioactive_sequence.py",
+      title: "Interactive Python editor for a recursive sequence",
+      lead: "Kjør og endre tallfølgeprogrammet i editoren nedenfor.",
+      height: 620,
+    },
+    {
+      marker: "antall_ledd = 100",
+      secondaryMarker: "ledd = (2 / 3)**n",
+      file: "loops_geometric_series.py",
+      title: "Interactive Python editor for a geometric series",
+      lead: "Undersøk hvordan antall ledd påvirker tilnærmingen til rekkesummen.",
+      height: 650,
+    },
   ];
 
   function addEditor(example) {
@@ -40,12 +84,12 @@
       return text.includes(example.marker) && text.includes(example.secondaryMarker);
     });
 
-    if (!codeCell || codeCell.dataset.turtleBasthonAdded === "true") {
+    if (!codeCell || codeCell.dataset.loopsBasthonAdded === "true") {
       return;
     }
 
     const wrapper = document.createElement("div");
-    wrapper.className = "turtle-basthon-editor";
+    wrapper.className = "loops-basthon-editor";
     wrapper.style.margin = "1.25rem 0 1.75rem";
 
     const lead = document.createElement("p");
@@ -62,7 +106,7 @@
 
     wrapper.append(lead, iframe);
     codeCell.insertAdjacentElement("afterend", wrapper);
-    codeCell.dataset.turtleBasthonAdded = "true";
+    codeCell.dataset.loopsBasthonAdded = "true";
   }
 
   function initialize() {
