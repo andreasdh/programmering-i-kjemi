@@ -1,0 +1,37 @@
+name: Repair functions exercise admonitions
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - scripts/fix_functions_exercise_admonitions.py
+      - .github/workflows/repair-functions-admonitions.yml
+
+permissions:
+  contents: write
+
+jobs:
+  repair:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Repair notebook
+        run: python scripts/fix_functions_exercise_admonitions.py
+
+      - name: Validate notebook and remove one-off repair files
+        run: |
+          python -m json.tool docs/grunnleggende_programmering/funksjoner.ipynb > /dev/null
+          git rm scripts/fix_functions_exercise_admonitions.py
+          git rm .github/workflows/repair-functions-admonitions.yml
+
+      - name: Commit repaired notebook
+        run: |
+          git config user.name "Github Actions"
+          git config user.email "github-actions-bot@users.noreply.github.com"
+          git add docs/grunnleggende_programmering/funksjoner.ipynb
+          git commit -m "Fix exercise admonitions in functions chapter [skip ci]"
+          git push origin master
