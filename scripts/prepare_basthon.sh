@@ -56,8 +56,6 @@ from_download() {
   mkdir -p "$tmp/download"
   tar -xzf "$archive" -C "$tmp/download"
   valid "$tmp/download"
-  js=$(find "$tmp/download/assets" -maxdepth 1 -type f -name 'main.*.js' ! -name '*.map' -print -quit)
-  python "$root/scripts/customize_basthon.py" "$tmp/download/index.html" "$js"
   install_dir "$tmp/download"
 }
 
@@ -72,6 +70,12 @@ else
   echo "Could not prepare Basthon from any source" >&2
   exit 1
 fi
+
+# Apply the current local customizations regardless of which source supplied the
+# Basthon files. This keeps restored and backed-up copies in sync with the scripts.
+basthon_js=$(find "$out/assets" -maxdepth 1 -type f -name 'main.*.js' ! -name '*.map' -print -quit)
+test -n "$basthon_js"
+python "$root/scripts/customize_basthon.py" "$out/index.html" "$basthon_js"
 
 examples=("$root"/docs/_static/basthon_examples/*.py)
 [[ -e "${examples[0]}" ]] || { echo "No Basthon examples found" >&2; exit 1; }
