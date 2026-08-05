@@ -28,10 +28,11 @@ parts:
   chapters:
   - file: docs/datahandtering_visualisering/kjemiske_biblioteker
   - file: docs/datahandtering_visualisering/molekylvisualisering
-  - file: docs/datahandtering_visualisering/plotting
-  - file: docs/datahandtering_visualisering/lese_filer
-  - file: docs/datahandtering_visualisering/statistikk
-  - file: docs/datahandtering_visualisering/maskinlaring
+  - file: docs/datahandtering_visualisering/visualisering_av_kjemiske_data
+  - file: docs/datahandtering_visualisering/lese_og_rydde_kjemiske_data
+  - file: docs/datahandtering_visualisering/statistikk_grunnleggende_kjemi
+  - file: docs/datahandtering_visualisering/kalibrering_og_statistisk_inferens
+  - file: docs/datahandtering_visualisering/maskinlaering_i_kjemi
 
 - caption: Tema 3 - Numeriske metoder
   chapters:
@@ -77,4 +78,3 @@ parts:
   - file: docs/biokjemi/regresjonsmodeller
   - file: docs/biokjemi/enzymkinetikklab2025
   - file: docs/biokjemi/proteinfolding
-
