@@ -29,23 +29,41 @@ jobs:
           python -m pip install -r requirements.txt
           python -m pip install attrs
 
+      - name: Repair exercise sections
+        if: ${{ hashFiles('scripts/repair_exercise_sections.py') != '' }}
+        run: python scripts/repair_exercise_sections.py
+
       - name: Build Jupyter Book
         run: jupyter-book build .
 
       - name: Prepare Basthon
         run: bash scripts/prepare_basthon.sh "_build/html/basthon"
 
-      - name: Store local Basthon backup in the repository
+      - name: Store generated repository changes
         run: |
+          changed=false
+
+          if [[ -f scripts/repair_exercise_sections.py ]]; then
+            git add docs/grunnleggende_programmering/lister.ipynb
+            git add docs/grunnleggende_programmering/funksjoner.ipynb
+            git add docs/grunnleggende_programmering/datasamlinger.ipynb
+            git rm scripts/repair_exercise_sections.py
+            changed=true
+          fi
+
           if [[ -n "$(git status --porcelain -- vendor/basthon/basthon-console-custom.tgz vendor/basthon/basthon-console-custom.tgz.sha256)" ]]; then
-            git config user.name "github-actions[bot]"
-            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
             git add vendor/basthon/basthon-console-custom.tgz
             git add vendor/basthon/basthon-console-custom.tgz.sha256
-            git commit -m "Update local Basthon backup [skip ci]"
+            changed=true
+          fi
+
+          if [[ "$changed" == true ]]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git commit -m "Repair exercise sections and solutions [skip ci]"
             git push origin HEAD:master
           else
-            echo "The local Basthon backup is already current"
+            echo "No generated repository changes"
           fi
 
       - name: Deploy
