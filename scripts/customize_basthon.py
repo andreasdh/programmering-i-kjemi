@@ -100,6 +100,43 @@ STORAGE_SCRIPT = f'''<script id="{STORAGE_SCRIPT_ID}">
 </script>'''
 
 
+FOCUS_SCRIPT_ID = "programmering-i-kjemi-basthon-focus"
+FOCUS_SCRIPT = f'''<script id="{FOCUS_SCRIPT_ID}">
+(() => {{
+  "use strict";
+
+  const source = new URLSearchParams(window.location.search).get("from");
+  if (!source) return;
+
+  let guardStartupFocus = true;
+  const nativeFocus = HTMLElement.prototype.focus;
+
+  HTMLElement.prototype.focus = function (options) {{
+    if (!guardStartupFocus) {{
+      return nativeFocus.call(this, options);
+    }}
+
+    const guardedOptions =
+      options && typeof options === "object"
+        ? {{ ...options, preventScroll: true }}
+        : {{ preventScroll: true }};
+    return nativeFocus.call(this, guardedOptions);
+  }};
+
+  const releaseGuard = () => {{
+    guardStartupFocus = false;
+    window.removeEventListener("pointerdown", releaseGuard, true);
+    window.removeEventListener("touchstart", releaseGuard, true);
+    window.removeEventListener("keydown", releaseGuard, true);
+  }};
+
+  window.addEventListener("pointerdown", releaseGuard, true);
+  window.addEventListener("touchstart", releaseGuard, true);
+  window.addEventListener("keydown", releaseGuard, true);
+}})();
+</script>'''
+
+
 def customize_javascript(path):
     content = path.read_text(encoding="utf-8")
     required = ("Exécuter", "Propulsé par ", "Un bac à sable pour ")
@@ -154,6 +191,13 @@ def customize_javascript(path):
     path.write_text(content, encoding="utf-8")
 
 
+def replace_or_insert_script(content, script_id, script):
+    pattern = re.compile(rf'<script id="{script_id}">.*?</script>', re.DOTALL)
+    if pattern.search(content):
+        return pattern.sub(script, content, count=1)
+    return content.replace("</head>", script + "</head>")
+
+
 def customize_html(path, javascript_path):
     content = path.read_text(encoding="utf-8")
     content = content.replace('<html lang="fr">', '<html lang="en">')
@@ -189,13 +233,13 @@ def customize_html(path, javascript_path):
     # Basthon saves editor state in browser storage. Several same-origin iframes on
     # one chapter would otherwise share that state. Namespace all storage operations
     # by the file in the `from` query parameter before the deferred app bundle runs.
-    storage_pattern = re.compile(
-        rf'<script id="{STORAGE_SCRIPT_ID}">.*?</script>', re.DOTALL
-    )
-    if storage_pattern.search(content):
-        content = storage_pattern.sub(STORAGE_SCRIPT, content, count=1)
-    else:
-        content = content.replace("</head>", STORAGE_SCRIPT + "</head>")
+    content = replace_or_insert_script(content, STORAGE_SCRIPT_ID, STORAGE_SCRIPT)
+
+    # Basthon may focus its editor during startup. A focused control inside a lazy
+    # iframe can make the parent document scroll to that iframe. Prevent scrolling
+    # for programmatic startup focus, then restore normal focus behavior as soon as
+    # the user interacts with the embedded editor.
+    content = replace_or_insert_script(content, FOCUS_SCRIPT_ID, FOCUS_SCRIPT)
 
     path.write_text(content, encoding="utf-8")
 
