@@ -32,6 +32,12 @@ from_pages() {
 from_backup() {
   echo "Trying local Basthon backup"
   [[ -f "$backup" ]] || return 1
+  if [[ -f "$checksum" ]]; then
+    (
+      cd "$(dirname "$backup")"
+      sha256sum -c "$(basename "$checksum")" >/dev/null
+    ) || return 1
+  fi
   tar -tzf "$backup" >/dev/null || return 1
   mkdir -p "$tmp/backup"
   tar -xzf "$backup" -C "$tmp/backup"
