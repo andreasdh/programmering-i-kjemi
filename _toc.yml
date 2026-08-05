@@ -1,8 +1,10 @@
 format: jb-book
 root: docs/intro
 parts:
-- file: docs/grunnleggende_programmering/introduksjon
-- file: docs/grunnleggende_programmering_vscode
+- caption: Kom i gang
+  chapters:
+  - file: docs/grunnleggende_programmering/introduksjon
+  - file: docs/grunnleggende_programmering_vscode
 - caption: Grunnleggende programmering
   chapters:
   - file: docs/grunnleggende_programmering/tall_variabler
