@@ -1,4 +1,8 @@
 jupyter-book
 matplotlib
-numpy 
+numpy
+pandas
+scipy
+seaborn
+scikit-learn
 jupyterquiz
