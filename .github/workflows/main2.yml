@@ -32,6 +32,23 @@ jobs:
       - name: Build Jupyter Book
         run: jupyter-book build .
 
+      - name: Add project-root redirect
+        run: |
+          cat > _build/html/index.html <<'EOF'
+          <!doctype html>
+          <html lang="nb">
+            <head>
+              <meta charset="utf-8">
+              <meta http-equiv="refresh" content="0; url=docs/intro.html">
+              <link rel="canonical" href="docs/intro.html">
+              <title>Programmering i kjemi</title>
+            </head>
+            <body>
+              <p><a href="docs/intro.html">Gå til Programmering i kjemi</a></p>
+            </body>
+          </html>
+          EOF
+
       - name: Verify book output
         run: |
           test -f _build/html/index.html
