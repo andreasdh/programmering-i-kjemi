@@ -1,4 +1,4 @@
-"""Customize a downloaded Basthon Console for Programming in Chemistry."""
+"""Customize a downloaded or restored Basthon Console for Programming in Chemistry."""
 
 from hashlib import sha256
 from pathlib import Path
@@ -49,10 +49,64 @@ TRANSLATIONS = {
 }
 
 
+STORAGE_SCRIPT_ID = "programmering-i-kjemi-basthon-storage"
+STORAGE_SCRIPT = f'''<script id="{STORAGE_SCRIPT_ID}">
+(() => {{
+  "use strict";
+
+  const source = new URLSearchParams(window.location.search).get("from");
+  if (!source) return;
+
+  const prefix = `programmering-i-kjemi:basthon:${{encodeURIComponent(source)}}:`;
+  const prototype = Storage.prototype;
+  const nativeGetItem = prototype.getItem;
+  const nativeSetItem = prototype.setItem;
+  const nativeRemoveItem = prototype.removeItem;
+  const nativeClear = prototype.clear;
+  const nativeKey = prototype.key;
+  const local = window.localStorage;
+  const session = window.sessionStorage;
+
+  const isScopedStore = (store) => store === local || store === session;
+  const scopedKey = (key) => prefix + String(key);
+
+  prototype.getItem = function (key) {{
+    return nativeGetItem.call(this, isScopedStore(this) ? scopedKey(key) : key);
+  }};
+
+  prototype.setItem = function (key, value) {{
+    return nativeSetItem.call(
+      this,
+      isScopedStore(this) ? scopedKey(key) : key,
+      value,
+    );
+  }};
+
+  prototype.removeItem = function (key) {{
+    return nativeRemoveItem.call(this, isScopedStore(this) ? scopedKey(key) : key);
+  }};
+
+  prototype.clear = function () {{
+    if (!isScopedStore(this)) return nativeClear.call(this);
+
+    const keys = [];
+    for (let index = 0; index < this.length; index += 1) {{
+      const key = nativeKey.call(this, index);
+      if (key && key.startsWith(prefix)) keys.push(key);
+    }}
+    keys.forEach((key) => nativeRemoveItem.call(this, key));
+  }};
+}})();
+</script>'''
+
+
 def customize_javascript(path):
     content = path.read_text(encoding="utf-8")
     required = ("Exécuter", "Propulsé par ", "Un bac à sable pour ")
-    missing = [text for text in required if text not in content]
+    missing = [
+        text for text in required
+        if text not in content and TRANSLATIONS[text] not in content
+    ]
     if missing:
         raise RuntimeError(
             "The Basthon interface has changed; could not find: " + ", ".join(missing)
@@ -106,7 +160,7 @@ def customize_html(path, javascript_path):
     content = content.replace("<title>Basthon Console</title>", "<title>Python editor</title>")
 
     # The upstream filename stays unchanged even though this script modifies its
-    # contents. Add a content hash so browsers do not reuse the previous dark bundle.
+    # contents. Add a content hash so browsers do not reuse the previous bundle.
     cache_key = sha256(javascript_path.read_bytes()).hexdigest()[:12]
     script_pattern = re.compile(
         r'(<script\b[^>]*\bsrc="assets/main\.[^"?]+\.js)(?:\?[^"]*)?(")'
@@ -121,8 +175,8 @@ def customize_html(path, javascript_path):
             "The Basthon interface has changed; could not update the script cache key"
         )
 
-    marker = "programmering-i-kjemi-basthon"
-    if marker not in content:
+    style_marker = "programmering-i-kjemi-basthon"
+    if style_marker not in content:
         style = (
             '<style id="programmering-i-kjemi-basthon">'
             'div:has(> a > img[alt="Basthon"]) {'
@@ -131,6 +185,17 @@ def customize_html(path, javascript_path):
             '</style>'
         )
         content = content.replace("</head>", style + "</head>")
+
+    # Basthon saves editor state in browser storage. Several same-origin iframes on
+    # one chapter would otherwise share that state. Namespace all storage operations
+    # by the file in the `from` query parameter before the deferred app bundle runs.
+    storage_pattern = re.compile(
+        rf'<script id="{STORAGE_SCRIPT_ID}">.*?</script>', re.DOTALL
+    )
+    if storage_pattern.search(content):
+        content = storage_pattern.sub(STORAGE_SCRIPT, content, count=1)
+    else:
+        content = content.replace("</head>", STORAGE_SCRIPT + "</head>")
 
     path.write_text(content, encoding="utf-8")
 
