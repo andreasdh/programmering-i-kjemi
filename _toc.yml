@@ -4,7 +4,7 @@ parts:
 - caption: Kom i gang
   chapters:
   - file: docs/grunnleggende_programmering/introduksjon
-  - file: docs/grunnleggende_programmering_vscode
+  - file: docs/grunnleggende_programmering/vscode
 - caption: Grunnleggende programmering
   chapters:
   - file: docs/grunnleggende_programmering/tall_variabler
