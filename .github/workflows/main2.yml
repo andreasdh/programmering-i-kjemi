@@ -32,6 +32,10 @@ jobs:
       - name: Repair malformed Datasamlinger fence
         run: python scripts/fix_datasamlinger_fence.py
 
+      - name: Simplify chemical libraries notebook
+        if: ${{ hashFiles('scripts/simplify_chemical_libraries.py') != '' }}
+        run: python scripts/simplify_chemical_libraries.py
+
       - name: Build Jupyter Book
         run: jupyter-book build .
 
@@ -76,6 +80,12 @@ jobs:
             changed=true
           fi
 
+          if [[ -n "$(git status --porcelain -- docs/datahandtering_visualisering/kjemiske_biblioteker.ipynb)" ]]; then
+            git add docs/datahandtering_visualisering/kjemiske_biblioteker.ipynb
+            git rm scripts/simplify_chemical_libraries.py
+            changed=true
+          fi
+
           if [[ -n "$(git status --porcelain -- vendor/basthon/basthon-console-custom.tgz vendor/basthon/basthon-console-custom.tgz.sha256)" ]]; then
             git add vendor/basthon/basthon-console-custom.tgz
             git add vendor/basthon/basthon-console-custom.tgz.sha256
@@ -85,7 +95,7 @@ jobs:
           if [[ "$changed" == true ]]; then
             git config user.name "github-actions[bot]"
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-            git commit -m "Repair generated site assets [skip ci]"
+            git commit -m "Simplify chemical libraries notebook [skip ci]"
             git push origin HEAD:master
           else
             echo "No generated repository changes"
