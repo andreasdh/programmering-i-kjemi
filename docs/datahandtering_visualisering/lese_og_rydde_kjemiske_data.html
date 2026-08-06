@@ -1,0 +1,1038 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Datahåndtering II: Lese og rydde kjemiske data &#8212; Programmering i kjemi</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/kjemiquiz.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom1.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/kjemiquiz.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
+    <script src="../../_static/kjemiquiz.js"></script>
+    <script src="../../_static/turtle_basthon.js"></script>
+    <script src="../../_static/kjemiquiz.js"></script>
+    <script src="../../_static/turtle_basthon.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/datahandtering_visualisering/lese_og_rydde_kjemiske_data';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Datahåndtering III: Målinger, variasjon og usikkerhet" href="statistikk_grunnleggende_kjemi.html" />
+    <link rel="prev" title="Datahåndtering I: Visualisering av kjemiske data" href="visualisering_av_kjemiske_data.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/qe-logo-large.png" class="logo__image only-light" alt="Programmering i kjemi - Home"/>
+    <script>document.write(`<img src="../../_static/qe-logo-large.png" class="logo__image only-dark" alt="Programmering i kjemi - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Kom i gang</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../grunnleggende_programmering/introduksjon.html">Introduksjon: Programmering som verktøy i kjemi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../grunnleggende_programmering/vscode.html">Visual Studio Code for kjemikere</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Grunnleggende programmering</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../grunnleggende_programmering/tall_variabler.html">Variabler og datatyper</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../grunnleggende_programmering/quiz1.html">Quiz 1: Variabler og aritmetikk</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../grunnleggende_programmering/lister.html">Lister</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../grunnleggende_programmering/quiz2.html">Quiz 2: Lister</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../grunnleggende_programmering/vilkar.html">Vilkår (if-tester)</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../grunnleggende_programmering/quiz3.html">Quiz 3: Vilkår (if-tester)</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../grunnleggende_programmering/lokker.html">Løkker</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../grunnleggende_programmering/quiz4.html">Quiz 4: Løkker</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../grunnleggende_programmering/funksjoner.html">Funksjoner</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../grunnleggende_programmering/quiz5.html">Quiz 5: Funksjoner</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../grunnleggende_programmering/datasamlinger.html">Datasamlinger</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../grunnleggende_programmering/quiz6.html">Quiz 6: Datasamlinger (arrayer og dictionarier)</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Datahåndtering og visualisering</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="kjemiske_biblioteker.html">Kjemiske biblioteker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="molekylvisualisering.html">Molekylvisualisering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="visualisering_av_kjemiske_data.html">Datahåndtering I: Visualisering av kjemiske data</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Datahåndtering II: Lese og rydde kjemiske data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="statistikk_grunnleggende_kjemi.html">Datahåndtering III: Målinger, variasjon og usikkerhet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kalibrering_og_statistisk_inferens.html">Datahåndtering IV: Kalibrering og sammenlikning av resultater</a></li>
+<li class="toctree-l1"><a class="reference internal" href="maskinlaering_i_kjemi.html">Datahåndtering V: Maskinlæring i kjemi*</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Numeriske metoder</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../nullpunkter_likninger/likninger.html">Likninger og nullpunkter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../derivasjon_integrasjon/derivasjon.html">Numerisk derivasjon</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../derivasjon_integrasjon/integrasjon.html">Numerisk integrasjon</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Dynamiske systemer</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../modellering/diskret_modellering.html">Differenslikninger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modellering/differensiallikninger.html">Differensiallikninger og fartslover</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Emneressurser (IN-KJM1900)</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../forelesninger/forelesninger.html">Forelesninger</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../forelesninger/forelesning1.html">Forelesning 1: Programmering i kjemi</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../forelesninger/forelesning2.html">Forelesning 2: Plotting og datahåndtering</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../forelesninger/forelesning3.html">Forelesning 3: Statistisk analyse</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../forelesninger/forelesning4.html">Forelesning 4: Statistikk II</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../forelesninger/forelesning5.html">Forelesning 5: Numerisk derivasjon og likninger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../forelesninger/forelesning6.html">Forelesning 6: Numerisk integrasjon</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../forelesninger/forelesning7.html">Forelesning 7: Numerisk løsing av likninger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../forelesninger/forelesning8.html">Forelesning 8: Differensiallikninger og reaksjonskinetikk</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../forelesninger/forelesning9.html">Forelesning 9: Reaksjonskinetikk II</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../forelesninger/forelesning10.html">Forelesning 10: Molekylmekanikk</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../forelesninger/workshops.html">Eksamensverksted</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../forelesninger/workshop1.html">Workshop 1: Datahåndtering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../forelesninger/workshop2.html">Workshop 2: Numeriske metoder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../forelesninger/workshop3.html">Workshop 3: Dynamiske systemer</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../obliger/obliger.html">Obligatoriske oppgaver</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../obliger/oblig_datahandtering.html">Oblig 1: Håndtering av kjemiske data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../obliger/oblig_dynamiske_systemer.html">Oblig 2: Dynamiske systemer og integrasjon</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../datafiler.html">Datafiler</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Emneressurser (KJM1140)</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../biokjemi/molekylvisualisering.html">Molekylvisualisering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../biokjemi/datavisualisering.html">Datavisualisering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../biokjemi/regresjonsmodeller.html">Regresjonsmodeller</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../biokjemi/enzymkinetikklab2025.html">Analyse av enzymkinetikkdata</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../biokjemi/proteinfolding.html">Lab 5: Proteinfolding</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/docs/datahandtering_visualisering/lese_og_rydde_kjemiske_data.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Datahåndtering II: Lese og rydde kjemiske data</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#datafiler">Datafiler</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lese-data-med-pandas">Lese data med Pandas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#undersoke-datasettet">Undersøke datasettet</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bevar-radataene">Bevar rådataene</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#manglende-verdier">Manglende verdier</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#duplikater">Duplikater</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#filtrere-data">Filtrere data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sortere-data">Sortere data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gruppere-og-oppsummere-data">Gruppere og oppsummere data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lage-nye-kolonner">Lage nye kolonner</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rydde-kolonnenavn-og-tekst">Rydde kolonnenavn og tekst</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fra-dataramme-til-figur">Fra dataramme til figur</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#en-reproduserbar-arbeidsflyt">En reproduserbar arbeidsflyt</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgaver">Oppgaver</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#videoer">Videoer</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="datahandtering-ii-lese-og-rydde-kjemiske-data">
+<h1>Datahåndtering II: Lese og rydde kjemiske data<a class="headerlink" href="#datahandtering-ii-lese-og-rydde-kjemiske-data" title="Permalink to this heading">#</a></h1>
+<div class="admonition-laeringsutbytte admonition">
+<p class="admonition-title">Læringsutbytte</p>
+<p>Etter å ha arbeidet med dette temaet, skal du kunne:</p>
+<ol class="arabic simple">
+<li><p>forklare hvordan data er organisert i en CSV-fil</p></li>
+<li><p>lese datafiler med Pandas</p></li>
+<li><p>undersøke kolonner, datatyper og manglende verdier</p></li>
+<li><p>filtrere, sortere og gruppere kjemiske data</p></li>
+<li><p>opprette nye kolonner uten å overskrive rådataene</p></li>
+<li><p>dokumentere og begrunne valg som tas under datarydding</p></li>
+</ol>
+</div>
+<p>Data er overalt, men data er ikke automatisk kunnskap. Før vi kan trekke en kjemisk konklusjon, må vi vite hva målingene representerer, hvilke enheter som er brukt, og om datasettet inneholder manglende eller ugyldige verdier.</p>
+<p>I dette kapitlet følger vi et UV–Vis-forsøk. Datasettet inneholder blankprøver, kalibreringsstandarder og replikatmålinger av en ukjent prøve. Seinere skal vi bruke standardene til å lage en kalibreringsmodell og bestemme konsentrasjonen i den ukjente prøven. Først må vi lese og undersøke rådataene.</p>
+<section id="datafiler">
+<h2>Datafiler<a class="headerlink" href="#datafiler" title="Permalink to this heading">#</a></h2>
+<p>Vi ønsker ofte å oppbevare og overføre data som råtekst fordi formatet er robust og kan leses av mange programmer. En Word-fil er ikke råtekst, fordi den også inneholder informasjon om blant annet skrifttyper, farger og formatering. <code class="docutils literal notranslate"><span class="pre">.txt</span></code>- og <code class="docutils literal notranslate"><span class="pre">.csv</span></code>-filer er vanlige råtekstformater.</p>
+<div class="admonition-datafil admonition">
+<p class="admonition-title">Datafil</p>
+<p>En datafil lagrer observasjoner i en fast struktur slik at de kan leses og behandles av et program. I en tabulær datafil er hver rad vanligvis én observasjon, mens kolonnene beskriver ulike variabler.</p>
+</div>
+<p>CSV står for <em>comma-separated values</em>. Hver linje representerer vanligvis én observasjon, mens verdiene på linja er skilt med komma:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>sample_id,sample_type,concentration_uM,replicate,absorbance
+blank_1,blank,0,1,0.010
+blank_2,blank,0,2,0.011
+std_2_1,standard,2,1,0.171
+std_2_2,standard,2,2,0.169
+</pre></div>
+</div>
+<p>Den første linja inneholder kolonnenavn. Hver av de neste linjene beskriver én måling. Dette kalles ofte et <em>langt</em> eller <em>ryddig</em> dataformat: Hver rad er en observasjon, hver kolonne er en variabel og hver celle inneholder én verdi.</p>
+<div class="admonition-enheter-i-data admonition">
+<p class="admonition-title">Enheter i data</p>
+<p>Enhetene bør være tydelige, men selve måleverdiene bør lagres som tall. Her er enheten lagt inn i kolonnenavnet <code class="docutils literal notranslate"><span class="pre">concentration_uM</span></code>. Et annet alternativ er å lagre enheter i egne metadata. Verdier som <code class="docutils literal notranslate"><span class="pre">&quot;2</span> <span class="pre">µmol/L&quot;</span></code> blir tekst og er vanskeligere å regne med.</p>
+</div>
+</section>
+<section id="lese-data-med-pandas">
+<h2>Lese data med Pandas<a class="headerlink" href="#lese-data-med-pandas" title="Permalink to this heading">#</a></h2>
+<p>Pandas er et mye brukt bibliotek for behandling av tabulære data. Når vi leser ei fil med <code class="docutils literal notranslate"><span class="pre">read_csv</span></code>, får vi en <em>dataramme</em> (<code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>).</p>
+<div class="admonition-dataramme admonition">
+<p class="admonition-title">Dataramme</p>
+<p>En dataramme er en todimensjonal datastruktur med navngitte kolonner og rader. Den kan sammenliknes med en tabell, men kolonnene kan behandles direkte med kode.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="n">raw_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;data/uvvis_raw.csv&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">raw_data</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Filbanen <code class="docutils literal notranslate"><span class="pre">data/uvvis_raw.csv</span></code> betyr at fila ligger i mappa <code class="docutils literal notranslate"><span class="pre">data</span></code>, som igjen ligger i samme mappe som notebooken eller programmet. Dersom fila ligger et annet sted, må filbanen endres.</p>
+<p>Noen filer bruker semikolon som skilletegn og komma som desimalskilletegn. Da kan vi spesifisere dette:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;data/example_semicolon.csv&quot;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;;&quot;</span><span class="p">,</span> <span class="n">decimal</span><span class="o">=</span><span class="s2">&quot;,&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Det er bedre å beskrive formatet eksplisitt enn å åpne fila manuelt og erstatte tegn uten å dokumentere det.</p>
+</section>
+<section id="undersoke-datasettet">
+<h2>Undersøke datasettet<a class="headerlink" href="#undersoke-datasettet" title="Permalink to this heading">#</a></h2>
+<p>Før vi analyserer dataene, bør vi undersøke hva vi faktisk har lest:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="n">raw_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;data/uvvis_raw.csv&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">raw_data</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">raw_data</span><span class="o">.</span><span class="n">tail</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">raw_data</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">raw_data</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">raw_data</span><span class="o">.</span><span class="n">dtypes</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">head()</span></code> viser de fem første radene.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">tail()</span></code> viser de fem siste.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">shape</span></code> gir antall rader og kolonner.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">columns</span></code> viser kolonnenavnene.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">dtypes</span></code> viser hvilken datatype Pandas har gitt hver kolonne.</p></li>
+</ul>
+<p>Metoden <code class="docutils literal notranslate"><span class="pre">info()</span></code> gir en samlet oversikt:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">raw_data</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Tekstkolonner får ofte datatypen <code class="docutils literal notranslate"><span class="pre">object</span></code> eller <code class="docutils literal notranslate"><span class="pre">string</span></code>, heltall får <code class="docutils literal notranslate"><span class="pre">int64</span></code>, og desimaltall får <code class="docutils literal notranslate"><span class="pre">float64</span></code>. En kolonne som burde være numerisk, men som har datatypen <code class="docutils literal notranslate"><span class="pre">object</span></code>, kan inneholde tekst, feil desimalskilletegn eller symboler som ikke kan tolkes som tall.</p>
+<p>Du kan undersøke et lite UV–Vis-datasett i editoren nedenfor. Datasettet er lagt direkte inn i programmet slik at eksempelet fungerer i nettleseren.</p>
+<iframe src="../../basthon/?from=examples/pandas_uvvis_inspect.py" width="100%" height="660" frameborder="0" title="Interactive Python editor for inspecting UV-Vis data with Pandas" loading="lazy" allowfullscreen></iframe>
+<div class="tip admonition">
+<p class="admonition-title">Underveisoppgave</p>
+<ol class="arabic simple">
+<li><p>Hvor mange rader og kolonner har datasettet?</p></li>
+<li><p>Hvilke kolonner inneholder tekst, og hvilke inneholder tall?</p></li>
+<li><p>Hvorfor er det manglende verdier i <code class="docutils literal notranslate"><span class="pre">concentration_uM</span></code> for den ukjente prøven?</p></li>
+<li><p>Hvor finnes den andre manglende verdien?</p></li>
+</ol>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Løsningsforslag</p>
+<p>Konsentrasjonen mangler for den ukjente prøven fordi dette er størrelsen vi seinere skal bestemme. Det er derfor ikke nødvendigvis en feil. Den manglende absorbansen er derimot en manglende måling og må undersøkes før analysen fortsetter.</p>
+</div>
+</div>
+</section>
+<section id="bevar-radataene">
+<h2>Bevar rådataene<a class="headerlink" href="#bevar-radataene" title="Permalink to this heading">#</a></h2>
+<p>Rådata bør normalt ikke overskrives. Dersom vi endrer verdier direkte i <code class="docutils literal notranslate"><span class="pre">raw_data</span></code>, kan det bli vanskelig å rekonstruere hva instrumentet faktisk registrerte. Vi lager derfor en kopi som kan bearbeides:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">clean_data</span> <span class="o">=</span> <span class="n">raw_data</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Dette gir en enkel arbeidsflyt:</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">raw_data</span></code> inneholder dataene slik de ble lest.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">clean_data</span></code> inneholder dokumenterte endringer.</p></li>
+<li><p>Analysen utføres på den bearbeidede kopien.</p></li>
+</ol>
+<p>I et større prosjekt bør også selve rådatafila være skrivebeskyttet eller oppbevares separat. Koden fungerer da som en sporbar beskrivelse av hvordan rådata ble behandlet.</p>
+</section>
+<section id="manglende-verdier">
+<h2>Manglende verdier<a class="headerlink" href="#manglende-verdier" title="Permalink to this heading">#</a></h2>
+<p>Pandas representerer ofte en manglende verdi som <code class="docutils literal notranslate"><span class="pre">NaN</span></code>, som står for <em>not a number</em>. Vi kan telle manglende verdier slik:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">raw_data</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Vi kan vise alle radene som mangler absorbans:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">missing_absorbance</span> <span class="o">=</span> <span class="n">raw_data</span><span class="p">[</span><span class="n">raw_data</span><span class="p">[</span><span class="s2">&quot;absorbance&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">isna</span><span class="p">()]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">missing_absorbance</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Det finnes ingen automatisk riktig måte å behandle en manglende verdi på. Mulige valg er blant annet å:</p>
+<ul class="simple">
+<li><p>undersøke instrumentfila eller laboratorienotatene</p></li>
+<li><p>utføre målingen på nytt</p></li>
+<li><p>beholde raden og markere at verdien mangler</p></li>
+<li><p>utelate raden fra en bestemt analyse</p></li>
+<li><p>estimere verdien dersom det finnes en faglig og statistisk begrunnelse</p></li>
+</ul>
+<p>I dette caset står det i instrumentloggen at målingen <code class="docutils literal notranslate"><span class="pre">std_6_3</span></code> mislyktes fordi kyvetten ikke sto riktig. Vi kan derfor utelate akkurat denne raden fra analyser som krever absorbans:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">clean_data</span> <span class="o">=</span> <span class="n">raw_data</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">clean_data</span> <span class="o">=</span> <span class="n">clean_data</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;absorbance&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Vi bruker <code class="docutils literal notranslate"><span class="pre">subset</span></code> for å spesifisere hvilken kolonne som er relevant. Dersom vi hadde brukt <code class="docutils literal notranslate"><span class="pre">dropna()</span></code> uten argumenter, ville også alle radene for den ukjente prøven blitt fjernet fordi konsentrasjonen deres med hensikt er ukjent.</p>
+<div class="admonition-viktig admonition">
+<p class="admonition-title">Viktig</p>
+<p>En manglende verdi og en målt verdi lik null er ikke det samme. Null kan være et gyldig resultat. <code class="docutils literal notranslate"><span class="pre">NaN</span></code> betyr at verdien ikke er tilgjengelig.</p>
+</div>
+</section>
+<section id="duplikater">
+<h2>Duplikater<a class="headerlink" href="#duplikater" title="Permalink to this heading">#</a></h2>
+<p>En rad kan ved en feil ha blitt lagret to ganger. Vi kan undersøke dette med:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">duplicates</span> <span class="o">=</span> <span class="n">raw_data</span><span class="o">.</span><span class="n">duplicated</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">raw_data</span><span class="p">[</span><span class="n">duplicates</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Fullstendig identiske rader kan fjernes med <code class="docutils literal notranslate"><span class="pre">drop_duplicates</span></code>, men også dette må begrunnes. To like tallverdier kan være to reelle replikater. De er bare duplikater dersom hele raden representerer den samme registreringen, for eksempel samme <code class="docutils literal notranslate"><span class="pre">sample_id</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">duplicate_ids</span> <span class="o">=</span> <span class="n">raw_data</span><span class="o">.</span><span class="n">duplicated</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;sample_id&quot;</span><span class="p">],</span> <span class="n">keep</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">raw_data</span><span class="p">[</span><span class="n">duplicate_ids</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="filtrere-data">
+<h2>Filtrere data<a class="headerlink" href="#filtrere-data" title="Permalink to this heading">#</a></h2>
+<p>Vi kan velge ut rader ved hjelp av logiske vilkår. Her henter vi bare kalibreringsstandardene:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">standards</span> <span class="o">=</span> <span class="n">clean_data</span><span class="p">[</span><span class="n">clean_data</span><span class="p">[</span><span class="s2">&quot;sample_type&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;standard&quot;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">standards</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Den logiske testen lager først en serie med <code class="docutils literal notranslate"><span class="pre">True</span></code> og <code class="docutils literal notranslate"><span class="pre">False</span></code>. Når serien brukes mellom klammeparentesene, beholdes bare radene der resultatet er <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p>
+<p>Vi kan kombinere flere vilkår. Hvert vilkår må stå i parentes:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">selected</span> <span class="o">=</span> <span class="n">clean_data</span><span class="p">[</span>
+    <span class="p">(</span><span class="n">clean_data</span><span class="p">[</span><span class="s2">&quot;sample_type&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;standard&quot;</span><span class="p">)</span>
+    <span class="o">&amp;</span> <span class="p">(</span><span class="n">clean_data</span><span class="p">[</span><span class="s2">&quot;concentration_uM&quot;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">4</span><span class="p">)</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Andre nyttige operatorer er <code class="docutils literal notranslate"><span class="pre">|</span></code> for «eller», <code class="docutils literal notranslate"><span class="pre">!=</span></code> for «ikke lik» og <code class="docutils literal notranslate"><span class="pre">~</span></code> for å negere et boolsk uttrykk.</p>
+<div class="tip admonition">
+<p class="admonition-title">Underveisoppgave</p>
+<p>Skriv kode som velger ut:</p>
+<ol class="arabic simple">
+<li><p>alle blankprøvene</p></li>
+<li><p>alle standardene med konsentrasjon mindre enn eller lik 6 µmol/L</p></li>
+<li><p>alle rader som ikke tilhører den ukjente prøven</p></li>
+</ol>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Løsningsforslag</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">blanks</span> <span class="o">=</span> <span class="n">clean_data</span><span class="p">[</span><span class="n">clean_data</span><span class="p">[</span><span class="s2">&quot;sample_type&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;blank&quot;</span><span class="p">]</span>
+
+<span class="n">low_standards</span> <span class="o">=</span> <span class="n">clean_data</span><span class="p">[</span>
+    <span class="p">(</span><span class="n">clean_data</span><span class="p">[</span><span class="s2">&quot;sample_type&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;standard&quot;</span><span class="p">)</span>
+    <span class="o">&amp;</span> <span class="p">(</span><span class="n">clean_data</span><span class="p">[</span><span class="s2">&quot;concentration_uM&quot;</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">6</span><span class="p">)</span>
+<span class="p">]</span>
+
+<span class="n">known_samples</span> <span class="o">=</span> <span class="n">clean_data</span><span class="p">[</span><span class="n">clean_data</span><span class="p">[</span><span class="s2">&quot;sample_type&quot;</span><span class="p">]</span> <span class="o">!=</span> <span class="s2">&quot;unknown&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="sortere-data">
+<h2>Sortere data<a class="headerlink" href="#sortere-data" title="Permalink to this heading">#</a></h2>
+<p>Vi kan sortere etter én eller flere kolonner:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sorted_data</span> <span class="o">=</span> <span class="n">clean_data</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span>
+    <span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;sample_type&quot;</span><span class="p">,</span> <span class="s2">&quot;concentration_uM&quot;</span><span class="p">,</span> <span class="s2">&quot;replicate&quot;</span><span class="p">]</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Sortering endrer ikke den kjemiske betydningen av dataene, men kan gjøre det lettere å oppdage uventede verdier eller kontrollere at replikater hører til riktig prøve.</p>
+</section>
+<section id="gruppere-og-oppsummere-data">
+<h2>Gruppere og oppsummere data<a class="headerlink" href="#gruppere-og-oppsummere-data" title="Permalink to this heading">#</a></h2>
+<p>Kalibreringsstandardene er målt i replikater. Vi kan gruppere dem etter konsentrasjon og beregne antall målinger, gjennomsnitt og standardavvik:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">standards</span> <span class="o">=</span> <span class="n">clean_data</span><span class="p">[</span><span class="n">clean_data</span><span class="p">[</span><span class="s2">&quot;sample_type&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;standard&quot;</span><span class="p">]</span>
+
+<span class="n">summary</span> <span class="o">=</span> <span class="n">standards</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;concentration_uM&quot;</span><span class="p">)[</span><span class="s2">&quot;absorbance&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">agg</span><span class="p">(</span>
+    <span class="p">[</span><span class="s2">&quot;count&quot;</span><span class="p">,</span> <span class="s2">&quot;mean&quot;</span><span class="p">,</span> <span class="s2">&quot;std&quot;</span><span class="p">]</span>
+<span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">summary</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">groupby</span></code> deler først radene i grupper med samme konsentrasjon. <code class="docutils literal notranslate"><span class="pre">agg</span></code> bestemmer hvilke statistiske størrelser som skal beregnes for hver gruppe.</p>
+<p>Du kan rydde og gruppere datasettet i editoren nedenfor.</p>
+<iframe src="../../basthon/?from=examples/pandas_uvvis_clean.py" width="100%" height="700" frameborder="0" title="Interactive Python editor for cleaning and grouping UV-Vis data" loading="lazy" allowfullscreen></iframe>
+<div class="tip admonition">
+<p class="admonition-title">Underveisoppgave</p>
+<ol class="arabic simple">
+<li><p>Legg til <code class="docutils literal notranslate"><span class="pre">min</span></code> og <code class="docutils literal notranslate"><span class="pre">max</span></code> i oppsummeringen.</p></li>
+<li><p>Hvorfor mangler standardavviket dersom en gruppe bare har én måling?</p></li>
+<li><p>Sammenlikn spredningen ved de ulike konsentrasjonene. Er det grunnlag for å si at spredningen øker med absorbansen?</p></li>
+</ol>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Løsningsforslag</p>
+<p>Standardavviket til et utvalg kan ikke estimeres fra én enkelt måling. Med så få replikater er det også vanskelig å konkludere sikkert om hvordan spredningen endres. Dataene kan gi en antydning, men en påstand om økende spredning krever flere målinger og en mer systematisk analyse.</p>
+</div>
+</div>
+</section>
+<section id="lage-nye-kolonner">
+<h2>Lage nye kolonner<a class="headerlink" href="#lage-nye-kolonner" title="Permalink to this heading">#</a></h2>
+<p>Noen behandlingstrinn gir nye verdier som bør lagres uten å slette originalmålingen. Vi kan for eksempel korrigere absorbansen for middelverdien til blankprøvene:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">blank_mean</span> <span class="o">=</span> <span class="n">clean_data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span>
+    <span class="n">clean_data</span><span class="p">[</span><span class="s2">&quot;sample_type&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;blank&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;absorbance&quot;</span><span class="p">,</span>
+<span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+
+<span class="n">clean_data</span><span class="p">[</span><span class="s2">&quot;blank_corrected_absorbance&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">clean_data</span><span class="p">[</span><span class="s2">&quot;absorbance&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">blank_mean</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Den opprinnelige kolonnen <code class="docutils literal notranslate"><span class="pre">absorbance</span></code> beholdes, mens den nye kolonnen dokumenterer den beregnede verdien. Dette gjør det mulig å kontrollere beregningen og sammenlikne rå og korrigerte data.</p>
+<p><code class="docutils literal notranslate"><span class="pre">loc</span></code> brukes her til å velge bestemte rader og én bestemt kolonne. Før komma står radvilkåret; etter komma står kolonnenavnet.</p>
+<div class="admonition-modellvalg admonition">
+<p class="admonition-title">Modellvalg</p>
+<p>Blankkorreksjon er ikke bare en teknisk Pandas-operasjon. Når vi trekker fra blankverdien, antar vi at blankbidraget kan adderes til prøvens signal, og at det er representativt for målingene som korrigeres.</p>
+</div>
+</section>
+<section id="rydde-kolonnenavn-og-tekst">
+<h2>Rydde kolonnenavn og tekst<a class="headerlink" href="#rydde-kolonnenavn-og-tekst" title="Permalink to this heading">#</a></h2>
+<p>Virkelige datafiler kan ha mellomrom, store bokstaver eller inkonsistent tekst. Vi kan standardisere kolonnenavn:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">renamed_data</span> <span class="o">=</span> <span class="n">clean_data</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">renamed_data</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">renamed_data</span><span class="o">.</span><span class="n">columns</span>
+    <span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+    <span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+    <span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="s2">&quot;_&quot;</span><span class="p">)</span>
+<span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">renamed_data</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Her lager vi en egen kopi slik at vi kan sammenlikne de nye kolonnenavnene med originalen. I en faktisk analyse kan vi arbeide videre med <code class="docutils literal notranslate"><span class="pre">renamed_data</span></code> dersom vi ønsker de standardiserte navnene.</p>
+<p>Tekstverdier kan behandles på samme måte:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">clean_data</span><span class="p">[</span><span class="s2">&quot;sample_type&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">clean_data</span><span class="p">[</span><span class="s2">&quot;sample_type&quot;</span><span class="p">]</span>
+    <span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+    <span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Vi bør alltid kontrollere resultatet etter en slik operasjon. Automatisk rydding kan skjule at to kategorier faktisk betyr forskjellige ting.</p>
+</section>
+<section id="fra-dataramme-til-figur">
+<h2>Fra dataramme til figur<a class="headerlink" href="#fra-dataramme-til-figur" title="Permalink to this heading">#</a></h2>
+<p>Pandas-kolonner kan sendes direkte til Matplotlib:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="n">standards</span> <span class="o">=</span> <span class="n">clean_data</span><span class="p">[</span><span class="n">clean_data</span><span class="p">[</span><span class="s2">&quot;sample_type&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;standard&quot;</span><span class="p">]</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">standards</span><span class="p">[</span><span class="s2">&quot;concentration_uM&quot;</span><span class="p">],</span> <span class="n">standards</span><span class="p">[</span><span class="s2">&quot;absorbance&quot;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Concentration (µmol/L)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Absorbance&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;UV–Vis calibration standards&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Her vises alle replikatene. Det gjør spredningen synlig. Dersom vi bare plotter gjennomsnittene, blir figuren ryddigere, men vi mister informasjon om variasjonen mellom målingene.</p>
+</section>
+<section id="en-reproduserbar-arbeidsflyt">
+<h2>En reproduserbar arbeidsflyt<a class="headerlink" href="#en-reproduserbar-arbeidsflyt" title="Permalink to this heading">#</a></h2>
+<p>En enkel og ryddig analyse kan bygges opp slik:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="c1"># 1. Read and preserve raw data</span>
+<span class="n">raw_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;data/uvvis_raw.csv&quot;</span><span class="p">)</span>
+
+<span class="c1"># 2. Inspect</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">raw_data</span><span class="o">.</span><span class="n">info</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">raw_data</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+
+<span class="c1"># 3. Create a working copy</span>
+<span class="n">clean_data</span> <span class="o">=</span> <span class="n">raw_data</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+<span class="c1"># 4. Apply a justified cleaning decision</span>
+<span class="n">clean_data</span> <span class="o">=</span> <span class="n">clean_data</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;absorbance&quot;</span><span class="p">])</span>
+
+<span class="c1"># 5. Create derived values</span>
+<span class="n">blank_mean</span> <span class="o">=</span> <span class="n">clean_data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span>
+    <span class="n">clean_data</span><span class="p">[</span><span class="s2">&quot;sample_type&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;blank&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;absorbance&quot;</span><span class="p">,</span>
+<span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">clean_data</span><span class="p">[</span><span class="s2">&quot;blank_corrected_absorbance&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">clean_data</span><span class="p">[</span><span class="s2">&quot;absorbance&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">blank_mean</span>
+<span class="p">)</span>
+
+<span class="c1"># 6. Save processed data without overwriting the raw file</span>
+<span class="n">clean_data</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;data/uvvis_processed.csv&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Kodekommentarene dokumenterer hva som er gjort, men en fullstendig analyse må også forklare <em>hvorfor</em> valgene er rimelige.</p>
+</section>
+<section id="oppgaver">
+<h2>Oppgaver<a class="headerlink" href="#oppgaver" title="Permalink to this heading">#</a></h2>
+<div class="tip admonition">
+<p class="admonition-title">Oppgave 2.1</p>
+<p>Åpne <code class="docutils literal notranslate"><span class="pre">uvvis_raw.csv</span></code> som råtekst. Identifiser kolonnenavn, skilletegn, manglende verdier og hvilke kolonner som inneholder enheter.</p>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Oppgave 2.2</p>
+<p>Les <code class="docutils literal notranslate"><span class="pre">uvvis_raw.csv</span></code> med Pandas. Bruk <code class="docutils literal notranslate"><span class="pre">head</span></code>, <code class="docutils literal notranslate"><span class="pre">shape</span></code>, <code class="docutils literal notranslate"><span class="pre">columns</span></code>, <code class="docutils literal notranslate"><span class="pre">dtypes</span></code> og <code class="docutils literal notranslate"><span class="pre">info</span></code> til å lage en kort beskrivelse av datasettet.</p>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Oppgave 2.3</p>
+<p>Forklar hvorfor det vil være feil å bruke <code class="docutils literal notranslate"><span class="pre">dropna()</span></code> uten <code class="docutils literal notranslate"><span class="pre">subset</span></code> på hele UV–Vis-datasettet. Demonstrer hva som skjer, men start på nytt fra rådata etterpå.</p>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Oppgave 2.4</p>
+<p>Lag et lite datasett med én fullstendig duplikatrad og to reelle replikater som tilfeldigvis har samme absorbans. Bruk <code class="docutils literal notranslate"><span class="pre">duplicated</span></code> til å vise hvorfor vi må vurdere mer enn bare måleverdien.</p>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Oppgave 2.5</p>
+<p>Velg ut blankprøvene og beregn middelverdien. Opprett en ny kolonne med blankkorrigert absorbans. Kontroller at middelverdien til de blankkorrigerte blankprøvene er omtrent null.</p>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Oppgave 2.6</p>
+<p>Grupper standardene etter konsentrasjon og beregn <code class="docutils literal notranslate"><span class="pre">count</span></code>, <code class="docutils literal notranslate"><span class="pre">mean</span></code>, <code class="docutils literal notranslate"><span class="pre">std</span></code>, <code class="docutils literal notranslate"><span class="pre">min</span></code> og <code class="docutils literal notranslate"><span class="pre">max</span></code>. Hvilke av størrelsene er vanskeligst å tolke når en gruppe bare har to målinger?</p>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Oppgave 2.7</p>
+<p>Fila <code class="docutils literal notranslate"><span class="pre">reaction_kinetics.csv</span></code> inneholder tid og absorbans. Les fila, undersøk datatypene, sorter etter tid og lag en ny kolonne <code class="docutils literal notranslate"><span class="pre">relative_absorbance</span></code> der hver absorbans deles på startverdien.</p>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Oppgave 2.8</p>
+<p>En fil inneholder kolonnene <code class="docutils literal notranslate"><span class="pre">Temperature</span></code>, <code class="docutils literal notranslate"><span class="pre">temperature</span></code> og <code class="docutils literal notranslate"><span class="pre">TEMP</span></code>. Skriv en kort vurdering av hvorfor automatisk standardisering ikke nødvendigvis er nok. Hvordan kan du finne ut om kolonnene representerer samme størrelse og enhet?</p>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Oppgave 2.9</p>
+<p>Lag en figur av alle kalibreringsstandardene fra den ryddede datarammen. Bruk forskjellig markør for hver replikatserie. Vurder om dette gjør figuren mer eller mindre informativ.</p>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Oppgave 2.10 – samlet case</p>
+<p>Lag et fullstendig program som leser <code class="docutils literal notranslate"><span class="pre">uvvis_raw.csv</span></code>, undersøker manglende verdier, lager en bearbeidet kopi, fjerner den dokumenterte mislykkede absorbansmålingen, blankkorrigerer dataene og lagrer resultatet som en ny CSV-fil. Programmet skal aldri endre rådatafila.</p>
+</div>
+</section>
+<section id="videoer">
+<h2>Videoer<a class="headerlink" href="#videoer" title="Permalink to this heading">#</a></h2>
+<p>I videoene nedenfor kan du få en innføring eller repetisjon i filinnlesing og databehandling med Pandas.</p>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-0">
+Lese datafiler</label><div class="sd-tab-content docutils">
+<iframe width="800" height="600" src="https://www.youtube.com/embed/u3FCfxP9JWY?autoplay=0&rel=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+<input id="sd-tab-item-1" name="sd-tab-set-0" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-1">
+Pandas</label><div class="sd-tab-content docutils">
+<iframe width="800" height="600" src="https://www.youtube.com/embed/JACLHl37Iq4?autoplay=0&rel=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./docs/datahandtering_visualisering"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="visualisering_av_kjemiske_data.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Datahåndtering I: Visualisering av kjemiske data</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="statistikk_grunnleggende_kjemi.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Datahåndtering III: Målinger, variasjon og usikkerhet</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#datafiler">Datafiler</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lese-data-med-pandas">Lese data med Pandas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#undersoke-datasettet">Undersøke datasettet</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bevar-radataene">Bevar rådataene</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#manglende-verdier">Manglende verdier</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#duplikater">Duplikater</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#filtrere-data">Filtrere data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sortere-data">Sortere data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gruppere-og-oppsummere-data">Gruppere og oppsummere data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lage-nye-kolonner">Lage nye kolonner</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rydde-kolonnenavn-og-tekst">Rydde kolonnenavn og tekst</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fra-dataramme-til-figur">Fra dataramme til figur</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#en-reproduserbar-arbeidsflyt">En reproduserbar arbeidsflyt</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgaver">Oppgaver</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#videoer">Videoer</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Andreas Haraldsrud
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

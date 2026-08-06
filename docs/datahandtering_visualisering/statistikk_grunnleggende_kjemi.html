@@ -1,0 +1,1119 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Datahåndtering III: Målinger, variasjon og usikkerhet &#8212; Programmering i kjemi</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/kjemiquiz.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom1.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/kjemiquiz.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
+    <script src="../../_static/kjemiquiz.js"></script>
+    <script src="../../_static/turtle_basthon.js"></script>
+    <script src="../../_static/kjemiquiz.js"></script>
+    <script src="../../_static/turtle_basthon.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/datahandtering_visualisering/statistikk_grunnleggende_kjemi';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Datahåndtering IV: Kalibrering og sammenlikning av resultater" href="kalibrering_og_statistisk_inferens.html" />
+    <link rel="prev" title="Datahåndtering II: Lese og rydde kjemiske data" href="lese_og_rydde_kjemiske_data.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/qe-logo-large.png" class="logo__image only-light" alt="Programmering i kjemi - Home"/>
+    <script>document.write(`<img src="../../_static/qe-logo-large.png" class="logo__image only-dark" alt="Programmering i kjemi - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Kom i gang</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../grunnleggende_programmering/introduksjon.html">Introduksjon: Programmering som verktøy i kjemi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../grunnleggende_programmering/vscode.html">Visual Studio Code for kjemikere</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Grunnleggende programmering</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../grunnleggende_programmering/tall_variabler.html">Variabler og datatyper</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../grunnleggende_programmering/quiz1.html">Quiz 1: Variabler og aritmetikk</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../grunnleggende_programmering/lister.html">Lister</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../grunnleggende_programmering/quiz2.html">Quiz 2: Lister</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../grunnleggende_programmering/vilkar.html">Vilkår (if-tester)</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../grunnleggende_programmering/quiz3.html">Quiz 3: Vilkår (if-tester)</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../grunnleggende_programmering/lokker.html">Løkker</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../grunnleggende_programmering/quiz4.html">Quiz 4: Løkker</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../grunnleggende_programmering/funksjoner.html">Funksjoner</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../grunnleggende_programmering/quiz5.html">Quiz 5: Funksjoner</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../grunnleggende_programmering/datasamlinger.html">Datasamlinger</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../grunnleggende_programmering/quiz6.html">Quiz 6: Datasamlinger (arrayer og dictionarier)</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Datahåndtering og visualisering</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="kjemiske_biblioteker.html">Kjemiske biblioteker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="molekylvisualisering.html">Molekylvisualisering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="visualisering_av_kjemiske_data.html">Datahåndtering I: Visualisering av kjemiske data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lese_og_rydde_kjemiske_data.html">Datahåndtering II: Lese og rydde kjemiske data</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Datahåndtering III: Målinger, variasjon og usikkerhet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kalibrering_og_statistisk_inferens.html">Datahåndtering IV: Kalibrering og sammenlikning av resultater</a></li>
+<li class="toctree-l1"><a class="reference internal" href="maskinlaering_i_kjemi.html">Datahåndtering V: Maskinlæring i kjemi*</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Numeriske metoder</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../nullpunkter_likninger/likninger.html">Likninger og nullpunkter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../derivasjon_integrasjon/derivasjon.html">Numerisk derivasjon</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../derivasjon_integrasjon/integrasjon.html">Numerisk integrasjon</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Dynamiske systemer</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../modellering/diskret_modellering.html">Differenslikninger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modellering/differensiallikninger.html">Differensiallikninger og fartslover</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Emneressurser (IN-KJM1900)</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../forelesninger/forelesninger.html">Forelesninger</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../forelesninger/forelesning1.html">Forelesning 1: Programmering i kjemi</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../forelesninger/forelesning2.html">Forelesning 2: Plotting og datahåndtering</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../forelesninger/forelesning3.html">Forelesning 3: Statistisk analyse</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../forelesninger/forelesning4.html">Forelesning 4: Statistikk II</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../forelesninger/forelesning5.html">Forelesning 5: Numerisk derivasjon og likninger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../forelesninger/forelesning6.html">Forelesning 6: Numerisk integrasjon</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../forelesninger/forelesning7.html">Forelesning 7: Numerisk løsing av likninger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../forelesninger/forelesning8.html">Forelesning 8: Differensiallikninger og reaksjonskinetikk</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../forelesninger/forelesning9.html">Forelesning 9: Reaksjonskinetikk II</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../forelesninger/forelesning10.html">Forelesning 10: Molekylmekanikk</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../forelesninger/workshops.html">Eksamensverksted</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../forelesninger/workshop1.html">Workshop 1: Datahåndtering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../forelesninger/workshop2.html">Workshop 2: Numeriske metoder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../forelesninger/workshop3.html">Workshop 3: Dynamiske systemer</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../obliger/obliger.html">Obligatoriske oppgaver</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../obliger/oblig_datahandtering.html">Oblig 1: Håndtering av kjemiske data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../obliger/oblig_dynamiske_systemer.html">Oblig 2: Dynamiske systemer og integrasjon</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../datafiler.html">Datafiler</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Emneressurser (KJM1140)</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../biokjemi/molekylvisualisering.html">Molekylvisualisering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../biokjemi/datavisualisering.html">Datavisualisering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../biokjemi/regresjonsmodeller.html">Regresjonsmodeller</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../biokjemi/enzymkinetikklab2025.html">Analyse av enzymkinetikkdata</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../biokjemi/proteinfolding.html">Lab 5: Proteinfolding</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/docs/datahandtering_visualisering/statistikk_grunnleggende_kjemi.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Datahåndtering III: Målinger, variasjon og usikkerhet</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hva-er-det-vi-har-malt">Hva er det vi har målt?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hvor-ligger-malingene">Hvor ligger målingene?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gjennomsnitt">Gjennomsnitt</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#median">Median</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#persentiler-plassering-i-en-fordeling">Persentiler: plassering i en fordeling</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hvor-mye-varierer-dataene">Hvor mye varierer dataene?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#variasjonsbredde">Variasjonsbredde</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interkvartilbredde">Interkvartilbredde</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#standardavvik">Standardavvik</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relativt-standardavvik">Relativt standardavvik</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hva-bruker-vi-nar">Hva bruker vi når?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fra-spredning-til-usikkerhet-i-gjennomsnittet">Fra spredning til usikkerhet i gjennomsnittet</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#standardfeil">Standardfeil</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#konfidensintervall-for-middelverdien">Konfidensintervall for middelverdien</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hva-betyr-95">Hva betyr 95 %?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fra-malinger-til-intervall-ett-trinn-om-gangen">Fra målinger til intervall – ett trinn om gangen</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hva-gjor-intervallet-smalere-eller-bredere">Hva gjør intervallet smalere eller bredere?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nar-kan-vi-bruke-intervallet">Når kan vi bruke intervallet?</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#feilstolper-i-figurer">Feilstolper i figurer</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#presisjon-og-riktighet">Presisjon og riktighet</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kort-oppsummering">Kort oppsummering</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgaver">Oppgaver</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="datahandtering-iii-malinger-variasjon-og-usikkerhet">
+<h1>Datahåndtering III: Målinger, variasjon og usikkerhet<a class="headerlink" href="#datahandtering-iii-malinger-variasjon-og-usikkerhet" title="Permalink to this heading">#</a></h1>
+<div class="admonition-laeringsutbytte admonition">
+<p class="admonition-title">Læringsutbytte</p>
+<p>Etter å ha arbeidet med dette temaet, skal du kunne:</p>
+<ol class="arabic simple">
+<li><p>forklare hvorfor gjentatte kjemiske målinger varierer</p></li>
+<li><p>velge mellom gjennomsnitt og median i enkle kjemiske situasjoner</p></li>
+<li><p>forklare hva persentiler og interkvartilbredde forteller oss</p></li>
+<li><p>bruke standardavvik og relativt standardavvik til å beskrive presisjon</p></li>
+<li><p>skille mellom standardavvik, standardfeil og konfidensintervall</p></li>
+<li><p>beregne og tolke et 95 % konfidensintervall for en middelverdi</p></li>
+</ol>
+</div>
+<p>Når vi gjentar en kjemisk måling, får vi sjelden nøyaktig samme resultat. Vi kan for eksempel måle jernkonsentrasjonen i den samme løsningen fem ganger og få</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="n">measurements_mg_L</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">5.12</span><span class="p">,</span> <span class="mf">5.08</span><span class="p">,</span> <span class="mf">5.15</span><span class="p">,</span> <span class="mf">5.10</span><span class="p">,</span> <span class="mf">5.13</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Forskjellene er små, men de er der. De kan blant annet skyldes instrumentstøy, små forskjeller i volum eller temperatur og variasjon i prøveprepareringen. Statistikk hjelper oss med å beskrive denne variasjonen. Den kan også hjelpe oss med å vurdere hva målingene samlet sier om konsentrasjonen.</p>
+<p>I dette kapitlet skal vi derfor følge to spørsmål:</p>
+<ol class="arabic simple">
+<li><p><strong>Hvor ligger målingene?</strong> Det beskriver vi med for eksempel gjennomsnitt eller median.</p></li>
+<li><p><strong>Hvor mye varierer de?</strong> Det beskriver vi med for eksempel standardavvik eller interkvartilbredde.</p></li>
+</ol>
+<p>Hvilke størrelser vi bør bruke, avhenger av hva slags data vi har. Det kommer vi tilbake til flere ganger.</p>
+<section id="hva-er-det-vi-har-malt">
+<h2>Hva er det vi har målt?<a class="headerlink" href="#hva-er-det-vi-har-malt" title="Permalink to this heading">#</a></h2>
+<p>Før vi beregner statistikk, må vi vite hva hver observasjon representerer. Fem avlesninger av den samme kyvetten forteller først og fremst om variasjonen i instrumentet. Fem løsninger som er preparert uavhengig av hverandre, inkluderer også variasjon fra veiing, pipettering og andre deler av metoden.</p>
+<p>Begge deler kan være nyttig, men de svarer på ulike spørsmål. Mange avlesninger av den samme kyvetten kan ikke alene fortelle oss hvor reproduserbar hele analysemetoden er.</p>
+<p>Vi skiller også mellom to typer datasett som er vanlige i kjemi:</p>
+<ul class="simple">
+<li><p><strong>Gjentatte målinger av samme prøve.</strong> Her er det ofte naturlig å beskrive resultatet med gjennomsnitt og standardavvik.</p></li>
+<li><p><strong>Målinger fra mange forskjellige prøver.</strong> Konsentrasjoner i jord-, vann- eller blodprøver kan være skjevt fordelt. Da er median og interkvartilbredde ofte mer informative.</p></li>
+</ul>
+<p>Dette er ikke absolutte regler, men de er et godt utgangspunkt.</p>
+</section>
+<section id="hvor-ligger-malingene">
+<h2>Hvor ligger målingene?<a class="headerlink" href="#hvor-ligger-malingene" title="Permalink to this heading">#</a></h2>
+<section id="gjennomsnitt">
+<h3>Gjennomsnitt<a class="headerlink" href="#gjennomsnitt" title="Permalink to this heading">#</a></h3>
+<div class="admonition-gjennomsnitt admonition">
+<p class="admonition-title">Gjennomsnitt</p>
+<p>Gjennomsnittet er summen av alle observasjonene delt på antall observasjoner.</p>
+</div>
+<p>Det kan skrives slik:</p>
+<div class="math notranslate nohighlight">
+\[
+\bar{x}=\frac{x_1+x_2+\cdots+x_n}{n}
+\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mean</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">measurements_mg_L</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Mean: </span><span class="si">{</span><span class="n">mean</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> mg/L&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>For måleserien vår blir gjennomsnittet 5,116 mg/L. Gjennomsnittet bruker informasjon fra alle målingene. Det passer derfor godt når vi har gjentatte målinger av samme homogene prøve, og variasjonen ser noenlunde symmetrisk ut.</p>
+<p>Samtidig gjør dette gjennomsnittet følsomt for svært lave eller høye verdier. Én feilpipettering kan flytte gjennomsnittet merkbart.</p>
+</section>
+<section id="median">
+<h3>Median<a class="headerlink" href="#median" title="Permalink to this heading">#</a></h3>
+<div class="admonition-median admonition">
+<p class="admonition-title">Median</p>
+<p>Medianen er den midterste verdien når dataene er sortert. Ved et partall observasjoner bruker vi gjennomsnittet av de to midterste verdiene.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">median</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">measurements_mg_L</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Median: </span><span class="si">{</span><span class="n">median</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> mg/L&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Medianen påvirkes mindre av ekstreme verdier. Den er derfor nyttig når fordelingen er skjev, eller når vi skal beskrive et datasett med enkelte svært høye eller lave observasjoner.</p>
+<p>Tenk for eksempel på nitratkonsentrasjonen i vannprøver fra mange bekker. De fleste bekkene kan ha lave verdier, mens noen få bekker nær jordbruksområder har mye høyere konsentrasjon. Da kan medianen beskrive en typisk bekk bedre enn gjennomsnittet.</p>
+<div class="tip admonition">
+<p class="admonition-title">Underveisoppgave</p>
+<p>Sammenlikn disse to måleseriene:</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">measurements_1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">10.02</span><span class="p">,</span> <span class="mf">10.05</span><span class="p">,</span> <span class="mf">9.98</span><span class="p">,</span> <span class="mf">10.01</span><span class="p">,</span> <span class="mf">10.04</span><span class="p">])</span>
+<span class="n">measurements_2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">10.02</span><span class="p">,</span> <span class="mf">10.05</span><span class="p">,</span> <span class="mf">9.98</span><span class="p">,</span> <span class="mf">10.01</span><span class="p">,</span> <span class="mf">10.42</span><span class="p">])</span>
+
+<span class="k">for</span> <span class="n">measurements</span> <span class="ow">in</span> <span class="p">[</span><span class="n">measurements_1</span><span class="p">,</span> <span class="n">measurements_2</span><span class="p">]:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Mean:&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">measurements</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Median:&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">measurements</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Hvilken størrelse påvirkes mest når den siste verdien endres?</p>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Løsningsforslag</p>
+<p>Gjennomsnittet påvirkes mest fordi alle verdiene inngår direkte i beregningen. Medianen er 10,02 mg/L i begge seriene. Dette viser at medianen er mer robust. Det viser ikke at 10,42 mg/L automatisk kan fjernes; årsaken til den høye verdien må undersøkes.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="persentiler-plassering-i-en-fordeling">
+<h2>Persentiler: plassering i en fordeling<a class="headerlink" href="#persentiler-plassering-i-en-fordeling" title="Permalink to this heading">#</a></h2>
+<p>For å forstå interkvartilbredde må vi først forstå persentiler.</p>
+<div class="admonition-persentil admonition">
+<p class="admonition-title">Persentil</p>
+<p>En persentil er en grenseverdi i et sortert datasett. For eksempel er 25-persentilen en verdi som omtrent 25 % av observasjonene ligger på eller under.</p>
+</div>
+<ul class="simple">
+<li><p>25-persentilen er en verdi der omtrent 25 % av observasjonene ligger på eller under.</p></li>
+<li><p>50-persentilen er medianen. Omtrent halvparten ligger på eller under.</p></li>
+<li><p>75-persentilen er en verdi der omtrent 75 % ligger på eller under.</p></li>
+</ul>
+<p>En persentil er altså <strong>ikke</strong> en prosent av den største verdien. Den beskriver en plassering i fordelingen.</p>
+<p>Vi ser på nitratkonsentrasjoner fra tolv bekker:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nitrate_mg_L</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
+    <span class="mf">0.42</span><span class="p">,</span> <span class="mf">0.47</span><span class="p">,</span> <span class="mf">0.50</span><span class="p">,</span> <span class="mf">0.55</span><span class="p">,</span> <span class="mf">0.58</span><span class="p">,</span> <span class="mf">0.61</span><span class="p">,</span>
+    <span class="mf">0.65</span><span class="p">,</span> <span class="mf">0.72</span><span class="p">,</span> <span class="mf">0.85</span><span class="p">,</span> <span class="mf">1.10</span><span class="p">,</span> <span class="mf">1.35</span><span class="p">,</span> <span class="mf">2.80</span><span class="p">,</span>
+<span class="p">])</span>
+
+<span class="n">q1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">nitrate_mg_L</span><span class="p">,</span> <span class="mi">25</span><span class="p">)</span>
+<span class="n">median</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">nitrate_mg_L</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
+<span class="n">q3</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">nitrate_mg_L</span><span class="p">,</span> <span class="mi">75</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;25th percentile: </span><span class="si">{</span><span class="n">q1</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> mg/L&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Median: </span><span class="si">{</span><span class="n">median</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> mg/L&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;75th percentile: </span><span class="si">{</span><span class="n">q3</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> mg/L&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Her er 25-persentilen omtrent 0,54 mg/L. Det betyr at omtrent en firedel av bekkene har en nitratkonsentrasjon på 0,54 mg/L eller lavere. Medianen er 0,63 mg/L, mens 75-persentilen er omtrent 0,91 mg/L.</p>
+<p>Med få observasjoner ligger ikke persentilen alltid på en av verdiene i datasettet. Programmet kan da beregne en verdi mellom to observasjoner. Det finnes flere regler for denne beregningen, så ulike programmer kan gi litt forskjellige svar for små datasett. Tolkningen er likevel den samme.</p>
+<div class="admonition-kjemisk-bruk-av-persentiler admonition">
+<p class="admonition-title">Kjemisk bruk av persentiler</p>
+<p>Persentiler brukes ofte når vi vil beskrive hvordan konsentrasjoner fordeler seg i mange prøver. En 95-persentil for et forurensende stoff kan for eksempel brukes til å beskrive et høyt nivå som bare omtrent 5 % av prøvene overskrider.</p>
+</div>
+</section>
+<section id="hvor-mye-varierer-dataene">
+<h2>Hvor mye varierer dataene?<a class="headerlink" href="#hvor-mye-varierer-dataene" title="Permalink to this heading">#</a></h2>
+<section id="variasjonsbredde">
+<h3>Variasjonsbredde<a class="headerlink" href="#variasjonsbredde" title="Permalink to this heading">#</a></h3>
+<div class="admonition-variasjonsbredde admonition">
+<p class="admonition-title">Variasjonsbredde</p>
+<p>Variasjonsbredden er forskjellen mellom den største og den minste observasjonen i datasettet.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_range</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">nitrate_mg_L</span><span class="p">)</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">nitrate_mg_L</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Range: </span><span class="si">{</span><span class="n">data_range</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> mg/L&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Variasjonsbredden er enkel å forstå, men den bestemmes av bare to observasjoner. Én svært høy verdi kan derfor gjøre den stor. Vi bruker den gjerne til en rask oversikt, men sjelden som det eneste målet på spredning.</p>
+</section>
+<section id="interkvartilbredde">
+<h3>Interkvartilbredde<a class="headerlink" href="#interkvartilbredde" title="Permalink to this heading">#</a></h3>
+<p>Første kvartil, <span class="math notranslate nohighlight">\(Q_1\)</span>, er 25-persentilen. Tredje kvartil, <span class="math notranslate nohighlight">\(Q_3\)</span>, er 75-persentilen. Området mellom dem inneholder de midterste 50 % av observasjonene.</p>
+<div class="admonition-interkvartilbredde-iqr admonition">
+<p class="admonition-title">Interkvartilbredde (IQR)</p>
+<p>Interkvartilbredden er avstanden fra 25-persentilen (<span class="math notranslate nohighlight">\(Q_1\)</span>) til 75-persentilen (<span class="math notranslate nohighlight">\(Q_3\)</span>). Den beskriver dermed spredningen i de midterste 50 % av observasjonene.</p>
+</div>
+<div class="math notranslate nohighlight">
+\[
+IQR=Q_3-Q_1
+\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">iqr</span> <span class="o">=</span> <span class="n">q3</span> <span class="o">-</span> <span class="n">q1</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;IQR: </span><span class="si">{</span><span class="n">iqr</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> mg/L&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>For nitratdataene er IQR omtrent 0,38 mg/L. Den høyeste verdien på 2,80 mg/L påvirker variasjonsbredden kraftig, men påvirker IQR langt mindre. Derfor rapporteres IQR ofte sammen med medianen når dataene er skjeve.</p>
+<p>Et boksplott bygger på de samme størrelsene:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">nitrate_mg_L</span><span class="p">,</span> <span class="n">vert</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Nitrate concentration (mg/L)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Nitrate in stream-water samples&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Boksen går fra <span class="math notranslate nohighlight">\(Q_1\)</span> til <span class="math notranslate nohighlight">\(Q_3\)</span>, og streken i boksen viser medianen. Et punkt utenfor «værhårene» er ikke automatisk feil. Figuren forteller oss at punktet bør undersøkes nærmere, ikke at det skal slettes.</p>
+</section>
+<section id="standardavvik">
+<h3>Standardavvik<a class="headerlink" href="#standardavvik" title="Permalink to this heading">#</a></h3>
+<div class="admonition-standardavvik admonition">
+<p class="admonition-title">Standardavvik</p>
+<p>Standardavviket beskriver den typiske spredningen til enkeltmålingene rundt gjennomsnittet. Det har samme enhet som målingene.</p>
+</div>
+<p>For et utvalg beregnes det slik:</p>
+<div class="math notranslate nohighlight">
+\[
+s=\sqrt{\frac{\sum_{i=1}^{n}(x_i-\bar{x})^2}{n-1}}
+\]</div>
+<p>Formelen kan se omfattende ut, men ideen er enkel: Vi finner avstanden fra hver måling til gjennomsnittet og samler disse avstandene i ett mål på spredning. Standardavviket får samme enhet som målingene.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sample_sd</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">measurements_mg_L</span><span class="p">,</span> <span class="n">ddof</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Sample SD: </span><span class="si">{</span><span class="n">sample_sd</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> mg/L&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Argumentet <code class="docutils literal notranslate"><span class="pre">ddof=1</span></code> gjør at NumPy deler på <span class="math notranslate nohighlight">\(n-1\)</span>. Det bruker vi når målingene våre er et utvalg av alle målingene vi kunne ha gjort. For jernmålingene er standardavviket omtrent 0,027 mg/L.</p>
+<p>Standardavvik passer særlig godt sammen med gjennomsnittet når vi har gjentatte målinger av samme prøve, og målingene ligger noenlunde symmetrisk rundt gjennomsnittet. Det påvirkes, som gjennomsnittet, av ekstreme verdier.</p>
+<div class="admonition-hva-betyr-tallet admonition">
+<p class="admonition-title">Hva betyr tallet?</p>
+<p>Et standardavvik på 0,027 mg/L betyr ikke at alle målingene ligger nøyaktig 0,027 mg/L fra gjennomsnittet. Det er en samlet beskrivelse av den typiske spredningen i måleserien.</p>
+</div>
+</section>
+<section id="relativt-standardavvik">
+<h3>Relativt standardavvik<a class="headerlink" href="#relativt-standardavvik" title="Permalink to this heading">#</a></h3>
+<div class="admonition-relativt-standardavvik-rsd admonition">
+<p class="admonition-title">Relativt standardavvik (RSD)</p>
+<p>Relativt standardavvik er standardavviket uttrykt som prosent av gjennomsnittet. Det gjør det lettere å sammenlikne relativ presisjon ved ulike målenivåer.</p>
+</div>
+<div class="math notranslate nohighlight">
+\[
+RSD=\frac{s}{\bar{x}}\cdot100\ \%
+\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rsd_percent</span> <span class="o">=</span> <span class="n">sample_sd</span> <span class="o">/</span> <span class="n">mean</span> <span class="o">*</span> <span class="mi">100</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;RSD: </span><span class="si">{</span><span class="n">rsd_percent</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> %&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>RSD brukes mye til å beskrive og sammenlikne presisjon i kjemiske analysemetoder. Et standardavvik på 0,10 mg/L er lite dersom konsentrasjonen er 100 mg/L, men stort dersom konsentrasjonen er 0,20 mg/L. RSD setter spredningen i forhold til målenivået.</p>
+<p>RSD er lite egnet når gjennomsnittet ligger nær null. Da kan en liten absolutt variasjon gi en svært stor prosentverdi.</p>
+</section>
+</section>
+<section id="hva-bruker-vi-nar">
+<h2>Hva bruker vi når?<a class="headerlink" href="#hva-bruker-vi-nar" title="Permalink to this heading">#</a></h2>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Situasjon</p></th>
+<th class="head"><p>Nyttige størrelser</p></th>
+<th class="head"><p>Kjemisk eksempel</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Gjentatte målinger av samme homogene prøve, omtrent symmetrisk fordelt</p></td>
+<td><p>Gjennomsnitt og standardavvik</p></td>
+<td><p>Fem uavhengig preparerte løsninger av samme prøve analyseres med UV–Vis</p></td>
+</tr>
+<tr class="row-odd"><td><p>Mange ulike prøver med skjev fordeling</p></td>
+<td><p>Median og interkvartilbredde</p></td>
+<td><p>Nitrat i bekker eller metallinnhold i jordprøver fra mange steder</p></td>
+</tr>
+<tr class="row-even"><td><p>Sammenlikne presisjon ved ulike konsentrasjonsnivåer</p></td>
+<td><p>RSD</p></td>
+<td><p>Sammenlikne repeterbarhet ved 1 mg/L og 100 mg/L</p></td>
+</tr>
+<tr class="row-odd"><td><p>Raskt se hele spennvidden</p></td>
+<td><p>Variasjonsbredde</p></td>
+<td><p>Første kontroll av en liten måleserie</p></td>
+</tr>
+<tr class="row-even"><td><p>Beskrive et lavt, typisk eller høyt nivå i en fordeling</p></td>
+<td><p>Persentil</p></td>
+<td><p>50- og 95-persentilen for en miljøgift i mange prøver</p></td>
+</tr>
+<tr class="row-odd"><td><p>Vurdere hvor presist middelverdien er bestemt</p></td>
+<td><p>Standardfeil eller konfidensintervall</p></td>
+<td><p>Rapportere estimert innhold i et referansemateriale</p></td>
+</tr>
+</tbody>
+</table>
+<p>Tabellen viser typiske valg, ikke automatiske regler. Vi bør også se på rådataene og tenke over hvordan prøvene er samlet inn.</p>
+</section>
+<section id="fra-spredning-til-usikkerhet-i-gjennomsnittet">
+<h2>Fra spredning til usikkerhet i gjennomsnittet<a class="headerlink" href="#fra-spredning-til-usikkerhet-i-gjennomsnittet" title="Permalink to this heading">#</a></h2>
+<p>Så langt har vi beskrevet observasjonene vi har. Ofte vil vi også bruke dem til å anslå en ukjent middelverdi. De fem jernmålingene kan for eksempel brukes til å anslå hva analysemetoden i gjennomsnitt ville gitt dersom målingen ble gjentatt mange ganger under tilsvarende betingelser.</p>
+<p>Hvis vi gjentok hele forsøket, ville vi neppe fått nøyaktig det samme gjennomsnittet. Også gjennomsnittet varierer fra forsøk til forsøk.</p>
+<section id="standardfeil">
+<h3>Standardfeil<a class="headerlink" href="#standardfeil" title="Permalink to this heading">#</a></h3>
+<div class="admonition-standardfeil admonition">
+<p class="admonition-title">Standardfeil</p>
+<p>Standardfeilen beskriver hvor mye gjennomsnittet forventes å variere dersom hele forsøket gjentas mange ganger med samme antall uavhengige målinger.</p>
+</div>
+<div class="math notranslate nohighlight">
+\[
+SE=\frac{s}{\sqrt{n}}
+\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">measurements_mg_L</span><span class="p">)</span>
+<span class="n">standard_error</span> <span class="o">=</span> <span class="n">sample_sd</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Standard error: </span><span class="si">{</span><span class="n">standard_error</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> mg/L&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Her må vi holde to spørsmål fra hverandre:</p>
+<ul class="simple">
+<li><p><strong>Standardavviket</strong> beskriver variasjonen mellom enkeltmålingene.</p></li>
+<li><p><strong>Standardfeilen</strong> beskriver hvor presist gjennomsnittet er bestemt.</p></li>
+</ul>
+<p>Når vi gjør flere uavhengige målinger, får vi vanligvis et sikrere gjennomsnitt. Derfor blir standardfeilen mindre når <span class="math notranslate nohighlight">\(n\)</span> øker. Standardavviket trenger ikke bli mindre, for variasjonen i selve måleprosessen er fortsatt til stede.</p>
+</section>
+</section>
+<section id="konfidensintervall-for-middelverdien">
+<h2>Konfidensintervall for middelverdien<a class="headerlink" href="#konfidensintervall-for-middelverdien" title="Permalink to this heading">#</a></h2>
+<p>Gjennomsnittet 5,116 mg/L er det beste enkeltanslaget vårt. Men dersom vi preparerte fem nye løsninger og gjorde forsøket på nytt, ville gjennomsnittet sannsynligvis blitt litt annerledes. Vi trenger derfor en måte å vise hvor usikkert dette anslaget er.</p>
+<div class="admonition-konfidensintervall admonition">
+<p class="admonition-title">Konfidensintervall</p>
+<p>Et konfidensintervall er et spenn av verdier som er rimelig forenlige med målingene våre som middelverdi for måleprosessen. Konfidensnivået beskriver hvor ofte framgangsmåten treffer riktig når forsøket gjentas mange ganger.</p>
+</div>
+<section id="hva-betyr-95">
+<h3>Hva betyr 95 %?<a class="headerlink" href="#hva-betyr-95" title="Permalink to this heading">#</a></h3>
+<p>Tenk deg at vi gjentar hele forsøket svært mange ganger. Hver gang gjør vi fem nye, uavhengige målinger og beregner et nytt intervall på samme måte. Noen intervaller blir litt forskjøvet mot lave verdier, og andre mot høye verdier.</p>
+<p>En metode for 95 % konfidensintervall er laget slik at omtrent 95 av 100 slike intervaller vil inneholde den egentlige middelverdien til måleprosessen, dersom forutsetningene er oppfylt. De siste omtrent fem intervallene vil bomme.</p>
+<p>Vi beregner bare ett intervall i det virkelige forsøket. Strengt tatt er derfor 95 % en egenskap ved metoden, ikke en sannsynlighet som blir liggende inni akkurat dette ferdige intervallet. I vanlig språk sier vi likevel ofte at vi er «95 % sikre» på intervallet, så lenge vi husker hva dette bygger på.</p>
+<div class="caution admonition">
+<p class="admonition-title">Hva intervallet ikke betyr</p>
+<p>Et 95 % konfidensintervall er ikke området som inneholder 95 % av enkeltmålingene. Det viser heller ikke om metoden har systematiske feil. En feil i for eksempel kalibreringsløsningen kan flytte både gjennomsnittet og hele intervallet.</p>
+</div>
+</section>
+<section id="fra-malinger-til-intervall-ett-trinn-om-gangen">
+<h3>Fra målinger til intervall – ett trinn om gangen<a class="headerlink" href="#fra-malinger-til-intervall-ett-trinn-om-gangen" title="Permalink to this heading">#</a></h3>
+<p>Intervallet kan bygges opp i fem trinn:</p>
+<ol class="arabic simple">
+<li><p><strong>Finn gjennomsnittet.</strong> Dette er midtpunktet i intervallet.</p></li>
+<li><p><strong>Finn standardavviket.</strong> Det beskriver spredningen mellom enkeltmålingene.</p></li>
+<li><p><strong>Finn standardfeilen.</strong> Den beskriver usikkerheten i gjennomsnittet: <span class="math notranslate nohighlight">\(SE=s/\sqrt{n}\)</span>.</p></li>
+<li><p><strong>Finn feilmarginen.</strong> Standardfeilen multipliseres med en faktor fra Students t-fordeling. Faktoren er større når vi har få målinger, fordi standardavviket da er mer usikkert.</p></li>
+<li><p><strong>Legg feilmarginen på begge sider av gjennomsnittet.</strong> Da får vi nedre og øvre grense.</p></li>
+</ol>
+<p>For jernmålingene får vi omtrent:</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Størrelse</p></th>
+<th class="head text-right"><p>Verdi</p></th>
+<th class="head"><p>Hva beskriver den?</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Gjennomsnitt</p></td>
+<td class="text-right"><p>5,116 mg/L</p></td>
+<td><p>Beste enkeltanslag</p></td>
+</tr>
+<tr class="row-odd"><td><p>Standardavvik</p></td>
+<td class="text-right"><p>0,027 mg/L</p></td>
+<td><p>Spredning mellom enkeltmålinger</p></td>
+</tr>
+<tr class="row-even"><td><p>Standardfeil</p></td>
+<td class="text-right"><p>0,012 mg/L</p></td>
+<td><p>Usikkerhet i gjennomsnittet før t-faktoren</p></td>
+</tr>
+<tr class="row-odd"><td><p>t-faktor</p></td>
+<td class="text-right"><p>2,776</p></td>
+<td><p>Ekstra hensyn til at vi bare har fem målinger</p></td>
+</tr>
+<tr class="row-even"><td><p>Feilmargin</p></td>
+<td class="text-right"><p>0,034 mg/L</p></td>
+<td><p>Avstanden fra gjennomsnittet til hver intervallgrense</p></td>
+</tr>
+</tbody>
+</table>
+<p>Det t-baserte intervallet kan skrives slik:</p>
+<div class="math notranslate nohighlight">
+\[
+\bar{x}\pm t\frac{s}{\sqrt{n}}
+\]</div>
+<p>Her er <span class="math notranslate nohighlight">\(\bar{x}\)</span> gjennomsnittet, <span class="math notranslate nohighlight">\(s\)</span> standardavviket, <span class="math notranslate nohighlight">\(n\)</span> antall uavhengige målinger og <span class="math notranslate nohighlight">\(t\)</span> faktoren fra t-fordelingen.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">scipy</span><span class="w"> </span><span class="kn">import</span> <span class="n">stats</span>
+
+<span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">measurements_mg_L</span><span class="p">)</span>
+<span class="n">confidence_level</span> <span class="o">=</span> <span class="mf">0.95</span>
+<span class="n">alpha</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">confidence_level</span>
+
+<span class="n">standard_error</span> <span class="o">=</span> <span class="n">sample_sd</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+<span class="n">t_critical</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">t</span><span class="o">.</span><span class="n">ppf</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">alpha</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="n">df</span><span class="o">=</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">margin</span> <span class="o">=</span> <span class="n">t_critical</span> <span class="o">*</span> <span class="n">standard_error</span>
+
+<span class="n">lower_limit</span> <span class="o">=</span> <span class="n">mean</span> <span class="o">-</span> <span class="n">margin</span>
+<span class="n">upper_limit</span> <span class="o">=</span> <span class="n">mean</span> <span class="o">+</span> <span class="n">margin</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Mean: </span><span class="si">{</span><span class="n">mean</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> mg/L&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Sample SD: </span><span class="si">{</span><span class="n">sample_sd</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> mg/L&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Standard error: </span><span class="si">{</span><span class="n">standard_error</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> mg/L&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Margin: </span><span class="si">{</span><span class="n">margin</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> mg/L&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;95 % CI: [</span><span class="si">{</span><span class="n">lower_limit</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">upper_limit</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">] mg/L&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Resultatet kan rapporteres på to likeverdige måter:</p>
+<div class="math notranslate nohighlight">
+\[
+\bar{x}=5{,}116\ \text{mg/L},\quad 95\ \%\ \text{KI}=[5{,}082,\ 5{,}150]\ \text{mg/L}
+\]</div>
+<p>eller</p>
+<div class="math notranslate nohighlight">
+\[
+\bar{x}=(5{,}116\pm0{,}034)\ \text{mg/L}\quad(95\ \%\ \text{KI})
+\]</div>
+<p>Begge skrivemåtene sier at 5,116 mg/L er punktestimatet, mens intervallet viser usikkerheten i middelverdien under forutsetningene vi har brukt.</p>
+</section>
+<section id="hva-gjor-intervallet-smalere-eller-bredere">
+<h3>Hva gjør intervallet smalere eller bredere?<a class="headerlink" href="#hva-gjor-intervallet-smalere-eller-bredere" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Større spredning gir bredere intervall.</strong> Når enkeltmålingene varierer mye, blir middelverdien mindre presist bestemt.</p></li>
+<li><p><strong>Flere uavhengige målinger gir vanligvis smalere intervall.</strong> Standardfeilen avtar med <span class="math notranslate nohighlight">\(\sqrt{n}\)</span>. Fire ganger så mange målinger halverer derfor omtrent standardfeilen dersom spredningen er den samme.</p></li>
+<li><p><strong>Høyere konfidensnivå gir bredere intervall.</strong> Et 99 % intervall må dekke flere mulige resultater enn et 95 % intervall.</p></li>
+</ul>
+<p>Flere avlesninger er bare nyttige dersom de representerer den variasjonen vi ønsker å undersøke. Ti avlesninger av den samme kyvetten sier mindre om hele analysemetoden enn ti løsninger som er preparert uavhengig.</p>
+<p>Du kan undersøke beregningen i editoren nedenfor.</p>
+<iframe src="../../basthon/?from=examples/statistics_confidence_interval.py" width="100%" height="700" frameborder="0" title="Interactive Python editor for a confidence interval" loading="lazy" allowfullscreen></iframe>
+<div class="tip admonition">
+<p class="admonition-title">Underveisoppgave</p>
+<ol class="arabic simple">
+<li><p>Legg til flere målinger med omtrent samme nivå og spredning. Hva skjer med standardavviket, standardfeilen og intervallet?</p></li>
+<li><p>Endre konfidensnivået til 90 % og 99 %. Hva skjer med bredden?</p></li>
+<li><p>Legg inn én svært høy verdi. Hvilke deler av beregningen påvirkes?</p></li>
+</ol>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Løsningsforslag</p>
+<p>Flere uavhengige målinger med omtrent samme spredning gjør vanligvis standardfeilen og intervallet mindre, mens standardavviket ikke nødvendigvis endres systematisk. Et høyere konfidensnivå gir et bredere intervall. En svært høy verdi kan både flytte gjennomsnittet og øke standardavviket, og intervallet kan derfor både flyttes og bli bredere.</p>
+</div>
+</div>
+</section>
+<section id="nar-kan-vi-bruke-intervallet">
+<h3>Når kan vi bruke intervallet?<a class="headerlink" href="#nar-kan-vi-bruke-intervallet" title="Permalink to this heading">#</a></h3>
+<p>Det t-baserte intervallet forutsetter at målingene er uavhengige og kommer fra en populasjon som er omtrent normalfordelt. At målingene er uavhengige, betyr forenklet at resultatet av én måling ikke bestemmer resultatet av den neste. En normalfordeling er omtrent symmetrisk: Mange verdier ligger nær middelverdien, og stadig færre ligger langt unna på hver side.</p>
+<p>Med få målinger kan vi ikke avgjøre formen på fordelingen sikkert bare ved å se på et histogram. Kunnskap om forsøket blir derfor viktig.</p>
+<p>For gjentatte analyseverdier fra en stabil måleprosess er antakelsen ofte rimelig. For sterkt skjeve miljødata er et t-basert intervall for gjennomsnittet ikke alltid et godt førstevalg. Da kan median og IQR være en bedre beskrivelse av datasettet.</p>
+</section>
+</section>
+<section id="feilstolper-i-figurer">
+<h2>Feilstolper i figurer<a class="headerlink" href="#feilstolper-i-figurer" title="Permalink to this heading">#</a></h2>
+<p>Feilstolper kan vise standardavvik, standardfeil eller konfidensintervall. De betyr ikke det samme:</p>
+<ul class="simple">
+<li><p>Standardavvik viser spredning mellom enkeltmålinger.</p></li>
+<li><p>Konfidensintervall viser usikkerhet i en estimert middelverdi.</p></li>
+</ul>
+<p>Derfor må figurtekst eller tegnforklaring alltid si hva feilstolpene representerer. «Error bars» alene er ikke nok.</p>
+</section>
+<section id="presisjon-og-riktighet">
+<h2>Presisjon og riktighet<a class="headerlink" href="#presisjon-og-riktighet" title="Permalink to this heading">#</a></h2>
+<div class="admonition-presisjon admonition">
+<p class="admonition-title">Presisjon</p>
+<p>Presisjon beskriver hvor nær gjentatte målinger ligger hverandre. Standardavvik og RSD kan brukes til å beskrive presisjon.</p>
+</div>
+<div class="admonition-riktighet admonition">
+<p class="admonition-title">Riktighet</p>
+<p>Riktighet beskriver hvor nær et måleresultat ligger en akseptert referanseverdi.</p>
+</div>
+<p>En metode kan gi resultater som ligger svært tett, men likevel systematisk for høyt. Da er presisjonen god, men riktigheten dårlig.</p>
+<p>Flere replikater kan gjøre gjennomsnittet mer presist. De fjerner ikke en systematisk feil, for eksempel en feil konsentrasjon i kalibreringsløsningen.</p>
+</section>
+<section id="kort-oppsummering">
+<h2>Kort oppsummering<a class="headerlink" href="#kort-oppsummering" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Gjennomsnitt og standardavvik brukes ofte for gjentatte målinger av samme prøve.</p></li>
+<li><p>Median og IQR brukes ofte for skjeve fordelinger av mange forskjellige prøver.</p></li>
+<li><p>Persentiler beskriver hvor en verdi ligger i en sortert fordeling.</p></li>
+<li><p>RSD gjør det mulig å sammenlikne relativ presisjon ved ulike nivåer.</p></li>
+<li><p>Standardavvik beskriver enkeltmålinger. Standardfeil og konfidensintervall beskriver usikkerhet i gjennomsnittet.</p></li>
+<li><p>Statistiske mål må alltid tolkes sammen med rådataene og måten forsøket ble gjennomført på.</p></li>
+</ul>
+</section>
+<section id="oppgaver">
+<h2>Oppgaver<a class="headerlink" href="#oppgaver" title="Permalink to this heading">#</a></h2>
+<div class="tip admonition">
+<p class="admonition-title">Oppgave 3.1 – persentiler</p>
+<p>Kobberkonsentrasjonen i åtte jordprøver er <code class="docutils literal notranslate"><span class="pre">[12,</span> <span class="pre">14,</span> <span class="pre">15,</span> <span class="pre">16,</span> <span class="pre">18,</span> <span class="pre">21,</span> <span class="pre">29,</span> <span class="pre">47]</span></code> mg/kg. Sorter dataene og beregn 25-, 50- og 75-persentilen. Forklar hvert resultat med ord. Hva betyr det for eksempel at en prøve ligger over 75-persentilen?</p>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Oppgave 3.2 – velg riktig beskrivelse</p>
+<p>Velg mellom gjennomsnitt og standardavvik eller median og IQR. Begrunn valget.</p>
+<ol class="arabic simple">
+<li><p>Seks uavhengige bestemmelser av klorid i den samme mineralvannsprøven.</p></li>
+<li><p>Nitratkonsentrasjonen i 80 brønner, der noen få verdier er svært høye.</p></li>
+<li><p>Blyinnholdet i jord fra ulike steder i et gammelt industriområde.</p></li>
+</ol>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Oppgave 3.3 – følsomhet for en ekstrem verdi</p>
+<p>Beregn gjennomsnitt, median, variasjonsbredde og IQR for <code class="docutils literal notranslate"><span class="pre">[4.91,</span> <span class="pre">5.03,</span> <span class="pre">4.98,</span> <span class="pre">5.01,</span> <span class="pre">5.07]</span></code>. Legg deretter til <code class="docutils literal notranslate"><span class="pre">5.80</span></code> og beregn størrelsene på nytt. Hvilke mål påvirkes mest, og hvorfor?</p>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Oppgave 3.4 – standardavvik og RSD</p>
+<p>Metode A gir et gjennomsnitt på 1,0 mg/L og et standardavvik på 0,05 mg/L. Metode B gir et gjennomsnitt på 100 mg/L og et standardavvik på 0,20 mg/L. Beregn RSD for begge. Hvilken metode har best relativ presisjon?</p>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Oppgave 3.5 – hva beskriver størrelsen?</p>
+<p>Forklar med egne ord hva standardavvik, standardfeil og 95 % konfidensintervall beskriver. Hvilken av størrelsene ville du brukt for å vise spredningen mellom fem enkeltmålinger? Hvilken ville du brukt for å vise usikkerheten i middelverdien?</p>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Oppgave 3.6 – konfidensintervall</p>
+<p>Beregn gjennomsnitt, standardavvik, standardfeil og 95 % konfidensintervall for <code class="docutils literal notranslate"><span class="pre">[12.42,</span> <span class="pre">12.38,</span> <span class="pre">12.45,</span> <span class="pre">12.41,</span> <span class="pre">12.39,</span> <span class="pre">12.44]</span></code> mg/L. Rapporter resultatet med enhet. Forklar deretter to endringer i forsøket som kan gjøre intervallet smalere.</p>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Oppgave 3.7 – hva er et replikat?</p>
+<p>En student måler den samme løsningen ti ganger uten å ta kyvetten ut av instrumentet. En annen student lager ti løsninger uavhengig av hverandre og måler hver løsning én gang. Hvilke kilder til variasjon fanger de to forsøkene opp? Hvilket forsøk sier mest om presisjonen til hele analysemetoden?</p>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Oppgave 3.8 – samlet case</p>
+<p>Bruk <code class="docutils literal notranslate"><span class="pre">uvvis_calibration.csv</span></code>. Velg én standardkonsentrasjon og undersøk replikatene. Vis råmålingene, og beregn gjennomsnitt, standardavvik, RSD og 95 % konfidensintervall. Skriv til slutt tre–fire setninger der du forklarer hva standardavviket og konfidensintervallet forteller om målingene.</p>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./docs/datahandtering_visualisering"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="lese_og_rydde_kjemiske_data.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Datahåndtering II: Lese og rydde kjemiske data</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="kalibrering_og_statistisk_inferens.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Datahåndtering IV: Kalibrering og sammenlikning av resultater</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hva-er-det-vi-har-malt">Hva er det vi har målt?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hvor-ligger-malingene">Hvor ligger målingene?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gjennomsnitt">Gjennomsnitt</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#median">Median</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#persentiler-plassering-i-en-fordeling">Persentiler: plassering i en fordeling</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hvor-mye-varierer-dataene">Hvor mye varierer dataene?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#variasjonsbredde">Variasjonsbredde</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interkvartilbredde">Interkvartilbredde</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#standardavvik">Standardavvik</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relativt-standardavvik">Relativt standardavvik</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hva-bruker-vi-nar">Hva bruker vi når?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fra-spredning-til-usikkerhet-i-gjennomsnittet">Fra spredning til usikkerhet i gjennomsnittet</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#standardfeil">Standardfeil</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#konfidensintervall-for-middelverdien">Konfidensintervall for middelverdien</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hva-betyr-95">Hva betyr 95 %?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fra-malinger-til-intervall-ett-trinn-om-gangen">Fra målinger til intervall – ett trinn om gangen</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hva-gjor-intervallet-smalere-eller-bredere">Hva gjør intervallet smalere eller bredere?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nar-kan-vi-bruke-intervallet">Når kan vi bruke intervallet?</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#feilstolper-i-figurer">Feilstolper i figurer</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#presisjon-og-riktighet">Presisjon og riktighet</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kort-oppsummering">Kort oppsummering</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgaver">Oppgaver</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Andreas Haraldsrud
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

@@ -1,0 +1,1688 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Løkker &#8212; Programmering i kjemi</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/kjemiquiz.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom1.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/kjemiquiz.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
+    <script src="../../_static/kjemiquiz.js"></script>
+    <script src="../../_static/turtle_basthon.js"></script>
+    <script src="../../_static/kjemiquiz.js"></script>
+    <script src="../../_static/turtle_basthon.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/grunnleggende_programmering/lokker';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Quiz 4: Løkker" href="quiz4.html" />
+    <link rel="prev" title="Quiz 3: Vilkår (if-tester)" href="quiz3.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/qe-logo-large.png" class="logo__image only-light" alt="Programmering i kjemi - Home"/>
+    <script>document.write(`<img src="../../_static/qe-logo-large.png" class="logo__image only-dark" alt="Programmering i kjemi - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Kom i gang</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="introduksjon.html">Introduksjon: Programmering som verktøy i kjemi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vscode.html">Visual Studio Code for kjemikere</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Grunnleggende programmering</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="tall_variabler.html">Variabler og datatyper</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="quiz1.html">Quiz 1: Variabler og aritmetikk</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="lister.html">Lister</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="quiz2.html">Quiz 2: Lister</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="vilkar.html">Vilkår (if-tester)</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="quiz3.html">Quiz 3: Vilkår (if-tester)</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Løkker</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="quiz4.html">Quiz 4: Løkker</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="funksjoner.html">Funksjoner</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="quiz5.html">Quiz 5: Funksjoner</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="datasamlinger.html">Datasamlinger</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="quiz6.html">Quiz 6: Datasamlinger (arrayer og dictionarier)</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Datahåndtering og visualisering</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../datahandtering_visualisering/kjemiske_biblioteker.html">Kjemiske biblioteker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../datahandtering_visualisering/molekylvisualisering.html">Molekylvisualisering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../datahandtering_visualisering/visualisering_av_kjemiske_data.html">Datahåndtering I: Visualisering av kjemiske data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../datahandtering_visualisering/lese_og_rydde_kjemiske_data.html">Datahåndtering II: Lese og rydde kjemiske data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../datahandtering_visualisering/statistikk_grunnleggende_kjemi.html">Datahåndtering III: Målinger, variasjon og usikkerhet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../datahandtering_visualisering/kalibrering_og_statistisk_inferens.html">Datahåndtering IV: Kalibrering og sammenlikning av resultater</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../datahandtering_visualisering/maskinlaering_i_kjemi.html">Datahåndtering V: Maskinlæring i kjemi*</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Numeriske metoder</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../nullpunkter_likninger/likninger.html">Likninger og nullpunkter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../derivasjon_integrasjon/derivasjon.html">Numerisk derivasjon</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../derivasjon_integrasjon/integrasjon.html">Numerisk integrasjon</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Dynamiske systemer</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../modellering/diskret_modellering.html">Differenslikninger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modellering/differensiallikninger.html">Differensiallikninger og fartslover</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Emneressurser (IN-KJM1900)</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../forelesninger/forelesninger.html">Forelesninger</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../forelesninger/forelesning1.html">Forelesning 1: Programmering i kjemi</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../forelesninger/forelesning2.html">Forelesning 2: Plotting og datahåndtering</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../forelesninger/forelesning3.html">Forelesning 3: Statistisk analyse</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../forelesninger/forelesning4.html">Forelesning 4: Statistikk II</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../forelesninger/forelesning5.html">Forelesning 5: Numerisk derivasjon og likninger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../forelesninger/forelesning6.html">Forelesning 6: Numerisk integrasjon</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../forelesninger/forelesning7.html">Forelesning 7: Numerisk løsing av likninger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../forelesninger/forelesning8.html">Forelesning 8: Differensiallikninger og reaksjonskinetikk</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../forelesninger/forelesning9.html">Forelesning 9: Reaksjonskinetikk II</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../forelesninger/forelesning10.html">Forelesning 10: Molekylmekanikk</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../forelesninger/workshops.html">Eksamensverksted</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../forelesninger/workshop1.html">Workshop 1: Datahåndtering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../forelesninger/workshop2.html">Workshop 2: Numeriske metoder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../forelesninger/workshop3.html">Workshop 3: Dynamiske systemer</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../obliger/obliger.html">Obligatoriske oppgaver</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../obliger/oblig_datahandtering.html">Oblig 1: Håndtering av kjemiske data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../obliger/oblig_dynamiske_systemer.html">Oblig 2: Dynamiske systemer og integrasjon</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../datafiler.html">Datafiler</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Emneressurser (KJM1140)</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../biokjemi/molekylvisualisering.html">Molekylvisualisering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../biokjemi/datavisualisering.html">Datavisualisering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../biokjemi/regresjonsmodeller.html">Regresjonsmodeller</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../biokjemi/enzymkinetikklab2025.html">Analyse av enzymkinetikkdata</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../biokjemi/proteinfolding.html">Lab 5: Proteinfolding</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/docs/grunnleggende_programmering/lokker.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Løkker</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#definisjon">Definisjon</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#skilpaddegrafikk">Skilpaddegrafikk</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#en-forenklet-representasjon-av-en-benzenring">En forenklet representasjon av en benzenring</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tilfeldighet-og-random-biblioteket">Tilfeldighet og <code class="docutils literal notranslate"><span class="pre">random</span></code>-biblioteket</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tilfeldig-vandring-som-diffusjonsmodell">Tilfeldig vandring som diffusjonsmodell</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#while-lokker">While-løkker</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#for-lokker">For-løkker</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#range-funksjonen"><code class="docutils literal notranslate"><span class="pre">range</span></code>-funksjonen</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lokker-gjennom-lister">Løkker gjennom lister</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-folge-variablene-gjennom-ei-lokke">Å følge variablene gjennom ei løkke</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-tenke-i-lokker">Å tenke i løkker</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#behandling-av-kjemiske-data">Behandling av kjemiske data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#en-enkel-kinetisk-modell">En enkel kinetisk modell</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tallfolger-og-rekkesummer">Tallfølger og rekkesummer</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nostede-lokker">Nøstede løkker</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgaver">Oppgaver</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#videoer">Videoer</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="lokker">
+<h1>Løkker<a class="headerlink" href="#lokker" title="Permalink to this heading">#</a></h1>
+<div class="admonition-laeringsutbytte admonition">
+<p class="admonition-title">Læringsutbytte</p>
+<p>Etter å ha arbeidet med dette temaet, skal du kunne:</p>
+<ol class="arabic simple">
+<li><p>bruke <code class="docutils literal notranslate"><span class="pre">while</span></code>- og <code class="docutils literal notranslate"><span class="pre">for</span></code>-løkker til å gjenta kode</p></li>
+<li><p>forklare når det passer å bruke en telleløkke, og når det passer å bruke en tilstandsløkke</p></li>
+<li><p>bruke <code class="docutils literal notranslate"><span class="pre">range</span></code> og lister i for-løkker</p></li>
+<li><p>bruke løkker til å behandle kjemiske data og utforske enkle kjemiske modeller</p></li>
+<li><p>lage og vurdere en enkel modell for tilfeldig partikkelbevegelse</p></li>
+</ol>
+</div>
+<section id="definisjon">
+<h2>Definisjon<a class="headerlink" href="#definisjon" title="Permalink to this heading">#</a></h2>
+<p>Den kanskje viktigste strukturen i programmering er løkker. De lar datamaskinen gjenta en operasjon så mange ganger vi vil. Det er dette som er en av datamaskinens store styrker.</p>
+<p>I kjemi møter vi gjentakelser overalt. Vi kan utføre den samme beregningen for hver bølgelengde i et spektrum, undersøke hver måling i et datasett, oppdatere konsentrasjonene i en reaksjon for mange små tidssteg eller simulere bevegelsen til mange partikler. Uten løkker måtte vi ha skrevet den samme koden om igjen for hver måling, hvert tidssteg eller hver partikkel.</p>
+<div class="admonition-lokker admonition">
+<p class="admonition-title">Løkker</p>
+<p>En løkke er en struktur som gjør at vi kan gjenta kode. Ofte skiller vi mellom en <em>telleløkke</em>, som gjentar noe et bestemt antall ganger, og en <em>tilstandsløkke</em>, som gjentar noe så lenge et vilkår er sant. I Python heter disse henholdsvis <code class="docutils literal notranslate"><span class="pre">for</span></code>-løkke og <code class="docutils literal notranslate"><span class="pre">while</span></code>-løkke.</p>
+</div>
+<p>Vi begynner med en visuell framstilling av gjentakelser. Deretter skal vi bruke de samme prinsippene til å arbeide med kjemiske data og modeller.</p>
+</section>
+<section id="skilpaddegrafikk">
+<h2>Skilpaddegrafikk<a class="headerlink" href="#skilpaddegrafikk" title="Permalink to this heading">#</a></h2>
+<p>Vi skal først se hvordan løkker fungerer ved å introdusere deg for en skilpadde. Han heter Gunnar. Gunnar følger enkle kommandoer som <code class="docutils literal notranslate"><span class="pre">forward</span></code>, <code class="docutils literal notranslate"><span class="pre">backward</span></code>, <code class="docutils literal notranslate"><span class="pre">right</span></code> og <code class="docutils literal notranslate"><span class="pre">left</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">turtle</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">shape</span><span class="p">(</span><span class="s2">&quot;turtle&quot;</span><span class="p">)</span>     <span class="c1"># gir pekeren skilpaddeform</span>
+<span class="n">color</span><span class="p">(</span><span class="s2">&quot;limegreen&quot;</span><span class="p">)</span>  <span class="c1"># gjør skilpadden limegrønn</span>
+<span class="n">forward</span><span class="p">(</span><span class="mi">80</span><span class="p">)</span>         <span class="c1"># går framover 80 piksler</span>
+<span class="n">left</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span>            <span class="c1"># snur 60 grader mot venstre</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Den første linja henter inn kommandoene fra biblioteket <code class="docutils literal notranslate"><span class="pre">turtle</span></code>. Et bibliotek er en samling ferdiglagde funksjoner som vi kan bruke i programmene våre. Vi har ikke laget funksjonene <code class="docutils literal notranslate"><span class="pre">forward</span></code> og <code class="docutils literal notranslate"><span class="pre">left</span></code> selv; de er definert i <code class="docutils literal notranslate"><span class="pre">turtle</span></code>-biblioteket.</p>
+<section id="en-forenklet-representasjon-av-en-benzenring">
+<h3>En forenklet representasjon av en benzenring<a class="headerlink" href="#en-forenklet-representasjon-av-en-benzenring" title="Permalink to this heading">#</a></h3>
+<p>Et mulig kjemisk utgangspunkt er den sekskantede geometrien vi forbinder med benzen. Dersom vi skulle ha skrevet kommandoene én gang for hver side, måtte vi ha gjentatt <code class="docutils literal notranslate"><span class="pre">forward(80)</span></code> og <code class="docutils literal notranslate"><span class="pre">left(60)</span></code> seks ganger. Det er både tungvint og vanskelig å endre. Med en løkke kan vi skrive det slik:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">turtle</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">shape</span><span class="p">(</span><span class="s2">&quot;turtle&quot;</span><span class="p">)</span>
+<span class="n">color</span><span class="p">(</span><span class="s2">&quot;limegreen&quot;</span><span class="p">)</span>
+<span class="n">speed</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="n">antall_sider</span> <span class="o">=</span> <span class="mi">6</span>
+<span class="n">sidelengde</span> <span class="o">=</span> <span class="mi">80</span>
+<span class="n">dreievinkel</span> <span class="o">=</span> <span class="mi">360</span> <span class="o">/</span> <span class="n">antall_sider</span>
+
+<span class="k">for</span> <span class="n">side</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">antall_sider</span><span class="p">):</span>
+    <span class="n">forward</span><span class="p">(</span><span class="n">sidelengde</span><span class="p">)</span>
+    <span class="n">left</span><span class="p">(</span><span class="n">dreievinkel</span><span class="p">)</span>
+
+<span class="n">done</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Løkka gjentar alt som er rykket inn seks ganger. Første gang løkka kjører, er <code class="docutils literal notranslate"><span class="pre">side</span> <span class="pre">=</span> <span class="pre">0</span></code>. Deretter får <code class="docutils literal notranslate"><span class="pre">side</span></code> verdiene 1, 2, 3, 4 og 5. Funksjonen <code class="docutils literal notranslate"><span class="pre">range(6)</span></code> gir altså seks heltall fra og med 0 til, men ikke med, 6.</p>
+<p><strong>Underveisoppgave</strong></p>
+<ol class="arabic simple">
+<li><p>Hvorfor snur skilpadden 60° når vinklene mellom bindingene i den plane benzenringen er omtrent 120°?</p></li>
+<li><p>Hvilken funksjon har variabelen <code class="docutils literal notranslate"><span class="pre">side</span></code> i programmet?</p></li>
+<li><p>Hva må endres dersom du vil tegne ringen med kortere sider?</p></li>
+</ol>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Løsningsforslag</p>
+<p>Gunnar følger kanten av sekskanten og må derfor snu den <em>ytre</em> vinkelen. Den indre vinkelen er 120°, mens dreievinkelen blir <span class="math notranslate nohighlight">\(180^\circ-120^\circ=60^\circ\)</span>.</p>
+<p>Variabelen <code class="docutils literal notranslate"><span class="pre">side</span></code> får en ny verdi for hver løkkerunde, men verdien brukes ikke i beregningene. Den sørger likevel for at løkka går seks ganger. For å tegne kortere sider kan vi redusere verdien til <code class="docutils literal notranslate"><span class="pre">sidelengde</span></code>.</p>
+</div>
+</section>
+</section>
+<section id="tilfeldighet-og-random-biblioteket">
+<h2>Tilfeldighet og <code class="docutils literal notranslate"><span class="pre">random</span></code>-biblioteket<a class="headerlink" href="#tilfeldighet-og-random-biblioteket" title="Permalink to this heading">#</a></h2>
+<p>Bevegelsen til partikler i en væske eller gass påvirkes av et enormt antall kollisjoner. Vi kan ikke følge alle disse kollisjonene direkte i en enkel modell. I stedet kan vi la en partikkel velge en tilfeldig retning for hvert steg. Da trenger vi funksjonalitet fra <code class="docutils literal notranslate"><span class="pre">random</span></code>-biblioteket, som følger med Python.</p>
+<p>Vi begynner med å importere funksjonen <code class="docutils literal notranslate"><span class="pre">choice</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">random</span><span class="w"> </span><span class="kn">import</span> <span class="n">choice</span>
+
+<span class="n">mulige_retninger</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">180</span><span class="p">,</span> <span class="mi">270</span><span class="p">]</span>
+<span class="n">retning</span> <span class="o">=</span> <span class="n">choice</span><span class="p">(</span><span class="n">mulige_retninger</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">retning</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Kommandoen <code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">random</span> <span class="pre">import</span> <span class="pre">choice</span></code> betyr at vi henter funksjonen <code class="docutils literal notranslate"><span class="pre">choice</span></code> fra biblioteket <code class="docutils literal notranslate"><span class="pre">random</span></code>. Funksjonen velger ett tilfeldig element fra ei liste. Dersom du kjører programmet flere ganger, kan du derfor få ulike retninger.</p>
+<p>Tidligere skrev vi <code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">turtle</span> <span class="pre">import</span> <span class="pre">*</span></code>. Stjerna betyr at vi importerer alle navnene i biblioteket. Det er praktisk i små <code class="docutils literal notranslate"><span class="pre">turtle</span></code>-programmer. Fra <code class="docutils literal notranslate"><span class="pre">random</span></code> trenger vi derimot bare én funksjon, og derfor importerer vi bare <code class="docutils literal notranslate"><span class="pre">choice</span></code>.</p>
+<p>Datamaskinen lager egentlig <em>pseudotilfeldige</em> tall: De blir generert av en algoritme, men oppfører seg tilfeldig nok for denne modellen. Senere kan det være nyttig å kontrollere den tilfeldige tallfølgen slik at en simulering kan gjentas nøyaktig, men det trenger vi ikke gjøre her.</p>
+<section id="tilfeldig-vandring-som-diffusjonsmodell">
+<h3>Tilfeldig vandring som diffusjonsmodell<a class="headerlink" href="#tilfeldig-vandring-som-diffusjonsmodell" title="Permalink to this heading">#</a></h3>
+<p>Vi kan nå kombinere <code class="docutils literal notranslate"><span class="pre">choice</span></code> med <code class="docutils literal notranslate"><span class="pre">turtle</span></code> og en for-løkke:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">turtle</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">random</span><span class="w"> </span><span class="kn">import</span> <span class="n">choice</span>
+
+<span class="n">shape</span><span class="p">(</span><span class="s2">&quot;turtle&quot;</span><span class="p">)</span>
+<span class="n">speed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">pensize</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">mulige_retninger</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">180</span><span class="p">,</span> <span class="mi">270</span><span class="p">]</span>
+<span class="n">antall_steg</span> <span class="o">=</span> <span class="mi">200</span>
+<span class="n">steglengde</span> <span class="o">=</span> <span class="mi">10</span>
+
+<span class="n">dot</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="s2">&quot;red&quot;</span><span class="p">)</span>            <span class="c1"># startpunkt</span>
+
+<span class="k">for</span> <span class="n">steg</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">antall_steg</span><span class="p">):</span>
+    <span class="n">retning</span> <span class="o">=</span> <span class="n">choice</span><span class="p">(</span><span class="n">mulige_retninger</span><span class="p">)</span>
+    <span class="n">setheading</span><span class="p">(</span><span class="n">retning</span><span class="p">)</span>
+    <span class="n">forward</span><span class="p">(</span><span class="n">steglengde</span><span class="p">)</span>
+
+<span class="n">dot</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="s2">&quot;blue&quot;</span><span class="p">)</span>           <span class="c1"># sluttpunkt</span>
+<span class="n">done</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>For hvert steg velger programmet én av fire retninger med lik sannsynlighet. Kommandoen <code class="docutils literal notranslate"><span class="pre">setheading</span></code> peker Gunnar i den valgte retningen, og <code class="docutils literal notranslate"><span class="pre">forward</span></code> flytter ham ett steg. Den røde prikken viser startpunktet, mens den blå viser sluttpunktet.</p>
+<p>Dette er en <em>tilfeldig vandring</em>. Modellen kan illustrere hvordan mange tilfeldige bevegelser kan gi en netto forflytning over tid. Samtidig er den svært forenklet:</p>
+<ul class="simple">
+<li><p>Et molekyl beveger seg i tre dimensjoner, mens Gunnar beveger seg i to.</p></li>
+<li><p>Et molekyl kan bevege seg i langt flere enn fire retninger.</p></li>
+<li><p>Bevegelsen skjer ikke i like lange steg på et rutenett.</p></li>
+<li><p>Én bane viser bevegelsen til én modellpartikkel, ikke hvordan en hel samling partikler sprer seg.</p></li>
+</ul>
+<p>Modellen er altså ikke en bokstavelig framstilling av molekylbevegelse. Den kan likevel hjelpe oss med å utforske noen grunnleggende trekk ved diffusjon.</p>
+<p><strong>Underveisoppgave</strong></p>
+<p>Kjør programmet flere ganger dersom du har en editor som støtter <code class="docutils literal notranslate"><span class="pre">turtle</span></code>-grafikk.</p>
+<ol class="arabic simple">
+<li><p>Får partikkelen samme sluttposisjon hver gang?</p></li>
+<li><p>Hva skjer dersom du øker <code class="docutils literal notranslate"><span class="pre">antall_steg</span></code>?</p></li>
+<li><p>Hva skjer dersom du endrer <code class="docutils literal notranslate"><span class="pre">steglengde</span></code>?</p></li>
+<li><p>Hvorfor kan vi ikke konkludere om diffusjon ut fra bare én tilfeldig bane?</p></li>
+</ol>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Løsningsforslag</p>
+<p>Sluttposisjonen vil vanligvis variere fordi programmet gjør nye tilfeldige valg. Flere eller lengre steg gir partikkelen mulighet til å komme lenger fra startpunktet, men den kan også bevege seg tilbake mot områder den allerede har besøkt.</p>
+<p>Diffusjon beskriver hvordan en stor samling partikler sprer seg. Én tilfeldig bane kan være uvanlig og sier lite om hele fordelingen. For å undersøke diffusjon mer systematisk måtte vi ha simulert mange partikler eller gjentatt simuleringen mange ganger og analysert resultatene samlet.</p>
+</div>
+</section>
+</section>
+<section id="while-lokker">
+<h2>While-løkker<a class="headerlink" href="#while-lokker" title="Permalink to this heading">#</a></h2>
+<p>En <code class="docutils literal notranslate"><span class="pre">while</span></code>-løkke er en tilstandsløkke. Den gjentar kode så lenge et vilkår er sant. Vi bruker ofte en while-løkke når vi ikke vet på forhånd nøyaktig hvor mange gjentakelser som trengs.</p>
+<p>Anta at vi gjennomfører en serie 1:2-fortynninger. Etter hver fortynning er konsentrasjonen halvparten av den forrige. Vi ønsker å finne hvor mange fortynninger som trengs før konsentrasjonen blir lavere enn en bestemt grense.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">konsentrasjon</span> <span class="o">=</span> <span class="mf">0.80</span>       <span class="c1"># mol/L</span>
+<span class="n">grense</span> <span class="o">=</span> <span class="mf">0.05</span>              <span class="c1"># mol/L</span>
+<span class="n">antall_fortynninger</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="k">while</span> <span class="n">konsentrasjon</span> <span class="o">&gt;=</span> <span class="n">grense</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Etter </span><span class="si">{</span><span class="n">antall_fortynninger</span><span class="si">}</span><span class="s2"> fortynninger: </span><span class="si">{</span><span class="n">konsentrasjon</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> mol/L&quot;</span><span class="p">)</span>
+    <span class="n">konsentrasjon</span> <span class="o">=</span> <span class="n">konsentrasjon</span> <span class="o">/</span> <span class="mi">2</span>
+    <span class="n">antall_fortynninger</span> <span class="o">=</span> <span class="n">antall_fortynninger</span> <span class="o">+</span> <span class="mi">1</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Konsentrasjonen er nå </span><span class="si">{</span><span class="n">konsentrasjon</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> mol/L.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Før hver løkkerunde undersøker Python om <code class="docutils literal notranslate"><span class="pre">konsentrasjon</span> <span class="pre">&gt;=</span> <span class="pre">grense</span></code> er sant. Dersom det er sant, utføres de tre linjene som er rykket inn. Deretter undersøkes vilkåret på nytt. Når konsentrasjonen har blitt lavere enn grensa, er vilkåret usant og løkka avsluttes.</p>
+<p>Det er avgjørende at noe inni løkka kan gjøre vilkåret usant. Dersom vi glemmer å oppdatere <code class="docutils literal notranslate"><span class="pre">konsentrasjon</span></code>, vil vilkåret alltid være sant og programmet fortsetter i en <em>uendelig løkke</em>.</p>
+<div class="tip admonition">
+<p class="admonition-title">Underveisoppgave</p>
+<p>Les programmet linje for linje og forutsi hvor mange fortynninger som trengs. Hva skjer dersom vilkåret endres fra <code class="docutils literal notranslate"><span class="pre">&gt;=</span></code> til <code class="docutils literal notranslate"><span class="pre">&gt;</span></code>? Lag gjerne en løkketabell med kolonnene løkkerunde, konsentrasjon og antall fortynninger.</p>
+</div>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Løsningsforslag</p>
+<p>Konsentrasjonen får verdiene 0,80, 0,40, 0,20, 0,10 og 0,05 mol/L før den blir 0,025 mol/L. Med vilkåret <code class="docutils literal notranslate"><span class="pre">&gt;=</span></code> gjennomføres derfor fem fortynninger før konsentrasjonen blir lavere enn 0,05 mol/L.</p>
+<p>Dersom vi bruker <code class="docutils literal notranslate"><span class="pre">&gt;</span></code>, avsluttes løkka når konsentrasjonen er nøyaktig 0,05 mol/L. Da gjennomføres fire fortynninger. Valget av sammenlikningsoperator må derfor stemme med spørsmålet vi ønsker å besvare.</p>
+</div>
+<p>Du kan kjøre og endre fortynningsprogrammet i editoren nedenfor.</p>
+<iframe src="../../basthon/?from=examples/loops_dilution.py" width="100%" height="600" frameborder="0" title="Interactive Python editor for a dilution loop" loading="lazy" allowfullscreen></iframe>
+</section>
+<section id="for-lokker">
+<h2>For-løkker<a class="headerlink" href="#for-lokker" title="Permalink to this heading">#</a></h2>
+<p>En <code class="docutils literal notranslate"><span class="pre">for</span></code>-løkke er en telleløkke. Den passer godt når vi vet hvor mange ganger noe skal gjentas, eller når vi vil gjøre den samme operasjonen for hvert element i ei liste.</p>
+<section id="range-funksjonen">
+<h3><code class="docutils literal notranslate"><span class="pre">range</span></code>-funksjonen<a class="headerlink" href="#range-funksjonen" title="Permalink to this heading">#</a></h3>
+<p>Funksjonen <code class="docutils literal notranslate"><span class="pre">range</span></code> lager en sekvens av heltall som vi kan gå gjennom med en løkke:</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Kommando</p></th>
+<th class="head"><p>Verdier</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">range(3)</span></code></p></td>
+<td><p>0, 1, 2</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">range(2,</span> <span class="pre">4)</span></code></p></td>
+<td><p>2, 3</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">range(1,</span> <span class="pre">8,</span> <span class="pre">2)</span></code></p></td>
+<td><p>1, 3, 5, 7</p></td>
+</tr>
+</tbody>
+</table>
+<p>Vi kan skrive en generell range-kommando som <code class="docutils literal notranslate"><span class="pre">range(fra</span> <span class="pre">og</span> <span class="pre">med,</span> <span class="pre">til,</span> <span class="pre">steglengde)</span></code>. Det siste tallet er ikke med. Dersom vi bare bruker ett argument, starter sekvensen på 0. Dersom vi ikke oppgir steglengde, brukes steglengde 1.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">måling</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Gjennomfører måling nummer </span><span class="si">{</span><span class="n">måling</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Variabelen <code class="docutils literal notranslate"><span class="pre">måling</span></code> får verdiene 0, 1, 2, 3 og 4. Vi legger til 1 i utskriften fordi mennesker vanligvis nummererer den første målingen som måling 1, ikke måling 0.</p>
+</section>
+<section id="lokker-gjennom-lister">
+<h3>Løkker gjennom lister<a class="headerlink" href="#lokker-gjennom-lister" title="Permalink to this heading">#</a></h3>
+<p>Vi trenger ikke alltid <code class="docutils literal notranslate"><span class="pre">range</span></code>. Dersom vi vil behandle alle verdiene i ei liste, kan løkkevariabelen få selve verdiene direkte:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">absorbansverdier</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.42</span><span class="p">,</span> <span class="mf">0.39</span><span class="p">,</span> <span class="mf">0.44</span><span class="p">,</span> <span class="mf">0.41</span><span class="p">]</span>
+<span class="n">total_absorbans</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="k">for</span> <span class="n">absorbans</span> <span class="ow">in</span> <span class="n">absorbansverdier</span><span class="p">:</span>
+    <span class="n">total_absorbans</span> <span class="o">=</span> <span class="n">total_absorbans</span> <span class="o">+</span> <span class="n">absorbans</span>
+
+<span class="n">gjennomsnitt</span> <span class="o">=</span> <span class="n">total_absorbans</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">absorbansverdier</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Gjennomsnittlig absorbans: </span><span class="si">{</span><span class="n">gjennomsnitt</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Første gang løkka kjører, er <code class="docutils literal notranslate"><span class="pre">absorbans</span> <span class="pre">=</span> <span class="pre">0.42</span></code>. Neste gang er <code class="docutils literal notranslate"><span class="pre">absorbans</span> <span class="pre">=</span> <span class="pre">0.39</span></code>, og slik fortsetter det til alle elementene er brukt. Variabelen <code class="docutils literal notranslate"><span class="pre">total_absorbans</span></code> oppdateres for hver måling. Etter løkka deler vi totalen på antall målinger.</p>
+</section>
+<section id="a-folge-variablene-gjennom-ei-lokke">
+<h3>Å følge variablene gjennom ei løkke<a class="headerlink" href="#a-folge-variablene-gjennom-ei-lokke" title="Permalink to this heading">#</a></h3>
+<p>Vi kan systematisere løkkene med en <em>løkketabell</em>. Den holder styr på verdiene til variablene underveis:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">konsentrasjon</span> <span class="o">=</span> <span class="mf">0.80</span>
+
+<span class="k">for</span> <span class="n">trinn</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
+    <span class="n">konsentrasjon</span> <span class="o">=</span> <span class="n">konsentrasjon</span> <span class="o">/</span> <span class="mi">2</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Underveisoppgave</strong></p>
+<p>Fyll inn resten av løkketabellen. Tabellen skal vise verdien til variablene etter at den innrykkede kodelinja er utført i hver løkkerunde.</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Løkkerunde</p></th>
+<th class="head text-right"><p><code class="docutils literal notranslate"><span class="pre">trinn</span></code></p></th>
+<th class="head text-right"><p><code class="docutils literal notranslate"><span class="pre">konsentrasjon</span></code> etter fortynning (mol/L)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Startverdi</p></td>
+<td class="text-right"><p>–</p></td>
+<td class="text-right"><p>0,80</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td class="text-right"><p>0</p></td>
+<td class="text-right"><p>0,40</p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td class="text-right"><p>1</p></td>
+<td class="text-right"><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>3</p></td>
+<td class="text-right"><p></p></td>
+<td class="text-right"><p></p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td class="text-right"><p></p></td>
+<td class="text-right"><p></p></td>
+</tr>
+</tbody>
+</table>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Løsningsforslag</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Løkkerunde</p></th>
+<th class="head text-right"><p><code class="docutils literal notranslate"><span class="pre">trinn</span></code></p></th>
+<th class="head text-right"><p><code class="docutils literal notranslate"><span class="pre">konsentrasjon</span></code> etter fortynning (mol/L)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Startverdi</p></td>
+<td class="text-right"><p>–</p></td>
+<td class="text-right"><p>0,80</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td class="text-right"><p>0</p></td>
+<td class="text-right"><p>0,40</p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td class="text-right"><p>1</p></td>
+<td class="text-right"><p>0,20</p></td>
+</tr>
+<tr class="row-odd"><td><p>3</p></td>
+<td class="text-right"><p>2</p></td>
+<td class="text-right"><p>0,10</p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td class="text-right"><p>3</p></td>
+<td class="text-right"><p>0,05</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Løkka går fire ganger selv om den siste verdien til <code class="docutils literal notranslate"><span class="pre">trinn</span></code> er 3. Dette er en vanlig kilde til misforståelser: Vi teller fire verdier, men starter på 0.</p>
+<p>I noen løkker trenger vi ikke å bruke tellevariabelen. Da er det vanlig å kalle den <code class="docutils literal notranslate"><span class="pre">_</span></code> for å vise at verdien ikke er viktig:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mengde</span> <span class="o">=</span> <span class="mf">10.0</span>  <span class="c1"># mg</span>
+
+<span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+    <span class="n">mengde</span> <span class="o">=</span> <span class="n">mengde</span> <span class="o">/</span> <span class="mi">2</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Etter fem halveringstider gjenstår </span><span class="si">{</span><span class="n">mengde</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> mg.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Underveisoppgave</p>
+<p>Skriv om programmet ovenfor slik at det skriver ut mengden etter hver halveringstid. Dersom du vil ha med nummeret på halveringstida i utskriften, bør du da fortsatt bruke <code class="docutils literal notranslate"><span class="pre">_</span></code> som løkkevariabel?</p>
+</div>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Løsningsforslag</p>
+<p>Når vi vil bruke nummeret i utskriften, bør løkkevariabelen få et beskrivende navn:</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">mengde</span> <span class="o">=</span> <span class="mf">10.0</span>  <span class="c1"># mg</span>
+
+<span class="k">for</span> <span class="n">halveringstid</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">):</span>
+    <span class="n">mengde</span> <span class="o">=</span> <span class="n">mengde</span> <span class="o">/</span> <span class="mi">2</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Etter </span><span class="si">{</span><span class="n">halveringstid</span><span class="si">}</span><span class="s2"> halveringstider: </span><span class="si">{</span><span class="n">mengde</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> mg&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</section>
+</section>
+<section id="a-tenke-i-lokker">
+<h2>Å tenke i løkker<a class="headerlink" href="#a-tenke-i-lokker" title="Permalink to this heading">#</a></h2>
+<p>Løkker kan brukes til alt fra å summere tallrekker til å behandle måledata og utforske hvordan kjemiske systemer utvikler seg over tid. Når vi bruker løkker, må vi dele problemet opp i trinn som kan gjentas.</p>
+<p>I matematikk og naturvitenskap representerer vi ofte sammenhenger med kontinuerlige funksjoner og formler. I et program kan vi i stedet utføre en liten operasjon om gangen. Dette kalles å løse problemet <em>iterativt</em>, fordi iterasjon betyr gjentakelse. Litt mer uformelt kan vi kalle det å løse et problem trinnvis med små, repeterende operasjoner for «å tenke i løkker».</p>
+<section id="behandling-av-kjemiske-data">
+<h3>Behandling av kjemiske data<a class="headerlink" href="#behandling-av-kjemiske-data" title="Permalink to this heading">#</a></h3>
+<p>Løkker er nyttige når det samme kriteriet skal brukes på mange målinger. Anta at absorbansverdier mellom 0,10 og 1,00 ligger i det anbefalte arbeidsområdet for en bestemt analysemetode. Vi kan hente ut de aktuelle målingene slik:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">absorbansverdier</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.08</span><span class="p">,</span> <span class="mf">0.42</span><span class="p">,</span> <span class="mf">0.39</span><span class="p">,</span> <span class="mf">1.18</span><span class="p">,</span> <span class="mf">0.44</span><span class="p">]</span>
+<span class="n">gyldige_målinger</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">absorbans</span> <span class="ow">in</span> <span class="n">absorbansverdier</span><span class="p">:</span>
+    <span class="k">if</span> <span class="mf">0.10</span> <span class="o">&lt;=</span> <span class="n">absorbans</span> <span class="o">&lt;=</span> <span class="mf">1.00</span><span class="p">:</span>
+        <span class="n">gyldige_målinger</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">absorbans</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">gyldige_målinger</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Her kombinerer vi ei liste, ei for-løkke og et vilkår. Hver absorbansverdi vurderes etter tur. Bare verdiene som oppfyller kriteriet, legges til i den nye lista.</p>
+<p>Det anbefalte absorbansområdet er bare et eksempel. I en virkelig analyse må grensene bestemmes ut fra instrumentet, kalibreringen og metoden som brukes. Et program kan anvende kriteriene konsekvent, men det kan ikke avgjøre om kriteriene er faglig gode.</p>
+</section>
+<section id="en-enkel-kinetisk-modell">
+<h3>En enkel kinetisk modell<a class="headerlink" href="#en-enkel-kinetisk-modell" title="Permalink to this heading">#</a></h3>
+<p>Vi kan også bruke ei løkke til å undersøke hvordan en reaksjon utvikler seg over tid. Vi ser på den irreversible reaksjonen</p>
+<div class="math notranslate nohighlight">
+\[A \rightarrow B\]</div>
+<p>og antar at reaksjonsfarten er proporsjonal med konsentrasjonen av A:</p>
+<div class="math notranslate nohighlight">
+\[v = k[A]\]</div>
+<p>I løpet av et lite tidssteg <span class="math notranslate nohighlight">\(\Delta t\)</span> kan vi tilnærme konsentrasjonsendringen som</p>
+<div class="math notranslate nohighlight">
+\[\Delta[A] \approx -k[A]\Delta t\]</div>
+<p>Da kan vi oppdatere konsentrasjonene litt etter litt:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">k</span> <span class="o">=</span> <span class="mf">0.15</span>             <span class="c1"># ratekonstant i s^-1</span>
+<span class="n">A</span> <span class="o">=</span> <span class="mf">1.00</span>             <span class="c1"># startkonsentrasjon av A i mol/L</span>
+<span class="n">B</span> <span class="o">=</span> <span class="mf">0.00</span>             <span class="c1"># startkonsentrasjon av B i mol/L</span>
+<span class="n">dt</span> <span class="o">=</span> <span class="mf">0.10</span>            <span class="c1"># tidssteg i s</span>
+<span class="n">tid_slutt</span> <span class="o">=</span> <span class="mi">10</span>       <span class="c1"># sluttid i s</span>
+
+<span class="n">antall_steg</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">tid_slutt</span> <span class="o">/</span> <span class="n">dt</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">steg</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">antall_steg</span><span class="p">):</span>
+    <span class="n">endring</span> <span class="o">=</span> <span class="n">k</span> <span class="o">*</span> <span class="n">A</span> <span class="o">*</span> <span class="n">dt</span>
+    <span class="n">A</span> <span class="o">=</span> <span class="n">A</span> <span class="o">-</span> <span class="n">endring</span>
+    <span class="n">B</span> <span class="o">=</span> <span class="n">B</span> <span class="o">+</span> <span class="n">endring</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Etter </span><span class="si">{</span><span class="n">tid_slutt</span><span class="si">}</span><span class="s2"> s er [A] = </span><span class="si">{</span><span class="n">A</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> mol/L.&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Etter </span><span class="si">{</span><span class="n">tid_slutt</span><span class="si">}</span><span class="s2"> s er [B] = </span><span class="si">{</span><span class="n">B</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> mol/L.&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Total konsentrasjon: </span><span class="si">{</span><span class="n">A</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">B</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> mol/L.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>For hvert tidssteg beregner vi først hvor mye A som omdannes. Den samme endringen trekkes fra A og legges til B. Dermed bevares den totale konsentrasjonen i denne forenklede modellen.</p>
+<p>Dette er en numerisk tilnærming. Vi antar blant annet at reaksjonsfarten er omtrent konstant innenfor hvert lite tidssteg. Dersom <code class="docutils literal notranslate"><span class="pre">dt</span></code> er for stor, blir tilnærmingen dårligere. Senere skal vi se nærmere på slike simuleringer og hvordan vi kan teste om resultatene er pålitelige.</p>
+<p><strong>Underveisoppgave</strong></p>
+<p>Kjør programmet med <code class="docutils literal notranslate"><span class="pre">dt</span> <span class="pre">=</span> <span class="pre">1</span></code>, <code class="docutils literal notranslate"><span class="pre">dt</span> <span class="pre">=</span> <span class="pre">0.1</span></code> og <code class="docutils literal notranslate"><span class="pre">dt</span> <span class="pre">=</span> <span class="pre">0.01</span></code>. Hvordan påvirkes sluttverdien til A? Hvorfor må <code class="docutils literal notranslate"><span class="pre">antall_steg</span></code> endres når tidssteget endres?</p>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Løsningsforslag</p>
+<p>Når tidssteget blir mindre, oppdateres reaksjonsfarten oftere. Resultatet nærmer seg derfor en stabil verdi. Et mindre tidssteg gir samtidig flere løkkerunder og dermed flere beregninger.</p>
+<p>Sluttida skal være den samme i alle simuleringene. Derfor må antall steg beregnes som <code class="docutils literal notranslate"><span class="pre">tid_slutt</span> <span class="pre">/</span> <span class="pre">dt</span></code>. Med en sluttid på 10 s gir <code class="docutils literal notranslate"><span class="pre">dt</span> <span class="pre">=</span> <span class="pre">1</span></code> ti steg, mens <code class="docutils literal notranslate"><span class="pre">dt</span> <span class="pre">=</span> <span class="pre">0.01</span></code> gir tusen steg.</p>
+</div>
+</section>
+</section>
+<section id="tallfolger-og-rekkesummer">
+<h2>Tallfølger og rekkesummer<a class="headerlink" href="#tallfolger-og-rekkesummer" title="Permalink to this heading">#</a></h2>
+<p>Løkker brukes ofte til å generere tallfølger. En tallfølge er en oppramsing av tall som kan være endelig eller uendelig. Etter hver halveringstid er for eksempel andelen av et radioaktivt stoff som gjenstår</p>
+<div class="math notranslate nohighlight">
+\[1,\ \frac{1}{2},\ \frac{1}{4},\ \frac{1}{8},\ \frac{1}{16},\ldots\]</div>
+<p>Hvert tall i en tallfølge kalles et <em>ledd</em>. Dersom <span class="math notranslate nohighlight">\(N_n\)</span> er mengden etter <span class="math notranslate nohighlight">\(n\)</span> halveringstider, kan vi beskrive følgen rekursivt:</p>
+<div class="math notranslate nohighlight">
+\[N_{n+1}=\frac{1}{2}N_n\]</div>
+<p>En rekursiv formel bruker altså en tidligere verdi til å beregne den neste. Det passer svært godt med ei løkke:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mengde</span> <span class="o">=</span> <span class="mf">4.0</span>  <span class="c1"># kg</span>
+
+<span class="k">for</span> <span class="n">antall_halveringstider</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">11</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;n = </span><span class="si">{</span><span class="n">antall_halveringstider</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">mengde</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2"> kg&quot;</span><span class="p">)</span>
+    <span class="n">mengde</span> <span class="o">=</span> <span class="n">mengde</span> <span class="o">/</span> <span class="mi">2</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Programmet skriver først ut startmengden ved <span class="math notranslate nohighlight">\(n=0\)</span>. Deretter oppdateres mengden før neste løkkerunde.</p>
+<p>Når vi beskriver en tallfølge som en serie av tall som adderes, kaller vi det ei <em>rekke</em>. Et matematisk eksempel er den uendelige geometriske rekka</p>
+<div class="math notranslate nohighlight">
+\[1 + \frac{2}{3} + \frac{4}{9} + \frac{8}{27} + \ldots\]</div>
+<p>Det <span class="math notranslate nohighlight">\(n\)</span>-te leddet kan skrives som <span class="math notranslate nohighlight">\((2/3)^n\)</span>. En datamaskin kan ikke summere uendelig mange ledd, men vi kan tilnærme summen med et stort, endelig antall:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">antall_ledd</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">summen</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">antall_ledd</span><span class="p">):</span>
+    <span class="n">ledd</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2</span> <span class="o">/</span> <span class="mi">3</span><span class="p">)</span><span class="o">**</span><span class="n">n</span>
+    <span class="n">summen</span> <span class="o">=</span> <span class="n">summen</span> <span class="o">+</span> <span class="n">ledd</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">summen</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Den analytiske summen er 3. Programmet gir en verdi som er svært nær 3, men dette er fremdeles en numerisk tilnærming. Eksemplet viser også et generelt mønster som vi ofte bruker i kjemiske beregninger: Vi begynner med en startverdi, beregner et nytt bidrag og oppdaterer en akkumulert verdi for hver løkkerunde.</p>
+<div class="tip admonition">
+<p class="admonition-title">Underveisoppgave</p>
+<p>Modifiser programmet slik at det bruker en while-løkke og fortsetter å summere helt til det neste leddet er mindre enn <span class="math notranslate nohighlight">\(10^{-8}\)</span>. Hvorfor passer en while-løkke godt når stoppkriteriet formuleres på denne måten?</p>
+</div>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Løsningsforslag</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">n</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">ledd</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">summen</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="k">while</span> <span class="n">ledd</span> <span class="o">&gt;=</span> <span class="mf">1E-8</span><span class="p">:</span>
+    <span class="n">summen</span> <span class="o">=</span> <span class="n">summen</span> <span class="o">+</span> <span class="n">ledd</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="n">ledd</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2</span> <span class="o">/</span> <span class="mi">3</span><span class="p">)</span><span class="o">**</span><span class="n">n</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Summen er omtrent </span><span class="si">{</span><span class="n">summen</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Vi brukte </span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s2"> ledd.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Vi vet ikke på forhånd nøyaktig hvor mange ledd som trengs. Løkka skal fortsette så lenge leddet er større enn toleransen, og derfor passer en tilstandsløkke godt.</p>
+</div>
+</section>
+<section id="nostede-lokker">
+<h2>Nøstede løkker<a class="headerlink" href="#nostede-lokker" title="Permalink to this heading">#</a></h2>
+<p>Nøstede løkker er løkker inni løkker. Da gjentas den innerste løkka for hver runde i den ytterste løkka.</p>
+<p>Et kjemisk eksempel er elektronoverganger i hydrogenatomet. Dersom elektronet starter i nivå <span class="math notranslate nohighlight">\(n\)</span>, kan det deeksitere til alle nivåer <span class="math notranslate nohighlight">\(m&lt;n\)</span>. Vi kan skrive ut overgangene fra nivåene 2 til og med 5 slik:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Mulig overgang: n = </span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s2"> til m = </span><span class="si">{</span><span class="n">m</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Når <code class="docutils literal notranslate"><span class="pre">n</span> <span class="pre">=</span> <span class="pre">2</span></code>, får den indre løkka bare verdien <code class="docutils literal notranslate"><span class="pre">m</span> <span class="pre">=</span> <span class="pre">1</span></code>. Når <code class="docutils literal notranslate"><span class="pre">n</span> <span class="pre">=</span> <span class="pre">3</span></code>, får <code class="docutils literal notranslate"><span class="pre">m</span></code> verdiene 1 og 2. Den indre løkka blir altså lengre for hvert nye energinivå. Totalt skriver programmet ut <span class="math notranslate nohighlight">\(1+2+3+4=10\)</span> mulige overganger.</p>
+<div class="tip admonition">
+<p class="admonition-title">Underveisoppgave</p>
+<p>Utvid programmet til startnivåene 2–7. Hvor mange overganger blir skrevet ut? Modifiser deretter programmet slik at det bare skriver ut overganger som ender i nivået <code class="docutils literal notranslate"><span class="pre">m</span> <span class="pre">=</span> <span class="pre">2</span></code>.</p>
+</div>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Løsningsforslag</p>
+<p>Fra nivåene 2–7 får vi <span class="math notranslate nohighlight">\(1+2+3+4+5+6=21\)</span> overganger totalt. Dersom bare overganger til <code class="docutils literal notranslate"><span class="pre">m</span> <span class="pre">=</span> <span class="pre">2</span></code> skal skrives ut, trenger vi ikke den indre løkka:</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">8</span><span class="p">):</span>
+    <span class="n">m</span> <span class="o">=</span> <span class="mi">2</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Mulig overgang: n = </span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s2"> til m = </span><span class="si">{</span><span class="n">m</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Dette er også et viktig programmeringspoeng: Vi bør ikke bruke en nøstet løkke dersom problemet kan løses enklere uten.</p>
+</div>
+</section>
+<section id="oppgaver">
+<h2>Oppgaver<a class="headerlink" href="#oppgaver" title="Permalink to this heading">#</a></h2>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-0">
+Grunnleggende oppgaver</label><div class="sd-tab-content docutils">
+<div class="tip admonition">
+<p class="admonition-title">Oppgave 4.1</p>
+<p>Sammenlikn programmene nedenfor. Beskriv forskjeller og likheter. Hva blir skrevet ut?</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">konsentrasjon</span> <span class="o">=</span> <span class="mf">0.80</span>
+
+<span class="k">for</span> <span class="n">trinn</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
+    <span class="n">konsentrasjon</span> <span class="o">=</span> <span class="n">konsentrasjon</span> <span class="o">/</span> <span class="mi">2</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">konsentrasjon</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">konsentrasjon</span> <span class="o">=</span> <span class="mf">0.80</span>
+<span class="n">trinn</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="k">while</span> <span class="n">trinn</span> <span class="o">&lt;</span> <span class="mi">4</span><span class="p">:</span>
+    <span class="n">konsentrasjon</span> <span class="o">=</span> <span class="n">konsentrasjon</span> <span class="o">/</span> <span class="mi">2</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">konsentrasjon</span><span class="p">)</span>
+    <span class="n">trinn</span> <span class="o">=</span> <span class="n">trinn</span> <span class="o">+</span> <span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Løsningsforslag</p>
+<p>Begge programmene skriver ut 0,40, 0,20, 0,10 og 0,05. For-løkka gjentar operasjonen fire ganger fordi <code class="docutils literal notranslate"><span class="pre">range(4)</span></code> inneholder fire verdier. While-løkka gjentar operasjonen så lenge <code class="docutils literal notranslate"><span class="pre">trinn</span> <span class="pre">&lt;</span> <span class="pre">4</span></code>. Her må vi selv opprette og oppdatere tellevariabelen <code class="docutils literal notranslate"><span class="pre">trinn</span></code>.</p>
+<p>Når antall gjentakelser er kjent på forhånd, er for-løkka vanligvis enklest. En while-løkke er særlig nyttig når vi vil fortsette til en faglig betingelse er oppfylt.</p>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Oppgave 4.2</p>
+<p>Lag en løkketabell med løkkerunde, <code class="docutils literal notranslate"><span class="pre">i</span></code>, <code class="docutils literal notranslate"><span class="pre">mengde</span></code> og <code class="docutils literal notranslate"><span class="pre">målt_mengde</span></code> for følgende program:</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">mengde</span> <span class="o">=</span> <span class="mf">8.0</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
+    <span class="n">mengde</span> <span class="o">=</span> <span class="n">mengde</span> <span class="o">/</span> <span class="mi">2</span>
+    <span class="n">målt_mengde</span> <span class="o">=</span> <span class="n">mengde</span> <span class="o">*</span> <span class="mf">0.95</span>
+</pre></div>
+</div>
+</div>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Løsningsforslag</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Løkkerunde</p></th>
+<th class="head text-right"><p><code class="docutils literal notranslate"><span class="pre">i</span></code></p></th>
+<th class="head text-right"><p><code class="docutils literal notranslate"><span class="pre">mengde</span></code></p></th>
+<th class="head text-right"><p><code class="docutils literal notranslate"><span class="pre">målt_mengde</span></code></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Startverdi</p></td>
+<td class="text-right"><p>–</p></td>
+<td class="text-right"><p>8,0</p></td>
+<td class="text-right"><p>–</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td class="text-right"><p>0</p></td>
+<td class="text-right"><p>4,0</p></td>
+<td class="text-right"><p>3,8</p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td class="text-right"><p>1</p></td>
+<td class="text-right"><p>2,0</p></td>
+<td class="text-right"><p>1,9</p></td>
+</tr>
+<tr class="row-odd"><td><p>3</p></td>
+<td class="text-right"><p>2</p></td>
+<td class="text-right"><p>1,0</p></td>
+<td class="text-right"><p>0,95</p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td class="text-right"><p>3</p></td>
+<td class="text-right"><p>0,5</p></td>
+<td class="text-right"><p>0,475</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Oppgave 4.3</p>
+<p>Lag et program som skriver ut «Måling registrert» fem ganger. Hvilken funksjon har løkkevariabelen? Velg et variabelnavn som viser om verdien brukes eller ikke.</p>
+</div>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Løsningsforslag</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Måling registrert&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Løkkevariabelen sørger for at løkka går fem ganger, men verdien brukes ikke. Derfor bruker vi <code class="docutils literal notranslate"><span class="pre">_</span></code> som variabelnavn.</p>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Oppgave 4.4</p>
+<p>Programmet nedenfor skal finne summen av de åtte første tallene i en tallfølge der hvert ledd er det dobbelte av det forrige. Forklar hvordan programmet fungerer, og finn ut hvilke åtte tall som summeres.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">tall</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">summen</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">8</span><span class="p">):</span>
+    <span class="n">summen</span> <span class="o">=</span> <span class="n">summen</span> <span class="o">+</span> <span class="n">tall</span>
+    <span class="n">tall</span> <span class="o">=</span> <span class="n">tall</span> <span class="o">*</span> <span class="mi">2</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">summen</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Løsningsforslag</p>
+<p>Variabelen <code class="docutils literal notranslate"><span class="pre">tall</span></code> inneholder leddet som skal legges til, mens <code class="docutils literal notranslate"><span class="pre">summen</span></code> inneholder den akkumulerte summen. Etter at leddet er lagt til, dobles <code class="docutils literal notranslate"><span class="pre">tall</span></code> før neste løkkerunde. Programmet summerer</p>
+<div class="math notranslate nohighlight">
+\[1+2+4+8+16+32+64+128=255.\]</div>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Oppgave 4.5</p>
+<p>Skriv om programmet i oppgave 4.4 slik at det bruker en while-løkke i stedet for en for-løkke.</p>
+</div>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Løsningsforslag</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">tall</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">summen</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">antall_ledd</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="k">while</span> <span class="n">antall_ledd</span> <span class="o">&lt;</span> <span class="mi">8</span><span class="p">:</span>
+    <span class="n">summen</span> <span class="o">=</span> <span class="n">summen</span> <span class="o">+</span> <span class="n">tall</span>
+    <span class="n">tall</span> <span class="o">=</span> <span class="n">tall</span> <span class="o">*</span> <span class="mi">2</span>
+    <span class="n">antall_ledd</span> <span class="o">=</span> <span class="n">antall_ledd</span> <span class="o">+</span> <span class="mi">1</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">summen</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Oppgave 4.6</p>
+<p>Hva skrives ut i følgende program? Undersøk først programmet for hånd, og kontroller deretter svaret i en editor.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">konsentrasjon</span> <span class="o">=</span> <span class="mf">1.0</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">konsentrasjon</span><span class="p">)</span>
+    <span class="n">konsentrasjon</span> <span class="o">=</span> <span class="n">konsentrasjon</span> <span class="o">/</span> <span class="mi">2</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Slutt:&quot;</span><span class="p">,</span> <span class="n">konsentrasjon</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Løsningsforslag</p>
+<p>Programmet skriver ut:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>0 1.0
+1 0.5
+2 0.25
+3 0.125
+Slutt: 0.0625
+</pre></div>
+</div>
+<p>Utskriften inni løkka skjer før konsentrasjonen halveres. Utskriften utenfor løkka viser sluttverdien etter fire halveringer.</p>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Oppgave 4.7</p>
+<p>Bruk <code class="docutils literal notranslate"><span class="pre">turtle</span></code>-grafikk til å tegne en enkel sikksakk-kjede med ti bindinger. La Gunnar skifte mellom å svinge 60° mot venstre og 60° mot høyre. Du kan bruke modulusoperatoren (<code class="docutils literal notranslate"><span class="pre">%</span></code>) og et vilkår til å skille mellom partall og oddetall.</p>
+<p>Hvordan skiller denne todimensjonale strektegningen seg fra en molekylmodell?</p>
+</div>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Løsningsforslag</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">turtle</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">shape</span><span class="p">(</span><span class="s2">&quot;turtle&quot;</span><span class="p">)</span>
+<span class="n">speed</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">binding</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="n">forward</span><span class="p">(</span><span class="mi">40</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">binding</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">left</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">right</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span>
+
+<span class="n">done</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Tegningen viser bare en strekrepresentasjon i to dimensjoner. Den viser ikke atomer, elektroner, bindingstyper eller molekylets tredimensjonale konformasjon. Den kan derfor illustrere gjentakelse og et karbonskjelett, men er ikke en fullstendig molekylmodell.</p>
+</div>
+</div>
+<input id="sd-tab-item-1" name="sd-tab-set-0" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-1">
+Kjemi og modellering</label><div class="sd-tab-content docutils">
+<div class="tip admonition">
+<p class="admonition-title">Oppgave 4.8</p>
+<p>Modifiser programmet for tilfeldig vandring slik at partikkelen kan bevege seg i åtte retninger: 0°, 45°, 90°, 135°, 180°, 225°, 270° og 315°. Sammenlikn banene med modellen som bare bruker fire retninger. Hvilken modell ser mest kontinuerlig ut? Hvilke viktige forenklinger gjenstår?</p>
+</div>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Løsningsforslag</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">turtle</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">random</span><span class="w"> </span><span class="kn">import</span> <span class="n">choice</span>
+
+<span class="n">shape</span><span class="p">(</span><span class="s2">&quot;turtle&quot;</span><span class="p">)</span>
+<span class="n">speed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="n">mulige_retninger</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">45</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">135</span><span class="p">,</span> <span class="mi">180</span><span class="p">,</span> <span class="mi">225</span><span class="p">,</span> <span class="mi">270</span><span class="p">,</span> <span class="mi">315</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">steg</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">200</span><span class="p">):</span>
+    <span class="n">retning</span> <span class="o">=</span> <span class="n">choice</span><span class="p">(</span><span class="n">mulige_retninger</span><span class="p">)</span>
+    <span class="n">setheading</span><span class="p">(</span><span class="n">retning</span><span class="p">)</span>
+    <span class="n">forward</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="n">done</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Åtte retninger gir flere mulige baner og kan se mindre rutenettpreget ut. Partikkelen beveger seg likevel i to dimensjoner, med faste steglengder og et lite antall mulige retninger. Modellen beskriver heller ikke kollisjoner eller krefter eksplisitt.</p>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Oppgave 4.9</p>
+<p>En analyse gir absorbansverdiene <code class="docutils literal notranslate"><span class="pre">[0.08,</span> <span class="pre">0.42,</span> <span class="pre">0.39,</span> <span class="pre">1.18,</span> <span class="pre">0.44,</span> <span class="pre">0.41]</span></code>. I denne oppgaven regner vi verdier fra og med 0,10 til og med 1,00 som gyldige.</p>
+<p>Lag et program som</p>
+<ol class="arabic simple">
+<li><p>teller antall gyldige og ugyldige målinger</p></li>
+<li><p>beregner gjennomsnittet av de gyldige målingene</p></li>
+<li><p>gir en egen beskjed dersom ingen målinger er gyldige.</p></li>
+</ol>
+</div>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Løsningsforslag</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">absorbansverdier</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.08</span><span class="p">,</span> <span class="mf">0.42</span><span class="p">,</span> <span class="mf">0.39</span><span class="p">,</span> <span class="mf">1.18</span><span class="p">,</span> <span class="mf">0.44</span><span class="p">,</span> <span class="mf">0.41</span><span class="p">]</span>
+
+<span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">antall_gyldige</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">antall_ugyldige</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="k">for</span> <span class="n">absorbans</span> <span class="ow">in</span> <span class="n">absorbansverdier</span><span class="p">:</span>
+    <span class="k">if</span> <span class="mf">0.10</span> <span class="o">&lt;=</span> <span class="n">absorbans</span> <span class="o">&lt;=</span> <span class="mf">1.00</span><span class="p">:</span>
+        <span class="n">total</span> <span class="o">=</span> <span class="n">total</span> <span class="o">+</span> <span class="n">absorbans</span>
+        <span class="n">antall_gyldige</span> <span class="o">=</span> <span class="n">antall_gyldige</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">antall_ugyldige</span> <span class="o">=</span> <span class="n">antall_ugyldige</span> <span class="o">+</span> <span class="mi">1</span>
+
+<span class="k">if</span> <span class="n">antall_gyldige</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="n">gjennomsnitt</span> <span class="o">=</span> <span class="n">total</span> <span class="o">/</span> <span class="n">antall_gyldige</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Gjennomsnitt: </span><span class="si">{</span><span class="n">gjennomsnitt</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Ingen gyldige målinger.&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Gyldige målinger: </span><span class="si">{</span><span class="n">antall_gyldige</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Ugyldige målinger: </span><span class="si">{</span><span class="n">antall_ugyldige</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Oppgave 4.10</p>
+<p>En løsning har startkonsentrasjon 1,00 mol/L. Den fortynnes gjentatte ganger 1:2. Lag et program som fortsetter til konsentrasjonen er lavere enn 0,010 mol/L. Programmet skal skrive ut antall fortynninger og sluttkonsentrasjonen.</p>
+</div>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Løsningsforslag</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">konsentrasjon</span> <span class="o">=</span> <span class="mf">1.00</span>
+<span class="n">grense</span> <span class="o">=</span> <span class="mf">0.010</span>
+<span class="n">antall_fortynninger</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="k">while</span> <span class="n">konsentrasjon</span> <span class="o">&gt;=</span> <span class="n">grense</span><span class="p">:</span>
+    <span class="n">konsentrasjon</span> <span class="o">=</span> <span class="n">konsentrasjon</span> <span class="o">/</span> <span class="mi">2</span>
+    <span class="n">antall_fortynninger</span> <span class="o">=</span> <span class="n">antall_fortynninger</span> <span class="o">+</span> <span class="mi">1</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Antall fortynninger: </span><span class="si">{</span><span class="n">antall_fortynninger</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Sluttkonsentrasjon: </span><span class="si">{</span><span class="n">konsentrasjon</span><span class="si">:</span><span class="s2">.5f</span><span class="si">}</span><span class="s2"> mol/L&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Oppgave 4.11</p>
+<p>Utvid den kinetiske modellen for <span class="math notranslate nohighlight">\(A \rightarrow B\)</span> slik at programmet lagrer tid og konsentrasjonen av A i hver sine lister. Plott deretter <span class="math notranslate nohighlight">\([A]\)</span> som funksjon av tid. Kjør modellen med minst to ulike tidssteg og sammenlikn kurvene.</p>
+</div>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Løsningsforslag</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="n">k</span> <span class="o">=</span> <span class="mf">0.15</span>
+<span class="n">A</span> <span class="o">=</span> <span class="mf">1.00</span>
+<span class="n">dt</span> <span class="o">=</span> <span class="mf">0.10</span>
+<span class="n">tid_slutt</span> <span class="o">=</span> <span class="mi">10</span>
+
+<span class="n">antall_steg</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">tid_slutt</span> <span class="o">/</span> <span class="n">dt</span><span class="p">)</span>
+<span class="n">tid</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">A_verdier</span> <span class="o">=</span> <span class="p">[</span><span class="n">A</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">steg</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">antall_steg</span><span class="p">):</span>
+    <span class="n">endring</span> <span class="o">=</span> <span class="n">k</span> <span class="o">*</span> <span class="n">A</span> <span class="o">*</span> <span class="n">dt</span>
+    <span class="n">A</span> <span class="o">=</span> <span class="n">A</span> <span class="o">-</span> <span class="n">endring</span>
+
+    <span class="n">t</span> <span class="o">=</span> <span class="p">(</span><span class="n">steg</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">dt</span>
+    <span class="n">tid</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+    <span class="n">A_verdier</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">tid</span><span class="p">,</span> <span class="n">A_verdier</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Tid (s)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;[A] (mol/L)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>For å sammenlikne tidssteg kan programmet kjøres på nytt med for eksempel <code class="docutils literal notranslate"><span class="pre">dt</span> <span class="pre">=</span> <span class="pre">1</span></code>, <code class="docutils literal notranslate"><span class="pre">dt</span> <span class="pre">=</span> <span class="pre">0.1</span></code> og <code class="docutils literal notranslate"><span class="pre">dt</span> <span class="pre">=</span> <span class="pre">0.01</span></code>. Husk at <code class="docutils literal notranslate"><span class="pre">antall_steg</span></code> må beregnes på nytt hver gang.</p>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Oppgave 4.12</p>
+<p>Når et elektron i et hydrogenatom deeksiterer fra energinivå <span class="math notranslate nohighlight">\(n\)</span> til et lavere nivå <span class="math notranslate nohighlight">\(m\)</span>, er energien til det emitterte fotonet</p>
+<div class="math notranslate nohighlight">
+\[\Delta E = B\left(\frac{1}{m^2}-\frac{1}{n^2}\right),\]</div>
+<p>der <span class="math notranslate nohighlight">\(B=2{,}18\cdot10^{-18}\)</span> J. Vi bruker også sammenhengene <span class="math notranslate nohighlight">\(\Delta E=hf\)</span> og <span class="math notranslate nohighlight">\(\lambda=c/f\)</span>.</p>
+<p>a) Beregn bølgelengden ved overgangen fra <span class="math notranslate nohighlight">\(n=5\)</span> til <span class="math notranslate nohighlight">\(m=2\)</span>. Dette skal gi omtrent 434 nm.</p>
+<p>b) Bruk ei løkke til å beregne alle mulige bølgelengder fra ett valgt startnivå <code class="docutils literal notranslate"><span class="pre">n</span></code>.</p>
+<p>c) Bruk nøstede løkker til å beregne alle mulige overganger fra startnivåene 2–6.</p>
+</div>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Løsningsforslag</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">B</span> <span class="o">=</span> <span class="mf">2.18E-18</span>       <span class="c1"># J</span>
+<span class="n">h</span> <span class="o">=</span> <span class="mf">6.626E-34</span>      <span class="c1"># J s</span>
+<span class="n">c</span> <span class="o">=</span> <span class="mf">3.00E8</span>         <span class="c1"># m/s</span>
+
+<span class="c1"># a)</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">m</span> <span class="o">=</span> <span class="mi">2</span>
+
+<span class="n">energi</span> <span class="o">=</span> <span class="n">B</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="n">m</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">n</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">frekvens</span> <span class="o">=</span> <span class="n">energi</span> <span class="o">/</span> <span class="n">h</span>
+<span class="n">bølgelengde_nm</span> <span class="o">=</span> <span class="n">c</span> <span class="o">/</span> <span class="n">frekvens</span> <span class="o">*</span> <span class="mf">1E9</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;n = </span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s2"> til m = </span><span class="si">{</span><span class="n">m</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">bølgelengde_nm</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> nm&quot;</span><span class="p">)</span>
+
+<span class="c1"># b)</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mi">5</span>
+
+<span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+    <span class="n">energi</span> <span class="o">=</span> <span class="n">B</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="n">m</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">n</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">frekvens</span> <span class="o">=</span> <span class="n">energi</span> <span class="o">/</span> <span class="n">h</span>
+    <span class="n">bølgelengde_nm</span> <span class="o">=</span> <span class="n">c</span> <span class="o">/</span> <span class="n">frekvens</span> <span class="o">*</span> <span class="mf">1E9</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;n = </span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s2"> til m = </span><span class="si">{</span><span class="n">m</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">bølgelengde_nm</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> nm&quot;</span><span class="p">)</span>
+
+<span class="c1"># c)</span>
+<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">7</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+        <span class="n">energi</span> <span class="o">=</span> <span class="n">B</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="n">m</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">n</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+        <span class="n">frekvens</span> <span class="o">=</span> <span class="n">energi</span> <span class="o">/</span> <span class="n">h</span>
+        <span class="n">bølgelengde_nm</span> <span class="o">=</span> <span class="n">c</span> <span class="o">/</span> <span class="n">frekvens</span> <span class="o">*</span> <span class="mf">1E9</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;n = </span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s2"> til m = </span><span class="si">{</span><span class="n">m</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">bølgelengde_nm</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> nm&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Oppgave 4.13</p>
+<p>Mengden av en radioaktiv isotop etter tida <span class="math notranslate nohighlight">\(t\)</span> kan modelleres som</p>
+<div class="math notranslate nohighlight">
+\[N(t)=N_0e^{-at},\]</div>
+<p>der <span class="math notranslate nohighlight">\(a=\ln(2)/T\)</span> og <span class="math notranslate nohighlight">\(T\)</span> er halveringstida. Plutonium-239 har en halveringstid på omtrent 24 000 år.</p>
+<p>Skriv et program som skriver ut hvor mye som gjenstår for hvert 5000. år over en periode på 50 000 år dersom startmengden er 4,0 kg.</p>
+</div>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Løsningsforslag</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">math</span><span class="w"> </span><span class="kn">import</span> <span class="n">log</span><span class="p">,</span> <span class="n">exp</span>
+
+<span class="n">startmengde</span> <span class="o">=</span> <span class="mf">4.0</span>       <span class="c1"># kg</span>
+<span class="n">halveringstid</span> <span class="o">=</span> <span class="mi">24000</span>   <span class="c1"># år</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">log</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="n">halveringstid</span>
+
+<span class="k">for</span> <span class="n">tid</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">50001</span><span class="p">,</span> <span class="mi">5000</span><span class="p">):</span>
+    <span class="n">mengde</span> <span class="o">=</span> <span class="n">startmengde</span> <span class="o">*</span> <span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">a</span> <span class="o">*</span> <span class="n">tid</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Etter </span><span class="si">{</span><span class="n">tid</span><span class="si">:</span><span class="s2">5d</span><span class="si">}</span><span class="s2"> år gjenstår </span><span class="si">{</span><span class="n">mengde</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> kg.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Her importerer vi funksjonene <code class="docutils literal notranslate"><span class="pre">log</span></code> og <code class="docutils literal notranslate"><span class="pre">exp</span></code> fra standardbiblioteket <code class="docutils literal notranslate"><span class="pre">math</span></code>. De beregner henholdsvis den naturlige logaritmen og eksponentialfunksjonen.</p>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Oppgave 4.14</p>
+<p>Ideelle gasser kan beskrives med likningen</p>
+<div class="math notranslate nohighlight">
+\[PV=nRT.\]</div>
+<p>Lag ei liste med trykk fra 100 til og med 400 kPa med steg på 25 kPa. Bruk ei løkke til å beregne volumet i liter for 1,00 mol ideell gass ved 298 K. Lagre volumene i ei liste og plott volum som funksjon av trykk.</p>
+<p>Pass på enhetene: Gasskonstanten <span class="math notranslate nohighlight">\(R=8{,}314\)</span> Pa m<span class="math notranslate nohighlight">\(^3\)</span> K<span class="math notranslate nohighlight">\(^{-1}\)</span> mol<span class="math notranslate nohighlight">\(^{-1}\)</span> krever trykk i pascal og gir volum i m<span class="math notranslate nohighlight">\(^3\)</span>.</p>
+</div>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Løsningsforslag</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="n">T</span> <span class="o">=</span> <span class="mi">298</span>             <span class="c1"># K</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mf">1.00</span>            <span class="c1"># mol</span>
+<span class="n">R</span> <span class="o">=</span> <span class="mf">8.314</span>           <span class="c1"># Pa m^3 K^-1 mol^-1</span>
+
+<span class="n">trykk_kPa</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">volum_L</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">trykk</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">401</span><span class="p">,</span> <span class="mi">25</span><span class="p">):</span>
+    <span class="n">trykk_kPa</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">trykk</span><span class="p">)</span>
+
+    <span class="n">trykk_Pa</span> <span class="o">=</span> <span class="n">trykk</span> <span class="o">*</span> <span class="mi">1000</span>
+    <span class="n">volum_m3</span> <span class="o">=</span> <span class="n">n</span> <span class="o">*</span> <span class="n">R</span> <span class="o">*</span> <span class="n">T</span> <span class="o">/</span> <span class="n">trykk_Pa</span>
+    <span class="n">volum_L</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">volum_m3</span> <span class="o">*</span> <span class="mi">1000</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">trykk_kPa</span><span class="p">,</span> <span class="n">volum_L</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;o&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Trykk (kPa)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Volum (L)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Ved 100 kPa får vi omtrent 24,8 L. Dette er i samsvar med det molare volumet til en tilnærmet ideell gass ved romtemperatur og omtrent atmosfæretrykk.</p>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Oppgave 4.15</p>
+<p>Vi vil undersøke hvordan startkonsentrasjonen og ratekonstanten påvirker den kinetiske modellen for <span class="math notranslate nohighlight">\(A \rightarrow B\)</span>. Bruk nøstede løkker til å simulere alle kombinasjonene av</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">startkonsentrasjoner</span> <span class="pre">=</span> <span class="pre">[0.50,</span> <span class="pre">1.00]</span></code> mol/L</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ratekonstanter</span> <span class="pre">=</span> <span class="pre">[0.05,</span> <span class="pre">0.10,</span> <span class="pre">0.20]</span></code> s<span class="math notranslate nohighlight">\(^{-1}\)</span>.</p></li>
+</ul>
+<p>Bruk <code class="docutils literal notranslate"><span class="pre">dt</span> <span class="pre">=</span> <span class="pre">0.01</span></code> s og <code class="docutils literal notranslate"><span class="pre">tid_slutt</span> <span class="pre">=</span> <span class="pre">10</span></code> s. Skriv ut sluttkonsentrasjonen av A for hver kombinasjon.</p>
+</div>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Løsningsforslag</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">startkonsentrasjoner</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.50</span><span class="p">,</span> <span class="mf">1.00</span><span class="p">]</span>
+<span class="n">ratekonstanter</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.10</span><span class="p">,</span> <span class="mf">0.20</span><span class="p">]</span>
+
+<span class="n">dt</span> <span class="o">=</span> <span class="mf">0.01</span>
+<span class="n">tid_slutt</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">antall_steg</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">tid_slutt</span> <span class="o">/</span> <span class="n">dt</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">startkonsentrasjon</span> <span class="ow">in</span> <span class="n">startkonsentrasjoner</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">ratekonstanter</span><span class="p">:</span>
+        <span class="n">A</span> <span class="o">=</span> <span class="n">startkonsentrasjon</span>
+
+        <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">antall_steg</span><span class="p">):</span>
+            <span class="n">endring</span> <span class="o">=</span> <span class="n">k</span> <span class="o">*</span> <span class="n">A</span> <span class="o">*</span> <span class="n">dt</span>
+            <span class="n">A</span> <span class="o">=</span> <span class="n">A</span> <span class="o">-</span> <span class="n">endring</span>
+
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[A]0 = </span><span class="si">{</span><span class="n">startkonsentrasjon</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> mol/L, &quot;</span>
+              <span class="sa">f</span><span class="s2">&quot;k = </span><span class="si">{</span><span class="n">k</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> s^-1: [A] = </span><span class="si">{</span><span class="n">A</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> mol/L&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Her har vi egentlig tre løkker inni hverandre. De to ytterste løkkene går gjennom parameterkombinasjonene, mens den innerste utfører selve tidssimuleringen.</p>
+</div>
+</div>
+<input id="sd-tab-item-2" name="sd-tab-set-0" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-2">
+Ekstra matematikkoppgaver</label><div class="sd-tab-content docutils">
+<div class="tip admonition">
+<p class="admonition-title">Oppgave 4.16</p>
+<p>Lag et program som regner ut summen</p>
+<div class="math notranslate nohighlight">
+\[\sum_{n=0}^{50}\frac{1}{2^n}.\]</div>
+<p>Løs oppgaven både med en for-løkke og en while-løkke.</p>
+</div>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Løsningsforslag</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># For-løkke</span>
+<span class="n">summen</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">51</span><span class="p">):</span>
+    <span class="n">summen</span> <span class="o">=</span> <span class="n">summen</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">/</span> <span class="mi">2</span><span class="o">**</span><span class="n">n</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">summen</span><span class="p">)</span>
+
+<span class="c1"># While-løkke</span>
+<span class="n">summen</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="k">while</span> <span class="n">n</span> <span class="o">&lt;=</span> <span class="mi">50</span><span class="p">:</span>
+    <span class="n">summen</span> <span class="o">=</span> <span class="n">summen</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">/</span> <span class="mi">2</span><span class="o">**</span><span class="n">n</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">1</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">summen</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Oppgave 4.17</p>
+<p>Fibonaccifølgen er en kjent tallfølge der hvert tall etter de to første er summen av de to foregående:</p>
+<div class="math notranslate nohighlight">
+\[1,1,2,3,5,8,13,21,\ldots\]</div>
+<p>Lag et program som skriver ut de første <code class="docutils literal notranslate"><span class="pre">n</span></code> tallene i følgen.</p>
+</div>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Løsningsforslag</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">x0</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">x1</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mi">20</span>
+
+<span class="k">for</span> <span class="n">nummer</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Fibonaccitall nr. </span><span class="si">{</span><span class="n">nummer</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">x1</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">x0</span><span class="p">,</span> <span class="n">x1</span> <span class="o">=</span> <span class="n">x1</span><span class="p">,</span> <span class="n">x0</span> <span class="o">+</span> <span class="n">x1</span>
+</pre></div>
+</div>
+<p>Den siste linja oppdaterer begge variablene samtidig. Høyresida beregnes før de nye verdiene lagres.</p>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Oppgave 4.18</p>
+<p>I kombinatorikk er <span class="math notranslate nohighlight">\(n\)</span>-fakultet definert som produktet av alle heltall fra og med 1 til og med <span class="math notranslate nohighlight">\(n\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[n!=\prod_{k=1}^{n}k.\]</div>
+<p>Lag et program som regner ut fakultetet til et positivt heltall.</p>
+</div>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Løsningsforslag</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">n</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Skriv inn et positivt heltall: &quot;</span><span class="p">))</span>
+<span class="n">fakultet</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+    <span class="n">fakultet</span> <span class="o">=</span> <span class="n">fakultet</span> <span class="o">*</span> <span class="n">k</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s2">! = </span><span class="si">{</span><span class="n">fakultet</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Oppgave 4.19</p>
+<p>Eksponentialfunksjonen kan tilnærmes med et Taylorpolynom:</p>
+<div class="math notranslate nohighlight">
+\[e^x\approx\sum_{i=0}^{n-1}\frac{x^i}{i!}.\]</div>
+<p>Lag en funksjon <code class="docutils literal notranslate"><span class="pre">exp_taylor(x,</span> <span class="pre">n)</span></code> som beregner tilnærmingen med <code class="docutils literal notranslate"><span class="pre">n</span></code> ledd. Bruk deretter ei løkke til å sammenlikne tilnærmingen med <code class="docutils literal notranslate"><span class="pre">math.exp(x)</span></code> for heltallene 1–10.</p>
+</div>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Løsningsforslag</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">math</span><span class="w"> </span><span class="kn">import</span> <span class="n">factorial</span><span class="p">,</span> <span class="n">exp</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">exp_taylor</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+    <span class="n">tilnærming</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="n">tilnærming</span> <span class="o">=</span> <span class="n">tilnærming</span> <span class="o">+</span> <span class="n">x</span><span class="o">**</span><span class="n">i</span> <span class="o">/</span> <span class="n">factorial</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">tilnærming</span>
+
+<span class="n">antall_ledd</span> <span class="o">=</span> <span class="mi">20</span>
+
+<span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">):</span>
+    <span class="n">numerisk</span> <span class="o">=</span> <span class="n">exp_taylor</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">antall_ledd</span><span class="p">)</span>
+    <span class="n">eksakt</span> <span class="o">=</span> <span class="n">exp</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">feil</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">numerisk</span> <span class="o">-</span> <span class="n">eksakt</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;x = </span><span class="si">{</span><span class="n">x</span><span class="si">:</span><span class="s2">2d</span><span class="si">}</span><span class="s2">: tilnærming = </span><span class="si">{</span><span class="n">numerisk</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2">, feil = </span><span class="si">{</span><span class="n">feil</span><span class="si">:</span><span class="s2">.2E</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="videoer">
+<h2>Videoer<a class="headerlink" href="#videoer" title="Permalink to this heading">#</a></h2>
+<p>I videoene nedenfor kan du få en innføring eller repetisjon i den grunnleggende teorien bak løkker:</p>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-3" name="sd-tab-set-1" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-3">
+For-løkker</label><div class="sd-tab-content docutils">
+<iframe width="800" height="600" src="https://www.youtube.com/embed/C3W_5_NjHFw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<p>Når du har sett videoen, kan du gjøre følgende oppgave for å sjekke om du forstår innholdet:</p>
+<div class="tip admonition">
+<p class="admonition-title">Underveisoppgave</p>
+<p>Skriv et program som regner ut summen av alle heltallene fra og med 1 til og med 449 ved hjelp av en for-løkke.</p>
+</div>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Løsningsforslag</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">summen</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="k">for</span> <span class="n">tall</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">450</span><span class="p">):</span>
+    <span class="n">summen</span> <span class="o">=</span> <span class="n">summen</span> <span class="o">+</span> <span class="n">tall</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Summen er:&quot;</span><span class="p">,</span> <span class="n">summen</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<input id="sd-tab-item-4" name="sd-tab-set-1" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-4">
+While-løkker</label><div class="sd-tab-content docutils">
+<iframe width="800" height="600" src="https://www.youtube.com/embed/8VXQ2jw6Dpw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<p>Når du har sett videoen, kan du gjøre følgende oppgave for å sjekke om du forstår innholdet:</p>
+<div class="tip admonition">
+<p class="admonition-title">Underveisoppgave</p>
+<p>Skriv et program som regner ut summen av tallene fra og med 1 til og med 449 ved hjelp av en while-løkke.</p>
+</div>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Løsningsforslag</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">summen</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">tall</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="k">while</span> <span class="n">tall</span> <span class="o">&lt;=</span> <span class="mi">449</span><span class="p">:</span>
+    <span class="n">summen</span> <span class="o">=</span> <span class="n">summen</span> <span class="o">+</span> <span class="n">tall</span>
+    <span class="n">tall</span> <span class="o">=</span> <span class="n">tall</span> <span class="o">+</span> <span class="mi">1</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Summen er:&quot;</span><span class="p">,</span> <span class="n">summen</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<div class="toctree-wrapper compound">
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./docs/grunnleggende_programmering"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="quiz3.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Quiz 3: Vilkår (if-tester)</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="quiz4.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Quiz 4: Løkker</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#definisjon">Definisjon</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#skilpaddegrafikk">Skilpaddegrafikk</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#en-forenklet-representasjon-av-en-benzenring">En forenklet representasjon av en benzenring</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tilfeldighet-og-random-biblioteket">Tilfeldighet og <code class="docutils literal notranslate"><span class="pre">random</span></code>-biblioteket</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tilfeldig-vandring-som-diffusjonsmodell">Tilfeldig vandring som diffusjonsmodell</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#while-lokker">While-løkker</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#for-lokker">For-løkker</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#range-funksjonen"><code class="docutils literal notranslate"><span class="pre">range</span></code>-funksjonen</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lokker-gjennom-lister">Løkker gjennom lister</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-folge-variablene-gjennom-ei-lokke">Å følge variablene gjennom ei løkke</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-tenke-i-lokker">Å tenke i løkker</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#behandling-av-kjemiske-data">Behandling av kjemiske data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#en-enkel-kinetisk-modell">En enkel kinetisk modell</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tallfolger-og-rekkesummer">Tallfølger og rekkesummer</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nostede-lokker">Nøstede løkker</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgaver">Oppgaver</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#videoer">Videoer</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Andreas Haraldsrud
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
