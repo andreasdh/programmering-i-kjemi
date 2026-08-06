@@ -38,7 +38,27 @@ jobs:
 
       - name: Rewrite molecule visualization notebook
         if: ${{ hashFiles('scripts/rewrite_molecule_visualization.py') != '' }}
-        run: python scripts/rewrite_molecule_visualization.py
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          path = Path("docs/datahandtering_visualisering/molekylvisualisering.ipynb")
+          notebook = json.loads(path.read_text(encoding="utf-8"))
+
+          notebook["cells"] = [
+              cell
+              for cell in notebook["cells"]
+              if cell.get("id") != "3f113249"
+              and "py3Dmol.view.__module__" not in "".join(cell.get("source", []))
+          ]
+
+          path.write_text(
+              json.dumps(notebook, ensure_ascii=False, indent=1) + "\n",
+              encoding="utf-8",
+          )
+          PY
+          python scripts/rewrite_molecule_visualization.py
 
       - name: Build Jupyter Book
         run: jupyter-book build .
