@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - agent/numerical-methods-formatting
+  pull_request:
+    branches:
+      - master
 
 permissions:
   contents: write
