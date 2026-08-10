@@ -35,6 +35,7 @@ jobs:
           sed -i 's/## Ferdige metoder/## Ferdige løsere i SciPy/' scripts/_restore_numeric_pedagogy.py
           sed -i 's/nullpunkt = (x + x + dx)\/2/nullpunkt = (x + (x + dx))\/2/' scripts/_restore_numeric_pedagogy.py
           sed -i 's/text(c).lstrip().startswith(heading)/heading in text(c)/' scripts/_restore_numeric_pedagogy.py
+          sed -i 's/## Koblede differensiallikninger/## Koblede fartslover/' scripts/_restore_numeric_pedagogy.py
 
       - name: Restore pedagogical progression
         run: python scripts/_restore_numeric_pedagogy.py
