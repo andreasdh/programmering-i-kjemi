@@ -1,0 +1,1052 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Numerisk integrasjon &#8212; Programmering i kjemi</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/kjemiquiz.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/kjemiquiz.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom1.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
+    <script src="../../_static/kjemiquiz.js"></script>
+    <script src="../../_static/turtle_basthon.js"></script>
+    <script src="../../_static/kjemiquiz.js"></script>
+    <script src="../../_static/turtle_basthon.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/derivasjon_integrasjon/integrasjon';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Differenslikninger" href="../modellering/diskret_modellering.html" />
+    <link rel="prev" title="Numerisk derivasjon" href="derivasjon.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/qe-logo-large.png" class="logo__image only-light" alt="Programmering i kjemi - Home"/>
+    <script>document.write(`<img src="../../_static/qe-logo-large.png" class="logo__image only-dark" alt="Programmering i kjemi - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Kom i gang</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../grunnleggende_programmering/introduksjon.html">Introduksjon: Programmering som verktøy i kjemi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../grunnleggende_programmering/vscode.html">Visual Studio Code for kjemikere</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Grunnleggende programmering</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../grunnleggende_programmering/tall_variabler.html">Variabler og datatyper</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../grunnleggende_programmering/quiz1.html">Quiz 1: Variabler og aritmetikk</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../grunnleggende_programmering/lister.html">Lister</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../grunnleggende_programmering/quiz2.html">Quiz 2: Lister</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../grunnleggende_programmering/vilkar.html">Vilkår (if-tester)</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../grunnleggende_programmering/quiz3.html">Quiz 3: Vilkår (if-tester)</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../grunnleggende_programmering/lokker.html">Løkker</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../grunnleggende_programmering/quiz4.html">Quiz 4: Løkker</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../grunnleggende_programmering/funksjoner.html">Funksjoner</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../grunnleggende_programmering/quiz5.html">Quiz 5: Funksjoner</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../grunnleggende_programmering/datasamlinger.html">Datasamlinger</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../grunnleggende_programmering/quiz6.html">Quiz 6: Datasamlinger (arrayer og dictionarier)</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Datahåndtering og visualisering</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../datahandtering_visualisering/kjemiske_biblioteker.html">Kjemiske biblioteker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../datahandtering_visualisering/molekylvisualisering.html">Molekylvisualisering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../datahandtering_visualisering/visualisering_av_kjemiske_data.html">Visualisering av kjemiske data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../datahandtering_visualisering/lese_og_rydde_kjemiske_data.html">Lese og rydde kjemiske data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../datahandtering_visualisering/statistikk_grunnleggende_kjemi.html">Deskriptiv statistikk: Målinger, variasjon og usikkerhet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../datahandtering_visualisering/kalibrering_og_statistisk_inferens.html">Kalibrering og sammenlikning av resultater</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../datahandtering_visualisering/maskinlaering_i_kjemi.html">Maskinlæring i kjemi*</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Numeriske metoder</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../nullpunkter_likninger/likninger.html">Likninger og nullpunkter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="derivasjon.html">Numerisk derivasjon</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Numerisk integrasjon</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Dynamiske systemer</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../modellering/diskret_modellering.html">Differenslikninger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modellering/differensiallikninger.html">Differensiallikninger og fartslover</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Emneressurser (IN-KJM1900)</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../forelesninger/forelesninger.html">Forelesninger</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../forelesninger/forelesning1.html">Forelesning 1: Programmering i kjemi</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../forelesninger/forelesning2.html">Forelesning 2: Plotting og datahåndtering</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../forelesninger/forelesning3.html">Forelesning 3: Statistisk analyse</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../forelesninger/forelesning4.html">Forelesning 4: Statistikk II</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../forelesninger/forelesning5.html">Forelesning 5: Numerisk derivasjon og likninger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../forelesninger/forelesning6.html">Forelesning 6: Numerisk integrasjon</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../forelesninger/forelesning7.html">Forelesning 7: Numerisk løsing av likninger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../forelesninger/forelesning8.html">Forelesning 8: Differensiallikninger og reaksjonskinetikk</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../forelesninger/forelesning9.html">Forelesning 9: Reaksjonskinetikk II</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../forelesninger/forelesning10.html">Forelesning 10: Molekylmekanikk</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../forelesninger/workshops.html">Eksamensverksted</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../forelesninger/workshop1.html">Workshop 1: Datahåndtering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../forelesninger/workshop2.html">Workshop 2: Numeriske metoder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../forelesninger/workshop3.html">Workshop 3: Dynamiske systemer</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../obliger/obliger.html">Obligatoriske oppgaver</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../obliger/oblig_datahandtering.html">Oblig 1: Håndtering av kjemiske data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../obliger/oblig_dynamiske_systemer.html">Oblig 2: Dynamiske systemer og integrasjon</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../datafiler.html">Datafiler</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Emneressurser (KJM1140)</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../biokjemi/molekylvisualisering.html">Molekylvisualisering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../biokjemi/datavisualisering.html">Datavisualisering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../biokjemi/regresjonsmodeller.html">Regresjonsmodeller</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../biokjemi/enzymkinetikklab2025.html">Analyse av enzymkinetikkdata</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../biokjemi/proteinfolding.html">Lab 5: Proteinfolding</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/docs/derivasjon_integrasjon/integrasjon.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Numerisk integrasjon</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#integrasjon">Integrasjon</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#integraler-i-kjemi">Integraler i kjemi</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rektangelmetoden-fra-integral-til-riemann-sum">Rektangelmetoden: fra integral til Riemann-sum</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#venstretilnaerming">Venstretilnærming</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hvor-skal-vi-male-hoyden">Hvor skal vi måle høyden?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#midtpunktstilnaerming">Midtpunktstilnærming</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#prov-selv">Prøv selv</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#konvergens">Konvergens</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#trapesmetoden">Trapesmetoden</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simpsons-metode">Simpsons metode</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bruk-av-biblioteker">Bruk av biblioteker</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kjemisk-eksempel-areal-under-et-kromatogram">Kjemisk eksempel: areal under et kromatogram</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#videre-utforskning-multippel-integrasjon">Videre utforskning: multippel integrasjon</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kort-oppsummering">Kort oppsummering</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgaver">Oppgaver</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#videoer">Videoer</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="numerisk-integrasjon">
+<h1>Numerisk integrasjon<a class="headerlink" href="#numerisk-integrasjon" title="Permalink to this heading">#</a></h1>
+<div class="admonition-laeringsutbytte admonition">
+<p class="admonition-title">Læringsutbytte</p>
+<p>Etter å ha arbeidet med dette temaet, skal du kunne:</p>
+<ol class="arabic simple">
+<li><p>forklare hvordan et bestemt integral kan tilnærmes som en sum av små arealer</p></li>
+<li><p>implementere og forklare forskjellen på venstre-, høyre- og midtpunktstilnærming</p></li>
+<li><p>forklare og implementere trapesmetoden</p></li>
+<li><p>sammenlikne numeriske metoder ved hjelp av feil og konvergens</p></li>
+<li><p>integrere funksjoner og eksperimentelle data med SciPy</p></li>
+<li><p>tolke integraler i en kjemisk sammenheng</p></li>
+</ol>
+</div>
+<section id="integrasjon">
+<h2>Integrasjon<a class="headerlink" href="#integrasjon" title="Permalink to this heading">#</a></h2>
+<p>Du kjenner integrasjon både som en metode for å finne arealet under en graf og som den motsatte operasjonen av derivasjon. I dette kapitlet er vi først og fremst opptatt av <strong>bestemte integraler</strong>, altså integraler mellom to grenser <span class="math notranslate nohighlight">\(a\)</span> og <span class="math notranslate nohighlight">\(b\)</span>.</p>
+<p>En datamaskin arbeider med endelige tall og diskrete punkter. Vi skal derfor ikke be datamaskinen om å «finne en antiderivert» på samme måte som vi gjør symbolsk. I stedet tilnærmer vi arealet under grafen ved å dele det opp i mange små biter.</p>
+</section>
+<section id="integraler-i-kjemi">
+<h2>Integraler i kjemi<a class="headerlink" href="#integraler-i-kjemi" title="Permalink to this heading">#</a></h2>
+<p>Numerisk integrasjon dukker opp mange steder i kjemi, for eksempel når vi beregner</p>
+<ul class="simple">
+<li><p>arealet under en kromatografisk topp</p></li>
+<li><p>arealet under et NMR-signal</p></li>
+<li><p>samlet varme eller strøm over tid</p></li>
+<li><p>integraler som inngår i numeriske løsninger av differensiallikninger</p></li>
+</ul>
+<p>Den store fordelen med numerisk integrasjon er at vi også kan integrere <strong>måledata</strong>, der vi ikke nødvendigvis har noen analytisk funksjon.</p>
+</section>
+<section id="rektangelmetoden-fra-integral-til-riemann-sum">
+<h2>Rektangelmetoden: fra integral til Riemann-sum<a class="headerlink" href="#rektangelmetoden-fra-integral-til-riemann-sum" title="Permalink to this heading">#</a></h2>
+<p>Det bestemte integralet kan forstås som grenseverdien av en <strong>Riemann-sum</strong>: Vi deler området under grafen i smale striper og tilnærmer hver stripe med en enkel geometrisk figur. Den enkleste figuren er et rektangel.</p>
+<a class="reference internal image-reference" href="../../_images/rektangel10_utentall.png"><img alt="../../_images/rektangel10_utentall.png" class="align-center" src="../../_images/rektangel10_utentall.png" style="width: 500px;" /></a>
+<p>Her er intervallet delt i 10 rektangler. Hvis intervallet er <span class="math notranslate nohighlight">\([a,b]\)</span> og vi bruker <span class="math notranslate nohighlight">\(n\)</span> rektangler, er bredden</p>
+<div class="math notranslate nohighlight">
+\[h=\frac{b-a}{n}.\]</div>
+<p>I figuren bestemmes høyden av funksjonsverdien ved <strong>venstre kant</strong> av hvert rektangel. Da får vi venstretilnærmingen.</p>
+<p>Øker vi antall rektangler, følger rektanglene grafen bedre:</p>
+<a class="reference internal image-reference" href="../../_images/rektangel_n=50.png"><img alt="../../_images/rektangel_n=50.png" class="align-center" src="../../_images/rektangel_n=50.png" style="width: 500px;" /></a>
+<p>Dette er den grunnleggende ideen bak numerisk integrasjon: flere og smalere geometriske figurer gir vanligvis en bedre tilnærming.</p>
+<section id="venstretilnaerming">
+<h3>Venstretilnærming<a class="headerlink" href="#venstretilnaerming" title="Permalink to this heading">#</a></h3>
+<p>Vi begynner med koden uten å lage en funksjon. Da er det lettere å forstå algoritmen:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">+</span> <span class="mi">2</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">12</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mi">10</span>
+
+<span class="n">h</span> <span class="o">=</span> <span class="p">(</span><span class="n">b</span> <span class="o">-</span> <span class="n">a</span><span class="p">)</span> <span class="o">/</span> <span class="n">n</span>
+<span class="n">areal</span> <span class="o">=</span> <span class="mf">0.0</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">a</span>
+
+<span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="n">areal</span> <span class="o">=</span> <span class="n">areal</span> <span class="o">+</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">*</span> <span class="n">h</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">h</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Numerisk areal:&quot;</span><span class="p">,</span> <span class="n">areal</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Numerisk areal: 18.046675645664006
+</pre></div>
+</div>
+</div>
+</div>
+<p>Løkken gjør nøyaktig det figuren viser: beregn arealet av ett rektangel, legg det til totalen, flytt <span class="math notranslate nohighlight">\(x\)</span> én rektangelbredde og gjenta.</p>
+<p>Når algoritmen er forståelig, pakker vi den inn i en funksjon:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">rektangel_venstre</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+    <span class="n">h</span> <span class="o">=</span> <span class="p">(</span><span class="n">b</span> <span class="o">-</span> <span class="n">a</span><span class="p">)</span> <span class="o">/</span> <span class="n">n</span>
+    <span class="n">areal</span> <span class="o">=</span> <span class="mf">0.0</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">a</span>
+
+    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="n">areal</span> <span class="o">=</span> <span class="n">areal</span> <span class="o">+</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">*</span> <span class="n">h</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">h</span>
+
+    <span class="k">return</span> <span class="n">areal</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="hvor-skal-vi-male-hoyden">
+<h3>Hvor skal vi måle høyden?<a class="headerlink" href="#hvor-skal-vi-male-hoyden" title="Permalink to this heading">#</a></h3>
+<p>Venstrekanten er bare ett mulig valg. For en voksende funksjon vil venstretilnærmingen systematisk ligge <strong>under</strong> grafen:</p>
+<a class="reference internal image-reference" href="../../_images/rektangel_venstre_n=10.png"><img alt="../../_images/rektangel_venstre_n=10.png" class="align-center" src="../../_images/rektangel_venstre_n=10.png" style="width: 500px;" /></a>
+<p>Hvis vi i stedet måler høyden på <strong>høyre kant</strong>, får vi en tilsvarende overestimering:</p>
+<a class="reference internal image-reference" href="../../_images/rektangel_høyre_n=10.png"><img alt="../../_images/rektangel_høyre_n=10.png" class="align-center" src="../../_images/rektangel_høyre_n=10.png" style="width: 500px;" /></a>
+<p>Dette er et viktig poeng: Det finnes flere måter å tilnærme det samme arealet på. Høyretilnærmingen krever bare én liten endring i algoritmen – vi starter på <span class="math notranslate nohighlight">\(a+h\)</span> i stedet for <span class="math notranslate nohighlight">\(a\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">rektangel_hoyre</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+    <span class="n">h</span> <span class="o">=</span> <span class="p">(</span><span class="n">b</span> <span class="o">-</span> <span class="n">a</span><span class="p">)</span> <span class="o">/</span> <span class="n">n</span>
+    <span class="n">areal</span> <span class="o">=</span> <span class="mf">0.0</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="n">h</span>
+
+    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="n">areal</span> <span class="o">=</span> <span class="n">areal</span> <span class="o">+</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">*</span> <span class="n">h</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">h</span>
+
+    <span class="k">return</span> <span class="n">areal</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="midtpunktstilnaerming">
+<h3>Midtpunktstilnærming<a class="headerlink" href="#midtpunktstilnaerming" title="Permalink to this heading">#</a></h3>
+<p>Når venstre kant gir for lite areal og høyre kant gir for mye, er det naturlig å spørre om vi kan velge et punkt <strong>mellom dem</strong>. Vi bruker da funksjonsverdien i midten av hvert delintervall:</p>
+<a class="reference internal image-reference" href="docs/bilder/rektangel_midt_n=10.png.png"><img alt="docs/bilder/rektangel_midt_n=10.png.png" class="align-center" src="docs/bilder/rektangel_midt_n=10.png.png" style="width: 500px;" /></a>
+<p>For en lineær funksjon blir feilarealet over og under grafen like stort, og midtpunktstilnærmingen blir eksakt. Også for mange krumme funksjoner er den betydelig bedre enn venstre- og høyretilnærmingen.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">rektangel_midt</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+    <span class="n">h</span> <span class="o">=</span> <span class="p">(</span><span class="n">b</span> <span class="o">-</span> <span class="n">a</span><span class="p">)</span> <span class="o">/</span> <span class="n">n</span>
+    <span class="n">areal</span> <span class="o">=</span> <span class="mf">0.0</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="n">h</span><span class="o">/</span><span class="mi">2</span>
+
+    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="n">areal</span> <span class="o">=</span> <span class="n">areal</span> <span class="o">+</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">*</span> <span class="n">h</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">h</span>
+
+    <span class="k">return</span> <span class="n">areal</span>
+
+<span class="n">eksakt</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span> <span class="o">+</span> <span class="mi">2</span><span class="o">*</span><span class="mi">12</span><span class="p">)</span> <span class="o">-</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="mi">2</span><span class="o">*</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Venstre:&quot;</span><span class="p">,</span> <span class="n">rektangel_venstre</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Høyre:&quot;</span><span class="p">,</span> <span class="n">rektangel_hoyre</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Midtpunkt:&quot;</span><span class="p">,</span> <span class="n">rektangel_midt</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Eksakt:&quot;</span><span class="p">,</span> <span class="n">eksakt</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Venstre: 18.046675645664006
+Høyre: 19.306676440943637
+Midtpunkt: 18.492080387461613
+Eksakt: 18.554129655173885
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="prov-selv">
+<h3>Prøv selv<a class="headerlink" href="#prov-selv" title="Permalink to this heading">#</a></h3>
+<p>Fullfør rektangelmetodene og undersøk hvordan resultatet endres når du øker antall rektangler.</p>
+<iframe src="../../basthon/?from=examples/numerisk_integrasjon_rektangler.py" width="100%" height="620" frameborder="0" title="Prøv selv: numerisk integrasjon" loading="lazy" allowfullscreen></iframe>
+</section>
+</section>
+<section id="konvergens">
+<h2>Konvergens<a class="headerlink" href="#konvergens" title="Permalink to this heading">#</a></h2>
+<p>Et numerisk svar bør ikke vurderes ut fra ett enkelt valg av <span class="math notranslate nohighlight">\(n\)</span>. Vi kan øke antall intervaller og undersøke om resultatet <strong>stabiliserer seg</strong>, for eksempel slik:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n_verdier</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">500</span><span class="p">,</span> <span class="mi">1000</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot; n      venstre-feil     midtpunkt-feil&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">n_verdier</span><span class="p">:</span>
+    <span class="n">feil_v</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">rektangel_venstre</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span> <span class="o">-</span> <span class="n">eksakt</span><span class="p">)</span>
+    <span class="n">feil_m</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">rektangel_midt</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span> <span class="o">-</span> <span class="n">eksakt</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">n</span><span class="si">:</span><span class="s2">4d</span><span class="si">}</span><span class="s2">    </span><span class="si">{</span><span class="n">feil_v</span><span class="si">:</span><span class="s2">12.6f</span><span class="si">}</span><span class="s2">    </span><span class="si">{</span><span class="n">feil_m</span><span class="si">:</span><span class="s2">14.6f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> n      venstre-feil     midtpunkt-feil
+  10        0.507454          0.062049
+  20        0.284752          0.015172
+  50        0.121177          0.002413
+ 100        0.061795          0.000603
+ 200        0.031199          0.000151
+ 500        0.012552          0.000024
+1000        0.006288          0.000006
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="trapesmetoden">
+<h2>Trapesmetoden<a class="headerlink" href="#trapesmetoden" title="Permalink to this heading">#</a></h2>
+<p>Rektangelmetodene antar at toppen av hver lille figur er <strong>horisontal</strong>. Med andre ord erstatter vi funksjonen lokalt med en konstant verdi. Det fungerer, men hvis funksjonen endrer seg tydelig gjennom intervallet, kaster vi bort informasjon.</p>
+<p>En naturlig forbedring er å trekke en <strong>rett linje mellom de to endepunktene</strong>. Da får vi et trapes i stedet for et rektangel:</p>
+<a class="reference internal image-reference" href="../../_images/trapes_n=1.png"><img alt="../../_images/trapes_n=1.png" class="align-center" src="../../_images/trapes_n=1.png" style="width: 500px;" /></a>
+<p>For ett delintervall med bredde <span class="math notranslate nohighlight">\(h\)</span> er de to parallelle sidene <span class="math notranslate nohighlight">\(f(x_i)\)</span> og <span class="math notranslate nohighlight">\(f(x_{i+1})\)</span>. Arealet blir derfor</p>
+<div class="math notranslate nohighlight">
+\[A_i=\frac{f(x_i)+f(x_{i+1})}{2}h.\]</div>
+<p>For hele intervallet summerer vi ett slikt trapes for hvert delintervall. Vi kan skrive dette som</p>
+<div class="math notranslate nohighlight">
+\[\int_a^b f(x)\,dx\approx h\left[\frac{f(a)+f(b)}{2}+\sum_{i=1}^{n-1}f(x_i)\right].\]</div>
+<p>Først implementerer vi igjen algoritmen helt konkret:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span><span class="o">**</span><span class="mi">3</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mi">100</span>
+
+<span class="n">h</span> <span class="o">=</span> <span class="p">(</span><span class="n">b</span> <span class="o">-</span> <span class="n">a</span><span class="p">)</span> <span class="o">/</span> <span class="n">n</span>
+<span class="n">areal</span> <span class="o">=</span> <span class="mf">0.0</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">a</span>
+
+<span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="n">areal</span> <span class="o">=</span> <span class="n">areal</span> <span class="o">+</span> <span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">+</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">h</span><span class="p">))</span><span class="o">/</span><span class="mi">2</span> <span class="o">*</span> <span class="n">h</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">h</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Trapes:&quot;</span><span class="p">,</span> <span class="n">areal</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Trapes: 156.2656249999993
+</pre></div>
+</div>
+</div>
+</div>
+<p>Deretter kan vi pakke nøyaktig den samme løkken inn i en funksjon:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">trapesmetoden</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+    <span class="n">h</span> <span class="o">=</span> <span class="p">(</span><span class="n">b</span> <span class="o">-</span> <span class="n">a</span><span class="p">)</span> <span class="o">/</span> <span class="n">n</span>
+    <span class="n">areal</span> <span class="o">=</span> <span class="mf">0.0</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">a</span>
+
+    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="n">areal</span> <span class="o">=</span> <span class="n">areal</span> <span class="o">+</span> <span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">+</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">h</span><span class="p">))</span><span class="o">/</span><span class="mi">2</span> <span class="o">*</span> <span class="n">h</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">h</span>
+
+    <span class="k">return</span> <span class="n">areal</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Trapes:&quot;</span><span class="p">,</span> <span class="n">trapesmetoden</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">100</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Eksakt:&quot;</span><span class="p">,</span> <span class="mf">156.25</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Trapes: 156.2656249999993
+Eksakt: 156.25
+</pre></div>
+</div>
+</div>
+</div>
+<p>Når antallet trapeser øker, følger de rette linjestykkene grafen stadig bedre:</p>
+<a class="reference internal image-reference" href="../../_images/trapes10.png"><img alt="../../_images/trapes10.png" class="align-center" src="../../_images/trapes10.png" style="width: 500px;" /></a>
+</section>
+<section id="simpsons-metode">
+<h2>Simpsons metode<a class="headerlink" href="#simpsons-metode" title="Permalink to this heading">#</a></h2>
+<p>Vi kan se rektangel- og trapesmetoden som en liten progresjon:</p>
+<ul class="simple">
+<li><p>rektangel: funksjonen tilnærmes lokalt med en <strong>konstant</strong></p></li>
+<li><p>trapes: funksjonen tilnærmes lokalt med en <strong>rett linje</strong></p></li>
+</ul>
+<p>Neste steg er å bruke et krumt toppstykke. Simpsons metode bruker andregradspolynomer over par av delintervaller. Det gir ofte svært god nøyaktighet for glatte funksjoner.</p>
+<p>For et partall <span class="math notranslate nohighlight">\(n\)</span> kan metoden skrives</p>
+<div class="math notranslate nohighlight">
+\[\int_a^b f(x)\,dx\approx\frac{h}{3}\left[f(a)+f(b)+4\sum_{\text{odde }k}f(x_k)+2\sum_{\text{partall }k}f(x_k)\right].\]</div>
+<p>Koden er litt mindre intuitiv enn rektangel- og trapesmetoden. Derfor er målet først og fremst å kjenne igjen strukturen i formelen.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">simpsons_metode</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;n må være et partall.&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">None</span>
+
+    <span class="n">h</span> <span class="o">=</span> <span class="p">(</span><span class="n">b</span> <span class="o">-</span> <span class="n">a</span><span class="p">)</span> <span class="o">/</span> <span class="n">n</span>
+    <span class="n">areal</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">+</span> <span class="n">f</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="n">h</span>
+
+    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">k</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">areal</span> <span class="o">=</span> <span class="n">areal</span> <span class="o">+</span> <span class="mi">2</span><span class="o">*</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">areal</span> <span class="o">=</span> <span class="n">areal</span> <span class="o">+</span> <span class="mi">4</span><span class="o">*</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">h</span>
+
+    <span class="k">return</span> <span class="n">areal</span> <span class="o">*</span> <span class="n">h</span><span class="o">/</span><span class="mi">3</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Simpson:&quot;</span><span class="p">,</span> <span class="n">simpsons_metode</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">100</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Simpson: 156.24999999999935
+</pre></div>
+</div>
+</div>
+</div>
+<p>Rektangelmetodene, trapesmetoden og Simpsons metode tilhører samme familie av integrasjonsmetoder, <strong>Newton–Cotes-metoder</strong>. Vi trenger ikke lære hele familien; poenget er å se hvordan bedre tilnærminger kan bygges ved å bruke mer informasjon om formen på funksjonen.</p>
+</section>
+<section id="bruk-av-biblioteker">
+<h2>Bruk av biblioteker<a class="headerlink" href="#bruk-av-biblioteker" title="Permalink to this heading">#</a></h2>
+<p>Når vi har forstått prinsippet, kan vi bruke ferdige funksjoner. I moderne SciPy heter de relevante funksjonene blant annet:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">integrate.trapezoid(y,</span> <span class="pre">x)</span></code> for diskrete data</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">integrate.simpson(y,</span> <span class="pre">x=x)</span></code> for diskrete data</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">integrate.quad(f,</span> <span class="pre">a,</span> <span class="pre">b)</span></code> for en funksjon</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">trapezoid</span></code> og <code class="docutils literal notranslate"><span class="pre">simpson</span></code> er de moderne navnene; eldre kode kan inneholde de utgåtte navnene <code class="docutils literal notranslate"><span class="pre">trapz</span></code> og <code class="docutils literal notranslate"><span class="pre">simps</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">scipy</span><span class="w"> </span><span class="kn">import</span> <span class="n">integrate</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">1001</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="n">trapes</span> <span class="o">=</span> <span class="n">integrate</span><span class="o">.</span><span class="n">trapezoid</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+<span class="n">simpson</span> <span class="o">=</span> <span class="n">integrate</span><span class="o">.</span><span class="n">simpson</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">)</span>
+<span class="n">quad_verdi</span><span class="p">,</span> <span class="n">quad_feil</span> <span class="o">=</span> <span class="n">integrate</span><span class="o">.</span><span class="n">quad</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;trapezoid:&quot;</span><span class="p">,</span> <span class="n">trapes</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;simpson:&quot;</span><span class="p">,</span> <span class="n">simpson</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;quad:&quot;</span><span class="p">,</span> <span class="n">quad_verdi</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;estimert absolutt feil fra quad:&quot;</span><span class="p">,</span> <span class="n">quad_feil</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>trapezoid: 156.25015624999997
+simpson: 156.25
+quad: 156.25000000000003
+estimert absolutt feil fra quad: 1.7347234759768075e-12
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="kjemisk-eksempel-areal-under-et-kromatogram">
+<h2>Kjemisk eksempel: areal under et kromatogram<a class="headerlink" href="#kjemisk-eksempel-areal-under-et-kromatogram" title="Permalink to this heading">#</a></h2>
+<p>Et kromatogram består av signal som funksjon av retensjonstid. Arealet under en topp kan være proporsjonalt med stoffmengden eller konsentrasjonen etter en passende kalibrering.</p>
+<p>Her lager vi et enkelt kunstig kromatogram med to topper og integrerer signalet numerisk. Poenget er at vi nå integrerer <strong>målepunkter</strong>, ikke en symbolsk funksjon.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="n">tid</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">501</span><span class="p">)</span>
+
+<span class="n">topp_1</span> <span class="o">=</span> <span class="mf">1.2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="o">*</span><span class="p">((</span><span class="n">tid</span> <span class="o">-</span> <span class="mf">3.0</span><span class="p">)</span><span class="o">/</span><span class="mf">0.35</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">topp_2</span> <span class="o">=</span> <span class="mf">0.8</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="o">*</span><span class="p">((</span><span class="n">tid</span> <span class="o">-</span> <span class="mf">6.5</span><span class="p">)</span><span class="o">/</span><span class="mf">0.50</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">signal</span> <span class="o">=</span> <span class="n">topp_1</span> <span class="o">+</span> <span class="n">topp_2</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">tid</span><span class="p">,</span> <span class="n">signal</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Retensjonstid (min)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Signal (a.u.)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/8781712c464dffedb40faab0104ef162995f61bd65a47477bf20ceb47aed3dea.png" src="../../_images/8781712c464dffedb40faab0104ef162995f61bd65a47477bf20ceb47aed3dea.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">maske_1</span> <span class="o">=</span> <span class="p">(</span><span class="n">tid</span> <span class="o">&gt;=</span> <span class="mf">2.0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">tid</span> <span class="o">&lt;=</span> <span class="mf">4.2</span><span class="p">)</span>
+<span class="n">maske_2</span> <span class="o">=</span> <span class="p">(</span><span class="n">tid</span> <span class="o">&gt;=</span> <span class="mf">5.0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">tid</span> <span class="o">&lt;=</span> <span class="mf">8.0</span><span class="p">)</span>
+
+<span class="n">areal_1</span> <span class="o">=</span> <span class="n">integrate</span><span class="o">.</span><span class="n">trapezoid</span><span class="p">(</span><span class="n">signal</span><span class="p">[</span><span class="n">maske_1</span><span class="p">],</span> <span class="n">tid</span><span class="p">[</span><span class="n">maske_1</span><span class="p">])</span>
+<span class="n">areal_2</span> <span class="o">=</span> <span class="n">integrate</span><span class="o">.</span><span class="n">trapezoid</span><span class="p">(</span><span class="n">signal</span><span class="p">[</span><span class="n">maske_2</span><span class="p">],</span> <span class="n">tid</span><span class="p">[</span><span class="n">maske_2</span><span class="p">])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Areal topp 1: </span><span class="si">{</span><span class="n">areal_1</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> a.u.·min&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Areal topp 2: </span><span class="si">{</span><span class="n">areal_2</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> a.u.·min&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Arealforhold topp 1 / topp 2: </span><span class="si">{</span><span class="n">areal_1</span><span class="o">/</span><span class="n">areal_2</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Areal topp 1: 1.050 a.u.·min
+Areal topp 2: 1.000 a.u.·min
+Arealforhold topp 1 / topp 2: 1.050
+</pre></div>
+</div>
+</div>
+</div>
+<div class="note admonition">
+<p class="admonition-title">Tolkning av enheter</p>
+<p>Et integral får enheten til <span class="math notranslate nohighlight">\(y\)</span> multiplisert med enheten til <span class="math notranslate nohighlight">\(x\)</span>. Hvis signalet er i mAU og tiden i minutter, blir topparealet i mAU·min. En kalibreringsmodell kan deretter knytte arealet til konsentrasjon eller stoffmengde.</p>
+</div>
+</section>
+<section id="videre-utforskning-multippel-integrasjon">
+<h2>Videre utforskning: multippel integrasjon<a class="headerlink" href="#videre-utforskning-multippel-integrasjon" title="Permalink to this heading">#</a></h2>
+<p>I enkelte deler av kjemien, særlig kvantekjemi og statistisk termodynamikk, møter vi integraler over flere variabler. SciPy har også funksjoner som <code class="docutils literal notranslate"><span class="pre">dblquad</span></code> og <code class="docutils literal notranslate"><span class="pre">tplquad</span></code>. Dette er nyttig å kjenne til, men er ikke et hovedmål i dette kapitlet.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">g</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="o">-</span> <span class="n">y</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="n">dobbel</span><span class="p">,</span> <span class="n">feil</span> <span class="o">=</span> <span class="n">integrate</span><span class="o">.</span><span class="n">dblquad</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Dobbeltintegral:&quot;</span><span class="p">,</span> <span class="n">dobbel</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Dobbeltintegral: -2.899692718238082
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="kort-oppsummering">
+<h2>Kort oppsummering<a class="headerlink" href="#kort-oppsummering" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Numerisk integrasjon summerer små bidrag over et intervall.</p></li>
+<li><p>Rektangel-, trapes- og Simpson-metodene bruker ulike tilnærminger mellom punktene.</p></li>
+<li><p>Et numerisk resultat bør kontrolleres ved å endre steglengde eller antall intervaller.</p></li>
+<li><p>For eksperimentelle data er <code class="docutils literal notranslate"><span class="pre">trapezoid</span></code> og <code class="docutils literal notranslate"><span class="pre">simpson</span></code> særlig nyttige.</p></li>
+<li><p>Integralets enhet og kjemiske betydning må alltid tolkes sammen med dataene.</p></li>
+</ul>
+</section>
+<section id="oppgaver">
+<h2>Oppgaver<a class="headerlink" href="#oppgaver" title="Permalink to this heading">#</a></h2>
+<div class="tip admonition">
+<p class="admonition-title">Oppgave 1 – rektangelmetoder</p>
+<p>Integrer <span class="math notranslate nohighlight">\(f(x)=x^2-2x+4\)</span> fra 2 til 8 med venstre-, høyre- og midtpunktstilnærming. Bruk først <span class="math notranslate nohighlight">\(n=10\)</span> og deretter <span class="math notranslate nohighlight">\(n=100\)</span>. Sammenlikn med den analytiske verdien.</p>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Oppgave 2 – konvergens</p>
+<p>Lag et plott av absolutt feil som funksjon av <span class="math notranslate nohighlight">\(n\)</span> for venstretilnærmingen, midtpunktstilnærmingen og trapesmetoden. Bruk logaritmiske akser.</p>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Oppgave 3 – kromatografisk topp</p>
+<p>Lag en Gauss-formet topp med sentrum ved 5,0 min og legg til svak tilfeldig støy. Integrer toppen med trapesmetoden. Hvordan endres arealet hvis du flytter integrasjonsgrensene?</p>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Oppgave 4 – NMR</p>
+<p>To NMR-signaler har numeriske arealer 3,02 og 1,01. Hva kan arealforholdet tyde på om relative antall hydrogenatomer dersom responsen kan sammenliknes direkte?</p>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Oppgave 5 – varme fra effektdata</p>
+<p>Et kalorimeter registrerer varmeeffekt <span class="math notranslate nohighlight">\(P(t)\)</span> i watt hvert sekund. Forklar hvorfor integralet <span class="math notranslate nohighlight">\(\int P(t)\,dt\)</span> gir energi, og skriv kode som integrerer et kunstig datasett. Hvilken enhet får svaret?</p>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Oppgave 6 – metodevalg</p>
+<p>Når vil du bruke <code class="docutils literal notranslate"><span class="pre">quad</span></code>, og når vil du bruke <code class="docutils literal notranslate"><span class="pre">trapezoid</span></code>? Gi ett kjemisk eksempel på hver.</p>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Oppgave 7 – Simpson</p>
+<p>Implementer Simpsons metode selv. Sammenlikn med <code class="docutils literal notranslate"><span class="pre">scipy.integrate.simpson</span></code> for <span class="math notranslate nohighlight">\(f(x)=\cos x + 2\)</span> på intervallet <span class="math notranslate nohighlight">\([2,12]\)</span>.</p>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Oppgave 8 – vanskelig funksjon</p>
+<p>Studer <span class="math notranslate nohighlight">\(f(x)=\sin(1/x)\)</span> nær <span class="math notranslate nohighlight">\(x=0\)</span>. Plott funksjonen og undersøk hvordan forskjellige integrasjonsgrenser og oppløsninger påvirker resultatet. Forklar hvorfor dette er et numerisk krevende problem.</p>
+</div>
+</section>
+<section id="videoer">
+<h2>Videoer<a class="headerlink" href="#videoer" title="Permalink to this heading">#</a></h2>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-0">
+Integrasjon</label><div class="sd-tab-content docutils">
+<iframe width="850" height="450" src="https://www.youtube.com/embed/XHahL9ER2wA" title="Integrasjon" frameborder="0" allowfullscreen></iframe>
+</div>
+<input id="sd-tab-item-1" name="sd-tab-set-0" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-1">
+Ulike metoder</label><div class="sd-tab-content docutils">
+<iframe width="850" height="450" src="https://www.youtube.com/embed/KOL92Jxp_Yk" title="Numeriske integrasjonsmetoder" frameborder="0" allowfullscreen></iframe>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./docs/derivasjon_integrasjon"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="derivasjon.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Numerisk derivasjon</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../modellering/diskret_modellering.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Differenslikninger</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#integrasjon">Integrasjon</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#integraler-i-kjemi">Integraler i kjemi</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rektangelmetoden-fra-integral-til-riemann-sum">Rektangelmetoden: fra integral til Riemann-sum</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#venstretilnaerming">Venstretilnærming</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hvor-skal-vi-male-hoyden">Hvor skal vi måle høyden?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#midtpunktstilnaerming">Midtpunktstilnærming</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#prov-selv">Prøv selv</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#konvergens">Konvergens</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#trapesmetoden">Trapesmetoden</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simpsons-metode">Simpsons metode</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bruk-av-biblioteker">Bruk av biblioteker</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kjemisk-eksempel-areal-under-et-kromatogram">Kjemisk eksempel: areal under et kromatogram</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#videre-utforskning-multippel-integrasjon">Videre utforskning: multippel integrasjon</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kort-oppsummering">Kort oppsummering</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgaver">Oppgaver</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#videoer">Videoer</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Andreas Haraldsrud
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

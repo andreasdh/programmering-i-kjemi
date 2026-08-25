@@ -1,0 +1,1050 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Datahåndtering IV: Kalibrering og sammenlikning av resultater &#8212; Programmering i kjemi</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/kjemiquiz.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/kjemiquiz.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/custom1.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/clipboard.min.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js"></script>
+    <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
+    <script src="../../../_static/kjemiquiz.js"></script>
+    <script src="../../../_static/turtle_basthon.js"></script>
+    <script src="../../../_static/kjemiquiz.js"></script>
+    <script src="../../../_static/turtle_basthon.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/datahandtering_visualisering/arkiv/kalibrering_og_statistisk_inferens';</script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../_static/qe-logo-large.png" class="logo__image only-light" alt="Programmering i kjemi - Home"/>
+    <script>document.write(`<img src="../../../_static/qe-logo-large.png" class="logo__image only-dark" alt="Programmering i kjemi - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Kom i gang</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../grunnleggende_programmering/introduksjon.html">Introduksjon: Programmering som verktøy i kjemi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../grunnleggende_programmering/vscode.html">Visual Studio Code for kjemikere</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Grunnleggende programmering</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../grunnleggende_programmering/tall_variabler.html">Variabler og datatyper</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../grunnleggende_programmering/quiz1.html">Quiz 1: Variabler og aritmetikk</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../grunnleggende_programmering/lister.html">Lister</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../grunnleggende_programmering/quiz2.html">Quiz 2: Lister</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../grunnleggende_programmering/vilkar.html">Vilkår (if-tester)</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../grunnleggende_programmering/quiz3.html">Quiz 3: Vilkår (if-tester)</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../grunnleggende_programmering/lokker.html">Løkker</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../grunnleggende_programmering/quiz4.html">Quiz 4: Løkker</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../grunnleggende_programmering/funksjoner.html">Funksjoner</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../grunnleggende_programmering/quiz5.html">Quiz 5: Funksjoner</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../grunnleggende_programmering/datasamlinger.html">Datasamlinger</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../grunnleggende_programmering/quiz6.html">Quiz 6: Datasamlinger (arrayer og dictionarier)</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Datahåndtering og visualisering</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../kjemiske_biblioteker.html">Kjemiske biblioteker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../molekylvisualisering.html">Molekylvisualisering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../visualisering_av_kjemiske_data.html">Visualisering av kjemiske data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lese_og_rydde_kjemiske_data.html">Lese og rydde kjemiske data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../statistikk_grunnleggende_kjemi.html">Deskriptiv statistikk: Målinger, variasjon og usikkerhet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../kalibrering_og_statistisk_inferens.html">Kalibrering og sammenlikning av resultater</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../maskinlaering_i_kjemi.html">Maskinlæring i kjemi*</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Numeriske metoder</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../nullpunkter_likninger/likninger.html">Likninger og nullpunkter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../derivasjon_integrasjon/derivasjon.html">Numerisk derivasjon</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../derivasjon_integrasjon/integrasjon.html">Numerisk integrasjon</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Dynamiske systemer</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../modellering/diskret_modellering.html">Differenslikninger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modellering/differensiallikninger.html">Differensiallikninger og fartslover</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Emneressurser (IN-KJM1900)</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../forelesninger/forelesninger.html">Forelesninger</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../forelesninger/forelesning1.html">Forelesning 1: Programmering i kjemi</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../forelesninger/forelesning2.html">Forelesning 2: Plotting og datahåndtering</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../../forelesninger/forelesning3.html">Forelesning 3: Statistisk analyse</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../forelesninger/forelesning4.html">Forelesning 4: Statistikk II</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../forelesninger/forelesning5.html">Forelesning 5: Numerisk derivasjon og likninger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../forelesninger/forelesning6.html">Forelesning 6: Numerisk integrasjon</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../forelesninger/forelesning7.html">Forelesning 7: Numerisk løsing av likninger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../forelesninger/forelesning8.html">Forelesning 8: Differensiallikninger og reaksjonskinetikk</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../forelesninger/forelesning9.html">Forelesning 9: Reaksjonskinetikk II</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../forelesninger/forelesning10.html">Forelesning 10: Molekylmekanikk</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../forelesninger/workshops.html">Eksamensverksted</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../forelesninger/workshop1.html">Workshop 1: Datahåndtering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../forelesninger/workshop2.html">Workshop 2: Numeriske metoder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../forelesninger/workshop3.html">Workshop 3: Dynamiske systemer</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../obliger/obliger.html">Obligatoriske oppgaver</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../obliger/oblig_datahandtering.html">Oblig 1: Håndtering av kjemiske data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../obliger/oblig_dynamiske_systemer.html">Oblig 2: Dynamiske systemer og integrasjon</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../datafiler.html">Datafiler</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Emneressurser (KJM1140)</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../biokjemi/molekylvisualisering.html">Molekylvisualisering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../biokjemi/datavisualisering.html">Datavisualisering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../biokjemi/regresjonsmodeller.html">Regresjonsmodeller</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../biokjemi/enzymkinetikklab2025.html">Analyse av enzymkinetikkdata</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../biokjemi/proteinfolding.html">Lab 5: Proteinfolding</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../_sources/docs/datahandtering_visualisering/arkiv/kalibrering_og_statistisk_inferens.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Datahåndtering IV: Kalibrering og sammenlikning av resultater</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#del-1-fra-kalibreringsstandarder-til-ukjent-konsentrasjon">Del 1: Fra kalibreringsstandarder til ukjent konsentrasjon</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#den-kjemiske-modellen">Den kjemiske modellen</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#se-pa-dataene-forst">Se på dataene først</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lineaer-regresjon">Lineær regresjon</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#stigningstallet">Stigningstallet</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#konstantleddet">Konstantleddet</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#r-2"><span class="math notranslate nohighlight">\(R^2\)</span></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vis-data-og-modell-sammen">Vis data og modell sammen</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bestem-den-ukjente-konsentrasjonen">Bestem den ukjente konsentrasjonen</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#del-2-sammenlikne-et-resultat-med-en-referanseverdi">Del 2: Sammenlikne et resultat med en referanseverdi</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#start-med-konfidensintervallet">Start med konfidensintervallet</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hypotesetest-uten-mystikk">Hypotesetest uten mystikk</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ettutvalgs-t-test">Ettutvalgs t-test</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#del-3-sammenlikne-to-analysemetoder">Del 3: Sammenlikne to analysemetoder</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#paret-t-test">Paret t-test</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hva-bruker-vi-nar">Hva bruker vi når?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#del-4-en-mistenkelig-maling">Del 4: En mistenkelig måling</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#grubbs-test">Grubbs’ test</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#en-enkel-arbeidsflyt">En enkel arbeidsflyt</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kort-oppsummering">Kort oppsummering</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgaver">Oppgaver</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#video">Video</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="datahandtering-iv-kalibrering-og-sammenlikning-av-resultater">
+<h1>Datahåndtering IV: Kalibrering og sammenlikning av resultater<a class="headerlink" href="#datahandtering-iv-kalibrering-og-sammenlikning-av-resultater" title="Permalink to this heading">#</a></h1>
+<div class="admonition-laeringsutbytte admonition">
+<p class="admonition-title">Læringsutbytte</p>
+<p>Etter å ha arbeidet med dette temaet, skal du kunne:</p>
+<ol class="arabic simple">
+<li><p>bruke lineær regresjon til å lage en kalibreringsmodell</p></li>
+<li><p>tolke stigningstall, konstantledd og <span class="math notranslate nohighlight">\(R^2\)</span> i en kjemisk sammenheng</p></li>
+<li><p>bruke modellen til å bestemme en ukjent konsentrasjon</p></li>
+<li><p>forklare hva en nullhypotese og en p-verdi betyr</p></li>
+<li><p>velge mellom ettutvalgs t-test og paret t-test i enkle kjemiske situasjoner</p></li>
+<li><p>vurdere én mistenkelig måling på en dokumentert måte</p></li>
+</ol>
+</div>
+<p>I forrige kapittel brukte vi statistikk til å beskrive måleserier og usikkerheten i et gjennomsnitt. Nå skal vi bruke de samme ideene til to vanlige oppgaver i kjemi:</p>
+<ol class="arabic simple">
+<li><p>Vi lager en kalibreringsmodell og bruker den til å bestemme en ukjent konsentrasjon.</p></li>
+<li><p>Vi sammenlikner et måleresultat med en referanseverdi eller med en annen analysemetode.</p></li>
+</ol>
+<p>Målet er ikke å samle flest mulig statistiske tester. Målet er å velge en metode som svarer på det kjemiske spørsmålet vårt.</p>
+<section id="del-1-fra-kalibreringsstandarder-til-ukjent-konsentrasjon">
+<h2>Del 1: Fra kalibreringsstandarder til ukjent konsentrasjon<a class="headerlink" href="#del-1-fra-kalibreringsstandarder-til-ukjent-konsentrasjon" title="Permalink to this heading">#</a></h2>
+<section id="den-kjemiske-modellen">
+<h3>Den kjemiske modellen<a class="headerlink" href="#den-kjemiske-modellen" title="Permalink to this heading">#</a></h3>
+<p>I UV–Vis-spektroskopi beskriver Beer–Lamberts lov sammenhengen mellom absorbans og konsentrasjon:</p>
+<div class="math notranslate nohighlight">
+\[
+A=\varepsilon lc
+\]</div>
+<p>Her er <span class="math notranslate nohighlight">\(A\)</span> absorbansen, <span class="math notranslate nohighlight">\(\varepsilon\)</span> den molare absorptiviteten, <span class="math notranslate nohighlight">\(l\)</span> lysveien og <span class="math notranslate nohighlight">\(c\)</span> konsentrasjonen. Når lysveien og de kjemiske betingelsene er konstante, forventer vi at absorbansen øker lineært med konsentrasjonen.</p>
+<p>Virkelige målinger ligger ikke på en helt perfekt linje. Derfor tilpasser vi en rett linje til kalibreringsdataene:</p>
+<div class="math notranslate nohighlight">
+\[
+A=ac+b
+\]</div>
+<p>Her er <span class="math notranslate nohighlight">\(a\)</span> stigningstallet og <span class="math notranslate nohighlight">\(b\)</span> konstantleddet.</p>
+<div class="admonition-kalibreringsmodell admonition">
+<p class="admonition-title">Kalibreringsmodell</p>
+<p>En kalibreringsmodell beskriver sammenhengen mellom et målt signal og kjente verdier av størrelsen vi vil bestemme. Modellen brukes deretter til å anslå verdien i en ukjent prøve innenfor det undersøkte området.</p>
+</div>
+<p>Den rette linja er en forenklet modell som gjelder i konsentrasjonsområdet vi har undersøkt.</p>
+</section>
+<section id="se-pa-dataene-forst">
+<h3>Se på dataene først<a class="headerlink" href="#se-pa-dataene-forst" title="Permalink to this heading">#</a></h3>
+<p>Vi leser inn blankprøvene og kalibreringsstandardene:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;data/uvvis_calibration.csv&quot;</span><span class="p">)</span>
+<span class="n">standards</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;sample_type&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="s2">&quot;blank&quot;</span><span class="p">,</span> <span class="s2">&quot;standard&quot;</span><span class="p">])]</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">standards</span><span class="p">[</span><span class="s2">&quot;concentration_uM&quot;</span><span class="p">],</span> <span class="n">standards</span><span class="p">[</span><span class="s2">&quot;absorbance&quot;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Concentration (µmol/L)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Absorbance&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;UV–Vis calibration data&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/fba20619b2dab6c48116c3d00372cc05f3b7803b47c1604415bbf44c141f6e06.png" src="../../../_images/fba20619b2dab6c48116c3d00372cc05f3b7803b47c1604415bbf44c141f6e06.png" />
+</div>
+</div>
+<p>Punktene ser ut til å følge en omtrent rett linje. Det gir oss en kjemisk og visuell grunn til å prøve en lineær modell.</p>
+</section>
+<section id="lineaer-regresjon">
+<h3>Lineær regresjon<a class="headerlink" href="#lineaer-regresjon" title="Permalink to this heading">#</a></h3>
+<div class="admonition-lineaer-regresjon admonition">
+<p class="admonition-title">Lineær regresjon</p>
+<p>Lineær regresjon er en metode for å tilpasse en rett linje til datapunkter. Linja velges slik at den samlet ligger så nær målepunktene som mulig.</p>
+</div>
+<p>Vi bruker <code class="docutils literal notranslate"><span class="pre">linregress</span></code> fra SciPy til å finne den rette linja som passer best til punktene:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy</span><span class="w"> </span><span class="kn">import</span> <span class="n">stats</span>
+
+<span class="n">concentrations</span> <span class="o">=</span> <span class="n">standards</span><span class="p">[</span><span class="s2">&quot;concentration_uM&quot;</span><span class="p">]</span>
+<span class="n">absorbances</span> <span class="o">=</span> <span class="n">standards</span><span class="p">[</span><span class="s2">&quot;absorbance&quot;</span><span class="p">]</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">linregress</span><span class="p">(</span><span class="n">concentrations</span><span class="p">,</span> <span class="n">absorbances</span><span class="p">)</span>
+<span class="n">slope</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">slope</span>
+<span class="n">intercept</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">intercept</span>
+<span class="n">r_squared</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">rvalue</span><span class="o">**</span><span class="mi">2</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Slope: </span><span class="si">{</span><span class="n">slope</span><span class="si">:</span><span class="s2">.5f</span><span class="si">}</span><span class="s2"> L/µmol&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Intercept: </span><span class="si">{</span><span class="n">intercept</span><span class="si">:</span><span class="s2">.5f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;R²: </span><span class="si">{</span><span class="n">r_squared</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Slope: 0.07989 L/µmol
+Intercept: 0.01037
+R²: 0.999964
+</pre></div>
+</div>
+</div>
+</div>
+<p>Resultatet fra <code class="docutils literal notranslate"><span class="pre">linregress</span></code> inneholder blant annet stigningstall, konstantledd og korrelasjonskoeffisient. Vi kvadrerer korrelasjonskoeffisienten for å få <span class="math notranslate nohighlight">\(R^2\)</span>. Disse tre tallene må tolkes kjemisk.</p>
+<section id="stigningstallet">
+<h4>Stigningstallet<a class="headerlink" href="#stigningstallet" title="Permalink to this heading">#</a></h4>
+<p>Stigningstallet forteller hvor mye absorbansen ifølge modellen øker når konsentrasjonen øker med 1 µmol/L. Et brattere stigningstall betyr at signalet endres mer for en gitt konsentrasjonsendring. I denne sammenhengen sier vi at metoden har større følsomhet.</p>
+<p>Stigningstallet er ikke det samme som presisjon. To metoder kan ha samme stigningstall, men ulik spredning mellom replikatene.</p>
+</section>
+<section id="konstantleddet">
+<h4>Konstantleddet<a class="headerlink" href="#konstantleddet" title="Permalink to this heading">#</a></h4>
+<p>Konstantleddet er absorbansen modellen forventer når konsentrasjonen er null. Det kan blant annet påvirkes av blankbidrag og instrumentets nullpunkt.</p>
+<p>Beer–Lamberts lov kan skrives uten konstantledd, men vi bør ikke automatisk tvinge regresjonslinja gjennom origo. Det krever at vi har en god faglig grunn til å anta at signalet virkelig er null ved konsentrasjon null.</p>
+</section>
+<section id="r-2">
+<h4><span class="math notranslate nohighlight">\(R^2\)</span><a class="headerlink" href="#r-2" title="Permalink to this heading">#</a></h4>
+<div class="admonition-forklaringsgraden-r-2 admonition">
+<p class="admonition-title">Forklaringsgraden <span class="math notranslate nohighlight">\(R^2\)</span></p>
+<p><span class="math notranslate nohighlight">\(R^2\)</span> er et tall mellom 0 og 1 som beskriver hvor godt variasjonen i målepunktene følger den lineære modellen. En verdi nær 1 betyr at punktene ligger nær en rett linje.</p>
+</div>
+<p><span class="math notranslate nohighlight">\(R^2\)</span> beskriver hvor mye av variasjonen i absorbansen som den rette linja fanger opp i dette datasettet. En verdi nær 1 passer med at punktene ligger nær en rett linje.</p>
+<p>Et høyt <span class="math notranslate nohighlight">\(R^2\)</span> er likevel ikke et kvalitetsstempel alene. Vi må også se på punktene, kontrollere at den ukjente prøven ligger i kalibreringsområdet og vurdere om modellen er kjemisk rimelig. En modell kan få høyt <span class="math notranslate nohighlight">\(R^2\)</span> selv om enkelte målinger er dårlige eller det høyeste konsentrasjonsområdet begynner å avvike fra Beer–Lamberts lov.</p>
+</section>
+</section>
+<section id="vis-data-og-modell-sammen">
+<h3>Vis data og modell sammen<a class="headerlink" href="#vis-data-og-modell-sammen" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x_model</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">standards</span><span class="p">[</span><span class="s2">&quot;concentration_uM&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">standards</span><span class="p">[</span><span class="s2">&quot;concentration_uM&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">y_model</span> <span class="o">=</span> <span class="n">slope</span> <span class="o">*</span> <span class="n">x_model</span> <span class="o">+</span> <span class="n">intercept</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">standards</span><span class="p">[</span><span class="s2">&quot;concentration_uM&quot;</span><span class="p">],</span> <span class="n">standards</span><span class="p">[</span><span class="s2">&quot;absorbance&quot;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Measurements&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_model</span><span class="p">,</span> <span class="n">y_model</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;#b23a48&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Linear model&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Concentration (µmol/L)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Absorbance&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/234beda6e6a826640671ceb290a04e83cb36cc260b7a0491bb50f15486beda09.png" src="../../../_images/234beda6e6a826640671ceb290a04e83cb36cc260b7a0491bb50f15486beda09.png" />
+</div>
+</div>
+<p>Vi beholder råmålingene i figuren. Dersom vi bare viser ett gjennomsnitt for hver konsentrasjon, skjuler vi variasjonen mellom replikatene.</p>
+</section>
+<section id="bestem-den-ukjente-konsentrasjonen">
+<h3>Bestem den ukjente konsentrasjonen<a class="headerlink" href="#bestem-den-ukjente-konsentrasjonen" title="Permalink to this heading">#</a></h3>
+<p>For en ukjent prøve måler vi absorbansen og løser likningen med hensyn på konsentrasjonen:</p>
+<div class="math notranslate nohighlight">
+\[
+c=\frac{A-b}{a}
+\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">unknown</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;sample_type&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;unknown&quot;</span><span class="p">]</span>
+<span class="n">unknown_mean_absorbance</span> <span class="o">=</span> <span class="n">unknown</span><span class="p">[</span><span class="s2">&quot;absorbance&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+
+<span class="n">unknown_concentration</span> <span class="o">=</span> <span class="n">unknown_mean_absorbance</span><span class="o">-</span><span class="n">intercept</span><span class="o">/</span> <span class="n">slope</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Mean unknown absorbance: </span><span class="si">{</span><span class="n">unknown_mean_absorbance</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Estimated concentration: </span><span class="si">{</span><span class="n">unknown_concentration</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> µmol/L&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mean unknown absorbance: 0.604
+Estimated concentration: 0.47 µmol/L
+</pre></div>
+</div>
+</div>
+</div>
+<p>Dette er et punktestimat. Det betyr at vi får ett beste anslag, men ikke at konsentrasjonen er kjent uten usikkerhet. Replikatene til den ukjente prøven varierer, og selve kalibreringslinja er også bestemt fra målinger med variasjon.</p>
+<p>Vi skal ikke beregne hele usikkerheten i den ukjente konsentrasjonen her. Det viktigste på dette nivået er å være klar over at svaret ikke blir nøyaktig bare fordi Python skriver ut mange desimaler.</p>
+<p>Du kan utforske kalibreringen i editoren nedenfor.</p>
+<iframe src="../../basthon/?from=examples/calibration_regression.py" width="100%" height="690" frameborder="0" title="Interactive Python editor for UV-Vis calibration" loading="lazy" allowfullscreen></iframe>
+<div class="tip admonition">
+<p class="admonition-title">Underveisoppgave</p>
+<ol class="arabic simple">
+<li><p>Legg til 0,01 i alle absorbansverdiene. Hva skjer med stigningstallet og konstantleddet?</p></li>
+<li><p>Endre bare den høyeste kalibreringsstandarden. Hva skjer med linja og <span class="math notranslate nohighlight">\(R^2\)</span>?</p></li>
+<li><p>Prøv en ukjent absorbans som er høyere enn alle standardene. Hvorfor bør vi være forsiktige med svaret?</p></li>
+</ol>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Løsningsforslag</p>
+<p>Når alle absorbansene økes like mye, endres først og fremst konstantleddet. En endring i ett kalibreringspunkt kan påvirke både stigningstall og <span class="math notranslate nohighlight">\(R^2\)</span>. En ukjent absorbans utenfor området krever ekstrapolasjon: Vi antar da at den lineære sammenhengen fortsetter i et område vi ikke har undersøkt.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="del-2-sammenlikne-et-resultat-med-en-referanseverdi">
+<h2>Del 2: Sammenlikne et resultat med en referanseverdi<a class="headerlink" href="#del-2-sammenlikne-et-resultat-med-en-referanseverdi" title="Permalink to this heading">#</a></h2>
+<p>Tenk deg at vi analyserer et sertifisert referansemateriale. Den sertifiserte konsentrasjonen er 5,00 mg/L, og vi får disse resultatene:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">measurements_mg_L</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">5.12</span><span class="p">,</span> <span class="mf">5.08</span><span class="p">,</span> <span class="mf">5.15</span><span class="p">,</span> <span class="mf">5.10</span><span class="p">,</span> <span class="mf">5.13</span><span class="p">])</span>
+<span class="n">reference_value</span> <span class="o">=</span> <span class="mf">5.00</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Gjennomsnittet er 5,116 mg/L. Forskjellen fra 5,00 mg/L kan skyldes tilfeldig målevariasjon, men den kan også tyde på at metoden gir systematisk for høye resultater.</p>
+<section id="start-med-konfidensintervallet">
+<h3>Start med konfidensintervallet<a class="headerlink" href="#start-med-konfidensintervallet" title="Permalink to this heading">#</a></h3>
+<p>I forrige kapittel beregnet vi et 95 % konfidensintervall fra omtrent 5,082 til 5,150 mg/L. Referanseverdien 5,00 mg/L ligger utenfor intervallet. Det forteller oss at 5,00 mg/L er vanskelig å forene med måleserien dersom antakelsene bak intervallet er rimelige.</p>
+<p>Konfidensintervallet er ofte et godt sted å starte fordi det viser både estimatet og usikkerheten. Vi kan også formulere spørsmålet som en hypotesetest.</p>
+</section>
+</section>
+<section id="hypotesetest-uten-mystikk">
+<h2>Hypotesetest uten mystikk<a class="headerlink" href="#hypotesetest-uten-mystikk" title="Permalink to this heading">#</a></h2>
+<p>En hypotesetest begynner med en påstand vi undersøker.</p>
+<div class="admonition-nullhypotese admonition">
+<p class="admonition-title">Nullhypotese</p>
+<p>Nullhypotesen, <span class="math notranslate nohighlight">\(H_0\)</span>, er påstanden testen tar utgangspunkt i. I eksempelet er nullhypotesen at middelverdien til måleprosessen er 5,00 mg/L.</p>
+</div>
+<p>Testen spør: <em>Hvor uvanlig ville måleresultatet vårt vært dersom denne nullhypotesen var riktig?</em></p>
+<p>Svaret oppsummeres i en p-verdi.</p>
+<div class="admonition-p-verdi admonition">
+<p class="admonition-title">p-verdi</p>
+<p>p-verdien er sannsynligheten for å få det observerte resultatet, eller et enda større avvik, dersom nullhypotesen og forutsetningene for testen er riktige. En liten p-verdi betyr at resultatet er vanskelig å forene med nullhypotesen.</p>
+</div>
+<p>Vi velger ofte et signifikansnivå på 0,05:</p>
+<ul class="simple">
+<li><p>Dersom <span class="math notranslate nohighlight">\(p&lt;0{,}05\)</span>, sier vi at dataene gir grunnlag for å forkaste nullhypotesen.</p></li>
+<li><p>Dersom <span class="math notranslate nohighlight">\(p\geq0{,}05\)</span>, sier vi at dataene ikke gir tilstrekkelig grunnlag for å forkaste den.</p></li>
+</ul>
+<p>En p-verdi er ikke sannsynligheten for at nullhypotesen er sann. En høy p-verdi beviser heller ikke at to verdier er like. Den kan også skyldes at vi har få eller upresise målinger.</p>
+<section id="ettutvalgs-t-test">
+<h3>Ettutvalgs t-test<a class="headerlink" href="#ettutvalgs-t-test" title="Permalink to this heading">#</a></h3>
+<p>Når vi sammenlikner gjennomsnittet fra én måleserie med én kjent eller sertifisert verdi, kan vi bruke en ettutvalgs t-test:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">scipy</span><span class="w"> </span><span class="kn">import</span> <span class="n">stats</span>
+
+<span class="n">test</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">ttest_1samp</span><span class="p">(</span><span class="n">measurements_mg_L</span><span class="p">,</span> <span class="n">popmean</span><span class="o">=</span><span class="n">reference_value</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;t statistic: </span><span class="si">{</span><span class="n">test</span><span class="o">.</span><span class="n">statistic</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;p value: </span><span class="si">{</span><span class="n">test</span><span class="o">.</span><span class="n">pvalue</span><span class="si">:</span><span class="s2">.5f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>t statistic: 9.600
+p value: 0.00066
+</pre></div>
+</div>
+</div>
+</div>
+<p>Her blir p-verdien mindre enn 0,05. Dataene gir dermed grunnlag for å si at middelverdien avviker fra den sertifiserte verdien. Vi bør likevel også vurdere størrelsen på avviket. En statistisk tydelig forskjell er ikke nødvendigvis stor nok til å ha kjemisk eller praktisk betydning.</p>
+<p>Testen bygger på de samme hovedantakelsene som det t-baserte konfidensintervallet: Målingene skal være uavhengige, og målefordelingen bør være omtrent normal.</p>
+</section>
+</section>
+<section id="del-3-sammenlikne-to-analysemetoder">
+<h2>Del 3: Sammenlikne to analysemetoder<a class="headerlink" href="#del-3-sammenlikne-to-analysemetoder" title="Permalink to this heading">#</a></h2>
+<p>To metoder brukes på de samme åtte prøvene. Hver rad inneholder derfor et par resultater: ett fra metode A og ett fra metode B.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">methods</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;data/method_comparison.csv&quot;</span><span class="p">)</span>
+
+<span class="n">methods</span><span class="p">[</span><span class="s2">&quot;difference_mg_L&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">methods</span><span class="p">[</span><span class="s2">&quot;method_B_mg_L&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">methods</span><span class="p">[</span><span class="s2">&quot;method_A_mg_L&quot;</span><span class="p">]</span>
+<span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">methods</span><span class="p">[[</span><span class="s2">&quot;sample_id&quot;</span><span class="p">,</span> <span class="s2">&quot;difference_mg_L&quot;</span><span class="p">]])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Det er forskjellen innen hvert par som er viktig. En prøve med høy konsentrasjon vil vanligvis gi et høyt resultat med begge metodene. Ved å trekke resultatene fra hverandre undersøker vi om den ene metoden gjennomgående gir høyere eller lavere verdier enn den andre.</p>
+<section id="paret-t-test">
+<h3>Paret t-test<a class="headerlink" href="#paret-t-test" title="Permalink to this heading">#</a></h3>
+<div class="admonition-paret-t-test admonition">
+<p class="admonition-title">Paret t-test</p>
+<p>En paret t-test brukes når de samme prøvene er målt på to måter. Testen undersøker om gjennomsnittet av forskjellene innen hvert prøvepar er forskjellig fra null.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">test</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">ttest_rel</span><span class="p">(</span><span class="n">methods</span><span class="p">[</span><span class="s2">&quot;method_B_mg_L&quot;</span><span class="p">],</span> <span class="n">methods</span><span class="p">[</span><span class="s2">&quot;method_A_mg_L&quot;</span><span class="p">])</span>
+
+<span class="n">mean_difference</span> <span class="o">=</span> <span class="n">methods</span><span class="p">[</span><span class="s2">&quot;difference_mg_L&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Mean paired difference: </span><span class="si">{</span><span class="n">mean_difference</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> mg/L&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;p value: </span><span class="si">{</span><span class="n">test</span><span class="o">.</span><span class="n">pvalue</span><span class="si">:</span><span class="s2">.5f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Dersom p-verdien er liten, har vi evidens for en systematisk forskjell mellom metodene. Middelforskjellen forteller hvor stor forskjellen er og hvilken metode som gir de høyeste resultatene.</p>
+<p>Vi bør rapportere begge deler. P-verdien alene forteller ikke om forskjellen på for eksempel 0,20 mg/L er viktig for formålet analysen skal brukes til.</p>
+<p>Du kan utforske metodesammenlikningen i editoren nedenfor.</p>
+<iframe src="../../basthon/?from=examples/inference_method_comparison.py" width="100%" height="520" frameborder="0" title="Interactive Python editor for a paired method comparison" loading="lazy" allowfullscreen></iframe>
+<div class="admonition-hvorfor-ikke-behandle-resultatene-som-to-uavhengige-grupper admonition">
+<p class="admonition-title">Hvorfor ikke behandle resultatene som to uavhengige grupper?</p>
+<p>De samme prøvene er målt med begge metodene. Resultatene hører derfor sammen parvis. En test som ignorerer parene, svarer på et annet spørsmål og kaster bort informasjon om forskjellen innen hver prøve.</p>
+</div>
+</section>
+</section>
+<section id="hva-bruker-vi-nar">
+<h2>Hva bruker vi når?<a class="headerlink" href="#hva-bruker-vi-nar" title="Permalink to this heading">#</a></h2>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Kjemisk spørsmål</p></th>
+<th class="head"><p>Metode</p></th>
+<th class="head"><p>Eksempel</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Hvordan henger signal og konsentrasjon sammen?</p></td>
+<td><p>Lineær regresjon</p></td>
+<td><p>Kalibreringskurve i UV–Vis</p></td>
+</tr>
+<tr class="row-odd"><td><p>Hvor usikkert er gjennomsnittet fra en måleserie?</p></td>
+<td><p>95 % konfidensintervall</p></td>
+<td><p>Rapportere middelverdien for et referansemateriale</p></td>
+</tr>
+<tr class="row-even"><td><p>Avviker én måleserie fra en kjent verdi?</p></td>
+<td><p>Ettutvalgs t-test</p></td>
+<td><p>Måler vi samme verdi som den sertifiserte konsentrasjonen?</p></td>
+</tr>
+<tr class="row-odd"><td><p>Gir to metoder ulike resultater for de samme prøvene?</p></td>
+<td><p>Paret t-test</p></td>
+<td><p>Samme vannprøver analyseres med to metoder</p></td>
+</tr>
+<tr class="row-even"><td><p>Er én på forhånd mistenkelig verdi uvanlig stor eller liten?</p></td>
+<td><p>Faglig kontroll, eventuelt Grubbs’ test</p></td>
+<td><p>Én replikat skiller seg tydelig fra de andre</p></td>
+</tr>
+</tbody>
+</table>
+<p>Legg merke til at testen velges ut fra forsøksdesignet og spørsmålet, ikke ut fra hvilken test som gir ønsket p-verdi.</p>
+</section>
+<section id="del-4-en-mistenkelig-maling">
+<h2>Del 4: En mistenkelig måling<a class="headerlink" href="#del-4-en-mistenkelig-maling" title="Permalink to this heading">#</a></h2>
+<p>En verdi som skiller seg tydelig fra resten, kan skyldes feil innskriving, forurensning, feil prøvepreparering, instrumentfeil eller en reell kjemisk forskjell. Før vi beregner en test, bør vi derfor:</p>
+<ol class="arabic simple">
+<li><p>se på rådataene</p></li>
+<li><p>kontrollere enheter, instrumentlogg og laboratorienotater</p></li>
+<li><p>undersøke om prøven ble behandlet annerledes</p></li>
+<li><p>dokumentere hva vi finner</p></li>
+</ol>
+<p>Vi skal aldri fjerne en verdi bare fordi standardavviket blir mindre eller kalibreringslinja ser penere ut uten den.</p>
+<section id="grubbs-test">
+<h3>Grubbs’ test<a class="headerlink" href="#grubbs-test" title="Permalink to this heading">#</a></h3>
+<div class="admonition-grubbs-test admonition">
+<p class="admonition-title">Grubbs’ test</p>
+<p>Grubbs’ test undersøker om den mest ekstreme observasjonen i en omtrent normalfordelt måleserie er uvanlig langt fra resten. Testen er laget for én på forhånd mistenkelig verdi.</p>
+</div>
+<p>Grubbs’ test kan brukes når <strong>én verdi er mistenkelig</strong>, og målingene ellers kan antas å komme fra en omtrent normalfordelt populasjon. Testen sammenlikner avstanden fra den mest ekstreme verdien til gjennomsnittet med standardavviket i hele måleserien:</p>
+<div class="math notranslate nohighlight">
+\[
+G=\frac{\text{største avstand fra gjennomsnittet}}{s}
+\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">measurements_mg_L</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">10.02</span><span class="p">,</span> <span class="mf">10.05</span><span class="p">,</span> <span class="mf">9.98</span><span class="p">,</span> <span class="mf">10.01</span><span class="p">,</span> <span class="mf">10.42</span><span class="p">])</span>
+<span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.05</span>
+
+<span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">measurements_mg_L</span><span class="p">)</span>
+<span class="n">mean</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">measurements_mg_L</span><span class="p">)</span>
+<span class="n">sample_sd</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">measurements_mg_L</span><span class="p">,</span> <span class="n">ddof</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">deviations</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">measurements_mg_L</span> <span class="o">-</span> <span class="n">mean</span><span class="p">)</span>
+
+<span class="n">suspect_index</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">deviations</span><span class="p">)</span>
+<span class="n">G_calculated</span> <span class="o">=</span> <span class="n">deviations</span><span class="p">[</span><span class="n">suspect_index</span><span class="p">]</span> <span class="o">/</span> <span class="n">sample_sd</span>
+
+<span class="n">t_critical</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">t</span><span class="o">.</span><span class="n">ppf</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">alpha</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">n</span><span class="p">),</span> <span class="n">df</span><span class="o">=</span><span class="n">n</span> <span class="o">-</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">G_critical</span> <span class="o">=</span> <span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span>
+    <span class="n">t_critical</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">2</span> <span class="o">+</span> <span class="n">t_critical</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;G calculated: </span><span class="si">{</span><span class="n">G_calculated</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;G critical: </span><span class="si">{</span><span class="n">G_critical</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Dersom den beregnede verdien er større enn den kritiske verdien, flagger testen den mest ekstreme målingen. Det er et signal om at verdien er vanskelig å forene med resten av måleserien under antakelsene til testen.</p>
+<p>Det er ikke en automatisk sletteknapp. Testen kan ikke fortelle om avviket skyldes feilpipettering eller en reell forskjell i prøven. Den er også laget for én mulig utligger og bør ikke gjentas til datasettet ser pent ut.</p>
+<p>Du kan undersøke testen i editoren nedenfor.</p>
+<iframe src="../../basthon/?from=examples/calibration_grubbs.py" width="100%" height="560" frameborder="0" title="Interactive Python editor for Grubbs' test" loading="lazy" allowfullscreen></iframe>
+<div class="tip admonition">
+<p class="admonition-title">Underveisoppgave</p>
+<p>Beregn gjennomsnitt og standardavvik med og uten 10,42 mg/L. Kjør deretter testen. Hvilken informasjon trenger du i tillegg til testresultatet før du eventuelt utelater målingen?</p>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Løsningsforslag</p>
+<p>Den høye verdien øker både gjennomsnittet og standardavviket. Før den eventuelt utelates, trenger vi informasjon om blant annet prøvepreparering, instrumentlogg og om prøven kan være kjemisk forskjellig. Beslutningen og konsekvensen for resultatet bør dokumenteres.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="en-enkel-arbeidsflyt">
+<h2>En enkel arbeidsflyt<a class="headerlink" href="#en-enkel-arbeidsflyt" title="Permalink to this heading">#</a></h2>
+<p>Når vi skal bruke statistikk i et kjemisk arbeid, kan vi følge denne rekkefølgen:</p>
+<ol class="arabic simple">
+<li><p>Formuler det kjemiske spørsmålet.</p></li>
+<li><p>Finn ut hva hver observasjon representerer, og om målinger hører sammen parvis.</p></li>
+<li><p>Se på rådataene og lag en relevant figur.</p></li>
+<li><p>Velg statistisk størrelse eller test ut fra spørsmålet.</p></li>
+<li><p>Kontroller at forutsetningene er rimelige.</p></li>
+<li><p>Rapporter både tallresultatet og hva det betyr kjemisk.</p></li>
+</ol>
+<p>Python kan utføre beregningen, men valget og tolkningen må fortsatt bygge på forsøket.</p>
+</section>
+<section id="kort-oppsummering">
+<h2>Kort oppsummering<a class="headerlink" href="#kort-oppsummering" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Lineær regresjon kan knytte et målt signal til konsentrasjon i et undersøkt kalibreringsområde.</p></li>
+<li><p>Stigningstall, konstantledd og <span class="math notranslate nohighlight">\(R^2\)</span> må tolkes sammen med dataene og den kjemiske modellen.</p></li>
+<li><p>Et konfidensintervall viser estimat og usikkerhet. En p-verdi sier hvor uvanlige dataene er under en nullhypotese.</p></li>
+<li><p>Ettutvalgs t-test brukes mot én referanseverdi. Paret t-test brukes når de samme prøvene er målt med to metoder.</p></li>
+<li><p>En statistisk forskjell er ikke automatisk kjemisk viktig.</p></li>
+<li><p>En mistenkelig verdi må undersøkes faglig. Grubbs’ test kan støtte vurderingen, men ikke erstatte den.</p></li>
+</ul>
+</section>
+<section id="oppgaver">
+<h2>Oppgaver<a class="headerlink" href="#oppgaver" title="Permalink to this heading">#</a></h2>
+<div class="tip admonition">
+<p class="admonition-title">Oppgave 4.1 – forstå kalibreringslinja</p>
+<p>Bruk <code class="docutils literal notranslate"><span class="pre">uvvis_calibration.csv</span></code> til å utføre en lineær regresjon. Rapporter stigningstall, konstantledd og <span class="math notranslate nohighlight">\(R^2\)</span>. Forklar med ord hva stigningstallet og konstantleddet betyr i denne UV–Vis-analysen.</p>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Oppgave 4.2 – bestem en ukjent</p>
+<p>Beregn middelabsorbansen til den ukjente prøven og bestem konsentrasjonen med kalibreringsmodellen. Kontroller at signalet ligger innenfor området til standardene. Hvorfor bør du ikke rapportere alle desimalene Python gir?</p>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Oppgave 4.3 – hva kan <span class="math notranslate nohighlight">\(R^2\)</span> fortelle?</p>
+<p>En student skriver: «<span class="math notranslate nohighlight">\(R^2=0{,}999\)</span>, derfor er konsentrasjonen til den ukjente prøven helt riktig.» Forklar minst tre problemer med denne konklusjonen.</p>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Oppgave 4.4 – referanseverdi</p>
+<p>Målingene <code class="docutils literal notranslate"><span class="pre">[99.8,</span> <span class="pre">100.3,</span> <span class="pre">100.1,</span> <span class="pre">99.9,</span> <span class="pre">100.4]</span></code> mg/L skal sammenliknes med en sertifisert verdi på 100,0 mg/L. Beregn først et 95 % konfidensintervall. Utfør deretter en ettutvalgs t-test. Skriv en konklusjon med vanlig språk.</p>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Oppgave 4.5 – velg riktig metode</p>
+<p>Velg mellom lineær regresjon, ettutvalgs t-test, paret t-test og Grubbs’ test. Begrunn valget.</p>
+<ol class="arabic simple">
+<li><p>En ny metode brukes på ti prøver som også er analysert med referansemetoden.</p></li>
+<li><p>Seks målinger av et sertifisert materiale sammenliknes med sertifikatverdien.</p></li>
+<li><p>Fluorescens måles for fem kjente konsentrasjoner.</p></li>
+<li><p>Én av fem replikater er mistenkelig høy etter en dokumentert pipetteringshendelse.</p></li>
+</ol>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Oppgave 4.6 – to analysemetoder</p>
+<p>Bruk <code class="docutils literal notranslate"><span class="pre">method_comparison.csv</span></code>. Beregn forskjellen mellom metode B og metode A for hver prøve. Finn middelforskjellen og utfør en paret t-test. Gir metode B gjennomgående høyere eller lavere resultater? Er størrelsen på forskjellen viktig for bruksområdet?</p>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Oppgave 4.7 – mistenkelig måling</p>
+<p>Bruk måleserien <code class="docutils literal notranslate"><span class="pre">[10.02,</span> <span class="pre">10.05,</span> <span class="pre">9.98,</span> <span class="pre">10.01,</span> <span class="pre">10.42]</span></code> mg/L. Utfør Grubbs’ test, og skriv deretter en kort beslutningslogg med: observert problem, statistisk resultat, mulig kjemisk forklaring og hvilken mer informasjon du trenger.</p>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Oppgave 4.8 – samlet UV–Vis-case</p>
+<p>Bruk <code class="docutils literal notranslate"><span class="pre">uvvis_calibration.csv</span></code> til å lage et kalibreringsplott, utføre lineær regresjon og bestemme konsentrasjonen til den ukjente prøven. Skriv en kort rapport som inneholder modell, enheter, konsentrasjonsestimat og to begrensninger ved resultatet.</p>
+</div>
+</section>
+<section id="video">
+<h2>Video<a class="headerlink" href="#video" title="Permalink to this heading">#</a></h2>
+<p>I videoen nedenfor kan du få en innføring eller repetisjon i regresjonsanalyse.</p>
+<iframe width="800" height="600" src="https://www.youtube.com/embed/GrLWboUtL3A?autoplay=0&rel=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./docs/datahandtering_visualisering/arkiv"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#del-1-fra-kalibreringsstandarder-til-ukjent-konsentrasjon">Del 1: Fra kalibreringsstandarder til ukjent konsentrasjon</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#den-kjemiske-modellen">Den kjemiske modellen</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#se-pa-dataene-forst">Se på dataene først</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lineaer-regresjon">Lineær regresjon</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#stigningstallet">Stigningstallet</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#konstantleddet">Konstantleddet</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#r-2"><span class="math notranslate nohighlight">\(R^2\)</span></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vis-data-og-modell-sammen">Vis data og modell sammen</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bestem-den-ukjente-konsentrasjonen">Bestem den ukjente konsentrasjonen</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#del-2-sammenlikne-et-resultat-med-en-referanseverdi">Del 2: Sammenlikne et resultat med en referanseverdi</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#start-med-konfidensintervallet">Start med konfidensintervallet</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hypotesetest-uten-mystikk">Hypotesetest uten mystikk</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ettutvalgs-t-test">Ettutvalgs t-test</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#del-3-sammenlikne-to-analysemetoder">Del 3: Sammenlikne to analysemetoder</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#paret-t-test">Paret t-test</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hva-bruker-vi-nar">Hva bruker vi når?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#del-4-en-mistenkelig-maling">Del 4: En mistenkelig måling</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#grubbs-test">Grubbs’ test</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#en-enkel-arbeidsflyt">En enkel arbeidsflyt</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kort-oppsummering">Kort oppsummering</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgaver">Oppgaver</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#video">Video</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Andreas Haraldsrud
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

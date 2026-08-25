@@ -1,0 +1,135 @@
+[
+  {
+    "question": "Hva er output fra følgende kode?",
+    "code": "a = \"1\"\nb = \"2\"\nprint(a + b)",
+    "type": "multiple_choice",
+    "answers": [
+      {"answer": "1", "correct": false, "feedback": "Feil. Variablene inneholder strenger, og strenger slås sammen når de adderes."},
+      {"answer": "2", "correct": false, "feedback": "Feil. Variablene inneholder strenger, og strenger slås sammen når de adderes."},
+      {"answer": "3", "correct": false, "feedback": "Feil. Her adderes ikke tall, men strenger. Legg merke til hermetegnene."},
+      {"answer": "12", "correct": true, "feedback": "Riktig. Variablene inneholder strenger, og strenger slås sammen når de adderes."},
+      {"answer": "En feilmelding", "correct": false, "feedback": "Feil. To strenger kan godt adderes."}
+    ]
+  },
+  {
+    "question": "Hva skjer når du kjører følgende kode?",
+    "code": "print = \"Hei\"",
+    "type": "multiple_choice",
+    "answers": [
+      {"answer": "\"Hei\" blir skrevet ut.", "correct": false, "feedback": "Feil. Korrekt syntaks for utskrift er `print(\"Hei\")`."},
+      {"answer": "En feilmelding blir skrevet ut.", "correct": false, "feedback": "Feil. Det er lov å skrive over navnet `print`. Men da finnes ikke print-funksjonen i programmet ditt lenger, og du må restarte Python."},
+      {"answer": "Programmet krasjer.", "correct": false, "feedback": "Feil. Linja er gyldig Python."},
+      {"answer": "Ingenting skjer.", "correct": true, "feedback": "Riktig — i hvert fall ikke noe synlig. Men navnet `print` peker nå på en streng, så print-funksjonen er borte til du restarter Python."}
+    ]
+  },
+  {
+    "question": "Hva er output?",
+    "code": "print(3 > 4)",
+    "type": "multiple_choice",
+    "answers": [
+      {"answer": "En feilmelding", "correct": false, "feedback": "Feil. Dette er gyldig syntaks."},
+      {"answer": "True", "correct": false, "feedback": "Feil. 3 er ikke større enn 4."},
+      {"answer": "False", "correct": true, "feedback": "Riktig. 3 er ikke større enn 4, og vi får den boolske verdien `False` (merk stor forbokstav)."},
+      {"answer": "Ingenting skjer.", "correct": false, "feedback": "Feil. Sammenlikningen gir en verdi som skrives ut."}
+    ]
+  },
+  {
+    "question": "Hva er output fra følgende kode hvis du taster inn 1 og 2 i konsollen når du kjører programmet?",
+    "code": "a = input(\"tall 1: \")\nb = input(\"tall 2: \")\nb = float(b)\nprint(a + b)",
+    "type": "multiple_choice",
+    "answers": [
+      {"answer": "3", "correct": false, "feedback": "Feil. `a` er fortsatt en streng, mens `b` er gjort om til flyttall. De kan ikke adderes."},
+      {"answer": "12", "correct": false, "feedback": "Feil. Det hadde vært svaret hvis begge var strenger, men `b` er konvertert til flyttall."},
+      {"answer": "1", "correct": false, "feedback": "Feil. Begge variablene inngår i addisjonen."},
+      {"answer": "En feilmelding", "correct": true, "feedback": "Riktig. `a` er en streng og `b` er et flyttall, og de to typene kan ikke adderes."}
+    ]
+  },
+  {
+    "question": "Hva er output fra følgende program?",
+    "code": "a = 5.0\nb = 3.0\nc = a + b\na = 3.0\nd = 2.0\ne = a + c * d\nprint(e)",
+    "type": "multiple_choice",
+    "answers": [
+      {"answer": "18.0", "correct": false, "feedback": "Feil. Pass på regnerekkefølgen, og hold styr på hva variablene inneholder når linja kjøres."},
+      {"answer": "15.0", "correct": false, "feedback": "Feil. Pass på regnerekkefølgen, og hold styr på hva variablene inneholder når linja kjøres."},
+      {"answer": "22.0", "correct": false, "feedback": "Feil. `c` ble regnet ut før `a` fikk ny verdi, så `c` er fortsatt 8.0."},
+      {"answer": "19.0", "correct": true, "feedback": "Riktig. `c` er 8.0, og `3.0 + 8.0 * 2.0 = 19.0`."}
+    ]
+  },
+  {
+    "question": "Hva er verdien til variablene nedenfor?",
+    "code": "a = 10\nb = 20\na = b",
+    "type": "multiple_choice",
+    "answers": [
+      {"answer": "a = 20, b = 20", "correct": true, "feedback": "Riktig. I tredje linje får `a` verdien til `b`."},
+      {"answer": "a = 20, b = 10", "correct": false, "feedback": "Feil. `a` får verdien til `b`, men ikke motsatt — verdiene byttes ikke."},
+      {"answer": "a = 10, b = 10", "correct": false, "feedback": "Feil. Det er `a` som endres, ikke `b`."},
+      {"answer": "a = 10, b = 20", "correct": false, "feedback": "Feil. Tredje linje endrer `a`."}
+    ]
+  },
+  {
+    "question": "Hvilke(n) kodesnutt(er) skriver ut 20 % av verdien til en variabel x?",
+    "type": "many_choice",
+    "answers": [
+      {"answer": "print(20 % x)", "correct": false, "feedback": "Feil. Dette er gyldig Python, men `%` er ikke prosent. Her får du resten etter divisjon mellom 20 og x."},
+      {"answer": "print(20% * x)", "correct": false, "feedback": "Feil. Dette gir en feilmelding."},
+      {"answer": "print(1.20 * x)", "correct": false, "feedback": "Feil. Her får du 120 % av verdien."},
+      {"answer": "print(x - 0.8 * x)", "correct": true, "feedback": "Riktig — det som blir igjen når du trekker fra 80 %."},
+      {"answer": "print(0.2 * x)", "correct": true, "feedback": "Riktig."}
+    ]
+  },
+  {
+    "question": "Hvilken datatype har verdien som skrives ut?",
+    "code": "print(6 / 3)",
+    "type": "multiple_choice",
+    "answers": [
+      {"answer": "int — svaret er 2", "correct": false, "feedback": "Feil. Vanlig divisjon med `/` gir alltid flyttall i Python 3, også når det går opp."},
+      {"answer": "float — svaret er 2.0", "correct": true, "feedback": "Riktig. `/` gir alltid flyttall, selv om divisjonen går opp."},
+      {"answer": "str — svaret er \"2\"", "correct": false, "feedback": "Feil. Ingen av tallene er strenger."},
+      {"answer": "Det avhenger av om tallene går opp.", "correct": false, "feedback": "Feil. `/` gir flyttall uansett."}
+    ]
+  },
+  {
+    "question": "Hva er output fra følgende kode?",
+    "code": "print(7 // 2, 7 % 2)",
+    "type": "multiple_choice",
+    "answers": [
+      {"answer": "3 1", "correct": true, "feedback": "Riktig. `//` gir heltallsdelen av divisjonen, og `%` gir resten."},
+      {"answer": "3.5 1", "correct": false, "feedback": "Feil. `//` runder ned til nærmeste heltall — det er `/` som gir 3.5."},
+      {"answer": "1 3", "correct": false, "feedback": "Feil. Rekkefølgen er motsatt: `//` først, `%` sist."},
+      {"answer": "3 0.5", "correct": false, "feedback": "Feil. `%` gir resten som et helt tall her, ikke en desimaldel."}
+    ]
+  },
+  {
+    "question": "Hva er output fra dette programmet?",
+    "code": "print(2 ** 3 ** 2)",
+    "type": "numeric",
+    "precision": 0,
+    "answers": [
+      {"type": "value", "value": 512, "correct": true, "feedback": "Riktig. Potenser regnes fra høyre mot venstre: `3 ** 2 = 9` først, så `2 ** 9`."},
+      {"type": "value", "value": 64, "correct": false, "feedback": "Feil. Det svaret får du hvis du regner `(2 ** 3) ** 2`. Potenser regnes fra høyre."},
+      {"type": "default", "feedback": "Feil. Regn ut den høyre potensen først."}
+    ]
+  },
+  {
+    "question": "Du har veid ut 5.00 g natriumklorid (M = 58.44 g/mol). Hva skriver programmet ut? Oppgi svaret med tre desimaler.",
+    "code": "m = 5.00\nM = 58.44\nn = m / M\nprint(round(n, 3))",
+    "type": "numeric",
+    "precision": 3,
+    "answers": [
+      {"type": "value", "value": 0.086, "correct": true, "feedback": "Riktig. Stoffmengden er `m/M`, altså omtrent 0.086 mol."},
+      {"type": "range", "range": [11.6, 11.8], "correct": false, "feedback": "Feil. Du har delt `M` på `m`. Stoffmengde er masse delt på molar masse."},
+      {"type": "default", "feedback": "Feil. Regn ut `m/M` og rund av til tre desimaler."}
+    ]
+  },
+  {
+    "question": "Hvilke av navnene nedenfor er gyldige variabelnavn i Python?",
+    "type": "many_choice",
+    "answers": [
+      {"answer": "molar_masse", "correct": true, "feedback": "Riktig. Bokstaver og understrek er greit."},
+      {"answer": "2mol", "correct": false, "feedback": "Feil. Et variabelnavn kan ikke begynne med et tall."},
+      {"answer": "pH", "correct": true, "feedback": "Riktig. Store og små bokstaver er begge lov — men merk at `pH` og `ph` er to ulike variabler."},
+      {"answer": "delta H", "correct": false, "feedback": "Feil. Mellomrom er ikke lov i variabelnavn. Bruk `delta_H`."},
+      {"answer": "print", "correct": true, "feedback": "Teknisk sett gyldig — men en dårlig idé, for da mister du print-funksjonen."}
+    ]
+  }
+]
