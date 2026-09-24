@@ -1,0 +1,1120 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>&lt;no title&gt; &#8212; Programmering i kjemi</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/kjemiquiz.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/kjemiquiz.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom1.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
+    <script src="../_static/kjemiquiz.js"></script>
+    <script src="../_static/turtle_basthon.js"></script>
+    <script src="../_static/kjemiquiz.js"></script>
+    <script src="../_static/turtle_basthon.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'apps/tegne_molekyler';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../docs/intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/qe-logo-large.png" class="logo__image only-light" alt="Programmering i kjemi - Home"/>
+    <script>document.write(`<img src="../_static/qe-logo-large.png" class="logo__image only-dark" alt="Programmering i kjemi - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Kom i gang</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../docs/grunnleggende_programmering/introduksjon.html">Introduksjon: Programmering som verktøy i kjemi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../docs/grunnleggende_programmering/vscode.html">Visual Studio Code for kjemikere</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Grunnleggende programmering</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../docs/grunnleggende_programmering/tall_variabler.html">Variabler og datatyper</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../docs/grunnleggende_programmering/quiz1.html">Quiz 1: Variabler og aritmetikk</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../docs/grunnleggende_programmering/lister.html">Lister</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../docs/grunnleggende_programmering/quiz2.html">Quiz 2: Lister</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../docs/grunnleggende_programmering/vilkar.html">Vilkår (if-tester)</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../docs/grunnleggende_programmering/quiz3.html">Quiz 3: Vilkår (if-tester)</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../docs/grunnleggende_programmering/lokker.html">Løkker</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../docs/grunnleggende_programmering/quiz4.html">Quiz 4: Løkker</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../docs/grunnleggende_programmering/funksjoner.html">Funksjoner</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../docs/grunnleggende_programmering/quiz5.html">Quiz 5: Funksjoner</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../docs/grunnleggende_programmering/datasamlinger.html">Datasamlinger</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../docs/grunnleggende_programmering/quiz6.html">Quiz 6: Datasamlinger (arrayer og dictionarier)</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Datahåndtering og visualisering</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../docs/datahandtering_visualisering/kjemiske_biblioteker.html">Kjemiske biblioteker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../docs/datahandtering_visualisering/molekylvisualisering.html">Molekylvisualisering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../docs/datahandtering_visualisering/visualisering_av_kjemiske_data.html">Visualisering av kjemiske data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../docs/datahandtering_visualisering/lese_og_rydde_kjemiske_data.html">Lese og rydde kjemiske data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../docs/datahandtering_visualisering/statistikk_grunnleggende_kjemi.html">Deskriptiv statistikk: Målinger, variasjon og usikkerhet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../docs/datahandtering_visualisering/kalibrering_og_statistisk_inferens.html">Kalibrering og sammenlikning av resultater</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../docs/datahandtering_visualisering/maskinlaering_i_kjemi.html">Maskinlæring i kjemi*</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Numeriske metoder</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../docs/nullpunkter_likninger/likninger.html">Likninger og nullpunkter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../docs/derivasjon_integrasjon/derivasjon.html">Numerisk derivasjon</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../docs/derivasjon_integrasjon/integrasjon.html">Numerisk integrasjon</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Dynamiske systemer</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../docs/modellering/diskret_modellering.html">Differenslikninger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../docs/modellering/differensiallikninger.html">Differensiallikninger og fartslover</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Emneressurser (IN-KJM1900)</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../docs/forelesninger/forelesninger.html">Forelesninger</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../docs/forelesninger/forelesning1.html">Forelesning 1: Programmering i kjemi</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../docs/forelesninger/forelesning2.html">Forelesning 2: Plotting og datahåndtering</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../docs/forelesninger/forelesning3.html">Forelesning 3: Statistisk analyse</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../docs/forelesninger/forelesning4.html">Forelesning 4: Statistikk II</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../docs/forelesninger/forelesning5.html">Forelesning 5: Numerisk derivasjon og likninger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../docs/forelesninger/forelesning6.html">Forelesning 6: Numerisk integrasjon</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../docs/forelesninger/forelesning7.html">Forelesning 7: Numerisk løsing av likninger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../docs/forelesninger/forelesning8.html">Forelesning 8: Differensiallikninger og reaksjonskinetikk</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../docs/forelesninger/forelesning9.html">Forelesning 9: Reaksjonskinetikk II</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../docs/forelesninger/forelesning10.html">Forelesning 10: Molekylmekanikk</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../docs/forelesninger/workshops.html">Eksamensverksted</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../docs/forelesninger/workshop1.html">Workshop 1: Datahåndtering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../docs/forelesninger/workshop2.html">Workshop 2: Numeriske metoder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../docs/forelesninger/workshop3.html">Workshop 3: Dynamiske systemer</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../docs/obliger/obliger.html">Obligatoriske oppgaver</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../docs/obliger/oblig_datahandtering.html">Oblig 1: Håndtering av kjemiske data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../docs/obliger/oblig_dynamiske_systemer.html">Oblig 2: Dynamiske systemer og integrasjon</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../docs/datafiler.html">Datafiler</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Emneressurser (KJM1140)</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../docs/biokjemi/molekylvisualisering.html">Molekylvisualisering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../docs/biokjemi/datavisualisering.html">Datavisualisering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../docs/biokjemi/regresjonsmodeller.html">Regresjonsmodeller</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../docs/biokjemi/enzymkinetikklab2025.html">Analyse av enzymkinetikkdata</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../docs/biokjemi/proteinfolding.html">Lab 5: Proteinfolding</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/apps/tegne_molekyler.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1><no title></h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="simple visible nav section-nav flex-column">
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">rdkit</span><span class="w"> </span><span class="kn">import</span> <span class="n">Chem</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">rdkit.Chem</span><span class="w"> </span><span class="kn">import</span> <span class="n">Draw</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">display</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">rdkit.Chem.Draw</span><span class="w"> </span><span class="kn">import</span> <span class="n">IPythonConsole</span> <span class="k">as</span> <span class="n">ipc</span>
+
+<span class="c1"># Define the SMILES string (e.g., caffeine)</span>
+<span class="n">smiles_string</span> <span class="o">=</span> <span class="s2">&quot;CN1C=NC2=C1C(=O)N(C(=O)N2C)C&quot;</span>
+
+<span class="c1"># Options</span>
+<span class="n">ipc</span><span class="o">.</span><span class="n">ipython_useSVG</span> <span class="o">=</span> <span class="kc">True</span>  <span class="c1"># Use SVG for higher quality images</span>
+<span class="n">ipc</span><span class="o">.</span><span class="n">drawOptions</span><span class="o">.</span><span class="n">addAtomIndices</span> <span class="o">=</span> <span class="kc">True</span>  <span class="c1"># Show atom indices</span>
+<span class="n">ipc</span><span class="o">.</span><span class="n">molSize</span> <span class="o">=</span> <span class="mi">250</span><span class="p">,</span><span class="mi">250</span> <span class="c1"># Set size of image</span>
+
+<span class="c1"># Create a molecule object from the SMILES</span>
+<span class="n">molecule</span> <span class="o">=</span> <span class="n">Chem</span><span class="o">.</span><span class="n">MolFromSmiles</span><span class="p">(</span><span class="n">smiles_string</span><span class="p">)</span>
+<span class="n">molecule</span>
+
+<span class="c1"># Optional: Save the image to a file</span>
+<span class="c1">#display(Draw.MolToImage(molecule))</span>
+<span class="c1"># Draw.MolToImageFile(molecule, &#39;caffeine.png&#39;)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><?xml version='1.0' encoding='iso-8859-1'?>
+<svg version='1.1' baseProfile='full'
+              xmlns='http://www.w3.org/2000/svg'
+                      xmlns:rdkit='http://www.rdkit.org/xml'
+                      xmlns:xlink='http://www.w3.org/1999/xlink'
+                  xml:space='preserve'
+width='250px' height='250px' viewBox='0 0 250 250'>
+<!-- END OF HEADER -->
+<rect style='opacity:1.0;fill:#FFFFFF;stroke:none' width='250.0' height='250.0' x='0.0' y='0.0'> </rect>
+<path class='bond-0 atom-0 atom-1' d='M 237.5,159.5 L 226.6,145.9' style='fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1' />
+<path class='bond-0 atom-0 atom-1' d='M 226.6,145.9 L 215.7,132.3' style='fill:none;fill-rule:evenodd;stroke:#0000FF;stroke-width:2.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1' />
+<path class='bond-1 atom-1 atom-2' d='M 211.6,116.6 L 216.4,98.9' style='fill:none;fill-rule:evenodd;stroke:#0000FF;stroke-width:2.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1' />
+<path class='bond-1 atom-1 atom-2' d='M 216.4,98.9 L 221.3,81.2' style='fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1' />
+<path class='bond-2 atom-2 atom-3' d='M 221.3,81.2 L 205.7,71.0' style='fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1' />
+<path class='bond-2 atom-2 atom-3' d='M 205.7,71.0 L 190.1,60.7' style='fill:none;fill-rule:evenodd;stroke:#0000FF;stroke-width:2.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1' />
+<path class='bond-2 atom-2 atom-3' d='M 213.5,84.1 L 200.0,75.3' style='fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1' />
+<path class='bond-2 atom-2 atom-3' d='M 200.0,75.3 L 186.4,66.4' style='fill:none;fill-rule:evenodd;stroke:#0000FF;stroke-width:2.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1' />
+<path class='bond-3 atom-3 atom-4' d='M 177.5,61.6 L 163.1,73.1' style='fill:none;fill-rule:evenodd;stroke:#0000FF;stroke-width:2.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1' />
+<path class='bond-3 atom-3 atom-4' d='M 163.1,73.1 L 148.8,84.6' style='fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1' />
+<path class='bond-4 atom-4 atom-5' d='M 148.8,84.6 L 164.7,126.6' style='fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1' />
+<path class='bond-4 atom-4 atom-5' d='M 156.8,86.8 L 169.2,119.6' style='fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1' />
+<path class='bond-5 atom-5 atom-6' d='M 164.7,126.6 L 136.3,161.3' style='fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1' />
+<path class='bond-6 atom-6 atom-7' d='M 132.4,160.7 L 139.2,178.6' style='fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1' />
+<path class='bond-6 atom-6 atom-7' d='M 139.2,178.6 L 146.0,196.5' style='fill:none;fill-rule:evenodd;stroke:#FF0000;stroke-width:2.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1' />
+<path class='bond-6 atom-6 atom-7' d='M 138.7,158.3 L 145.5,176.2' style='fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1' />
+<path class='bond-6 atom-6 atom-7' d='M 145.5,176.2 L 152.3,194.2' style='fill:none;fill-rule:evenodd;stroke:#FF0000;stroke-width:2.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1' />
+<path class='bond-7 atom-6 atom-8' d='M 136.3,161.3 L 117.3,158.2' style='fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1' />
+<path class='bond-7 atom-6 atom-8' d='M 117.3,158.2 L 98.3,155.1' style='fill:none;fill-rule:evenodd;stroke:#0000FF;stroke-width:2.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1' />
+<path class='bond-8 atom-8 atom-9' d='M 89.0,146.2 L 82.6,129.2' style='fill:none;fill-rule:evenodd;stroke:#0000FF;stroke-width:2.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1' />
+<path class='bond-8 atom-8 atom-9' d='M 82.6,129.2 L 76.1,112.1' style='fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1' />
+<path class='bond-9 atom-9 atom-10' d='M 78.6,109.1 L 59.2,105.9' style='fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1' />
+<path class='bond-9 atom-9 atom-10' d='M 59.2,105.9 L 39.7,102.7' style='fill:none;fill-rule:evenodd;stroke:#FF0000;stroke-width:2.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1' />
+<path class='bond-9 atom-9 atom-10' d='M 77.5,115.7 L 58.1,112.6' style='fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1' />
+<path class='bond-9 atom-9 atom-10' d='M 58.1,112.6 L 38.7,109.4' style='fill:none;fill-rule:evenodd;stroke:#FF0000;stroke-width:2.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1' />
+<path class='bond-10 atom-9 atom-11' d='M 76.1,112.1 L 87.2,98.6' style='fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1' />
+<path class='bond-10 atom-9 atom-11' d='M 87.2,98.6 L 98.2,85.1' style='fill:none;fill-rule:evenodd;stroke:#0000FF;stroke-width:2.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1' />
+<path class='bond-11 atom-11 atom-12' d='M 101.6,69.6 L 95.1,52.5' style='fill:none;fill-rule:evenodd;stroke:#0000FF;stroke-width:2.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1' />
+<path class='bond-11 atom-11 atom-12' d='M 95.1,52.5 L 88.7,35.5' style='fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1' />
+<path class='bond-12 atom-8 atom-13' d='M 85.7,161.8 L 74.7,175.3' style='fill:none;fill-rule:evenodd;stroke:#0000FF;stroke-width:2.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1' />
+<path class='bond-12 atom-8 atom-13' d='M 74.7,175.3 L 63.6,188.8' style='fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1' />
+<path class='bond-13 atom-5 atom-1' d='M 164.7,126.6 L 183.9,125.7' style='fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1' />
+<path class='bond-13 atom-5 atom-1' d='M 183.9,125.7 L 203.2,124.8' style='fill:none;fill-rule:evenodd;stroke:#0000FF;stroke-width:2.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1' />
+<path class='bond-14 atom-11 atom-4' d='M 110.8,78.4 L 129.8,81.5' style='fill:none;fill-rule:evenodd;stroke:#0000FF;stroke-width:2.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1' />
+<path class='bond-14 atom-11 atom-4' d='M 129.8,81.5 L 148.8,84.6' style='fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1' />
+<path d='M 221.0,82.1 L 221.3,81.2 L 220.5,80.7' style='fill:none;stroke:#000000;stroke-width:2.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-opacity:1;' />
+<path d='M 137.7,159.6 L 136.3,161.3 L 135.3,161.1' style='fill:none;stroke:#000000;stroke-width:2.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-opacity:1;' />
+<path d='M 76.5,113.0 L 76.1,112.1 L 76.7,111.4' style='fill:none;stroke:#000000;stroke-width:2.0px;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-opacity:1;' />
+<path class='atom-1' d='M 206.6 118.1
+L 210.8 124.8
+Q 211.2 125.5, 211.9 126.7
+Q 212.5 127.9, 212.6 128.0
+L 212.6 118.1
+L 214.3 118.1
+L 214.3 130.8
+L 212.5 130.8
+L 208.1 123.5
+Q 207.5 122.6, 207.0 121.6
+Q 206.5 120.6, 206.3 120.3
+L 206.3 130.8
+L 204.6 130.8
+L 204.6 118.1
+L 206.6 118.1
+' fill='#0000FF'/>
+<path class='atom-3' d='M 181.0 50.2
+L 185.1 57.0
+Q 185.6 57.6, 186.2 58.8
+Q 186.9 60.0, 186.9 60.1
+L 186.9 50.2
+L 188.6 50.2
+L 188.6 62.9
+L 186.9 62.9
+L 182.4 55.6
+Q 181.9 54.7, 181.3 53.7
+Q 180.8 52.8, 180.6 52.5
+L 180.6 62.9
+L 179.0 62.9
+L 179.0 50.2
+L 181.0 50.2
+' fill='#0000FF'/>
+<path class='atom-7' d='M 146.3 203.3
+Q 146.3 200.2, 147.8 198.5
+Q 149.3 196.8, 152.1 196.8
+Q 154.9 196.8, 156.4 198.5
+Q 158.0 200.2, 158.0 203.3
+Q 158.0 206.4, 156.4 208.1
+Q 154.9 209.9, 152.1 209.9
+Q 149.3 209.9, 147.8 208.1
+Q 146.3 206.4, 146.3 203.3
+M 152.1 208.4
+Q 154.1 208.4, 155.1 207.1
+Q 156.2 205.8, 156.2 203.3
+Q 156.2 200.8, 155.1 199.5
+Q 154.1 198.3, 152.1 198.3
+Q 150.2 198.3, 149.1 199.5
+Q 148.1 200.8, 148.1 203.3
+Q 148.1 205.8, 149.1 207.1
+Q 150.2 208.4, 152.1 208.4
+' fill='#FF0000'/>
+<path class='atom-8' d='M 89.2 147.7
+L 93.4 154.4
+Q 93.8 155.1, 94.4 156.3
+Q 95.1 157.5, 95.1 157.6
+L 95.1 147.7
+L 96.8 147.7
+L 96.8 160.4
+L 95.1 160.4
+L 90.6 153.1
+Q 90.1 152.2, 89.5 151.2
+Q 89.0 150.2, 88.8 149.9
+L 88.8 160.4
+L 87.2 160.4
+L 87.2 147.7
+L 89.2 147.7
+' fill='#0000FF'/>
+<path class='atom-10' d='M 26.1 104.9
+Q 26.1 101.9, 27.6 100.2
+Q 29.1 98.4, 31.9 98.4
+Q 34.7 98.4, 36.2 100.2
+Q 37.7 101.9, 37.7 104.9
+Q 37.7 108.0, 36.2 109.7
+Q 34.7 111.5, 31.9 111.5
+Q 29.1 111.5, 27.6 109.7
+Q 26.1 108.0, 26.1 104.9
+M 31.9 110.1
+Q 33.8 110.1, 34.9 108.8
+Q 35.9 107.5, 35.9 104.9
+Q 35.9 102.4, 34.9 101.2
+Q 33.8 99.9, 31.9 99.9
+Q 30.0 99.9, 28.9 101.1
+Q 27.9 102.4, 27.9 104.9
+Q 27.9 107.5, 28.9 108.8
+Q 30.0 110.1, 31.9 110.1
+' fill='#FF0000'/>
+<path class='atom-11' d='M 101.7 71.1
+L 105.9 77.8
+Q 106.3 78.4, 107.0 79.6
+Q 107.6 80.8, 107.7 80.9
+L 107.7 71.1
+L 109.4 71.1
+L 109.4 83.8
+L 107.6 83.8
+L 103.2 76.4
+Q 102.6 75.5, 102.1 74.5
+Q 101.5 73.6, 101.4 73.3
+L 101.4 83.8
+L 99.7 83.8
+L 99.7 71.1
+L 101.7 71.1
+' fill='#0000FF'/>
+<path class='note' d='M 231.7 167.4
+Q 230.5 167.4, 229.9 166.6
+Q 229.3 165.7, 229.3 164.2
+Q 229.3 162.6, 229.9 161.8
+Q 230.5 160.9, 231.7 160.9
+Q 232.8 160.9, 233.4 161.8
+Q 234.0 162.6, 234.0 164.2
+Q 234.0 165.7, 233.4 166.6
+Q 232.8 167.4, 231.7 167.4
+M 231.7 166.7
+Q 232.4 166.7, 232.7 166.1
+Q 233.1 165.4, 233.1 164.2
+Q 233.1 162.9, 232.7 162.3
+Q 232.4 161.6, 231.7 161.6
+Q 231.0 161.6, 230.6 162.3
+Q 230.2 162.9, 230.2 164.2
+Q 230.2 165.4, 230.6 166.1
+Q 231.0 166.7, 231.7 166.7
+' fill='#000000'/>
+<path class='note' d='M 222.5 123.9
+L 223.9 123.9
+L 223.9 119.2
+L 222.4 119.6
+L 222.2 119.1
+L 224.1 118.2
+L 224.8 118.3
+L 224.8 123.9
+L 226.0 123.9
+L 226.0 124.6
+L 222.5 124.6
+L 222.5 123.9
+' fill='#000000'/>
+<path class='note' d='M 226.2 76.6
+Q 226.4 76.0, 226.9 75.7
+Q 227.5 75.4, 228.3 75.4
+Q 229.2 75.4, 229.8 75.9
+Q 230.3 76.4, 230.3 77.3
+Q 230.3 78.3, 229.6 79.1
+Q 228.9 80.0, 227.5 81.1
+L 230.4 81.1
+L 230.4 81.8
+L 226.1 81.8
+L 226.1 81.2
+Q 227.3 80.3, 228.0 79.7
+Q 228.7 79.1, 229.1 78.5
+Q 229.4 77.9, 229.4 77.4
+Q 229.4 76.8, 229.1 76.4
+Q 228.8 76.1, 228.3 76.1
+Q 227.8 76.1, 227.4 76.3
+Q 227.1 76.5, 226.8 76.9
+L 226.2 76.6
+' fill='#000000'/>
+<path class='note' d='M 184.0 41.5
+Q 184.6 41.7, 184.9 42.1
+Q 185.2 42.5, 185.2 43.1
+Q 185.2 43.7, 185.0 44.1
+Q 184.7 44.5, 184.2 44.7
+Q 183.7 45.0, 183.1 45.0
+Q 182.4 45.0, 181.9 44.7
+Q 181.4 44.5, 181.0 44.0
+L 181.5 43.5
+Q 181.9 43.9, 182.2 44.1
+Q 182.5 44.2, 183.1 44.2
+Q 183.6 44.2, 184.0 43.9
+Q 184.3 43.6, 184.3 43.1
+Q 184.3 42.5, 184.0 42.2
+Q 183.6 41.9, 182.8 41.9
+L 182.4 41.9
+L 182.4 41.3
+L 182.8 41.3
+Q 183.5 41.2, 183.8 40.9
+Q 184.2 40.6, 184.2 40.1
+Q 184.2 39.7, 183.9 39.4
+Q 183.6 39.2, 183.1 39.2
+Q 182.5 39.2, 182.2 39.4
+Q 181.9 39.5, 181.6 40.0
+L 181.0 39.7
+Q 181.2 39.2, 181.8 38.8
+Q 182.3 38.5, 183.1 38.5
+Q 184.0 38.5, 184.5 38.9
+Q 185.1 39.3, 185.1 40.1
+Q 185.1 40.6, 184.8 41.0
+Q 184.5 41.3, 184.0 41.5
+' fill='#000000'/>
+<path class='note' d='M 145.2 90.9
+L 145.9 90.9
+L 145.9 91.6
+L 145.2 91.6
+L 145.2 93.1
+L 144.3 93.1
+L 144.3 91.6
+L 141.0 91.6
+L 141.0 91.0
+L 143.8 86.7
+L 145.2 86.7
+L 145.2 90.9
+M 142.1 90.9
+L 144.3 90.9
+L 144.3 87.3
+L 142.1 90.9
+' fill='#000000'/>
+<path class='note' d='M 157.4 124.6
+Q 158.0 124.6, 158.5 124.8
+Q 158.9 125.1, 159.2 125.5
+Q 159.4 125.9, 159.4 126.5
+Q 159.4 127.2, 159.1 127.7
+Q 158.8 128.1, 158.3 128.4
+Q 157.8 128.6, 157.2 128.6
+Q 156.6 128.6, 156.0 128.4
+Q 155.5 128.2, 155.1 127.8
+L 155.7 127.2
+Q 156.0 127.6, 156.4 127.7
+Q 156.8 127.9, 157.2 127.9
+Q 157.8 127.9, 158.1 127.6
+Q 158.5 127.2, 158.5 126.6
+Q 158.5 125.9, 158.1 125.6
+Q 157.8 125.3, 157.1 125.3
+Q 156.6 125.3, 156.0 125.5
+L 155.5 125.3
+L 155.8 122.2
+L 159.0 122.2
+L 158.9 122.9
+L 156.5 122.9
+L 156.3 124.8
+Q 156.9 124.6, 157.4 124.6
+' fill='#000000'/>
+<path class='note' d='M 133.9 153.6
+Q 134.5 153.6, 134.9 153.8
+Q 135.3 154.0, 135.6 154.5
+Q 135.8 154.9, 135.8 155.5
+Q 135.8 156.1, 135.5 156.6
+Q 135.3 157.0, 134.8 157.3
+Q 134.3 157.6, 133.7 157.6
+Q 132.6 157.6, 132.0 156.8
+Q 131.4 156.1, 131.4 154.5
+Q 131.4 152.8, 132.1 152.0
+Q 132.8 151.1, 134.2 151.1
+Q 134.6 151.1, 134.9 151.2
+Q 135.2 151.3, 135.6 151.5
+L 135.2 152.1
+Q 134.8 151.8, 134.2 151.8
+Q 133.3 151.8, 132.8 152.4
+Q 132.4 153.0, 132.3 154.2
+Q 132.6 153.9, 133.0 153.7
+Q 133.5 153.6, 133.9 153.6
+M 133.7 156.9
+Q 134.0 156.9, 134.3 156.7
+Q 134.6 156.5, 134.8 156.2
+Q 134.9 155.9, 134.9 155.5
+Q 134.9 154.9, 134.6 154.6
+Q 134.3 154.3, 133.7 154.3
+Q 133.4 154.3, 133.0 154.4
+Q 132.6 154.6, 132.3 154.9
+Q 132.4 155.9, 132.7 156.4
+Q 133.0 156.9, 133.7 156.9
+' fill='#000000'/>
+<path class='note' d='M 158.6 214.8
+L 155.3 214.8
+L 155.3 214.0
+L 159.5 214.0
+L 159.5 214.7
+L 157.0 220.4
+L 156.1 220.4
+L 158.6 214.8
+' fill='#000000'/>
+<path class='note' d='M 102.5 142.3
+Q 103.1 142.6, 103.4 143.0
+Q 103.7 143.3, 103.7 144.0
+Q 103.7 144.5, 103.4 144.9
+Q 103.2 145.3, 102.7 145.6
+Q 102.2 145.8, 101.5 145.8
+Q 100.4 145.8, 99.8 145.3
+Q 99.2 144.8, 99.2 144.0
+Q 99.2 143.4, 99.5 143.1
+Q 99.8 142.7, 100.3 142.4
+Q 99.9 142.1, 99.7 141.8
+Q 99.5 141.4, 99.5 140.9
+Q 99.5 140.2, 100.0 139.7
+Q 100.5 139.3, 101.5 139.3
+Q 102.4 139.3, 102.9 139.7
+Q 103.5 140.2, 103.5 140.9
+Q 103.5 141.4, 103.2 141.7
+Q 103.0 142.1, 102.5 142.3
+M 101.5 139.9
+Q 100.9 139.9, 100.6 140.2
+Q 100.4 140.5, 100.4 140.9
+Q 100.4 141.2, 100.6 141.5
+Q 100.8 141.7, 101.0 141.8
+Q 101.3 141.9, 101.9 142.1
+Q 102.3 141.8, 102.4 141.6
+Q 102.6 141.3, 102.6 140.9
+Q 102.6 140.5, 102.3 140.2
+Q 102.0 139.9, 101.5 139.9
+M 101.5 145.1
+Q 102.1 145.1, 102.5 144.8
+Q 102.8 144.5, 102.8 143.9
+Q 102.8 143.6, 102.6 143.4
+Q 102.4 143.2, 102.2 143.1
+Q 101.9 142.9, 101.4 142.8
+L 101.0 142.6
+Q 100.5 142.9, 100.3 143.2
+Q 100.1 143.5, 100.1 143.9
+Q 100.1 144.5, 100.5 144.8
+Q 100.9 145.1, 101.5 145.1
+' fill='#000000'/>
+<path class='note' d='M 83.5 110.1
+Q 84.6 110.1, 85.2 110.9
+Q 85.7 111.6, 85.7 113.2
+Q 85.7 114.8, 85.0 115.7
+Q 84.3 116.6, 83.0 116.6
+Q 82.6 116.6, 82.2 116.5
+Q 81.9 116.4, 81.6 116.2
+L 81.9 115.6
+Q 82.4 115.9, 83.0 115.9
+Q 83.9 115.9, 84.3 115.3
+Q 84.8 114.7, 84.8 113.5
+Q 84.5 113.8, 84.1 114.0
+Q 83.7 114.1, 83.2 114.1
+Q 82.7 114.1, 82.2 113.9
+Q 81.8 113.7, 81.6 113.2
+Q 81.3 112.8, 81.3 112.2
+Q 81.3 111.6, 81.6 111.1
+Q 81.9 110.6, 82.4 110.4
+Q 82.8 110.1, 83.5 110.1
+M 82.2 112.2
+Q 82.2 112.8, 82.5 113.1
+Q 82.8 113.4, 83.4 113.4
+Q 83.8 113.4, 84.2 113.3
+Q 84.5 113.1, 84.8 112.8
+Q 84.8 111.8, 84.5 111.3
+Q 84.1 110.8, 83.4 110.8
+Q 83.1 110.8, 82.8 111.0
+Q 82.5 111.2, 82.4 111.5
+Q 82.2 111.8, 82.2 112.2
+' fill='#000000'/>
+<path class='note' d='M 12.8 105.0
+L 14.2 105.0
+L 14.2 100.2
+L 12.7 100.7
+L 12.5 100.2
+L 14.4 99.3
+L 15.1 99.4
+L 15.1 105.0
+L 16.3 105.0
+L 16.3 105.7
+L 12.8 105.7
+L 12.8 105.0
+' fill='#000000'/>
+<path class='note' d='M 19.5 105.7
+Q 18.3 105.7, 17.7 104.9
+Q 17.1 104.0, 17.1 102.5
+Q 17.1 101.0, 17.7 100.1
+Q 18.3 99.2, 19.5 99.2
+Q 20.6 99.2, 21.2 100.1
+Q 21.8 101.0, 21.8 102.5
+Q 21.8 104.0, 21.2 104.9
+Q 20.6 105.7, 19.5 105.7
+M 19.5 105.0
+Q 20.1 105.0, 20.5 104.4
+Q 20.9 103.7, 20.9 102.5
+Q 20.9 101.2, 20.5 100.6
+Q 20.1 100.0, 19.5 100.0
+Q 18.8 100.0, 18.4 100.6
+Q 18.0 101.2, 18.0 102.5
+Q 18.0 103.7, 18.4 104.4
+Q 18.8 105.0, 19.5 105.0
+' fill='#000000'/>
+<path class='note' d='M 85.9 77.5
+L 87.3 77.5
+L 87.3 72.7
+L 85.8 73.2
+L 85.6 72.7
+L 87.5 71.8
+L 88.2 71.9
+L 88.2 77.5
+L 89.4 77.5
+L 89.4 78.2
+L 85.9 78.2
+L 85.9 77.5
+' fill='#000000'/>
+<path class='note' d='M 90.5 77.5
+L 91.9 77.5
+L 91.9 72.7
+L 90.4 73.2
+L 90.2 72.7
+L 92.1 71.8
+L 92.8 71.9
+L 92.8 77.5
+L 94.0 77.5
+L 94.0 78.2
+L 90.5 78.2
+L 90.5 77.5
+' fill='#000000'/>
+<path class='note' d='M 91.6 35.3
+L 93.0 35.3
+L 93.0 30.6
+L 91.4 31.0
+L 91.2 30.5
+L 93.2 29.6
+L 93.8 29.7
+L 93.8 35.3
+L 95.1 35.3
+L 95.1 36.0
+L 91.6 36.0
+L 91.6 35.3
+' fill='#000000'/>
+<path class='note' d='M 95.9 30.9
+Q 96.1 30.3, 96.7 29.9
+Q 97.2 29.6, 98.0 29.6
+Q 98.9 29.6, 99.5 30.1
+Q 100.0 30.6, 100.0 31.6
+Q 100.0 32.5, 99.3 33.4
+Q 98.6 34.3, 97.2 35.3
+L 100.1 35.3
+L 100.1 36.0
+L 95.8 36.0
+L 95.8 35.4
+Q 97.0 34.6, 97.7 34.0
+Q 98.4 33.3, 98.8 32.8
+Q 99.1 32.2, 99.1 31.6
+Q 99.1 31.0, 98.8 30.7
+Q 98.5 30.3, 98.0 30.3
+Q 97.5 30.3, 97.1 30.5
+Q 96.8 30.7, 96.5 31.2
+L 95.9 30.9
+' fill='#000000'/>
+<path class='note' d='M 53.7 186.5
+L 55.1 186.5
+L 55.1 181.8
+L 53.6 182.3
+L 53.4 181.7
+L 55.3 180.9
+L 56.0 181.0
+L 56.0 186.5
+L 57.2 186.5
+L 57.2 187.2
+L 53.7 187.2
+L 53.7 186.5
+' fill='#000000'/>
+<path class='note' d='M 61.0 183.9
+Q 61.7 184.1, 62.0 184.5
+Q 62.3 184.9, 62.3 185.5
+Q 62.3 186.0, 62.0 186.5
+Q 61.7 186.9, 61.2 187.1
+Q 60.7 187.3, 60.1 187.3
+Q 59.4 187.3, 58.9 187.1
+Q 58.4 186.9, 58.0 186.4
+L 58.5 185.9
+Q 58.9 186.3, 59.2 186.5
+Q 59.6 186.6, 60.1 186.6
+Q 60.7 186.6, 61.0 186.3
+Q 61.4 186.0, 61.4 185.5
+Q 61.4 184.8, 61.0 184.6
+Q 60.6 184.3, 59.9 184.3
+L 59.4 184.3
+L 59.4 183.6
+L 59.8 183.6
+Q 60.5 183.6, 60.9 183.3
+Q 61.2 183.0, 61.2 182.4
+Q 61.2 182.0, 60.9 181.8
+Q 60.6 181.5, 60.1 181.5
+Q 59.6 181.5, 59.2 181.7
+Q 58.9 181.9, 58.7 182.4
+L 58.0 182.1
+Q 58.3 181.5, 58.8 181.2
+Q 59.3 180.8, 60.1 180.8
+Q 61.0 180.8, 61.6 181.3
+Q 62.1 181.7, 62.1 182.4
+Q 62.1 183.0, 61.9 183.3
+Q 61.6 183.7, 61.0 183.9
+' fill='#000000'/>
+</svg>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">molecule</span><span class="o">.</span><span class="n">GetNumAtoms</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">molecule</span><span class="o">.</span><span class="n">GetNumAtoms</span><span class="p">(</span><span class="n">onlyExplicit</span> <span class="o">=</span> <span class="kc">False</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>14
+24
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">molbonds</span> <span class="o">=</span>  <span class="n">molecule</span><span class="o">.</span><span class="n">GetBonds</span><span class="p">()</span>
+
+<span class="k">for</span> <span class="n">bond</span> <span class="ow">in</span> <span class="n">molbonds</span><span class="p">:</span>
+    <span class="n">start_atom</span> <span class="o">=</span> <span class="n">bond</span><span class="o">.</span><span class="n">GetBeginAtom</span><span class="p">()</span>
+    <span class="n">start_atom_i</span> <span class="o">=</span> <span class="n">bond</span><span class="o">.</span><span class="n">GetBeginAtomIdx</span><span class="p">()</span>
+    <span class="n">end_atom</span> <span class="o">=</span> <span class="n">bond</span><span class="o">.</span><span class="n">GetEndAtom</span><span class="p">()</span>
+    <span class="n">end_atom_i</span> <span class="o">=</span> <span class="n">bond</span><span class="o">.</span><span class="n">GetEndAtomIdx</span><span class="p">()</span>
+    <span class="n">bond_type</span> <span class="o">=</span> <span class="n">bond</span><span class="o">.</span><span class="n">GetBondType</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Bond between </span><span class="si">{</span><span class="n">start_atom</span><span class="o">.</span><span class="n">GetSymbol</span><span class="p">()</span><span class="si">}{</span><span class="n">start_atom_i</span><span class="si">}</span><span class="s2"> and </span><span class="si">{</span><span class="n">end_atom</span><span class="o">.</span><span class="n">GetSymbol</span><span class="p">()</span><span class="si">}{</span><span class="n">end_atom_i</span><span class="si">}</span><span class="s2"> is a </span><span class="si">{</span><span class="n">bond_type</span><span class="si">}</span><span class="s2"> bond.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Bond between C and N is a SINGLE bond.
+Bond between N and C is a AROMATIC bond.
+Bond between C and N is a AROMATIC bond.
+Bond between N and C is a AROMATIC bond.
+Bond between C and C is a AROMATIC bond.
+Bond between C and C is a AROMATIC bond.
+Bond between C and O is a DOUBLE bond.
+Bond between C and N is a AROMATIC bond.
+Bond between N and C is a AROMATIC bond.
+Bond between C and O is a DOUBLE bond.
+Bond between C and N is a AROMATIC bond.
+Bond between N and C is a SINGLE bond.
+Bond between N and C is a SINGLE bond.
+Bond between C and N is a AROMATIC bond.
+Bond between N and C is a AROMATIC bond.
+</pre></div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./apps"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="simple visible nav section-nav flex-column">
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Andreas Haraldsrud
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

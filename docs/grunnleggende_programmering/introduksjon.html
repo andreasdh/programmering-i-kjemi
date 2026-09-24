@@ -1,0 +1,755 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Introduksjon: Programmering som verktøy i kjemi &#8212; Programmering i kjemi</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/kjemiquiz.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/kjemiquiz.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom1.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
+    <script src="../../_static/kjemiquiz.js"></script>
+    <script src="../../_static/turtle_basthon.js"></script>
+    <script src="../../_static/kjemiquiz.js"></script>
+    <script src="../../_static/turtle_basthon.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/grunnleggende_programmering/introduksjon';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Visual Studio Code for kjemikere" href="vscode.html" />
+    <link rel="prev" title="Programmering i kjemi" href="../intro.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/qe-logo-large.png" class="logo__image only-light" alt="Programmering i kjemi - Home"/>
+    <script>document.write(`<img src="../../_static/qe-logo-large.png" class="logo__image only-dark" alt="Programmering i kjemi - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Kom i gang</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Introduksjon: Programmering som verktøy i kjemi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vscode.html">Visual Studio Code for kjemikere</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Grunnleggende programmering</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="tall_variabler.html">Variabler og datatyper</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="quiz1.html">Quiz 1: Variabler og aritmetikk</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="lister.html">Lister</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="quiz2.html">Quiz 2: Lister</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="vilkar.html">Vilkår (if-tester)</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="quiz3.html">Quiz 3: Vilkår (if-tester)</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="lokker.html">Løkker</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="quiz4.html">Quiz 4: Løkker</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="funksjoner.html">Funksjoner</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="quiz5.html">Quiz 5: Funksjoner</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="datasamlinger.html">Datasamlinger</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="quiz6.html">Quiz 6: Datasamlinger (arrayer og dictionarier)</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Datahåndtering og visualisering</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../datahandtering_visualisering/kjemiske_biblioteker.html">Kjemiske biblioteker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../datahandtering_visualisering/molekylvisualisering.html">Molekylvisualisering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../datahandtering_visualisering/visualisering_av_kjemiske_data.html">Visualisering av kjemiske data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../datahandtering_visualisering/lese_og_rydde_kjemiske_data.html">Lese og rydde kjemiske data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../datahandtering_visualisering/statistikk_grunnleggende_kjemi.html">Deskriptiv statistikk: Målinger, variasjon og usikkerhet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../datahandtering_visualisering/kalibrering_og_statistisk_inferens.html">Kalibrering og sammenlikning av resultater</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../datahandtering_visualisering/maskinlaering_i_kjemi.html">Maskinlæring i kjemi*</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Numeriske metoder</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../nullpunkter_likninger/likninger.html">Likninger og nullpunkter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../derivasjon_integrasjon/derivasjon.html">Numerisk derivasjon</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../derivasjon_integrasjon/integrasjon.html">Numerisk integrasjon</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Dynamiske systemer</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../modellering/diskret_modellering.html">Differenslikninger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modellering/differensiallikninger.html">Differensiallikninger og fartslover</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Emneressurser (IN-KJM1900)</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../forelesninger/forelesninger.html">Forelesninger</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../forelesninger/forelesning1.html">Forelesning 1: Programmering i kjemi</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../forelesninger/forelesning2.html">Forelesning 2: Plotting og datahåndtering</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../forelesninger/forelesning3.html">Forelesning 3: Statistisk analyse</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../forelesninger/forelesning4.html">Forelesning 4: Statistikk II</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../forelesninger/forelesning5.html">Forelesning 5: Numerisk derivasjon og likninger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../forelesninger/forelesning6.html">Forelesning 6: Numerisk integrasjon</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../forelesninger/forelesning7.html">Forelesning 7: Numerisk løsing av likninger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../forelesninger/forelesning8.html">Forelesning 8: Differensiallikninger og reaksjonskinetikk</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../forelesninger/forelesning9.html">Forelesning 9: Reaksjonskinetikk II</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../forelesninger/forelesning10.html">Forelesning 10: Molekylmekanikk</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../forelesninger/workshops.html">Eksamensverksted</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../forelesninger/workshop1.html">Workshop 1: Datahåndtering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../forelesninger/workshop2.html">Workshop 2: Numeriske metoder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../forelesninger/workshop3.html">Workshop 3: Dynamiske systemer</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../obliger/obliger.html">Obligatoriske oppgaver</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../obliger/oblig_datahandtering.html">Oblig 1: Håndtering av kjemiske data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../obliger/oblig_dynamiske_systemer.html">Oblig 2: Dynamiske systemer og integrasjon</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../datafiler.html">Datafiler</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Emneressurser (KJM1140)</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../biokjemi/molekylvisualisering.html">Molekylvisualisering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../biokjemi/datavisualisering.html">Datavisualisering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../biokjemi/regresjonsmodeller.html">Regresjonsmodeller</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../biokjemi/enzymkinetikklab2025.html">Analyse av enzymkinetikkdata</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../biokjemi/proteinfolding.html">Lab 5: Proteinfolding</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/docs/grunnleggende_programmering/introduksjon.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Introduksjon: Programmering som verktøy i kjemi</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hvorfor-programmering">Hvorfor programmering?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#et-verktoy-for-a-tenke-med">Et verktøy for å tenke med</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fra-kjemisk-fenomen-til-program">Fra kjemisk fenomen til program</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simuleringer-eksperimenter-pa-datamaskinen">Simuleringer – eksperimenter på datamaskinen</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fra-maling-til-kunnskap-datahandtering">Fra måling til kunnskap – datahåndtering</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#datamaskinen-krever-tydelige-antakelser">Datamaskinen krever tydelige antakelser</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ki-kan-skrive-kode-men-hvem-gjor-den-faglige-tenkingen">KI kan skrive kode – men hvem gjør den faglige tenkingen?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hva-ma-en-kjemiker-kunne-om-programmering">Hva må en kjemiker kunne om programmering?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#et-forste-program-fra-konsentrasjon-til-ph">Et første program – fra konsentrasjon til pH</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hvis-du-kan-litt-programmering-fra-for">Hvis du kan litt programmering fra før</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppsummering">Oppsummering</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="introduksjon-programmering-som-verktoy-i-kjemi">
+<h1>Introduksjon: Programmering som verktøy i kjemi<a class="headerlink" href="#introduksjon-programmering-som-verktoy-i-kjemi" title="Permalink to this heading">#</a></h1>
+<p>Kjemi er et eksperimentelt fag. Vi observerer, måler, sammenlikner og prøver å forklare hvorfor stoffer oppfører seg slik de gjør. Tradisjonelt har laboratoriet vært den viktigste arenaen for dette arbeidet. Der kan vi blande stoffer, endre temperaturen, måle pH eller undersøke hvor raskt en reaksjon går.</p>
+<p>Men ikke alle kjemiske fenomener er direkte observerbare. Vi kan ikke se hvordan elektroner er fordelt i et molekyl, følge hver enkelt kollisjon mellom molekyler eller vente noen millioner år på at en langsom geokjemisk prosess skal bli ferdig. Eksperimenter kan også produsere så store datamengder at vi trenger hjelp til å finne mønstre i dem. Da kan datamaskinen fungere som både laboratorium, visualiseringsverktøy og regnehjelp.</p>
+<p>Programmering gir oss et språk for å fortelle datamaskinen hva den skal gjøre. Men i kjemi er ikke målet først og fremst å lage dataprogrammer. Målet er å bruke programmer til å stille bedre spørsmål, undersøke kjemiske sammenhenger og forstå hva modeller og eksperimentelle data forteller oss.</p>
+<div class="admonition-laeringsutbytte admonition">
+<p class="admonition-title">Læringsutbytte</p>
+<p>Etter å ha arbeidet med dette kapitlet, skal du kunne:</p>
+<ol class="arabic simple">
+<li><p>forklare hvordan programmering kan brukes til å utforske og forstå kjemiske fenomener</p></li>
+<li><p>gjøre rede for sammenhengen mellom kjemiske modeller, simuleringer og programkode</p></li>
+<li><p>beskrive hvordan datahåndtering kan brukes til å finne mønstre i eksperimentelle data</p></li>
+<li><p>diskutere noen muligheter og begrensninger ved bruk av kunstig intelligens som programmeringverktøy</p></li>
+<li><p>lese, kjøre og modifisere et enkelt program som utfører en kjemisk beregning</p></li>
+</ol>
+</div>
+<section id="hvorfor-programmering">
+<h2>Hvorfor programmering?<a class="headerlink" href="#hvorfor-programmering" title="Permalink to this heading">#</a></h2>
+<p>En datamaskin er svært god til å gjøre enkle operasjoner raskt og mange ganger. Den kan behandle tusenvis av målinger, gjenta den samme beregningen for mange ulike temperaturer eller beregne hvordan konsentrasjonen av flere stoffer endrer seg i små tidssteg. Dette er nyttig fordi mange kjemiske problemer nettopp består av mange enkle prosesser som virker sammen.</p>
+<p>Tenk for eksempel på et spektrometer som måler hvor mye lys en løsning absorberer ved flere hundre bølgelengder. Én enkelt måling er ikke så vanskelig å håndtere, men dersom vi har målinger fra mange løsninger, blir det raskt mye informasjon. Med et program kan vi lese inn alle dataene, rydde bort manglende verdier, visualisere spektrene og sammenlikne dem med hverandre.</p>
+<p>Eller tenk på en kjemisk reaksjon. En fartslov beskriver hvor raskt konsentrasjonen endrer seg akkurat nå. Dersom vi ønsker å finne konsentrasjonen om ett minutt, må vi undersøke hvordan alle de små endringene bygger seg opp over tid. Datamaskinen kan dele reaksjonsforløpet inn i mange små tidssteg og oppdatere konsentrasjonene for hvert steg.</p>
+<p>Datamaskinen gjør likevel ingen kjemiske vurderinger på egen hånd. Den vet ikke om modellen er rimelig, om enhetene er riktige eller om resultatet gir kjemisk mening. Det er det vi som må avgjøre.</p>
+<div class="admonition-programmering-i-kjemi admonition">
+<p class="admonition-title">Programmering i kjemi</p>
+<p>Programmering i kjemi handler om å bruke programkode til å representere, utforske, analysere og visualisere kjemiske fenomener og data.</p>
+</div>
+</section>
+<section id="et-verktoy-for-a-tenke-med">
+<h2>Et verktøy for å tenke med<a class="headerlink" href="#et-verktoy-for-a-tenke-med" title="Permalink to this heading">#</a></h2>
+<p>Programmering brukes ofte til å effektivisere beregninger vi allerede vet hvordan vi skal gjøre. Det er nyttig, men programmering kan også påvirke hvordan vi tenker om et problem.</p>
+<p>I matematikk beskriver vi gjerne en sammenheng med et ferdig funksjonsuttrykk eller en likning. Programkode må derimot inneholde en oppskrift på hva som skal skje, steg for steg. Derfor må vi gjøre resonnementet vårt eksplisitt. Dersom vi for eksempel vil simulere en kjemisk reaksjon, kan en svært enkel algoritme se slik ut:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>bestem startkonsentrasjonene
+
+gjenta mange ganger:
+    beregn reaksjonsfarten
+    beregn hvor mye konsentrasjonene endrer seg
+    oppdater konsentrasjonene
+</pre></div>
+</div>
+<p>Her ser vi den kjemiske prosessen på en annen måte enn i et ferdig matematisk uttrykk. Den nye konsentrasjonen er den gamle konsentrasjonen pluss en liten endring. Deretter brukes den nye konsentrasjonen til å beregne hva som skjer i neste tidssteg. Slik utvikler det kjemiske systemet seg i programmet omtrent på samme måte som vi forestiller oss at reaksjonen utvikler seg i tid.</p>
+<p>Det betyr ikke at programkode alltid gir bedre forståelse enn matematikk. Matematiske uttrykk, programkode, grafer og molekylmodeller viser ulike sider av det samme fenomenet. Styrken ligger i å kunne bevege seg mellom dem og se hvordan de henger sammen.</p>
+</section>
+<section id="fra-kjemisk-fenomen-til-program">
+<h2>Fra kjemisk fenomen til program<a class="headerlink" href="#fra-kjemisk-fenomen-til-program" title="Permalink to this heading">#</a></h2>
+<p>Før vi kan simulere et kjemisk system, må vi beskrive systemet med en modell. En modell er en forenklet representasjon av virkeligheten. Den tar med noen egenskaper og ser bort fra andre.</p>
+<p>Når vi lager et program for å utforske kjemi, går vi ofte gjennom følgende prosess:</p>
+<ol class="arabic simple">
+<li><p><strong>Vi formulerer et spørsmål.</strong> Hvordan endrer reaksjonsfarten seg med temperaturen? Hvorfor folder et protein seg på en bestemt måte?</p></li>
+<li><p><strong>Vi avgrenser systemet.</strong> Hvilke partikler, forbindelser eller variabler er relevante?</p></li>
+<li><p><strong>Vi velger eller lager en modell.</strong> Modellen kan for eksempel være en fartslov, en tilnærming til kreftene mellom atomer eller en statistisk modell for eksperimentelle data.</p></li>
+<li><p><strong>Vi oversetter modellen til en algoritme og programkode.</strong> Da må antakelsene og operasjonene uttrykkes på en måte datamaskinen kan følge.</p></li>
+<li><p><strong>Vi undersøker resultatet.</strong> Vi kan få tall, tabeller, grafer, molekylstrukturer eller en animasjon av systemet.</p></li>
+<li><p><strong>Vi vurderer og forbedrer modellen.</strong> Stemmer resultatet med kjemisk teori og eksperimentelle data? Hva skjer dersom vi endrer en parameter?</p></li>
+</ol>
+<p>Prosessen stopper altså ikke når programmet kjører uten feilmeldinger. Et program kan fungere helt fint og samtidig bygge på en dårlig modell. Resultatet fra programmet må derfor brukes som utgangspunkt for videre kjemisk tenking.</p>
+<div class="admonition-modell admonition">
+<p class="admonition-title">Modell</p>
+<p>En modell er en forenklet representasjon av et fenomen eller system. Modellen bygger på antakelser og har derfor alltid et bestemt gyldighetsområde og visse begrensninger.</p>
+</div>
+</section>
+<section id="simuleringer-eksperimenter-pa-datamaskinen">
+<h2>Simuleringer – eksperimenter på datamaskinen<a class="headerlink" href="#simuleringer-eksperimenter-pa-datamaskinen" title="Permalink to this heading">#</a></h2>
+<p>En simulering er et program som beregner hvordan en modell oppfører seg under bestemte betingelser. Vi kan for eksempel simulere hvordan molekyler beveger seg, hvordan et legemiddel binder seg til et protein eller hvordan konsentrasjonen av ozon i atmosfæren endrer seg over tid.</p>
+<p>Simuleringer gjør det mulig å utføre numeriske eksperimenter. Vi kan endre temperaturen, startkonsentrasjonen eller styrken på en vekselvirkning og undersøke hva som skjer. Dersom resultatet er overraskende, kan vi endre modellen eller undersøke systemet nærmere. Datamaskinen gir oss ofte rask tilbakemelding, og denne vekslingen mellom spørsmål, resultat og nye spørsmål kan drive utforskingen videre.</p>
+<p>Det er også mulig å undersøke systemer som er for små, store, raske, langsomme, dyre eller farlige for et vanlig laboratorium. En simulering kan vise oss mikronivået som vi ellers ikke kan observere direkte, for eksempel bevegelsen til molekyler eller fordelingen av elektroner i en kjemisk forbindelse.</p>
+<p>Men en simulering er ikke et vindu rett inn i virkeligheten. Den viser hvordan <strong>modellen</strong> oppfører seg. Dersom viktige vekselvirkninger mangler i modellen, vil de også mangle i simuleringen. Derfor bør simuleringer sammenliknes med kjemisk teori, eksperimentelle resultater og andre modeller. De erstatter ikke nødvendigvis eksperimenter i laboratoriet, men kan utfylle dem ved å synliggjøre prosesser, foreslå forklaringer og gi grunnlag for nye eksperimenter.</p>
+<div class="admonition-simulering admonition">
+<p class="admonition-title">Simulering</p>
+<p>En simulering er en beregning av hvordan en modell oppfører seg. Simuleringen kan brukes som et numerisk eksperiment der vi endrer betingelser og undersøker konsekvensene.</p>
+</div>
+</section>
+<section id="fra-maling-til-kunnskap-datahandtering">
+<h2>Fra måling til kunnskap – datahåndtering<a class="headerlink" href="#fra-maling-til-kunnskap-datahandtering" title="Permalink to this heading">#</a></h2>
+<p>Eksperimentelle data forklarer ikke seg selv. Før vi kan trekke en konklusjon, må vi ofte organisere, rydde, visualisere og analysere målingene. Det kan innebære å:</p>
+<ul class="simple">
+<li><p>lese data fra instrumenter og datafiler</p></li>
+<li><p>oppdage manglende eller urimelige verdier</p></li>
+<li><p>regne ut gjennomsnitt, standardavvik og andre statistiske størrelser</p></li>
+<li><p>visualisere data med grafer</p></li>
+<li><p>tilpasse modeller til målepunktene</p></li>
+<li><p>sammenlikne resultater fra flere eksperimenter</p></li>
+</ul>
+<p>Programmering gjør det mulig å utføre de samme operasjonene på en systematisk og etterprøvbar måte. Dersom analysen er skrevet som programkode, kan vi se hvilke valg som er gjort og kjøre den samme analysen på nytt. Det er spesielt viktig når datasettet er stort eller analysen består av mange trinn.</p>
+<p>Datahåndtering handler likevel ikke bare om å finne en funksjon som passer til målepunktene. Vi må også spørre hva variablene representerer, hvor usikre målingene er, og om modellen har en kjemisk begrunnelse. En svært god matematisk tilpasning er ikke nødvendigvis en god kjemisk forklaring.</p>
+<div class="admonition-datahandtering admonition">
+<p class="admonition-title">Datahåndtering</p>
+<p>Datahåndtering innebærer å organisere, bearbeide, visualisere og analysere data slik at vi kan undersøke mønstre og trekke begrunnede konklusjoner.</p>
+</div>
+</section>
+<section id="datamaskinen-krever-tydelige-antakelser">
+<h2>Datamaskinen krever tydelige antakelser<a class="headerlink" href="#datamaskinen-krever-tydelige-antakelser" title="Permalink to this heading">#</a></h2>
+<p>Når vi regner for hånd, kan vi hoppe over mellomregninger fordi vi forstår hva vi selv mener. Datamaskinen trenger derimot nøyaktige instrukser. Alle variabler må ha en verdi, alle operasjoner må komme i riktig rekkefølge, og alle spesielle tilfeller må håndteres.</p>
+<p>Det kan oppleves tungvint, men det er også en styrke. Når vi oversetter et kjemisk problem til programkode, blir vi tvunget til å formulere hva størrelsene betyr og hvordan de henger sammen. Vi oppdager ofte uklarheter i vår egen forståelse når vi prøver å forklare problemet til datamaskinen.</p>
+<p>Feilmeldinger og uventede resultater er derfor ikke bare hindringer. De kan være ledetråder. Kanskje har vi skrevet feil variabelnavn, men kanskje har vi også glemt en viktig kjemisk prosess eller brukt en modell utenfor gyldighetsområdet. Å feilsøke et program handler både om å undersøke koden og om å undersøke det faglige resonnementet bak koden.</p>
+</section>
+<section id="ki-kan-skrive-kode-men-hvem-gjor-den-faglige-tenkingen">
+<h2>KI kan skrive kode – men hvem gjør den faglige tenkingen?<a class="headerlink" href="#ki-kan-skrive-kode-men-hvem-gjor-den-faglige-tenkingen" title="Permalink to this heading">#</a></h2>
+<p>Generativ kunstig intelligens (KI) kan nå lage, forklare og rette programkode. Det senker terskelen for å bruke programmering i kjemi. En kjemiker trenger ikke nødvendigvis å huske all syntaks eller bygge hvert program fra bunnen av. KI kan for eksempel hjelpe oss med å lese en datafil, lage et plott eller finne en feil i en løkke. Dermed kan vi bruke mer tid på det kjemiske problemet vi egentlig ønsker å undersøke.</p>
+<p>Dette betyr likevel ikke at det er blitt unødvendig å forstå programmering. KI kan lage kode som ser overbevisende ut, men som bruker feil enheter, en uegnet modell eller en funksjon som ikke gjør det KI påstår. Den kan også foreslå en svært komplisert løsning på et enkelt problem. Dersom vi ikke forstår hva programmet gjør, blir det vanskelig å avgjøre om resultatet er riktig.</p>
+<p>Den mest produktive bruken av KI oppstår derfor når vi selv beholder kontrollen over problemløsingen. Vi bør formulere det kjemiske spørsmålet, avgrense systemet og vurdere hvilke antakelser som er rimelige. KI kan deretter fungere som en dynamisk programmeringshjelp som gir forslag, forklarer kode og hjelper oss videre når vi står fast.</p>
+<div class="admonition-tenk-forst-spor-etterpa-og-tenk-en-gang-til admonition">
+<p class="admonition-title">Tenk først, spør etterpå – og tenk en gang til</p>
+<p>Når du bruker KI som programmeringshjelp, kan du arbeide slik:</p>
+<ol class="arabic simple">
+<li><p>Forklar først for deg selv hva problemet er, og hva programmet skal gjøre.</p></li>
+<li><p>Gi KI relevant kjemisk kontekst, enheter og tydelige avgrensninger.</p></li>
+<li><p>Be gjerne om små deler av programmet eller en forklaring, ikke nødvendigvis en ferdig løsning.</p></li>
+<li><p>Les og test koden. Endre verdier og undersøk om resultatet oppfører seg som forventet.</p></li>
+<li><p>Vurder resultatet med utgangspunkt i kjemisk kunnskap. Det er du, ikke KI-en, som må stå for den faglige konklusjonen.</p></li>
+</ol>
+</div>
+</section>
+<section id="hva-ma-en-kjemiker-kunne-om-programmering">
+<h2>Hva må en kjemiker kunne om programmering?<a class="headerlink" href="#hva-ma-en-kjemiker-kunne-om-programmering" title="Permalink to this heading">#</a></h2>
+<p>Du trenger ikke å bli programvareutvikler for å ha nytte av programmering i kjemi. Men du bør kunne:</p>
+<ul class="simple">
+<li><p>lese enkel programkode og forklare hva de viktigste linjene gjør</p></li>
+<li><p>dele et problem opp i mindre trinn</p></li>
+<li><p>kjenne igjen variabler, vilkår, løkker, funksjoner og datasamlinger</p></li>
+<li><p>kjøre og modifisere eksisterende programmer</p></li>
+<li><p>teste om koden gir rimelige resultater</p></li>
+<li><p>tolke grafer, tall og andre resultater i en kjemisk sammenheng</p></li>
+<li><p>vurdere antakelsene og begrensningene i modellen</p></li>
+<li><p>bruke dokumentasjon, medstudenter/kollegaer og KI som hjelp uten å gi fra deg kontrollen over resonnementet</p></li>
+</ul>
+<p>Målet er altså ikke å huske flest mulig kommandoer. Målet er å kunne bruke programkode som en del av kjemisk problemløsing. Resten av disse nettsidene gir deg verktøyene du trenger for å komme i gang med dette.</p>
+</section>
+<section id="et-forste-program-fra-konsentrasjon-til-ph">
+<h2>Et første program – fra konsentrasjon til pH<a class="headerlink" href="#et-forste-program-fra-konsentrasjon-til-ph" title="Permalink to this heading">#</a></h2>
+<p>La oss begynne med et lite program som regner ut pH fra konsentrasjonen av oksoniumioner, <span class="math notranslate nohighlight">\(\mathrm{H_3O^+}\)</span>. Sammenhengen er:</p>
+<div class="math notranslate nohighlight">
+\[
+\mathrm{pH}=-\log_{10}\left[\mathrm{H_3O^+}\right]
+\]</div>
+<p>Her bruker vi den vanlige tilnærmingen der pH beregnes direkte fra konsentrasjonen. Strengt tatt er pH definert ved aktiviteten til oksoniumionene. Forskjellen blir viktigere i mer konsentrerte løsninger, men den tar vi ikke hensyn til i dette første eksempelet.</p>
+<p>Før du kjører programmet nedenfor, kan du prøve å lese det som en oppskrift:</p>
+<ol class="arabic simple">
+<li><p>Programmet henter en matematisk funksjon som beregner logaritmer.</p></li>
+<li><p>Konsentrasjonen av oksoniumioner lagres i en variabel.</p></li>
+<li><p>Programmet bruker modellen ovenfor til å beregne pH.</p></li>
+<li><p>Resultatet skrives ut.</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">math</span><span class="w"> </span><span class="kn">import</span> <span class="n">log10</span>
+
+<span class="n">h3o_concentration</span> <span class="o">=</span> <span class="mf">0.001</span>  <span class="c1"># mol/L</span>
+<span class="n">pH</span> <span class="o">=</span> <span class="o">-</span><span class="n">log10</span><span class="p">(</span><span class="n">h3o_concentration</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;pH =&quot;</span><span class="p">,</span> <span class="n">pH</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>pH = 3.0
+</pre></div>
+</div>
+</div>
+</div>
+<p>Programmet gir pH = 3,0. Men det interessante er ikke bare at programmet finner svaret. Vi kan bruke programmet til å undersøke sammenhengen mellom konsentrasjon og pH.</p>
+<div class="tip admonition">
+<p class="admonition-title">Underveisoppgave</p>
+<ol class="arabic simple">
+<li><p>Hva tror du skjer med pH dersom konsentrasjonen av <span class="math notranslate nohighlight">\(\mathrm{H_3O^+}\)</span> blir ti ganger mindre?</p></li>
+<li><p>Endre <code class="docutils literal notranslate"><span class="pre">h3o_concentration</span></code> til <code class="docutils literal notranslate"><span class="pre">0.0001</span></code> mol/L og kjør programmet på nytt. Fikk du det resultatet du forventet?</p></li>
+<li><p>Prøv flere konsentrasjoner. Hvilket mønster ser du?</p></li>
+<li><p>Endre programmet slik at det regner ut konsentrasjonen av <span class="math notranslate nohighlight">\(\mathrm{H_3O^+}\)</span> fra en oppgitt pH. Du kan ta utgangspunkt i sammenhengen <span class="math notranslate nohighlight">\(\left[\mathrm{H_3O^+}\right]=10^{-\mathrm{pH}}\)</span>.</p></li>
+</ol>
+</div>
+<p>Du kan også prøve programmet i den nettbaserte editoren nedenfor. Kjør programmet med knappen øverst til venstre, endre verdier og se hva som skjer.</p>
+<iframe src="../../basthon/?from=examples/ph_intro.py" width="100%" height="600" frameborder="0" title="Interaktiv Python-editor for pH-beregning" loading="lazy" allowfullscreen></iframe><section id="hvis-du-kan-litt-programmering-fra-for">
+<h3>Hvis du kan litt programmering fra før<a class="headerlink" href="#hvis-du-kan-litt-programmering-fra-for" title="Permalink to this heading">#</a></h3>
+<p>Prøv å utvide programmet ovenfor slik at det:</p>
+<ol class="arabic simple">
+<li><p>avgjør om en løsning er sur, basisk eller nøytral ut fra pH.</p></li>
+<li><p>beregner pH for flere konsentrasjoner med en løkke. Klarer du også å visualisere sammenhengen?</p></li>
+</ol>
+</section>
+</section>
+<section id="oppsummering">
+<h2>Oppsummering<a class="headerlink" href="#oppsummering" title="Permalink to this heading">#</a></h2>
+<p>Programmering kan brukes til å automatisere beregninger, men den viktigste rollen i kjemi er større enn som så. Med programkode kan vi gjøre modeller eksplisitte, simulere systemer vi ikke kan observere direkte, og finne mønstre i store mengder eksperimentelle data. Programmering gir oss også nye representasjoner av kjemiske fenomener og kan dermed hjelpe oss med å se sammenhenger mellom matematikk, mikronivået og det vi observerer i laboratoriet.</p>
+<p>KI gjør det enklere å lage og forstå programkode, også for vitenskapsfolk som først og fremst ønsker å arbeide med kjemi. Men det faglige ansvaret kan ikke overlates til verken datamaskinen eller KI-en. Vi må fortsatt stille spørsmålene, velge og vurdere modellene og avgjøre om resultatene gir kjemisk mening.</p>
+<p>I de neste kapitlene skal vi se nærmere på de grunnleggende byggeklossene i programmering. Underveis skal vi hele tiden bruke dem til å undersøke matematiske og kjemiske sammenhenger.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./docs/grunnleggende_programmering"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../intro.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Programmering i kjemi</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="vscode.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Visual Studio Code for kjemikere</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hvorfor-programmering">Hvorfor programmering?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#et-verktoy-for-a-tenke-med">Et verktøy for å tenke med</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fra-kjemisk-fenomen-til-program">Fra kjemisk fenomen til program</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simuleringer-eksperimenter-pa-datamaskinen">Simuleringer – eksperimenter på datamaskinen</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fra-maling-til-kunnskap-datahandtering">Fra måling til kunnskap – datahåndtering</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#datamaskinen-krever-tydelige-antakelser">Datamaskinen krever tydelige antakelser</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ki-kan-skrive-kode-men-hvem-gjor-den-faglige-tenkingen">KI kan skrive kode – men hvem gjør den faglige tenkingen?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hva-ma-en-kjemiker-kunne-om-programmering">Hva må en kjemiker kunne om programmering?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#et-forste-program-fra-konsentrasjon-til-ph">Et første program – fra konsentrasjon til pH</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hvis-du-kan-litt-programmering-fra-for">Hvis du kan litt programmering fra før</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppsummering">Oppsummering</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Andreas Haraldsrud
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

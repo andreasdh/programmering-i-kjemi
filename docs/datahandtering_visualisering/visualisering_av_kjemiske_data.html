@@ -1,0 +1,860 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Visualisering av kjemiske data &#8212; Programmering i kjemi</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/kjemiquiz.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/kjemiquiz.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom1.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
+    <script src="../../_static/kjemiquiz.js"></script>
+    <script src="../../_static/turtle_basthon.js"></script>
+    <script src="../../_static/kjemiquiz.js"></script>
+    <script src="../../_static/turtle_basthon.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/datahandtering_visualisering/visualisering_av_kjemiske_data';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Lese og rydde kjemiske data" href="lese_og_rydde_kjemiske_data.html" />
+    <link rel="prev" title="Molekylvisualisering" href="molekylvisualisering.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/qe-logo-large.png" class="logo__image only-light" alt="Programmering i kjemi - Home"/>
+    <script>document.write(`<img src="../../_static/qe-logo-large.png" class="logo__image only-dark" alt="Programmering i kjemi - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Kom i gang</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../grunnleggende_programmering/introduksjon.html">Introduksjon: Programmering som verktøy i kjemi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../grunnleggende_programmering/vscode.html">Visual Studio Code for kjemikere</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Grunnleggende programmering</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../grunnleggende_programmering/tall_variabler.html">Variabler og datatyper</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../grunnleggende_programmering/quiz1.html">Quiz 1: Variabler og aritmetikk</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../grunnleggende_programmering/lister.html">Lister</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../grunnleggende_programmering/quiz2.html">Quiz 2: Lister</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../grunnleggende_programmering/vilkar.html">Vilkår (if-tester)</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../grunnleggende_programmering/quiz3.html">Quiz 3: Vilkår (if-tester)</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../grunnleggende_programmering/lokker.html">Løkker</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../grunnleggende_programmering/quiz4.html">Quiz 4: Løkker</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../grunnleggende_programmering/funksjoner.html">Funksjoner</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../grunnleggende_programmering/quiz5.html">Quiz 5: Funksjoner</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../grunnleggende_programmering/datasamlinger.html">Datasamlinger</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../grunnleggende_programmering/quiz6.html">Quiz 6: Datasamlinger (arrayer og dictionarier)</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Datahåndtering og visualisering</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="kjemiske_biblioteker.html">Kjemiske biblioteker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="molekylvisualisering.html">Molekylvisualisering</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Visualisering av kjemiske data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lese_og_rydde_kjemiske_data.html">Lese og rydde kjemiske data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="statistikk_grunnleggende_kjemi.html">Deskriptiv statistikk: Målinger, variasjon og usikkerhet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kalibrering_og_statistisk_inferens.html">Kalibrering og sammenlikning av resultater</a></li>
+<li class="toctree-l1"><a class="reference internal" href="maskinlaering_i_kjemi.html">Maskinlæring i kjemi*</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Numeriske metoder</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../nullpunkter_likninger/likninger.html">Likninger og nullpunkter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../derivasjon_integrasjon/derivasjon.html">Numerisk derivasjon</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../derivasjon_integrasjon/integrasjon.html">Numerisk integrasjon</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Dynamiske systemer</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../modellering/diskret_modellering.html">Differenslikninger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modellering/differensiallikninger.html">Differensiallikninger og fartslover</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Emneressurser (IN-KJM1900)</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../forelesninger/forelesninger.html">Forelesninger</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../forelesninger/forelesning1.html">Forelesning 1: Programmering i kjemi</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../forelesninger/forelesning2.html">Forelesning 2: Plotting og datahåndtering</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../forelesninger/forelesning3.html">Forelesning 3: Statistisk analyse</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../forelesninger/forelesning4.html">Forelesning 4: Statistikk II</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../forelesninger/forelesning5.html">Forelesning 5: Numerisk derivasjon og likninger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../forelesninger/forelesning6.html">Forelesning 6: Numerisk integrasjon</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../forelesninger/forelesning7.html">Forelesning 7: Numerisk løsing av likninger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../forelesninger/forelesning8.html">Forelesning 8: Differensiallikninger og reaksjonskinetikk</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../forelesninger/forelesning9.html">Forelesning 9: Reaksjonskinetikk II</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../forelesninger/forelesning10.html">Forelesning 10: Molekylmekanikk</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../forelesninger/workshops.html">Eksamensverksted</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../forelesninger/workshop1.html">Workshop 1: Datahåndtering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../forelesninger/workshop2.html">Workshop 2: Numeriske metoder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../forelesninger/workshop3.html">Workshop 3: Dynamiske systemer</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../obliger/obliger.html">Obligatoriske oppgaver</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../obliger/oblig_datahandtering.html">Oblig 1: Håndtering av kjemiske data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../obliger/oblig_dynamiske_systemer.html">Oblig 2: Dynamiske systemer og integrasjon</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../datafiler.html">Datafiler</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Emneressurser (KJM1140)</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../biokjemi/molekylvisualisering.html">Molekylvisualisering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../biokjemi/datavisualisering.html">Datavisualisering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../biokjemi/regresjonsmodeller.html">Regresjonsmodeller</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../biokjemi/enzymkinetikklab2025.html">Analyse av enzymkinetikkdata</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../biokjemi/proteinfolding.html">Lab 5: Proteinfolding</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/docs/datahandtering_visualisering/visualisering_av_kjemiske_data.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Visualisering av kjemiske data</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#punktplott-av-maledata">Punktplott av måledata</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#enheter-og-aksetitler">Enheter og aksetitler</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#skal-punktene-bindes-sammen">Skal punktene bindes sammen?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#flere-dataserier-i-samme-figur">Flere dataserier i samme figur</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#flere-plott-i-samme-figur">Flere plott i samme figur</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aksegrenser-og-visuell-redelighet">Aksegrenser og visuell redelighet</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hva-er-en-god-kjemisk-figur">Hva er en god kjemisk figur?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgaver">Oppgaver</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#video">Video</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="visualisering-av-kjemiske-data">
+<h1>Visualisering av kjemiske data<a class="headerlink" href="#visualisering-av-kjemiske-data" title="Permalink to this heading">#</a></h1>
+<div class="admonition-laeringsutbytte admonition">
+<p class="admonition-title">Læringsutbytte</p>
+<p>Etter å ha arbeidet med dette temaet, skal du kunne:</p>
+<ol class="arabic simple">
+<li><p>velge en visualisering som passer til kjemiske data</p></li>
+<li><p>bruke Matplotlib til å lage punkt- og linjeplott</p></li>
+<li><p>lage figurer med aksetitler, enheter, tegnforklaring og hensiktsmessig skalering</p></li>
+<li><p>visualisere flere dataserier og flere plott i samme figur</p></li>
+<li><p>forklare hva en figur viser, og hva den ikke viser</p></li>
+</ol>
+</div>
+<p>Håndtering av data blir bare viktigere og viktigere. En viktig del av datahåndtering er å kunne lage informative figurer som beskriver dataene på en god måte. Programmering gir oss stor kontroll over hvordan dataene behandles og visualiseres, og gjør det mulig å gjenta den samme framgangsmåten når vi får nye data.</p>
+<p>En figur er likevel ikke bare pynt. Valg av plott, akser og skala påvirker hvilke mønstre vi legger merke til. En god kjemisk figur skal gjøre det lettere å svare på et faglig spørsmål.</p>
+<div class="admonition-datavisualisering admonition">
+<p class="admonition-title">Datavisualisering</p>
+<p>Datavisualisering betyr å framstille data grafisk slik at mønstre, variasjon og sammenhenger blir lettere å undersøke og formidle.</p>
+</div>
+<p>Før vi velger figur, bør vi derfor spørre:</p>
+<ul class="simple">
+<li><p>Hva representerer hvert datapunkt?</p></li>
+<li><p>Hvilken variabel har vi kontrollert, og hvilken har vi målt?</p></li>
+<li><p>Er datapunktene uavhengige, eller følger de en naturlig rekkefølge?</p></li>
+<li><p>Skal figuren vise rådata, en oppsummering eller en modell?</p></li>
+</ul>
+<section id="punktplott-av-maledata">
+<h2>Punktplott av måledata<a class="headerlink" href="#punktplott-av-maledata" title="Permalink to this heading">#</a></h2>
+<p>Hvis vi har få datapunkter, kan vi skrive dem inn i lister direkte i programmet. Vi tar utgangspunkt i et eksempel der damptrykket til vann er målt ved ulike temperaturer:</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-right"><p>Temperatur (°C)</p></th>
+<th class="head text-right"><p>Damptrykk (kPa)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-right"><p>16</p></td>
+<td class="text-right"><p>1,817</p></td>
+</tr>
+<tr class="row-odd"><td class="text-right"><p>18</p></td>
+<td class="text-right"><p>2,063</p></td>
+</tr>
+<tr class="row-even"><td class="text-right"><p>20</p></td>
+<td class="text-right"><p>2,339</p></td>
+</tr>
+<tr class="row-odd"><td class="text-right"><p>22</p></td>
+<td class="text-right"><p>2,644</p></td>
+</tr>
+<tr class="row-even"><td class="text-right"><p>24</p></td>
+<td class="text-right"><p>2,984</p></td>
+</tr>
+</tbody>
+</table>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="n">temperature_C</span> <span class="o">=</span> <span class="p">[</span><span class="mi">16</span><span class="p">,</span> <span class="mi">18</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">22</span><span class="p">,</span> <span class="mi">24</span><span class="p">]</span>
+<span class="n">vapor_pressure_kPa</span> <span class="o">=</span> <span class="p">[</span><span class="mf">1.817</span><span class="p">,</span> <span class="mf">2.063</span><span class="p">,</span> <span class="mf">2.339</span><span class="p">,</span> <span class="mf">2.644</span><span class="p">,</span> <span class="mf">2.984</span><span class="p">]</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">temperature_C</span><span class="p">,</span> <span class="n">vapor_pressure_kPa</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Temperature (°C)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Vapor pressure (kPa)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Funksjonen <code class="docutils literal notranslate"><span class="pre">scatter</span></code> lager et punktplott. Hvert punkt kobler sammen én temperatur og det tilhørende damptrykket. Dette er måledata: Temperaturen er den uavhengige variabelen vi har valgt, mens damptrykket er den avhengige variabelen vi har målt.</p>
+<p>Det er viktig at listene har like mange elementer. Elementer med samme indeks hører sammen. Den første temperaturen kobles til det første damptrykket, den andre temperaturen til det andre damptrykket, og så videre.</p>
+<section id="enheter-og-aksetitler">
+<h3>Enheter og aksetitler<a class="headerlink" href="#enheter-og-aksetitler" title="Permalink to this heading">#</a></h3>
+<p>En figur uten aksetitler og enheter er vanskelig å tolke. <code class="docutils literal notranslate"><span class="pre">xlabel</span></code> og <code class="docutils literal notranslate"><span class="pre">ylabel</span></code> brukes til å beskrive hva aksene viser. Enheten bør stå i parentes. Selve tallene i datasettet skal normalt ikke inneholde enhetstekst, fordi Python da ikke lenger kan behandle dem som tall.</p>
+<p>Vi kan også legge til tittel, rutenett, merkelapp og tegnforklaring:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="n">temperature_C</span> <span class="o">=</span> <span class="p">[</span><span class="mi">16</span><span class="p">,</span> <span class="mi">18</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">22</span><span class="p">,</span> <span class="mi">24</span><span class="p">]</span>
+<span class="n">vapor_pressure_kPa</span> <span class="o">=</span> <span class="p">[</span><span class="mf">1.817</span><span class="p">,</span> <span class="mf">2.063</span><span class="p">,</span> <span class="mf">2.339</span><span class="p">,</span> <span class="mf">2.644</span><span class="p">,</span> <span class="mf">2.984</span><span class="p">]</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">temperature_C</span><span class="p">,</span>
+    <span class="n">vapor_pressure_kPa</span><span class="p">,</span>
+    <span class="n">color</span><span class="o">=</span><span class="s2">&quot;#176b87&quot;</span><span class="p">,</span>
+    <span class="n">s</span><span class="o">=</span><span class="mi">55</span><span class="p">,</span>
+    <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Measurements&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Temperature (°C)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Vapor pressure (kPa)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Vapor pressure of water&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.25</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">tight_layout</span></code> justerer avstanden mellom elementene slik at for eksempel aksetitler ikke blir kuttet. Farge og punktstørrelse kan gjøre figuren tydeligere, men utformingen bør ikke overdøve dataene.</p>
+<p>Du kan kjøre og endre damptrykksprogrammet i editoren nedenfor.</p>
+<iframe src="../../basthon/?from=examples/visualization_vapor_pressure.py" width="100%" height="620" frameborder="0" title="Interactive Python editor for visualizing vapor pressure data" loading="lazy" allowfullscreen></iframe>
+<div class="tip admonition">
+<p class="admonition-title">Underveisoppgave</p>
+<ol class="arabic simple">
+<li><p>Endre farge og punktstørrelse.</p></li>
+<li><p>Fjern én av aksetitlene. Hvilken informasjon går tapt?</p></li>
+<li><p>Utvid datasettet med en måling ved 26 °C og 3,36 kPa.</p></li>
+<li><p>Bytt om listene i <code class="docutils literal notranslate"><span class="pre">plt.scatter</span></code>. Hvordan endrer det den faglige framstillingen?</p></li>
+</ol>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Løsningsforslag</p>
+<p>Et nytt datapunkt legges til ved å føye <code class="docutils literal notranslate"><span class="pre">26</span></code> til <code class="docutils literal notranslate"><span class="pre">temperature_C</span></code> og <code class="docutils literal notranslate"><span class="pre">3.36</span></code> til <code class="docutils literal notranslate"><span class="pre">vapor_pressure_kPa</span></code>. Listene må fortsatt ha samme lengde. Dersom listene byttes om, framstilles temperatur som en funksjon av damptrykk. Punktene inneholder den samme informasjonen, men figuren svarer på et annet spørsmål.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="skal-punktene-bindes-sammen">
+<h2>Skal punktene bindes sammen?<a class="headerlink" href="#skal-punktene-bindes-sammen" title="Permalink to this heading">#</a></h2>
+<p>Funksjonen <code class="docutils literal notranslate"><span class="pre">plot</span></code> tegner som standard linjer mellom punktene. Det kan være hensiktsmessig når dataene følger en naturlig rekkefølge, for eksempel en tidsserie:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="n">time_s</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">60</span><span class="p">]</span>
+<span class="n">absorbance</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.812</span><span class="p">,</span> <span class="mf">0.673</span><span class="p">,</span> <span class="mf">0.552</span><span class="p">,</span> <span class="mf">0.458</span><span class="p">,</span> <span class="mf">0.378</span><span class="p">,</span> <span class="mf">0.313</span><span class="p">,</span> <span class="mf">0.260</span><span class="p">]</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time_s</span><span class="p">,</span> <span class="n">absorbance</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;o&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Time (s)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Absorbance&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Absorbance during a reaction&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Her viser linja rekkefølgen på målingene og gjør tidsutviklingen lettere å følge. Linja betyr likevel ikke at vi har målt alle tidspunktene mellom punktene. Den er en visuell forbindelse, ikke i seg selv en kontinuerlig kjemisk modell.</p>
+<p>For kalibreringsstandarder er et punktplott ofte et bedre utgangspunkt. Standardene er selvstendige prøver, og en eventuell linje bør komme fra en regresjonsmodell. Vi bør ikke la <code class="docutils literal notranslate"><span class="pre">plot</span></code> koble dem sammen bare fordi de står i stigende rekkefølge.</p>
+<div class="admonition-huskeregel admonition">
+<p class="admonition-title">Huskeregel</p>
+<p>Bruk punktplott når du vil vise enkeltmålinger og sammenhengen mellom to størrelser. Bruk linjer når rekkefølgen mellom punktene er viktig, eller når linja representerer en eksplisitt modell.</p>
+</div>
+<p>Du kan undersøke tidsserien i editoren nedenfor.</p>
+<iframe src="../../basthon/?from=examples/visualization_kinetics.py" width="100%" height="620" frameborder="0" title="Interactive Python editor for visualizing reaction kinetics data" loading="lazy" allowfullscreen></iframe>
+<div class="tip admonition">
+<p class="admonition-title">Underveisoppgave</p>
+<ol class="arabic simple">
+<li><p>Bytt <code class="docutils literal notranslate"><span class="pre">plt.plot</span></code> med <code class="docutils literal notranslate"><span class="pre">plt.scatter</span></code>. Hva blir lettere eller vanskeligere å se?</p></li>
+<li><p>Fjern markørene fra linjeplottet. Hvilken informasjon blir mindre tydelig?</p></li>
+<li><p>Beskriv den kjemiske utviklingen i figuren uten å hevde mer enn dataene viser.</p></li>
+</ol>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Løsningsforslag</p>
+<p>Absorbansen avtar raskt i starten og langsommere seinere. Dersom absorbansen er proporsjonal med konsentrasjonen til én absorberende forbindelse, er dette konsistent med at konsentrasjonen til forbindelsen avtar. Figuren alene viser ikke hvilken reaksjonsorden eller mekanisme som gjelder.</p>
+</div>
+</div>
+</section>
+<section id="flere-dataserier-i-samme-figur">
+<h2>Flere dataserier i samme figur<a class="headerlink" href="#flere-dataserier-i-samme-figur" title="Permalink to this heading">#</a></h2>
+<p>Vi kan sammenlikne dataserier ved å plotte dem i samme koordinatsystem. Da må de få ulike markører eller linjestiler og tydelige merkelapper:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="n">time_s</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="mi">100</span><span class="p">]</span>
+<span class="n">absorbance_298_K</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.812</span><span class="p">,</span> <span class="mf">0.552</span><span class="p">,</span> <span class="mf">0.378</span><span class="p">,</span> <span class="mf">0.260</span><span class="p">,</span> <span class="mf">0.181</span><span class="p">,</span> <span class="mf">0.128</span><span class="p">]</span>
+<span class="n">absorbance_308_K</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.809</span><span class="p">,</span> <span class="mf">0.476</span><span class="p">,</span> <span class="mf">0.284</span><span class="p">,</span> <span class="mf">0.172</span><span class="p">,</span> <span class="mf">0.108</span><span class="p">,</span> <span class="mf">0.071</span><span class="p">]</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time_s</span><span class="p">,</span> <span class="n">absorbance_298_K</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;o&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;298 K&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time_s</span><span class="p">,</span> <span class="n">absorbance_308_K</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;s&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;308 K&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Time (s)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Absorbance&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Reaction at two temperatures&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>En god tegnforklaring gjør det mulig å skille dataseriene uten å være avhengig av farge alene. Dette er viktig både ved utskrift i gråtoner og for personer med redusert fargesyn.</p>
+<div class="tip admonition">
+<p class="admonition-title">Underveisoppgave</p>
+<p>Hvilken reaksjonsblanding ser ut til å reagere raskest? Er figuren alene tilstrekkelig til å konkludere med at temperatur er årsaken til forskjellen?</p>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Løsningsforslag</p>
+<p>Absorbansen avtar raskest ved 308 K. Dersom temperatur er den eneste systematiske forskjellen mellom forsøkene, støtter dataene at reaksjonen går raskere ved høyere temperatur. Figuren dokumenterer ikke forsøksdesignet, og kan derfor ikke alene utelukke andre forskjeller mellom prøvene.</p>
+</div>
+</div>
+</section>
+<section id="flere-plott-i-samme-figur">
+<h2>Flere plott i samme figur<a class="headerlink" href="#flere-plott-i-samme-figur" title="Permalink to this heading">#</a></h2>
+<p>Noen ganger blir én akse overfylt. Da kan vi bruke <code class="docutils literal notranslate"><span class="pre">subplots</span></code> til å lage flere akser i samme figur:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="n">time_s</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="mi">100</span><span class="p">]</span>
+<span class="n">absorbance_298_K</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.812</span><span class="p">,</span> <span class="mf">0.552</span><span class="p">,</span> <span class="mf">0.378</span><span class="p">,</span> <span class="mf">0.260</span><span class="p">,</span> <span class="mf">0.181</span><span class="p">,</span> <span class="mf">0.128</span><span class="p">]</span>
+<span class="n">absorbance_308_K</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.809</span><span class="p">,</span> <span class="mf">0.476</span><span class="p">,</span> <span class="mf">0.284</span><span class="p">,</span> <span class="mf">0.172</span><span class="p">,</span> <span class="mf">0.108</span><span class="p">,</span> <span class="mf">0.071</span><span class="p">]</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">sharey</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time_s</span><span class="p">,</span> <span class="n">absorbance_298_K</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;o&quot;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;298 K&quot;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Time (s)&quot;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Absorbance&quot;</span><span class="p">)</span>
+
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time_s</span><span class="p">,</span> <span class="n">absorbance_308_K</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;s&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;#b23a48&quot;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;308 K&quot;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Time (s)&quot;</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s2">&quot;Reaction at two temperatures&quot;</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Variabelen <code class="docutils literal notranslate"><span class="pre">axes</span></code> inneholder de to koordinatsystemene. Vi bruker <code class="docutils literal notranslate"><span class="pre">axes[0]</span></code> for den første og <code class="docutils literal notranslate"><span class="pre">axes[1]</span></code> for den andre. <code class="docutils literal notranslate"><span class="pre">sharey=True</span></code> gir dem samme y-akse, slik at kurvene kan sammenliknes visuelt uten at skalaen endres.</p>
+</section>
+<section id="aksegrenser-og-visuell-redelighet">
+<h2>Aksegrenser og visuell redelighet<a class="headerlink" href="#aksegrenser-og-visuell-redelighet" title="Permalink to this heading">#</a></h2>
+<p>Aksegrensene kan justeres med <code class="docutils literal notranslate"><span class="pre">xlim</span></code> og <code class="docutils literal notranslate"><span class="pre">ylim</span></code>, men valget må være faglig begrunnet:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>En svært smal y-akse kan få små forskjeller til å virke dramatiske. En svært bred akse kan skjule reelle variasjoner. Det finnes ikke én riktig grense for alle figurer, men leseren må få et ærlig bilde av størrelsene og variasjonen.</p>
+<p>Logaritmiske akser kan være nyttige når verdiene dekker flere størrelsesordener. De skal merkes tydelig og brukes fordi de hjelper oss å undersøke et faglig spørsmål, ikke bare fordi figuren ser penere ut.</p>
+</section>
+<section id="hva-er-en-god-kjemisk-figur">
+<h2>Hva er en god kjemisk figur?<a class="headerlink" href="#hva-er-en-god-kjemisk-figur" title="Permalink to this heading">#</a></h2>
+<p>Før du avslutter en figur, kan du kontrollere følgende:</p>
+<ul class="simple">
+<li><p>Er datapunktene eller modellen som vises, tydelig identifisert?</p></li>
+<li><p>Har begge aksene navn og enhet?</p></li>
+<li><p>Er skalaen hensiktsmessig og redelig?</p></li>
+<li><p>Kan dataseriene skilles uten bare å bruke farge?</p></li>
+<li><p>Er tegnforklaringen nødvendig og forståelig?</p></li>
+<li><p>Viser figuren rådata, middelverdier eller en modell?</p></li>
+<li><p>Dersom figuren har feilstolper: Er det oppgitt hva de representerer?</p></li>
+<li><p>Kan du formulere en kjemisk tolkning uten å overtolke dataene?</p></li>
+</ul>
+</section>
+<section id="oppgaver">
+<h2>Oppgaver<a class="headerlink" href="#oppgaver" title="Permalink to this heading">#</a></h2>
+<div class="tip admonition">
+<p class="admonition-title">Oppgave 1.1</p>
+<p>Lag et punktplott av temperaturene <code class="docutils literal notranslate"><span class="pre">[10,</span> <span class="pre">20,</span> <span class="pre">30,</span> <span class="pre">40,</span> <span class="pre">50]</span></code> °C og løselighetene <code class="docutils literal notranslate"><span class="pre">[21.2,</span> <span class="pre">31.6,</span> <span class="pre">45.8,</span> <span class="pre">63.9,</span> <span class="pre">85.5]</span></code> g per 100 g vann. Gi figuren aksetitler, enheter og en faglig tittel.</p>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Oppgave 1.2</p>
+<p>Tegn løselighetsdataene fra oppgave 1.1 både med <code class="docutils literal notranslate"><span class="pre">scatter</span></code> og <code class="docutils literal notranslate"><span class="pre">plot</span></code>. Forklar hvilken versjon du foretrekker, og hva linja mellom punktene eventuelt antyder.</p>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Oppgave 1.3</p>
+<p>Programmet nedenfor lager en figur som er vanskelig å tolke. Finn minst fire forbedringer.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="p">[</span><span class="mf">7.02</span><span class="p">,</span> <span class="mf">6.81</span><span class="p">,</span> <span class="mf">6.60</span><span class="p">,</span> <span class="mf">6.42</span><span class="p">,</span> <span class="mf">6.25</span><span class="p">]</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;yellow&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Results&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Oppgave 1.4</p>
+<p>Les fila <code class="docutils literal notranslate"><span class="pre">reaction_kinetics.csv</span></code> med Pandas og visualiser absorbansen som funksjon av tid. Bruk både punkter og linje. Beskriv utviklingen med kjemiske ord.</p>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Oppgave 1.5</p>
+<p>Lag to realistiske dataserier som viser absorbansen gjennom en reaksjon ved to temperaturer. Vis seriene i samme koordinatsystem og deretter i to delplott. Diskuter hvilken figur som gjør sammenlikningen enklest.</p>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Oppgave 1.6</p>
+<p>En student viser gjennomsnittsverdier med feilstolper, men skriver bare «error bars» i figurteksten. Forklar hvorfor dette er utilstrekkelig. Hvilke ulike statistiske størrelser kan feilstolpene representere?</p>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Oppgave 1.7</p>
+<p>Lag en figur der en misvisende y-akse får to nesten like måleserier til å se svært forskjellige ut. Lag deretter en mer redelig versjon. Forklar hvilke valg du gjorde.</p>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Oppgave 1.8 – samlet case</p>
+<p>Fila <code class="docutils literal notranslate"><span class="pre">uvvis_calibration.csv</span></code> inneholder blankprøver, kalibreringsstandarder og en ukjent prøve. Lag en første utforskende figur av absorbans som funksjon av konsentrasjon. Vis bare standardene. Hvilken informasjon mister du dersom du først beregner ett gjennomsnitt for hver konsentrasjon?</p>
+</div>
+</section>
+<section id="video">
+<h2>Video<a class="headerlink" href="#video" title="Permalink to this heading">#</a></h2>
+<p>I videoen nedenfor kan du få en innføring eller repetisjon i hvordan du plotter i Python.</p>
+<iframe width="800" height="600" src="https://www.youtube.com/embed/71SeDOstEwY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./docs/datahandtering_visualisering"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="molekylvisualisering.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Molekylvisualisering</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="lese_og_rydde_kjemiske_data.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Lese og rydde kjemiske data</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#punktplott-av-maledata">Punktplott av måledata</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#enheter-og-aksetitler">Enheter og aksetitler</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#skal-punktene-bindes-sammen">Skal punktene bindes sammen?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#flere-dataserier-i-samme-figur">Flere dataserier i samme figur</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#flere-plott-i-samme-figur">Flere plott i samme figur</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aksegrenser-og-visuell-redelighet">Aksegrenser og visuell redelighet</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hva-er-en-god-kjemisk-figur">Hva er en god kjemisk figur?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oppgaver">Oppgaver</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#video">Video</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Andreas Haraldsrud
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
