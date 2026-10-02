@@ -1,0 +1,152 @@
+/* Stil for RISE-lysbildene i IN-KJM1900.
+   Legg fila i samme mappe som notatboka. Den brukes bare i lysbildemodus. */
+
+:root {
+  /* Fargepalett */
+  --marine: #1b3a5c;       /* overskrifter */
+  --aksent: #2a7f8f;       /* linjer, lenker, tabellhoder */
+  --gronn: #2e7d4f;        /* kjernestoff */
+  --gronn-lys: #e9f5ee;
+  --oransje: #d9822b;      /* Prøv selv */
+  --oransje-lys: #fdf3e7;
+  --lilla: #5b5fc7;        /* Diskuter / Menti */
+  --lilla-lys: #eff0fb;
+
+  /* Skriftstørrelser */
+  --jp-content-font-size1: 24px;
+  --jp-code-font-size: 20px;
+  --jp-code-line-height: 1.4;
+
+  /* Kodeceller */
+  --jp-cell-editor-background: #f5f7fa;
+  --jp-cell-editor-border-color: #dde3ea;
+}
+
+/* Overskrifter */
+.jp-RenderedHTMLCommon h1,
+.jp-RenderedHTMLCommon h2,
+.jp-RenderedHTMLCommon h3 {
+  color: var(--marine);
+  font-weight: 700;
+}
+.jp-RenderedHTMLCommon h1,
+.jp-RenderedHTMLCommon h2 {
+  border-bottom: 4px solid var(--aksent);
+  padding-bottom: 0.2em;
+}
+.jp-RenderedHTMLCommon h3 {
+  border-left: 6px solid var(--aksent);
+  padding-left: 0.4em;
+}
+.jp-RenderedHTMLCommon strong {
+  color: var(--marine);
+}
+.jp-RenderedHTMLCommon a {
+  color: var(--aksent);
+}
+
+/* Inline kode i tekst */
+.jp-RenderedHTMLCommon :not(pre) > code {
+  color: #9c2b5e !important;
+  background: #f4eef2 !important;
+  border-radius: 4px;
+  padding: 0.05em 0.3em;
+}
+
+/* Tabeller */
+.jp-RenderedHTMLCommon table {
+  font-size: 1em;
+  border-collapse: collapse;
+}
+.jp-RenderedHTMLCommon thead th {
+  background: var(--marine);
+  color: white;
+}
+.jp-RenderedHTMLCommon tbody tr:nth-child(odd) {
+  background: #f2f6f8;
+}
+.jp-RenderedHTMLCommon tbody tr:nth-child(even) {
+  background: white;
+}
+
+/* Bokser */
+.jp-RenderedHTMLCommon .viktig,
+.jp-RenderedHTMLCommon .oppgave,
+.jp-RenderedHTMLCommon .diskuter {
+  border-radius: 8px;
+  padding: 0.5em 1em;
+  margin: 0.5em 0;
+}
+.jp-RenderedHTMLCommon .viktig {
+  background: var(--gronn-lys);
+  border: 2px solid var(--gronn);
+}
+.jp-RenderedHTMLCommon .oppgave {
+  background: var(--oransje-lys);
+  border-left: 8px solid var(--oransje);
+}
+.jp-RenderedHTMLCommon .diskuter {
+  background: var(--lilla-lys);
+  border-left: 8px solid var(--lilla);
+}
+.jp-RenderedHTMLCommon .oppgave > p:first-child strong:first-child { color: var(--oransje); }
+.jp-RenderedHTMLCommon .diskuter > p:first-child strong:first-child { color: var(--lilla); }
+.jp-RenderedHTMLCommon .viktig > :last-child,
+.jp-RenderedHTMLCommon .oppgave > :last-child,
+.jp-RenderedHTMLCommon .diskuter > :last-child { margin-bottom: 0.3em; }
+
+/* Utskrift fra kodeceller (print, feilmeldinger, hjelpetekst med ?) */
+.jp-OutputArea-output pre {
+  font-size: var(--jp-code-font-size) !important;
+  line-height: var(--jp-code-line-height) !important;
+}
+
+/* Skjul ¶-lenka ved overskriftene */
+.jp-InternalAnchorLink {
+  display: none !important;
+}
+
+/* Fremdriftslinje og navigasjonspiler */
+.reveal .progress { height: 6px; }
+.reveal .progress span { background: var(--aksent) !important; }
+.reveal .controls { color: var(--aksent); }
+
+/* Større formler (MathJax) */
+.jp-RenderedHTMLCommon mjx-container {
+  font-size: 125% !important;
+}
+
+/* Bilder */
+.jp-RenderedHTMLCommon .bilde-hoyre {
+  float: right;
+  width: 35%;
+  margin: 0 0 0.5em 1em;
+}
+.jp-RenderedHTMLCommon img.bilde-hoyre { max-width: 50%; }
+.jp-RenderedHTMLCommon .bilde-midt {
+  display: block;
+  margin: 0.3em auto;
+  max-width: 95%;
+}
+.jp-RenderedHTMLCommon .bilde-hoyre img,
+.jp-RenderedHTMLCommon .bilde-midt img {
+  width: 100%;
+  margin: 0;
+}
+.jp-RenderedHTMLCommon .kreditering {
+  font-size: 0.55em;
+  color: #6b7280;
+  margin: 0.1em 0 0 0;
+  text-align: right;
+}
+/* Hold flytende bilder inne i sin egen celle */
+.jp-MarkdownCell .jp-RenderedHTMLCommon::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+/* Reveal gjør lister til inline-block, slik at de ikke flyter rundt bilder */
+.reveal .jp-RenderedHTMLCommon ol,
+.reveal .jp-RenderedHTMLCommon ul {
+  display: block;
+}
