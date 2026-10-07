@@ -115,9 +115,9 @@ Lag en løkke som går gjennom alle konsentrasjonene. Beregn antall gyldige avle
 
 ### 2c. Vis målingene og variasjonen
 
-Lag én figur med alle gyldige enkeltmålinger, gjennomsnittet ved hvert nivå og feilstolper som viser ett standardavvik over og under gjennomsnittet. Figuren skal ha forståelige aksetitler og merkelapper.
+Lag en egnet figur som viser gjennomsnittlig absorbans ved hvert kalibreringsnivå. Legg til feilstolper som viser ett empirisk standardavvik over og under gjennomsnittet. Figuren skal ha forståelige aksetitler.
 
-Forklar kort hva feilstolpene viser. Hvorfor vil det være feil å omtale disse standardavvikene som hele usikkerheten i konsentrasjonene vi senere bestemmer? Kommenter også om alle standardene ser ut til å følge samme rette linje.
+Forklar hva de ulike delene i figuren viser.
 
 ### 2d. Sammenlikn ditt arbeid med to KI-forslag
 
