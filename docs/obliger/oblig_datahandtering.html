@@ -1,0 +1,909 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Oblig 1: Hvor godt virker et rensefilter? &#8212; Programmering i kjemi</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/kjemiquiz.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/kjemiquiz.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom1.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
+    <script src="../../_static/kjemiquiz.js"></script>
+    <script src="../../_static/turtle_basthon.js"></script>
+    <script src="../../_static/kjemiquiz.js"></script>
+    <script src="../../_static/turtle_basthon.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/obliger/oblig_datahandtering';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Oblig 2: Dynamiske systemer og integrasjon" href="oblig_dynamiske_systemer.html" />
+    <link rel="prev" title="Obligatoriske oppgaver" href="obliger.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/qe-logo-large.png" class="logo__image only-light" alt="Programmering i kjemi - Home"/>
+    <script>document.write(`<img src="../../_static/qe-logo-large.png" class="logo__image only-dark" alt="Programmering i kjemi - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Kom i gang</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../grunnleggende_programmering/introduksjon.html">Introduksjon: Programmering som verktøy i kjemi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../grunnleggende_programmering/vscode.html">Visual Studio Code for kjemikere</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Grunnleggende programmering</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../grunnleggende_programmering/tall_variabler.html">Variabler og datatyper</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../grunnleggende_programmering/quiz1.html">Quiz 1: Variabler og aritmetikk</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../grunnleggende_programmering/lister.html">Lister</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../grunnleggende_programmering/quiz2.html">Quiz 2: Lister</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../grunnleggende_programmering/vilkar.html">Vilkår (if-tester)</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../grunnleggende_programmering/quiz3.html">Quiz 3: Vilkår (if-tester)</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../grunnleggende_programmering/lokker.html">Løkker</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../grunnleggende_programmering/quiz4.html">Quiz 4: Løkker</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../grunnleggende_programmering/funksjoner.html">Funksjoner</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../grunnleggende_programmering/quiz5.html">Quiz 5: Funksjoner</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../grunnleggende_programmering/datasamlinger.html">Datasamlinger</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../grunnleggende_programmering/quiz6.html">Quiz 6: Datasamlinger (arrayer og dictionarier)</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Datahåndtering og visualisering</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../datahandtering_visualisering/kjemiske_biblioteker.html">Kjemiske biblioteker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../datahandtering_visualisering/molekylvisualisering.html">Molekylvisualisering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../datahandtering_visualisering/visualisering_av_kjemiske_data.html">Visualisering av kjemiske data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../datahandtering_visualisering/lese_og_rydde_kjemiske_data.html">Lese og rydde kjemiske data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../datahandtering_visualisering/statistikk_grunnleggende_kjemi.html">Deskriptiv statistikk: Målinger, variasjon og usikkerhet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../datahandtering_visualisering/kalibrering_og_statistisk_inferens.html">Kalibrering og sammenlikning av resultater</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../datahandtering_visualisering/maskinlaering_i_kjemi.html">Maskinlæring i kjemi*</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Numeriske metoder</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../nullpunkter_likninger/likninger.html">Likninger og nullpunkter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../derivasjon_integrasjon/derivasjon.html">Numerisk derivasjon</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../derivasjon_integrasjon/integrasjon.html">Numerisk integrasjon</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Dynamiske systemer</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../modellering/diskret_modellering.html">Differenslikninger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modellering/differensiallikninger.html">Differensiallikninger og fartslover</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Emneressurser (IN-KJM1900)</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="obliger.html">Obligatoriske oppgaver</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Oblig 1: Hvor godt virker et rensefilter?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="oblig_dynamiske_systemer.html">Oblig 2: Dynamiske systemer og integrasjon</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../datafiler.html">Datafiler</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Emneressurser (KJM1140)</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../biokjemi/molekylvisualisering.html">Molekylvisualisering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../biokjemi/datavisualisering.html">Datavisualisering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../biokjemi/regresjonsmodeller.html">Regresjonsmodeller</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../biokjemi/enzymkinetikklab2025.html">Analyse av enzymkinetikkdata</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../biokjemi/proteinfolding.html">Lab 5: Proteinfolding</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/docs/obliger/oblig_datahandtering.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Oblig 1: Hvor godt virker et rensefilter?</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dette-skal-du-ove-pa">Dette skal du øve på</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#arbeidsmate-og-innlevering">Arbeidsmåte og innlevering</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#forsoket-og-dataene">Forsøket og dataene</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#notater-fra-laboratoriet">Notater fra laboratoriet</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#del-1-hva-har-vi-malt-og-hva-kan-vi-bruke">Del 1: Hva har vi målt, og hva kan vi bruke?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-lag-en-plan-for-du-programmerer">1a. Lag en plan før du programmerer</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b-les-og-undersok-dataene">1b. Les og undersøk dataene</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#c-handter-den-manglende-malingen">1c. Håndter den manglende målingen</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#del-2-replikater-figurer-og-ki-som-kodehjelp">Del 2: Replikater, figurer og KI som kodehjelp</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-les-koden-for-du-kjorer-den">2a. Les koden før du kjører den</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b-utvid-til-alle-kalibreringsnivaene">2b. Utvid til alle kalibreringsnivåene</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#c-vis-malingene-og-variasjonen">2c. Vis målingene og variasjonen</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-sammenlikn-ditt-arbeid-med-to-ki-forslag">2d. Sammenlikn ditt arbeid med to KI-forslag</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#del-3-fra-absorbans-til-konsentrasjon">Del 3: Fra absorbans til konsentrasjon</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-lag-og-vurder-kalibreringsmodellen">3a. Lag og vurder kalibreringsmodellen</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b-forklar-og-utvid-en-funksjon">3b. Forklar og utvid en funksjon</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#c-bruk-funksjonen-pa-vannprovene">3c. Bruk funksjonen på vannprøvene</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#del-4-hvor-stor-effekt-viser-dataene">Del 4: Hvor stor effekt viser dataene?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-sammenfatt-hver-provedel">4a. Sammenfatt hver prøvedel</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b-beskriv-forskjellen-med-tall-og-figur">4b. Beskriv forskjellen med tall og figur</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#c-vurder-et-kodeforslag-som-kan-kjores">4c. Vurder et kodeforslag som kan kjøres</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#del-5-kontroll-og-kjemisk-konklusjon">Del 5: Kontroll og kjemisk konklusjon</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-vis-at-du-har-kontroll-over-analysen">5a. Vis at du har kontroll over analysen</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b-gi-laboratoriet-en-kort-konklusjon">5b. Gi laboratoriet en kort konklusjon</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#for-innlevering">Før innlevering</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#valgfri-fordypning">Valgfri fordypning</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="oblig-1-hvor-godt-virker-et-rensefilter">
+<h1>Oblig 1: Hvor godt virker et rensefilter?<a class="headerlink" href="#oblig-1-hvor-godt-virker-et-rensefilter" title="Permalink to this heading">#</a></h1>
+<p>Et laboratorium undersøker et filter som skal fjerne et fargestoff fra vann. Du skal bruke Python til å analysere måledata og svare på:</p>
+<p><strong>Hvor stor reduksjon i fargestoffkonsentrasjon observerer vi etter filtrering, og hva gir dataene grunnlag for å konkludere?</strong></p>
+<p>Du skal arbeide med en sammenhengende analyse fra rådata til konklusjon. Noen steder får du kode som du skal lese og utvide. Andre steder må du velge framgangsmåte eller vurdere et løsningsforslag.</p>
+<p><strong>Dataene er syntetiske og laget for denne oppgaven.</strong> De representerer et forenklet forsøk, ikke dokumentasjon av et virkelig filterprodukt.</p>
+<section id="dette-skal-du-ove-pa">
+<h2>Dette skal du øve på<a class="headerlink" href="#dette-skal-du-ove-pa" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Lese, undersøke og filtrere kjemiske data uten å endre rådatafilene.</p></li>
+<li><p>Bruke løkker, lister og funksjoner til å behandle replikater.</p></li>
+<li><p>Beregne og tolke gjennomsnitt, standardavvik og kalibreringsmodeller.</p></li>
+<li><p>Velge en statistisk sammenlikning som passer til forsøksdesignet.</p></li>
+<li><p>Kontrollere kode og tolke resultatene kjemisk.</p></li>
+<li><p>Bruke KI som hjelp og undersøke om forslagene faktisk løser oppgaven.</p></li>
+</ul>
+</section>
+<section id="arbeidsmate-og-innlevering">
+<h2>Arbeidsmåte og innlevering<a class="headerlink" href="#arbeidsmate-og-innlevering" title="Permalink to this heading">#</a></h2>
+<p>Lag selv en Jupyter Notebook og lever en <strong>helhetlig rapport</strong> etter <a class="reference external" href="https://andreasdh.github.io/programmering-i-kjemi/docs/obliger/obliger.html">de generelle kriteriene for obligene</a>. Nettsiden her gir oppgaver, kodeeksempler og hint som støtter arbeidet ditt. Organiser rapporten med disse fire hoveddelene:</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Rapportdel</p></th>
+<th class="head"><p>Innhold i denne obligen</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Hensikt</strong></p></td>
+<td><p>Presenter undersøkelsen, hovedspørsmålet og hvordan programmering skal hjelpe deg å besvare det.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Teori</strong></p></td>
+<td><p>Forklar den relevante sammenhengen mellom absorbans og konsentrasjon, kalibreringens gyldighetsområde, gjennomsnitt og standardavvik, og prinsippet bak den statistiske sammenlikningen du bruker.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Beskrivelse og resultater</strong></p></td>
+<td><p>Beskriv dataene og behandlingen av dem. Presenter og forklar kode, figurer, resultater og kontroller i en logisk rekkefølge. Begrunn metodevalg og diskuter resultatene underveis. Ta med en kort underdel om KI-sammenlikningen.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Konklusjon</strong></p></td>
+<td><p>Besvar hovedspørsmålet med konkrete resultater og relevante begrensninger. Forklar kort hva framgangsmåten er nyttig til, og i hvilke andre kjemiske analyser den kan brukes.</p></td>
+</tr>
+</tbody>
+</table>
+<p>Bruk del 1–5 nedenfor som arbeidsrekkefølge og sjekkliste. Alle faglige spørsmål skal besvares i rapporten, men forklaringene skal inngå i sammenhengende tekst på relevante steder. Du skal ikke kopiere oppgaveteksten eller lage en egen seksjon for hvert deloppgavenummer. Unngå å gjenta samme forklaring flere steder. Teoridelen skal være kort og knyttet til det du faktisk bruker i analysen.</p>
+<p>Kode skal ha hensiktsmessige kommentarer, og tall og figurer skal forklares i teksten. Den ferdige rapporten skal kunne kjøres ovenfra med de vedlagte datafilene. Du kan arbeide i en egen kladdenotebook underveis og velge ut det som trengs i rapporten.</p>
+<p><strong>Startkoden på denne siden er gitt for at du skal kunne bruke og utvide den.</strong> Du kan kopiere disse utdragene til ditt eget arbeid. Vis gjennom endringer, kommentarer og faglige forklaringer at du forstår dem. Oppgi kilder til annen kode og dokumenter relevante KI-bidrag.</p>
+<p>I del 1 og del 2a–c skal du gjøre et eget første forsøk uten å bruke KI. Ta vare på dette forsøket, også om det er ufullstendig. I del 2d skal du bruke KI på en avgrenset oppgave. Fra del 3 kan du bruke KI til forklaringer, feilsøking og kodeforslag etter at du har skissert hva du trenger. Oppgi kort hvor KI har bidratt.</p>
+<p>Du vurderes på analysen, forklaringene og kontrollene dine. Lange KI-samtaler og avansert kode er ikke et mål. Hvis KI foreslår noe du ikke forstår, undersøk det eller erstatt det med en enklere framgangsmåte.</p>
+<p>Hintene er valgfrie. Bruk dem når du står fast.</p>
+</section>
+<section id="forsoket-og-dataene">
+<h2>Forsøket og dataene<a class="headerlink" href="#forsoket-og-dataene" title="Permalink to this heading">#</a></h2>
+<p>Last ned <span class="xref myst">kalibrering.csv</span> og <span class="xref myst">vannprover.csv</span>. Legg begge filene i en mappe som heter <code class="docutils literal notranslate"><span class="pre">data</span></code>, ved siden av rapportnotebooken din.</p>
+<p>Seks vannprøver, V01–V06, er preparert uavhengig med ulike fargestoffkonsentrasjoner. Hver prøve er blandet godt og delt i to like deler. Den ene delen er ufiltrert kontroll. Den andre er behandlet med et nytt filter under samme betingelser som de øvrige filtrerte prøvene. Kontrollene er oppbevart like lenge som de filtrerte prøvene. Ingen prøver er fortynnet.</p>
+<p>Absorbansen er målt med et spektrofotometer tre ganger på <strong>den samme løsningen i kyvetten</strong> for hver prøvedel. Disse avlesningene beskriver instrumentets repeterbarhet. De er ikke tre uavhengige filtreringsforsøk. V01 ufiltrert hører sammen med V01 filtrert, og tilsvarende for de andre prøve-ID-ene. Radene i filen er ikke sortert.</p>
+<p>Alle målingene er gjort ved samme bølgelengde og med samme lysvei. I denne forenklede analysen antar vi at andre stoffer og lysspredning ikke påvirker absorbansen vesentlig. Kalibreringsstandardene har kjent konsentrasjon og samme løsningsbetingelser som prøvene.</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Fil</p></th>
+<th class="head"><p>Innhold</p></th>
+<th class="head"><p>Viktige kolonner</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">data/kalibrering.csv</span></code></p></td>
+<td><p>Ni kalibreringsnivåer, inkludert nullstandard, med tre avlesninger per nivå</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">maling_id</span></code>, <code class="docutils literal notranslate"><span class="pre">konsentrasjon_umol_L</span></code>, <code class="docutils literal notranslate"><span class="pre">replikat</span></code>, <code class="docutils literal notranslate"><span class="pre">absorbans</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">data/vannprover.csv</span></code></p></td>
+<td><p>Avlesninger fra filtrerte og ufiltrerte deler av V01–V06</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">prove_id</span></code>, <code class="docutils literal notranslate"><span class="pre">behandling</span></code>, <code class="docutils literal notranslate"><span class="pre">replikat</span></code>, <code class="docutils literal notranslate"><span class="pre">absorbans</span></code></p></td>
+</tr>
+</tbody>
+</table>
+<p>Konsentrasjon er gitt i µmol/L. Absorbans og replikatnummer er uten enhet. <code class="docutils literal notranslate"><span class="pre">replikat</span></code> identifiserer avlesningen, ikke et eget filtreringsforsøk. Nullstandarden inneholder ikke fargestoff.</p>
+<section id="notater-fra-laboratoriet">
+<h3>Notater fra laboratoriet<a class="headerlink" href="#notater-fra-laboratoriet" title="Permalink to this heading">#</a></h3>
+<p>I labjournalen fra eksperimentet finner vi følgende observasjoner som du må ta hensyn til under analysen:</p>
+<ul class="simple">
+<li><p><strong>K30_2:</strong> Kyvetten sto feil. Avlesningen ble ikke lagret. Feltet for absorbans er derfor tomt.</p></li>
+<li><p>Instrumentansvarlig har foreløpig anbefalt området <strong>0–60 µmol/L</strong> for en lineær kalibrering. Standardene ved 70 og 80 µmol/L er tatt med for å undersøke om området kan utvides.</p></li>
+<li><p>Absorbansen er eksportert uten etterfølgende blankkorreksjon. Bruk en modell med fritt konstantledd, <span class="math notranslate nohighlight">\(A=ac+b\)</span>, og behandle standarder og prøver på samme måte. Du skal ikke i tillegg trekke fra nullstandardens gjennomsnitt i denne oppgaven.</p></li>
+<li><p>Dere har bare data for dette fargestoffet og disse forsøksbetingelsene. Dere har ikke målt stoffets nedbrytningsprodukter eller innholdet i filtermaterialet.</p></li>
+</ul>
+</section>
+</section>
+<section id="del-1-hva-har-vi-malt-og-hva-kan-vi-bruke">
+<h2>Del 1: Hva har vi målt, og hva kan vi bruke?<a class="headerlink" href="#del-1-hva-har-vi-malt-og-hva-kan-vi-bruke" title="Permalink to this heading">#</a></h2>
+<section id="a-lag-en-plan-for-du-programmerer">
+<h3>1a. Lag en plan før du programmerer<a class="headerlink" href="#a-lag-en-plan-for-du-programmerer" title="Permalink to this heading">#</a></h3>
+<p>Lag først en arbeidsplan på 4–6 setninger eller en kort punktliste som beskriver veien fra absorbansmålinger til en vurdering av filteret. Bruk planen som utgangspunkt for rapporten; den trenger ikke leveres som en egen besvarelse. Diskuter også følgende: Hvorfor gir tre målinger av den samme løsningen annen informasjon enn målinger fra flere uavhengige filtreringsforsøk? Hva kan vi undersøke med hver av disse typene gjentakelser?</p>
+<p>Forutsi hvordan absorbansen vil endre seg dersom filteret reduserer fargestoffkonsentrasjonen. Hvilke forutsetninger bygger forventningen din på?</p>
+</section>
+<section id="b-les-og-undersok-dataene">
+<h3>1b. Les og undersøk dataene<a class="headerlink" href="#b-les-og-undersok-dataene" title="Permalink to this heading">#</a></h3>
+<p>Lag en kode som leser av begge datafiler. Utvid den slik at du også undersøker datatyper og manglende verdier i begge filer. Forklar hva én rad representerer i hver fil. Stemmer antall rader med forsøksbeskrivelsen?</p>
+</section>
+<section id="c-handter-den-manglende-malingen">
+<h3>1c. Håndter den manglende målingen<a class="headerlink" href="#c-handter-den-manglende-malingen" title="Permalink to this heading">#</a></h3>
+<p>Lag arbeidskopiene <code class="docutils literal notranslate"><span class="pre">kalibrering</span></code> og <code class="docutils literal notranslate"><span class="pre">prover</span></code> av rådataene. Utelat den dokumenterte mislykkede målingen fra analyser som krever absorbans. Vis hvor mange gyldige avlesninger som gjenstår ved 30 µmol/L.</p>
+<p>En student foreslår å erstatte den manglende absorbansen med 0. Forklar først hva du forventer at dette vil gjøre med gjennomsnittet ved 30 µmol/L. Beregn deretter gjennomsnittet med de to framgangsmåtene, uten å endre rådata. Hvilken behandling vil du bruke videre, og hvorfor?</p>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Hint til datarydding</p>
+<p><code class="docutils literal notranslate"><span class="pre">df.copy()</span></code> lager en arbeidskopi. <code class="docutils literal notranslate"><span class="pre">mangler</span> <span class="pre">=</span> <span class="pre">df.isna()</span></code> markerer manglende verdier. Deretter teller <code class="docutils literal notranslate"><span class="pre">mangler.sum()</span></code> hvor mange som mangler i hver kolonne. <code class="docutils literal notranslate"><span class="pre">df.dropna(subset=[&quot;kolonnenavn&quot;])</span></code> utelater rader som mangler verdi i den angitte kolonnen.</p>
+</div>
+</section>
+</section>
+<section id="del-2-replikater-figurer-og-ki-som-kodehjelp">
+<h2>Del 2: Replikater, figurer og KI som kodehjelp<a class="headerlink" href="#del-2-replikater-figurer-og-ki-som-kodehjelp" title="Permalink to this heading">#</a></h2>
+<section id="a-les-koden-for-du-kjorer-den">
+<h3>2a. Les koden før du kjører den<a class="headerlink" href="#a-les-koden-for-du-kjorer-den" title="Permalink to this heading">#</a></h3>
+<p>Koden nedenfor undersøker ett kalibreringsnivå. Forklar hva uttrykket inne i klammeparentesene gjør, og hva <code class="docutils literal notranslate"><span class="pre">len(malinger)</span></code> teller. Hvilken enhet får <code class="docutils literal notranslate"><span class="pre">gjennomsnitt</span></code>?</p>
+<p>Kjør deretter koden og kontroller resultatet mot radene i datafilen.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">kons</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="n">utvalg</span> <span class="o">=</span> <span class="n">kalibrering</span><span class="p">[</span><span class="n">kalibrering</span><span class="p">[</span><span class="s2">&quot;konsentrasjon_umol_L&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="n">kons</span><span class="p">]</span>
+<span class="n">malinger</span> <span class="o">=</span> <span class="n">utvalg</span><span class="p">[</span><span class="s2">&quot;absorbans&quot;</span><span class="p">]</span>
+<span class="n">gjennomsnitt</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">malinger</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Konsentrasjon:&quot;</span><span class="p">,</span> <span class="n">kons</span><span class="p">,</span> <span class="s2">&quot;µmol/L&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Antall avlesninger:&quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">malinger</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Gjennomsnittlig absorbans:&quot;</span><span class="p">,</span> <span class="n">gjennomsnitt</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="b-utvid-til-alle-kalibreringsnivaene">
+<h3>2b. Utvid til alle kalibreringsnivåene<a class="headerlink" href="#b-utvid-til-alle-kalibreringsnivaene" title="Permalink to this heading">#</a></h3>
+<p>Lag en løkke som går gjennom alle konsentrasjonene. Beregn antall gyldige avlesninger, gjennomsnitt og empirisk standardavvik ved hvert nivå. Lagre resultatene i lister.</p>
+</section>
+<section id="c-vis-malingene-og-variasjonen">
+<h3>2c. Vis målingene og variasjonen<a class="headerlink" href="#c-vis-malingene-og-variasjonen" title="Permalink to this heading">#</a></h3>
+<p>Lag en egnet figur som viser gjennomsnittlig absorbans ved hvert kalibreringsnivå. Legg til feilstolper som viser ett empirisk standardavvik over og under gjennomsnittet. Figuren skal ha forståelige aksetitler.</p>
+<p>Forklar hva de ulike delene i figuren viser.</p>
+</section>
+<section id="d-sammenlikn-ditt-arbeid-med-to-ki-forslag">
+<h3>2d. Sammenlikn ditt arbeid med to KI-forslag<a class="headerlink" href="#d-sammenlikn-ditt-arbeid-med-to-ki-forslag" title="Permalink to this heading">#</a></h3>
+<p>Ta vare på ditt eget første forsøk fra 2b–c. Du skal nå bruke KI til den samme avgrensede oppgaven. Bruk GPT-UiO.</p>
+<p><strong>Første forsøk:</strong> Start en ny samtale, legg ved eller lim inn innholdet i <code class="docutils literal notranslate"><span class="pre">kalibrering.csv</span></code>, og skriv bare:</p>
+<blockquote>
+<div><p>Oppsummer disse kalibreringsmålingene og lag en god figur i Python.</p>
+</div></blockquote>
+<p>Les forslaget før du kjører det. Undersøk hva KI har valgt på egen hånd: håndtering av manglende verdier, gruppering av data, statistiske størrelser og figurtype. Hvis forslaget endrer datafiler, fjern den handlingen før du tester det. Prøv det i kladdenotebooken eller i egne celler med egne variabelnavn, slik at din første løsning bevares. Velg senere ut de relevante utdragene til rapporten.</p>
+<p><strong>Andre forsøk:</strong> Skriv selv en mer presis forespørsel. Gi konteksten KI trenger, beskriv ønsket resultat og sett relevante krav til kode og databehandling. Start gjerne en ny samtale med de samme dataene. Hvis du ikke kan legge ved filer, lim inn CSV-teksten. Du skal ikke lime inn hele obligen.</p>
+<p>Sammenlikn din egen løsning med de to forslagene fra KI. Dokumenter minst disse kontrollene:</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Kontroll</p></th>
+<th class="head"><p>Egen løsning</p></th>
+<th class="head"><p>Første KI-forslag</p></th>
+<th class="head"><p>Andre KI-forslag</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Antall gyldige avlesninger ved 30 µmol/L</p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>Gjennomsnitt og standardavvik ved ett valgt nivå</p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>Hva feilstolpene faktisk representerer, eller om de mangler</p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+<p>Velg også én kodelinje eller funksjon fra et KI-forslag som du måtte undersøke. Forklar med utgangspunkt i dataene hva den gjør. Hvis alt er kjent, velg en sentral linje og kontroller den med et lite eksempel.</p>
+<p>Ta med sammenlikningstabellen, korte relevante kodeutdrag og <strong>maksimalt 150 ord</strong> om hva du kunne oppdage fordi du hadde arbeidet med problemet selv, i en underdel om KI under «Beskrivelse og resultater». Legg de to forespørslene i samme underdel eller i et kort vedlegg i rapportnotebooken. Hele samtaler og fullstendige alternative programmer trenger ikke leveres. Hvilket valg kunne vært vanskelig å kontrollere uten denne forståelsen?</p>
+<p><strong>Du skal ikke framprovosere eller finne en feil.</strong> Hvis begge forslagene er gode, viser du hvordan du kontrollerte det. At to programmer gir samme resultat, er nyttig informasjon, men kan fortsatt skyldes at de gjør samme antakelse. En presis forespørsel fritar deg heller ikke fra å kontrollere løsningen.</p>
+<p>Fra neste del kan du bruke KI etter behov. Noter kort relevante bidrag, og behold ansvar for metodevalg og kontroller.</p>
+</section>
+</section>
+<section id="del-3-fra-absorbans-til-konsentrasjon">
+<h2>Del 3: Fra absorbans til konsentrasjon<a class="headerlink" href="#del-3-fra-absorbans-til-konsentrasjon" title="Permalink to this heading">#</a></h2>
+<section id="a-lag-og-vurder-kalibreringsmodellen">
+<h3>3a. Lag og vurder kalibreringsmodellen<a class="headerlink" href="#a-lag-og-vurder-kalibreringsmodellen" title="Permalink to this heading">#</a></h3>
+<p>Når lysvei og kjemiske betingelser holdes konstante, forventer vi en tilnærmet lineær sammenheng innenfor et egnet konsentrasjonsområde:</p>
+<div class="math notranslate nohighlight">
+\[
+A=ac+b.
+\]</div>
+<p>Her er <span class="math notranslate nohighlight">\(A\)</span> absorbans, <span class="math notranslate nohighlight">\(c\)</span> konsentrasjon i µmol/L, <span class="math notranslate nohighlight">\(a\)</span> stigningstall og <span class="math notranslate nohighlight">\(b\)</span> konstantledd. Vi lar konstantleddet være fritt fordi nullstandarden kan ha et bakgrunnssignal.</p>
+<p>Lag utvalget <code class="docutils literal notranslate"><span class="pre">lineare_data</span></code> med målingene fra og med 0 til og med 60 µmol/L. Tilpass en rett linje til alle gyldige enkeltmålinger i dette utvalget. Lag en figur som viser gjennomsnittlig absorbans ved hvert kalibreringsnivå som punkter, sammen med den tilpassede linjen. Ta med gjennomsnittene ved 70 og 80 µmol/L, slik at du kan vurdere avvik fra modellen. Vis linjens fortsettelse fra 60 til 80 µmol/L som en stiplet linje merket «ekstrapolasjon».</p>
+<p>Tilpass så en annen rett linje til alle gyldige enkeltmålinger fra 0 til 80 µmol/L, med egne variabelnavn, og vis den i samme figur. Bruk figurene og laboratorienotatet til å begrunne hvilken modell du vil bruke videre.</p>
+<p>Forklar den kjemiske betydningen av <span class="math notranslate nohighlight">\(a\)</span> og <span class="math notranslate nohighlight">\(b\)</span>, og angi enhetene. Hva er problemet med å velge en modell bare fordi programmet klarer å tilpasse en rett linje?</p>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Hint til utvalg og hjelp dersom du står fast</p>
+<p>Du kan velge kalibreringsområdet i to trinn: Behold først radene med konsentrasjon større enn eller lik 0, og velg deretter radene med konsentrasjon mindre enn eller lik 60 fra dette utvalget. Regresjonslinjen tegnes ved å beregne <code class="docutils literal notranslate"><span class="pre">a*x_linje</span> <span class="pre">+</span> <span class="pre">b</span></code> for selvvalgte x-verdier.</p>
+<p>Hvis du ikke får til regresjonen, kan du midlertidig bruke <code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">=</span> <span class="pre">0.0100</span></code> og <code class="docutils literal notranslate"><span class="pre">b</span> <span class="pre">=</span> <span class="pre">0.0120</span></code> for å arbeide videre. Oppgi at du har brukt disse hjelpeverdiene, og gå tilbake til kalibreringen før innlevering. De er avrundede kontrollverdier, ikke en erstatning for del 3a.</p>
+</div>
+</section>
+<section id="b-forklar-og-utvid-en-funksjon">
+<h3>3b. Forklar og utvid en funksjon<a class="headerlink" href="#b-forklar-og-utvid-en-funksjon" title="Permalink to this heading">#</a></h3>
+<p>Funksjonen nedenfor beregner konsentrasjon fra absorbans. Utled uttrykket fra kalibreringslikningen, og forklar hvilke størrelser de tre argumentene representerer.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">konsentrasjon_fra_absorbans</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">A</span> <span class="o">-</span> <span class="n">b</span><span class="p">)</span> <span class="o">/</span> <span class="n">a</span>
+</pre></div>
+</div>
+<p>Utvid funksjonen med parameterne <code class="docutils literal notranslate"><span class="pre">c_min</span></code> og <code class="docutils literal notranslate"><span class="pre">c_max</span></code>. Funksjonen skal skrive en tydelig advarsel hvis beregnet konsentrasjon ligger utenfor kalibreringsområdet. La den returnere den beregnede verdien, men opplys i advarselen at dette er et ekstrapolert estimat som ikke skal brukes som et validert måleresultat. Den skal ikke endre en verdi til null eller til nærmeste grense.</p>
+<p>Kontroller først funksjonen med et lite eksempel som du kan regne uten Python: <span class="math notranslate nohighlight">\(a=0{,}020\)</span>, <span class="math notranslate nohighlight">\(b=0{,}100\)</span> og <span class="math notranslate nohighlight">\(A=0{,}500\)</span>. Skriv forventet konsentrasjon før du kjører koden. Test deretter en absorbans som gir et estimat over 60 µmol/L med din faktiske modell. Hva ville du bedt laboratoriet gjøre med en slik prøve?</p>
+</section>
+<section id="c-bruk-funksjonen-pa-vannprovene">
+<h3>3c. Bruk funksjonen på vannprøvene<a class="headerlink" href="#c-bruk-funksjonen-pa-vannprovene" title="Permalink to this heading">#</a></h3>
+<p>Bruk en løkke og funksjonen til å beregne én konsentrasjon for hver absorbans i <code class="docutils literal notranslate"><span class="pre">prover</span></code>. Lag en ny kolonne, <code class="docutils literal notranslate"><span class="pre">konsentrasjon_umol_L</span></code>, og behold absorbanskolonnen. Vis at prøvemålingene ligger innenfor området du bruker.</p>
+<p>Velg én avlesning og kontroller konsentrasjonen ved å sette den tilbake i <span class="math notranslate nohighlight">\(A=ac+b\)</span>. Forklar hva denne kontrollen kan avdekke, og hva den ikke kontrollerer.</p>
+</section>
+</section>
+<section id="del-4-hvor-stor-effekt-viser-dataene">
+<h2>Del 4: Hvor stor effekt viser dataene?<a class="headerlink" href="#del-4-hvor-stor-effekt-viser-dataene" title="Permalink to this heading">#</a></h2>
+<section id="a-sammenfatt-hver-provedel">
+<h3>4a. Sammenfatt hver prøvedel<a class="headerlink" href="#a-sammenfatt-hver-provedel" title="Permalink to this heading">#</a></h3>
+<p>For hver vannprøve (V01–V06) skal du beregne to gjennomsnittlige konsentrasjoner:</p>
+<ul class="simple">
+<li><p>Gjennomsnittet av de tre målingene av den ufiltrerte delen.</p></li>
+<li><p>Gjennomsnittet av de tre målingene av den filtrerte delen.</p></li>
+</ul>
+<p>Lag en løkke som beregner gjennomsnittene for alle seks vannprøvene. Lagre dem i listene <code class="docutils literal notranslate"><span class="pre">ufiltrert_snitt</span></code> og <code class="docutils literal notranslate"><span class="pre">filtrert_snitt</span></code>, slik at verdier med samme indeks tilhører samme prøve.</p>
+<p>Skriv ut de to gjennomsnittene for hver prøve. Kontroller resultatene for V01 mot målingene som hører til denne prøven. Forklar hvordan du sikrer at riktige prøvedeler hører sammen, selv om radene i rådatafilen er usortert.</p>
+<p>Du trenger ikke beregne standardavvik for hver prøvedel eller lage en ny DataFrame i denne delen.</p>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Hint til utvalg og løkke</p>
+<p>Bruk samme framgangsmåte som da du valgte ett kalibreringsnivå i del 2. Her må du velge både behandling og prøve-ID. Det kan gjøres i to trinn: Velg først alle ufiltrerte målinger, og velg deretter én prøve fra dette utvalget. Gjør tilsvarende for filtrerte målinger.</p>
+<p>Prøv først med V01. Når det fungerer, lar du en løkke gå gjennom prøve-ID-ene i samme rekkefølge for begge behandlingene. Bruk <code class="docutils literal notranslate"><span class="pre">.append()</span></code> til å legge hvert gjennomsnitt til riktig liste.</p>
+</div>
+</section>
+<section id="b-beskriv-forskjellen-med-tall-og-figur">
+<h3>4b. Beskriv forskjellen med tall og figur<a class="headerlink" href="#b-beskriv-forskjellen-med-tall-og-figur" title="Permalink to this heading">#</a></h3>
+<p>Beregn absolutt reduksjon og prosentvis reduksjon for hvert prøvepar:</p>
+<div class="math notranslate nohighlight">
+\[
+\Delta c = c_{\text{ufiltrert}}-c_{\text{filtrert}},
+\qquad
+r = 100\frac{c_{\text{ufiltrert}}-c_{\text{filtrert}}}{c_{\text{ufiltrert}}}.
+\]</div>
+<p>Bruk gjennomsnittene fra 4a. Lagre de absolutte reduksjonene i en liste som heter <code class="docutils literal notranslate"><span class="pre">differanser</span></code>. Skriv ut absolutt og prosentvis reduksjon for hvert prøvepar.</p>
+<p>Oppgi også gjennomsnittlig absolutt reduksjon for de seks prøveparene og det empiriske standardavviket mellom disse reduksjonene. Forklar hva dette standardavviket beskriver.</p>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Hint til å sammenlikne listene</p>
+<p>Verdier med samme indeks tilhører samme prøve. La en løkke gå gjennom indeksene, og hent én verdi fra hver liste i hver runde. Beregn forskjellen og legg den til i <code class="docutils literal notranslate"><span class="pre">differanser</span></code>. Prosentvis reduksjon beregnes i forhold til den ufiltrerte prøvedelen.</p>
+</div>
+<p>Lag en figur som viser hvilke ufiltrerte og filtrerte resultater som hører sammen. Forklar hva figuren viser, og skriv en figurtekst. Husk aksetitler og relevante merkelapper. Hvilken informasjon ville blitt skjult dersom du bare viste ett samlet gjennomsnitt før og ett etter filtrering?</p>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Hint til figuren</p>
+<p>Du kan plassere «Ufiltrert» og «Filtrert» på x-aksen og konsentrasjon på y-aksen. Vis de to gjennomsnittene for én prøve som punkter forbundet med en linje. Gjenta for de andre prøvene i samme figur. Bruk prøve-ID som merkelapp, slik at det går fram hvilke punkter som hører sammen.</p>
+</div>
+<p>Les av hvilke prøver som har minst 20 % reduksjon. Du trenger ikke programmere en egen opptelling.</p>
+</section>
+<section id="c-vurder-et-kodeforslag-som-kan-kjores">
+<h3>4c. Vurder et kodeforslag som kan kjøres<a class="headerlink" href="#c-vurder-et-kodeforslag-som-kan-kjores" title="Permalink to this heading">#</a></h3>
+<p>En kollega foreslår koden nedenfor. <strong>Dette er et konstruert løsningsforslag for vurdering, ikke et faktisk svar fra en bestemt KI.</strong></p>
+<p>Les koden før du eventuelt kjører den. Forklar hvilke målinger som havner i hver gruppe, hvor mange observasjoner testen vil behandle i hver gruppe, og vurder om forslaget passer til forsøksdesignet.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Vurder denne koden. Ikke bruk resultatet som din endelige analyse.</span>
+<span class="c1"># Fjern kommentartegnene dersom du vil undersøke resultatet.</span>
+
+<span class="c1"># utvalg_u = prover[prover[&quot;behandling&quot;] == &quot;ufiltrert&quot;]</span>
+<span class="c1"># utvalg_f = prover[prover[&quot;behandling&quot;] == &quot;filtrert&quot;]</span>
+<span class="c1"># ufiltrert_alle = utvalg_u[&quot;konsentrasjon_umol_L&quot;]</span>
+<span class="c1"># filtrert_alle = utvalg_f[&quot;konsentrasjon_umol_L&quot;]</span>
+<span class="c1"># test_forslag = stats.ttest_ind(ufiltrert_alle, filtrert_alle, equal_var=False)</span>
+<span class="c1"># print(test_forslag.pvalue)</span>
+</pre></div>
+</div>
+<p>Lag deretter en egnet t-test med utgangspunkt i gjennomsnittslistene fra 4a eller listen <code class="docutils literal notranslate"><span class="pre">differanser</span></code> fra 4b. Forklar hvorfor testen passer, og formuler nullhypotesen. Bruk signifikansnivå 0,05. I denne oppgaven legger vi til grunn at forskjellene mellom uavhengige prøvepar kan beskrives med en tilnærmet normalfordeling. Du trenger ikke gjennomføre en egen normalitetstest.</p>
+<p>Tolk p-verdien sammen med størrelsen på reduksjonen. Oppgi hvor mange uavhengige prøvepar analysen bygger på. Forklar hvorfor en liten p-verdi alene ikke viser at reduksjonen er stor, at filteret fungerer for alle prøver, eller at fargestoffet er brutt ned.</p>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Hint til valg av test</p>
+<p><code class="docutils literal notranslate"><span class="pre">stats.ttest_1samp</span></code> sammenlikner én måleserie med en fast referanseverdi. <code class="docutils literal notranslate"><span class="pre">stats.ttest_ind</span></code> sammenlikner uavhengige grupper. <code class="docutils literal notranslate"><span class="pre">stats.ttest_rel</span></code> sammenlikner observasjoner som hører sammen parvis. Velg ut fra hva som er målt. En ettutvalgs t-test av forskjellene mot null er også en mulig formulering.</p>
+</div>
+</section>
+</section>
+<section id="del-5-kontroll-og-kjemisk-konklusjon">
+<h2>Del 5: Kontroll og kjemisk konklusjon<a class="headerlink" href="#del-5-kontroll-og-kjemisk-konklusjon" title="Permalink to this heading">#</a></h2>
+<section id="a-vis-at-du-har-kontroll-over-analysen">
+<h3>5a. Vis at du har kontroll over analysen<a class="headerlink" href="#a-vis-at-du-har-kontroll-over-analysen" title="Permalink to this heading">#</a></h3>
+<p>Dokumenter tre kontroller du allerede har gjort. Plasser dem ved de aktuelle analysestegene under «Beskrivelse og resultater», eller samle dem i en kort underdel om kontroll:</p>
+<ol class="arabic simple">
+<li><p>En kontroll av hvilke målinger som ble inkludert eller utelatt.</p></li>
+<li><p>En kontroll av en beregning mot et enkelt eksempel eller rådata.</p></li>
+<li><p>En kontroll av modellens gyldighetsområde eller av at riktige prøver er paret.</p></li>
+</ol>
+<p>Oppgi for hver kontroll hva du forventet, hva du observerte, og hvilken type feil kontrollen kan avdekke. Minst én kontroll skal være uavhengig av KI-forslaget du vurderer, for eksempel en enkel håndberegning. «Koden kjører» og «KI bekreftet at svaret er riktig» er ikke tilstrekkelige kontroller.</p>
+<p>Start til slutt Python-kjernen på nytt og kjør den ferdige rapportnotebooken ovenfra. Pass på at den bruker de vedlagte rådatafilene, og at eksperimentering med alternative løsninger ikke overskriver verdier som den endelige analysen trenger. Fjern uferdige kladdeceller fra rapporten.</p>
+</section>
+<section id="b-gi-laboratoriet-en-kort-konklusjon">
+<h3>5b. Gi laboratoriet en kort konklusjon<a class="headerlink" href="#b-gi-laboratoriet-en-kort-konklusjon" title="Permalink to this heading">#</a></h3>
+<p>Skriv rapportens konklusjon på <strong>150–250 ord</strong> og besvar hovedspørsmålet. Bruk konkrete tall, beskriv variasjonen mellom prøvepar og angi hva den statistiske testen bidrar med.</p>
+<p>Vurder også disse påstandene:</p>
+<ul class="simple">
+<li><p>«Filteret reduserte konsentrasjonen med minst 20 % i alle seks prøver.»</p></li>
+<li><p>«Siden absorbansen gikk ned, vet vi at fargestoffmolekylene ble brutt ned.»</p></li>
+</ul>
+<p>Ta med minst én begrensning ved undersøkelsen og foreslå én konkret tilleggsmåling eller endring av forsøket som ville styrket konklusjonen. Forklar også kort hvor du kan få bruk for en tilsvarende analyse. Utdypende drøfting kan stå under «Beskrivelse og resultater» og oppsummeres kort i konklusjonen.</p>
+</section>
+<section id="for-innlevering">
+<h3>Før innlevering<a class="headerlink" href="#for-innlevering" title="Permalink to this heading">#</a></h3>
+<p>Sjekk følgende:</p>
+<ul class="simple">
+<li><p>Rapporten har hensikt, teori, beskrivelse og resultater, og konklusjon i tråd med emnets rapportmal.</p></li>
+<li><p>Alle faglige spørsmål er behandlet, og forklaringene er knyttet til den aktuelle koden eller de aktuelle resultatene.</p></li>
+<li><p>Figurer og tabeller har forståelige navn og riktige enheter.</p></li>
+<li><p>Du skiller mellom spredningen i instrumentavlesninger og variasjonen mellom uavhengige prøvepar.</p></li>
+<li><p>Valg av databehandling, kalibreringsområde og statistisk test er begrunnet.</p></li>
+<li><p>KI-delen viser hva du spurte om, hva du undersøkte, og hva du fant.</p></li>
+<li><p>Kode og faglige konklusjoner kan forklares med egne ord.</p></li>
+</ul>
+</section>
+<section id="valgfri-fordypning">
+<h3>Valgfri fordypning<a class="headerlink" href="#valgfri-fordypning" title="Permalink to this heading">#</a></h3>
+<p>Bruk begge kalibreringsmodellene fra 3a på prøvene. Undersøk hvordan modellvalget påvirker konsentrasjonene, absolutt reduksjon og prosentvis reduksjon. Endres p-verdien fra den parede testen? Forklar observasjonen med utgangspunkt i hva som skjer når samme lineære omregning brukes på alle målingene. Dette er ikke nødvendig for godkjenning.</p>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./docs/obliger"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="obliger.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Obligatoriske oppgaver</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="oblig_dynamiske_systemer.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Oblig 2: Dynamiske systemer og integrasjon</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dette-skal-du-ove-pa">Dette skal du øve på</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#arbeidsmate-og-innlevering">Arbeidsmåte og innlevering</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#forsoket-og-dataene">Forsøket og dataene</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#notater-fra-laboratoriet">Notater fra laboratoriet</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#del-1-hva-har-vi-malt-og-hva-kan-vi-bruke">Del 1: Hva har vi målt, og hva kan vi bruke?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-lag-en-plan-for-du-programmerer">1a. Lag en plan før du programmerer</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b-les-og-undersok-dataene">1b. Les og undersøk dataene</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#c-handter-den-manglende-malingen">1c. Håndter den manglende målingen</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#del-2-replikater-figurer-og-ki-som-kodehjelp">Del 2: Replikater, figurer og KI som kodehjelp</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-les-koden-for-du-kjorer-den">2a. Les koden før du kjører den</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b-utvid-til-alle-kalibreringsnivaene">2b. Utvid til alle kalibreringsnivåene</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#c-vis-malingene-og-variasjonen">2c. Vis målingene og variasjonen</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-sammenlikn-ditt-arbeid-med-to-ki-forslag">2d. Sammenlikn ditt arbeid med to KI-forslag</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#del-3-fra-absorbans-til-konsentrasjon">Del 3: Fra absorbans til konsentrasjon</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-lag-og-vurder-kalibreringsmodellen">3a. Lag og vurder kalibreringsmodellen</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b-forklar-og-utvid-en-funksjon">3b. Forklar og utvid en funksjon</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#c-bruk-funksjonen-pa-vannprovene">3c. Bruk funksjonen på vannprøvene</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#del-4-hvor-stor-effekt-viser-dataene">Del 4: Hvor stor effekt viser dataene?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-sammenfatt-hver-provedel">4a. Sammenfatt hver prøvedel</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b-beskriv-forskjellen-med-tall-og-figur">4b. Beskriv forskjellen med tall og figur</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#c-vurder-et-kodeforslag-som-kan-kjores">4c. Vurder et kodeforslag som kan kjøres</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#del-5-kontroll-og-kjemisk-konklusjon">Del 5: Kontroll og kjemisk konklusjon</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-vis-at-du-har-kontroll-over-analysen">5a. Vis at du har kontroll over analysen</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b-gi-laboratoriet-en-kort-konklusjon">5b. Gi laboratoriet en kort konklusjon</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#for-innlevering">Før innlevering</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#valgfri-fordypning">Valgfri fordypning</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Andreas Haraldsrud
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

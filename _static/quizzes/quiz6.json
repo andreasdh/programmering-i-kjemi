@@ -1,0 +1,157 @@
+[
+  {
+    "question": "Hva er output?",
+    "code": "print(array([1, 2, 3]) + array([1, 2, 3]))",
+    "type": "multiple_choice",
+    "answers": [
+      {"answer": "En feilmelding", "correct": false, "feedback": "Feil. Dette er gyldig syntaks."},
+      {"answer": "12", "correct": false, "feedback": "Feil. Tallene summeres ikke til ett tall."},
+      {"answer": "[1, 2, 3, 1, 2, 3]", "correct": false, "feedback": "Feil. Arrayaddisjon fungerer ikke som listeaddisjon."},
+      {"answer": "[2. 4. 6.]", "correct": true, "feedback": "Riktig. Arrayer adderes elementvis, som vektorer. Punktumene kommer av at verdiene behandles som flyttall, og arrayer skrives ut uten komma."}
+    ]
+  },
+  {
+    "question": "Hva er verdien til a og b?",
+    "code": "a = [1, 2, 3] + 4\nb = array([1, 2, 3]) + 4",
+    "type": "multiple_choice",
+    "answers": [
+      {"answer": "a = [1, 2, 3, 4] og b = [1, 2, 3, 4]", "correct": false, "feedback": "Feil for begge. En liste kan bare adderes med en annen liste, og arrayer adderes elementvis."},
+      {"answer": "a = [1, 2, 3, 4] og b = [1 2 3 4]", "correct": false, "feedback": "Feil for begge. En liste kan bare adderes med en annen liste."},
+      {"answer": "a = [5, 6, 7] og b = [5 6 7]", "correct": false, "feedback": "Feil for a, riktig for b. Lister adderes ikke elementvis."},
+      {"answer": "Vi får en feilmelding fra første linje, og b = [5 6 7]", "correct": true, "feedback": "Riktig. En liste kan bare adderes med en annen liste, mens en array adderes elementvis med tallet."}
+    ]
+  },
+  {
+    "question": "Hva blir output når dette programmet kjører?",
+    "code": "a = arange(3, 11, 2)\nprint(a[2:]**2)",
+    "type": "multiple_choice",
+    "answers": [
+      {"answer": "[49 81 121]", "correct": false, "feedback": "Feil. `arange` gir verdier fra og med, men ikke til og med, sluttverdien — 11 er ikke med."},
+      {"answer": "[49, 81]", "correct": false, "feedback": "Feil. Komma markerer en liste. Dette er en array, som skrives ut uten komma."},
+      {"answer": "[49 81]", "correct": true, "feedback": "Riktig. `a` er [3 5 7 9], og `a[2:]` gir [7 9]."},
+      {"answer": "[25 49 81]", "correct": false, "feedback": "Feil. `a[2:]` betyr fra og med element 2, og elementnummereringen starter på 0."}
+    ]
+  },
+  {
+    "question": "Hva blir output fra følgende kode?",
+    "code": "a = linspace(2, 6, 5)\nb = a + 2.0\nprint(sum(b))",
+    "type": "numeric",
+    "precision": 0,
+    "answers": [
+      {"type": "value", "value": 30, "correct": true, "feedback": "Riktig. `a` er [2 3 4 5 6], og `b` blir [4 5 6 7 8]."},
+      {"type": "value", "value": 20, "correct": false, "feedback": "Feil. Du har glemt at 2.0 legges til hvert element."},
+      {"type": "default", "feedback": "Feil. Husk at `linspace` går fra og med til og med, og at det skal være 5 tall i intervallet."}
+    ]
+  },
+  {
+    "question": "Hvilke kodelinjer gir output [3 5 7 9] (eller [3. 5. 7. 9.])?",
+    "type": "many_choice",
+    "answers": [
+      {"answer": "print(linspace(3, 10, 2))", "correct": false, "feedback": "Feil. Siste parameter i `linspace` er antall tall, ikke steglengde."},
+      {"answer": "print(linspace(3, 9, 4))", "correct": true, "feedback": "Riktig. Fire tall jevnt fordelt fra og med 3 til og med 9."},
+      {"answer": "print(arange(3, 9, 2))", "correct": false, "feedback": "Feil. `arange` går til, men ikke med, sluttverdien, så 9 faller utenfor."},
+      {"answer": "print(arange(3, 10, 2))", "correct": true, "feedback": "Riktig. Steglengde 2 fra 3, og 10 er ikke med."},
+      {"answer": "print(linspace(3, 10, 4))", "correct": false, "feedback": "Feil. Da blir tallene jevnt fordelt helt opp til 10."},
+      {"answer": "print(arange(3, 9))", "correct": false, "feedback": "Feil. Uten steglengde blir den 1, og 9 er ikke med."}
+    ]
+  },
+  {
+    "question": "Hvilket alternativ gir 190.2 som output?",
+    "code": "grunnstoffer = {\"hydrogen\": 1.008, \"svovel\": 32.07, \"kobber\": 58.93, \"osmium\": 190.2, \"jod\": 126.9}",
+    "type": "multiple_choice",
+    "answers": [
+      {"answer": "print(grunnstoffer[3])", "correct": false, "feedback": "Feil. I en dictionary slår vi opp med nøkkelen, ikke med et posisjonsnummer."},
+      {"answer": "print(grunnstoffer[osmium])", "correct": false, "feedback": "Feil. Uten hermetegn tolkes `osmium` som et variabelnavn."},
+      {"answer": "print(grunnstoffer[\"osmium\"])", "correct": true, "feedback": "Riktig. Nøkkelen er en streng og må stå i hermetegn."},
+      {"answer": "print(grunnstoffer(\"osmium\"))", "correct": false, "feedback": "Feil. Oppslag gjøres med klammeparenteser, ikke runde parenteser."}
+    ]
+  },
+  {
+    "question": "Hva skal stå på den tomme linja slik at output blir:\nhydrogen er gass\nsvovel er fast stoff\nkvikksølv er væske",
+    "code": "aggregattilstand = {\"hydrogen\": \"gass\", \"svovel\": \"fast stoff\", \"kvikksølv\": \"væske\"}\nfor grunnstoff in aggregattilstand:\n    _______",
+    "type": "multiple_choice",
+    "answers": [
+      {"answer": "print(grunnstoff, \"er\", aggregattilstand[grunnstoff])", "correct": true, "feedback": "Riktig. Når vi løkker over en dictionary, får vi nøklene, og verdien hentes med oppslag."},
+      {"answer": "print(aggregattilstand[grunnstoff], \"er\", grunnstoff)", "correct": false, "feedback": "Feil. Da blir rekkefølgen snudd: \"gass er hydrogen\"."},
+      {"answer": "print(grunnstoff, \"er\", aggregattilstand.key(grunnstoff))", "correct": false, "feedback": "Feil. `key()` finnes ikke — bruk oppslag med klammeparenteser."},
+      {"answer": "print(aggregattilstand[grunnstoff], \"er\", aggregattilstand.value(grunnstoff))", "correct": false, "feedback": "Feil. `value()` finnes ikke, og rekkefølgen blir dessuten snudd."}
+    ]
+  },
+  {
+    "question": "Hvilket alternativ skriver ut alle atommassene i dictionarien nedenfor?",
+    "code": "grunnstoffer = {\"hydrogen\": 1.008, \"svovel\": 32.07, \"kobber\": 58.93, \"osmium\": 190.2, \"jod\": 126.9}",
+    "type": "multiple_choice",
+    "answers": [
+      {"answer": "print(grunnstoffer.keys())", "correct": false, "feedback": "Feil. Dette gir nøklene, altså navnene på grunnstoffene."},
+      {"answer": "print(grunnstoffer.values())", "correct": true, "feedback": "Riktig. `values()` gir verdiene."},
+      {"answer": "print(keys(grunnstoffer))", "correct": false, "feedback": "Feil. Dette er ikke gyldig syntaks."},
+      {"answer": "print(values(grunnstoffer))", "correct": false, "feedback": "Feil. Dette er ikke gyldig syntaks."}
+    ]
+  },
+  {
+    "question": "Hva er output?",
+    "code": "liste = [1, 2, 3]\nrekke = array([1, 2, 3])\nprint(liste * 2)\nprint(rekke * 2)",
+    "type": "multiple_choice",
+    "answers": [
+      {"answer": "[1, 2, 3, 1, 2, 3] og [2 4 6]", "correct": true, "feedback": "Riktig. Multiplikasjon gjentar en liste, men ganger hvert element i en array."},
+      {"answer": "[2, 4, 6] og [2 4 6]", "correct": false, "feedback": "Feil. Lister ganges ikke elementvis — de gjentas."},
+      {"answer": "[1, 2, 3, 1, 2, 3] og [1 2 3 1 2 3]", "correct": false, "feedback": "Feil. Arrayer regnes med elementvis, som vektorer."},
+      {"answer": "En feilmelding fra den første utskriften", "correct": false, "feedback": "Feil. En liste kan godt multipliseres med et heltall."}
+    ]
+  },
+  {
+    "question": "Hva skrives ut?",
+    "code": "a = arange(0, 10, 2)\nprint(a.sum())",
+    "type": "numeric",
+    "precision": 0,
+    "answers": [
+      {"type": "value", "value": 20, "correct": true, "feedback": "Riktig. `a` er [0 2 4 6 8]."},
+      {"type": "value", "value": 30, "correct": false, "feedback": "Feil. Sluttverdien 10 er ikke med i `arange`."},
+      {"type": "default", "feedback": "Feil. Skriv opp hvilke tall `arange(0, 10, 2)` faktisk gir, og legg dem sammen."}
+    ]
+  },
+  {
+    "question": "Hva skjer med dictionarien når denne linja kjøres?",
+    "code": "masser = {\"hydrogen\": 1.008, \"karbon\": 12.011}\nmasser[\"nitrogen\"] = 14.007",
+    "type": "multiple_choice",
+    "answers": [
+      {"answer": "Et nytt par legges til, så dictionarien har tre par.", "correct": true, "feedback": "Riktig. Tilordning til en nøkkel som ikke finnes fra før, legger til et nytt par."},
+      {"answer": "Vi får en feilmelding, siden nøkkelen ikke finnes fra før.", "correct": false, "feedback": "Feil. Det er bare ved oppslag av en ukjent nøkkel at vi får feilmelding, ikke ved tilordning."},
+      {"answer": "Verdien til \"karbon\" overskrives.", "correct": false, "feedback": "Feil. Bare nøkkelen som står i klammeparentesene, blir berørt."},
+      {"answer": "Ingenting, dictionarier kan ikke endres.", "correct": false, "feedback": "Feil. Dictionarier kan endres etter at de er laget."}
+    ]
+  },
+  {
+    "question": "Hva skrives ut?",
+    "code": "masser = {\"hydrogen\": 1.008, \"karbon\": 12.011}\nfor navn, masse in masser.items():\n    print(navn, masse)",
+    "type": "multiple_choice",
+    "answers": [
+      {"answer": "Navn og masse på hver sin linje, for begge grunnstoffene", "correct": true, "feedback": "Riktig. `items()` gir nøkkel og verdi samtidig, ett par per runde."},
+      {"answer": "Bare navnene", "correct": false, "feedback": "Feil. Det er `keys()` som gir bare nøklene."},
+      {"answer": "Bare massene", "correct": false, "feedback": "Feil. Det er `values()` som gir bare verdiene."},
+      {"answer": "En feilmelding, siden en løkke bare kan ha én variabel", "correct": false, "feedback": "Feil. En løkke kan pakke ut flere verdier per runde, slik `items()` gir."}
+    ]
+  },
+  {
+    "question": "Hvilke uttrykk gir en array med fem nuller?",
+    "type": "many_choice",
+    "answers": [
+      {"answer": "zeros(5)", "correct": true, "feedback": "Riktig. `zeros` lager en array fylt med nuller."},
+      {"answer": "0 * ones(5)", "correct": true, "feedback": "Riktig, om enn en omvei — `ones(5)` ganget med 0 gir fem nuller."},
+      {"answer": "[0] * 5", "correct": false, "feedback": "Feil. Dette gir en liste med fem nuller, ikke en array."},
+      {"answer": "zeros(5, 1)", "correct": false, "feedback": "Feil. Det andre argumentet tolkes ikke som antall — for flere dimensjoner må du sende inn en tuppel, som `zeros((5, 1))`."},
+      {"answer": "linspace(0, 0, 5)", "correct": true, "feedback": "Riktig — fem tall jevnt fordelt fra 0 til 0 blir fem nuller."}
+    ]
+  },
+  {
+    "question": "Hva skrives ut?",
+    "code": "konsentrasjoner = array([0.10, 0.25, 0.40, 0.55])\nprint(konsentrasjoner[konsentrasjoner > 0.3])",
+    "type": "multiple_choice",
+    "answers": [
+      {"answer": "[0.4  0.55]", "correct": true, "feedback": "Riktig. Vi kan indeksere en array med en betingelse, og få ut bare de elementene som oppfyller den."},
+      {"answer": "[False False True True]", "correct": false, "feedback": "Feil. Betingelsen alene gir en array med sanne og usanne verdier, men brukt som indeks plukker den ut selve tallene."},
+      {"answer": "[2 3]", "correct": false, "feedback": "Feil. Vi får verdiene, ikke indeksene."},
+      {"answer": "En feilmelding", "correct": false, "feedback": "Feil. Dette er gyldig indeksering av en array."}
+    ]
+  }
+]

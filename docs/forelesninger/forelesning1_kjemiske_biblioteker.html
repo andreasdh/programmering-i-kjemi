@@ -1,0 +1,1052 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Forelesning 1: Kjemiske biblioteker og molekylvisualisering &#8212; Programmering i kjemi</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/kjemiquiz.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/kjemiquiz.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom1.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
+    <script src="../../_static/kjemiquiz.js"></script>
+    <script src="../../_static/turtle_basthon.js"></script>
+    <script src="../../_static/kjemiquiz.js"></script>
+    <script src="../../_static/turtle_basthon.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/forelesninger/forelesning1_kjemiske_biblioteker';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/qe-logo-large.png" class="logo__image only-light" alt="Programmering i kjemi - Home"/>
+    <script>document.write(`<img src="../../_static/qe-logo-large.png" class="logo__image only-dark" alt="Programmering i kjemi - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Kom i gang</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../grunnleggende_programmering/introduksjon.html">Introduksjon: Programmering som verktøy i kjemi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../grunnleggende_programmering/vscode.html">Visual Studio Code for kjemikere</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Grunnleggende programmering</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../grunnleggende_programmering/tall_variabler.html">Variabler og datatyper</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../grunnleggende_programmering/quiz1.html">Quiz 1: Variabler og aritmetikk</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../grunnleggende_programmering/lister.html">Lister</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../grunnleggende_programmering/quiz2.html">Quiz 2: Lister</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../grunnleggende_programmering/vilkar.html">Vilkår (if-tester)</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../grunnleggende_programmering/quiz3.html">Quiz 3: Vilkår (if-tester)</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../grunnleggende_programmering/lokker.html">Løkker</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../grunnleggende_programmering/quiz4.html">Quiz 4: Løkker</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../grunnleggende_programmering/funksjoner.html">Funksjoner</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../grunnleggende_programmering/quiz5.html">Quiz 5: Funksjoner</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../grunnleggende_programmering/datasamlinger.html">Datasamlinger</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../grunnleggende_programmering/quiz6.html">Quiz 6: Datasamlinger (arrayer og dictionarier)</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Datahåndtering og visualisering</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../datahandtering_visualisering/kjemiske_biblioteker.html">Kjemiske biblioteker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../datahandtering_visualisering/molekylvisualisering.html">Molekylvisualisering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../datahandtering_visualisering/visualisering_av_kjemiske_data.html">Visualisering av kjemiske data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../datahandtering_visualisering/lese_og_rydde_kjemiske_data.html">Lese og rydde kjemiske data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../datahandtering_visualisering/statistikk_grunnleggende_kjemi.html">Deskriptiv statistikk: Målinger, variasjon og usikkerhet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../datahandtering_visualisering/kalibrering_og_statistisk_inferens.html">Kalibrering og sammenlikning av resultater</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../datahandtering_visualisering/maskinlaering_i_kjemi.html">Maskinlæring i kjemi*</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Numeriske metoder</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../nullpunkter_likninger/likninger.html">Likninger og nullpunkter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../derivasjon_integrasjon/derivasjon.html">Numerisk derivasjon</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../derivasjon_integrasjon/integrasjon.html">Numerisk integrasjon</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Dynamiske systemer</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../modellering/diskret_modellering.html">Differenslikninger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modellering/differensiallikninger.html">Differensiallikninger og fartslover</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Emneressurser (IN-KJM1900)</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../obliger/obliger.html">Obligatoriske oppgaver</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../obliger/oblig_datahandtering.html">Oblig 1: Hvor godt virker et rensefilter?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../obliger/oblig_dynamiske_systemer.html">Oblig 2: Dynamiske systemer og integrasjon</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../datafiler.html">Datafiler</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Emneressurser (KJM1140)</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../biokjemi/molekylvisualisering.html">Molekylvisualisering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../biokjemi/datavisualisering.html">Datavisualisering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../biokjemi/regresjonsmodeller.html">Regresjonsmodeller</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../biokjemi/enzymkinetikklab2025.html">Analyse av enzymkinetikkdata</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../biokjemi/proteinfolding.html">Lab 5: Proteinfolding</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/docs/forelesninger/forelesning1_kjemiske_biblioteker.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Forelesning 1: Kjemiske biblioteker og molekylvisualisering</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hvorfor-bruke-biblioteker">Hvorfor bruke biblioteker?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installasjon">Installasjon</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#del-1-grunnstoffdata-med-mendeleev">Del 1: Grunnstoffdata med mendeleev</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#trender-i-en-periode">Trender i en periode</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#manglende-verdier">Manglende verdier</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ioniseringsenergier">Ioniseringsenergier</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#del-2-data-om-forbindelser-med-pubchempy">Del 2: Data om forbindelser med PubChemPy</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#del-3-molekyler-som-struktur-med-rdkit">Del 3: Molekyler som struktur med RDKit</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#smiles">SMILES</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#flere-molekyler-samtidig">Flere molekyler samtidig</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fra-struktur-til-egenskap">Fra struktur til egenskap</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#finne-funksjonelle-grupper-med-smarts-hvis-tid">Finne funksjonelle grupper med SMARTS (hvis tid)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#del-4-fra-2d-til-3d">Del 4: Fra 2D til 3D</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualisering-med-py3dmol">Visualisering med py3Dmol</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#proteiner-fra-protein-data-bank">Proteiner fra Protein Data Bank</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#del-5-nar-bor-vi-skrive-koden-selv">Del 5: Når bør vi skrive koden selv?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vurdere-et-bibliotek">Vurdere et bibliotek</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="forelesning-1-kjemiske-biblioteker-og-molekylvisualisering">
+<h1>Forelesning 1: Kjemiske biblioteker og molekylvisualisering<a class="headerlink" href="#forelesning-1-kjemiske-biblioteker-og-molekylvisualisering" title="Permalink to this heading">#</a></h1>
+<p>I denne forelesningen skal vi bruke Python-biblioteker som er laget for kjemi. Vi skal:</p>
+<ul class="simple">
+<li><p>hente grunnstoffdata med <code class="docutils literal notranslate"><span class="pre">mendeleev</span></code> og undersøke trender i periodesystemet</p></li>
+<li><p>hente data om forbindelser fra PubChem med <code class="docutils literal notranslate"><span class="pre">pubchempy</span></code></p></li>
+<li><p>lese inn molekyler fra SMILES og beregne egenskaper med <code class="docutils literal notranslate"><span class="pre">RDKit</span></code></p></li>
+<li><p>lage 3D-strukturer og visualisere molekyler og proteiner med <code class="docutils literal notranslate"><span class="pre">py3Dmol</span></code></p></li>
+<li><p>vurdere når vi bør bruke et bibliotek, og når vi heller bør skrive koden selv</p></li>
+</ul>
+<p>Målet er ikke å huske syntaksen til hvert bibliotek. Målet er å kunne bruke dokumentasjonen, løse kjemiske problemer med bibliotekene og kontrollere om resultatene gir mening. Underveis øver vi på lister, løkker, if-tester, funksjoner og dictionarier.</p>
+<p>Menti: [lenke]</p>
+<section id="hvorfor-bruke-biblioteker">
+<h2>Hvorfor bruke biblioteker?<a class="headerlink" href="#hvorfor-bruke-biblioteker" title="Permalink to this heading">#</a></h2>
+<div class="viktig">
+<p>Et bibliotek er kode som andre har skrevet, testet og gjort tilgjengelig. Biblioteker er særlig nyttige når de gir oss</p>
+<ol class="arabic simple">
+<li><p><strong>data:</strong> kvalitetssikrede verdier, for eksempel ioniseringsenergier og atomradier</p></li>
+<li><p><strong>algoritmer og visualisering:</strong> funksjonalitet som er krevende å programmere selv, for eksempel å tegne strukturformler eller lage 3D-strukturer</p></li>
+<li><p><strong>standardisering:</strong> filformater og konvensjoner som gjør at ulike programmer kan utveksle data</p></li>
+</ol>
+</div>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Del</p></th>
+<th class="head"><p>Bruksområde</p></th>
+<th class="head"><p>Bibliotek</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>Grunnstoffdata</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">mendeleev</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>Data om forbindelser</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">pubchempy</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p>Struktur og egenskaper</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">RDKit</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>3D-visualisering</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">RDKit</span></code> og <code class="docutils literal notranslate"><span class="pre">py3Dmol</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>5</p></td>
+<td><p>Beregninger vi skriver selv</p></td>
+<td><p>egne funksjoner</p></td>
+</tr>
+</tbody>
+</table>
+<section id="installasjon">
+<h3>Installasjon<a class="headerlink" href="#installasjon" title="Permalink to this heading">#</a></h3>
+<p>Kjør cellen nedenfor én gang. Utropstegnet gjør at kommandoen sendes til pakkebehandleren <code class="docutils literal notranslate"><span class="pre">pip</span></code> i stedet for å tolkes som Python-kode.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>mendeleev<span class="w"> </span>pubchempy<span class="w"> </span>rdkit<span class="w"> </span>py3Dmol
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="del-1-grunnstoffdata-med-mendeleev">
+<h2>Del 1: Grunnstoffdata med mendeleev<a class="headerlink" href="#del-1-grunnstoffdata-med-mendeleev" title="Permalink to this heading">#</a></h2>
+<div class="bilde-hoyre" style="width:48%">
+<p><img alt="Periodesystem fargekodet etter elektronegativitet" src="../../_images/elektronegativitet_periodesystem.png" /></p>
+</div>
+<p>Periodesystemet kan betraktes som et stort datasett. Egenskaper som elektronegativitet, ioniseringsenergi og atomradius er samlet fra målinger og modeller. De kan ikke beregnes med noen få linjer kode, så her er et bibliotek til stor hjelp.</p>
+<p>Grunnenheten i <code class="docutils literal notranslate"><span class="pre">mendeleev</span></code> er <code class="docutils literal notranslate"><span class="pre">element</span></code>. Vi kan hente et grunnstoff med symbol eller atomnummer, og deretter lese av egenskapene som <em>attributter</em>: <code class="docutils literal notranslate"><span class="pre">grunnstoff.egenskap</span></code>.</p>
+<p>Elektronegativitet hentes med et <em>metodekall</em>, altså med parentes. Grunnen er at elektronegativitet kan defineres på flere måter, så vi må angi hvilken skala vi vil bruke.</p>
+<div class="diskuter">
+<p><strong>Diskuter:</strong> De tre skalaene gir svært ulike tall for svovel. Hvorfor? Kan vi sammenlikne tallene direkte?</p>
+</div><section id="trender-i-en-periode">
+<h3>Trender i en periode<a class="headerlink" href="#trender-i-en-periode" title="Permalink to this heading">#</a></h3>
+<p>Vi trenger ikke hente hele periodesystemet for å undersøke en trend. Vi kan lage ei liste med grunnstoffsymboler og hente ett grunnstoff om gangen i ei løkke. Symbolene kan vi bruke direkte på x-aksen.</p>
+<div class="oppgave">
+<p><strong>Prøv selv:</strong> Fyll inn programmet nedenfor slik at det plotter elektronegativiteten til halogenene. Går trenden samme vei nedover i ei gruppe som bortover i en periode? Forklar ut fra kjerneladning og skjerming.</p>
+</div><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>halogener = [&quot;F&quot;, &quot;Cl&quot;, &quot;Br&quot;, &quot;I&quot;]
+verdier = []
+
+for ?? in ??:
+    ??
+
+plt.plot(halogener, verdier, marker=&quot;o&quot;)
+plt.xlabel(&quot;Grunnstoff&quot;)
+plt.ylabel(&quot;Elektronegativitet (Pauling)&quot;)
+plt.show()
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="manglende-verdier">
+<h3>Manglende verdier<a class="headerlink" href="#manglende-verdier" title="Permalink to this heading">#</a></h3>
+<p>Et bibliotek har ikke nødvendigvis verdier for alle egenskaper til alle grunnstoffer. Se på programmet nedenfor.</p>
+<ul class="simple">
+<li><p>Hva gjør programmet?</p></li>
+<li><p>Noen grunnstoffer får verdien <code class="docutils literal notranslate"><span class="pre">None</span></code>. Hvilke grunnstoffer er det, og hva kan være den kjemiske forklaringen?</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">atomnummer</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">119</span><span class="p">):</span>
+    <span class="n">grunnstoff</span> <span class="o">=</span> <span class="n">element</span><span class="p">(</span><span class="n">atomnummer</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">grunnstoff</span><span class="o">.</span><span class="n">symbol</span><span class="p">,</span> <span class="n">grunnstoff</span><span class="o">.</span><span class="n">electronegativity</span><span class="p">(</span><span class="s2">&quot;pauling&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Programmet nedenfor skal plotte elektronegativitet som funksjon av atomnummer, men bare for grunnstoffer som faktisk har en verdi. Fyll inn det som mangler.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>atomnumre = []
+elektronegativiteter = []
+
+for atomnummer in range(1, 119):
+    grunnstoff = element(atomnummer)
+    verdi = grunnstoff.electronegativity(&quot;pauling&quot;)
+
+    if ??:
+        ??
+        ??
+
+plt.scatter(atomnumre, elektronegativiteter)
+plt.xlabel(&quot;Atomnummer&quot;)
+plt.ylabel(&quot;Elektronegativitet (Pauling)&quot;)
+plt.show()
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="ioniseringsenergier">
+<h3>Ioniseringsenergier<a class="headerlink" href="#ioniseringsenergier" title="Permalink to this heading">#</a></h3>
+<p>Ioniseringsenergiene ligger i en dictionary der nøkkelen er ioniseringsgraden. <code class="docutils literal notranslate"><span class="pre">natrium.ionenergies[1]</span></code> gir altså første ioniseringsenergi i eV.</p>
+<div class="oppgave">
+<p><strong>Prøv selv:</strong> Plott de fem første ioniseringsenergiene til magnesium mot ioniseringsgrad. Hvor kommer det store spranget, og hvorfor akkurat der?</p>
+</div><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">magnesium</span> <span class="o">=</span> <span class="n">element</span><span class="p">(</span><span class="s2">&quot;Mg&quot;</span><span class="p">)</span>
+<span class="n">grader</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+<span class="n">energier</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="o">??</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">grader</span><span class="p">,</span> <span class="n">energier</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;o&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Ioniseringsgrad&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Ioniseringsenergi (eV)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="del-2-data-om-forbindelser-med-pubchempy">
+<h2>Del 2: Data om forbindelser med PubChemPy<a class="headerlink" href="#del-2-data-om-forbindelser-med-pubchempy" title="Permalink to this heading">#</a></h2>
+<p>PubChem er en åpen database med informasjon om millioner av kjemiske forbindelser. Biblioteket <code class="docutils literal notranslate"><span class="pre">pubchempy</span></code> henter data fra PubChem over internett mens koden kjører. Det betyr at vi trenger nettilgang, og at mange oppslag kan ta tid.</p>
+<p>Vi søker på et navn og får tilbake ei liste med treff. Det første treffet er som regel det vi er ute etter.</p>
+<div class="oppgave">
+<p><strong>Prøv selv:</strong> Fyll inn programmet nedenfor slik at det henter SMILES-koden for hvert stoff i lista og lagrer den i en dictionary der navnet er nøkkelen.</p>
+</div><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>navneliste = [&quot;caffeine&quot;, &quot;paracetamol&quot;, &quot;aspirin&quot;, &quot;ibuprofen&quot;]
+smiles_pubchem = {}
+
+for navn in navneliste:
+    forbindelse = ??
+    smiles_pubchem[??] = ??
+
+print(smiles_pubchem)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Nettbaserte tjenester kan være trege eller endre seg. I resten av forelesningen bruker vi derfor dictionariet nedenfor, slik at vi ikke er avhengige av nettet.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">smiles</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;koffein&quot;</span><span class="p">:</span> <span class="s2">&quot;CN1C=NC2=C1C(=O)N(C)C(=O)N2C&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;paracetamol&quot;</span><span class="p">:</span> <span class="s2">&quot;CC(=O)Nc1ccc(O)cc1&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;acetylsalisylsyre&quot;</span><span class="p">:</span> <span class="s2">&quot;CC(=O)Oc1ccccc1C(=O)O&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;ibuprofen&quot;</span><span class="p">:</span> <span class="s2">&quot;CC(C)Cc1ccc(cc1)C(C)C(=O)O&quot;</span><span class="p">,</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="del-3-molekyler-som-struktur-med-rdkit">
+<h2>Del 3: Molekyler som struktur med RDKit<a class="headerlink" href="#del-3-molekyler-som-struktur-med-rdkit" title="Permalink to this heading">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">RDKit</span></code> arbeider med selve molekylstrukturen, ikke bare molekylformelen. Det gjør at vi kan bevege oss mellom ulike representasjoner av den samme forbindelsen:</p>
+<ul class="simple">
+<li><p><strong>symbolsk:</strong> SMILES-koden <code class="docutils literal notranslate"><span class="pre">CCO</span></code> representerer etanol</p></li>
+<li><p><strong>todimensjonal:</strong> en strukturformel</p></li>
+<li><p><strong>tredimensjonal:</strong> en konformasjon med bindingslengder og vinkler</p></li>
+<li><p><strong>beregnede egenskaper:</strong> molar masse, polaritet, antall H-bindingsdonorer og så videre</p></li>
+</ul>
+<section id="smiles">
+<h3>SMILES<a class="headerlink" href="#smiles" title="Permalink to this heading">#</a></h3>
+<p>SMILES er en måte å skrive en molekylstruktur som tekst.</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Regel</p></th>
+<th class="head"><p>Eksempel</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Atomer skrives med symbol. H-atomer utelates og legges til automatisk.</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">CCO</span></code> (etanol)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">=</span></code> er dobbeltbinding og <code class="docutils literal notranslate"><span class="pre">#</span></code> er trippelbinding</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">C=C</span></code> (eten)</p></td>
+</tr>
+<tr class="row-even"><td><p>Parenteser angir sidegrener</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">CC(C)C</span></code> (2-metylpropan)</p></td>
+</tr>
+<tr class="row-odd"><td><p>Tall åpner og lukker ringer</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">C1CCCCC1</span></code> (sykloheksan)</p></td>
+</tr>
+<tr class="row-even"><td><p>Små bokstaver angir aromatiske atomer</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">c1ccccc1</span></code> (benzen)</p></td>
+</tr>
+</tbody>
+</table>
+<p><code class="docutils literal notranslate"><span class="pre">Chem.MolFromSmiles</span></code> returnerer <code class="docutils literal notranslate"><span class="pre">None</span></code> hvis SMILES-koden er ugyldig. Hva skjer hvis vi prøver <code class="docutils literal notranslate"><span class="pre">Chem.MolFromSmiles(&quot;C1CC&quot;)</span></code>? Hvorfor er den ugyldig?</p>
+</section>
+<section id="flere-molekyler-samtidig">
+<h3>Flere molekyler samtidig<a class="headerlink" href="#flere-molekyler-samtidig" title="Permalink to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">Draw.MolsToGridImage</span></code> tegner flere molekyler i et rutenett. Funksjonen krever to lister: ei liste med molekylobjekter og ei liste med navn. Vi må altså gjøre dictionariet om til to lister.</p>
+<div class="oppgave">
+<p><strong>Prøv selv (Menti):</strong> Skriv SMILES-koder for propan-2-ol, eddiksyre og toluen. Fyll dem inn nedenfor og tegn strukturene for å sjekke at du har rett.</p>
+</div><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mine_smiles</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;propan-2-ol&quot;</span><span class="p">:</span> <span class="s2">&quot;??&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;eddiksyre&quot;</span><span class="p">:</span> <span class="s2">&quot;??&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;toluen&quot;</span><span class="p">:</span> <span class="s2">&quot;??&quot;</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="o">??</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="fra-struktur-til-egenskap">
+<h3>Fra struktur til egenskap<a class="headerlink" href="#fra-struktur-til-egenskap" title="Permalink to this heading">#</a></h3>
+<p>Når RDKit har lest inn en struktur, kan biblioteket beregne <em>molekyldeskriptorer</em>. En deskriptor er et tall som beskriver en egenskap ved molekylet.</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Funksjon</p></th>
+<th class="head"><p>Hva den gir</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Descriptors.MolWt(molekyl)</span></code></p></td>
+<td><p>molar masse</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Descriptors.MolLogP(molekyl)</span></code></p></td>
+<td><p>estimert logP, et mål på hvor lipofilt stoffet er</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Descriptors.TPSA(molekyl)</span></code></p></td>
+<td><p>topologisk polart overflateareal</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Descriptors.NumHDonors(molekyl)</span></code></p></td>
+<td><p>antall H-bindingsdonorer</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Descriptors.NumHAcceptors(molekyl)</span></code></p></td>
+<td><p>antall H-bindingsakseptorer</p></td>
+</tr>
+</tbody>
+</table>
+<div class="viktig">
+<p>Legg merke til at noen av disse er direkte opptellinger fra strukturen, mens logP er et modellestimat.</p>
+</div><div class="oppgave">
+<p><strong>Prøv selv:</strong> Lipinskis <em>rule of five</em> er en tommelfingerregel for om et stoff kan fungere som et legemiddel i tablettform. Regelen brytes hvis mer enn ett av disse kriteriene er oppfylt:</p>
+<ul class="simple">
+<li><p>molar masse over 500 g/mol</p></li>
+<li><p>logP over 5</p></li>
+<li><p>flere enn 5 H-bindingsdonorer</p></li>
+<li><p>flere enn 10 H-bindingsakseptorer</p></li>
+</ul>
+<p>Fullfør funksjonen nedenfor slik at den returnerer antall brudd. Test den på stoffene i <code class="docutils literal notranslate"><span class="pre">smiles</span></code> og på kolesterol. Finnes det kjente legemidler som bryter regelen?</p>
+</div><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">antall_lipinski_brudd</span><span class="p">(</span><span class="n">smiles_kode</span><span class="p">):</span>
+    <span class="n">molekyl</span> <span class="o">=</span> <span class="n">Chem</span><span class="o">.</span><span class="n">MolFromSmiles</span><span class="p">(</span><span class="n">smiles_kode</span><span class="p">)</span>
+    <span class="n">brudd</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="k">if</span> <span class="n">Descriptors</span><span class="o">.</span><span class="n">MolWt</span><span class="p">(</span><span class="n">molekyl</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">500</span><span class="p">:</span>
+        <span class="n">brudd</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="o">??</span>
+
+    <span class="k">return</span> <span class="n">brudd</span>
+
+<span class="k">for</span> <span class="n">stoffnavn</span> <span class="ow">in</span> <span class="n">smiles</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">stoffnavn</span><span class="p">,</span> <span class="n">antall_lipinski_brudd</span><span class="p">(</span><span class="n">smiles</span><span class="p">[</span><span class="n">stoffnavn</span><span class="p">]))</span>
+
+<span class="n">kolesterol</span> <span class="o">=</span> <span class="s2">&quot;CC(C)CCCC(C)C1CCC2C1(CCC3C2CC=C4C3(CCC(C4)O)C)C&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;kolesterol&quot;</span><span class="p">,</span> <span class="n">antall_lipinski_brudd</span><span class="p">(</span><span class="n">kolesterol</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="finne-funksjonelle-grupper-med-smarts-hvis-tid">
+<h3>Finne funksjonelle grupper med SMARTS (hvis tid)<a class="headerlink" href="#finne-funksjonelle-grupper-med-smarts-hvis-tid" title="Permalink to this heading">#</a></h3>
+<p>SMILES beskriver ett bestemt molekyl. SMARTS beskriver et <em>mønster</em> vi kan lete etter i mange molekyler. Mønsteret for en karboksylsyre er <code class="docutils literal notranslate"><span class="pre">[CX3](=O)[OX2H1]</span></code>:</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">[CX3]</span></code>: et karbonatom med tre naboatomer</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">(=O)</span></code>: karbonet er dobbeltbundet til et oksygen</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[OX2H1]</span></code>: karbonet er også bundet til et oksygen med to naboer og ett hydrogen</p></li>
+</ol>
+<p><code class="docutils literal notranslate"><span class="pre">X</span></code> står altså for antall naboatomer, og <code class="docutils literal notranslate"><span class="pre">H</span></code> for antall hydrogenatomer.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">monstre</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;karboksylsyre&quot;</span><span class="p">:</span> <span class="s2">&quot;[CX3](=O)[OX2H1]&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;ester&quot;</span><span class="p">:</span> <span class="s2">&quot;[CX3](=O)[OX2][CX4]&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;amid&quot;</span><span class="p">:</span> <span class="s2">&quot;[CX3](=O)[NX3]&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;alkohol/fenol&quot;</span><span class="p">:</span> <span class="s2">&quot;[OX2H]&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;aromatisk ring&quot;</span><span class="p">:</span> <span class="s2">&quot;c1ccccc1&quot;</span><span class="p">,</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="diskuter">
+<p><strong>Diskuter:</strong></p>
+<ul class="simple">
+<li><p>Programmet finner ingen ester i acetylsalisylsyre. Se på strukturformelen. Har acetylsalisylsyre en estergruppe? Hvilken del av mønsteret <code class="docutils literal notranslate"><span class="pre">[CX3](=O)[OX2][CX4]</span></code> er det som gjør at den ikke blir funnet?</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[OX2H]</span></code> gir treff på OH-gruppa i karboksylsyrer. Er det riktig eller feil? Hvem avgjør det, programmet eller du?</p></li>
+</ul>
+<p><strong>Prøv selv:</strong> Endre estermønsteret slik at det også finner estere der oksygenet er bundet til en aromatisk ring. Tips: <code class="docutils literal notranslate"><span class="pre">[#6]</span></code> betyr et hvilket som helst karbonatom, både alifatisk og aromatisk. Sjekk at mønsteret ikke gir treff på karboksylsyrer.</p>
+</div><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">monstre</span><span class="p">[</span><span class="s2">&quot;ester&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;??&quot;</span>
+
+<span class="k">for</span> <span class="n">stoffnavn</span> <span class="ow">in</span> <span class="n">smiles</span><span class="p">:</span>
+    <span class="n">molekyl</span> <span class="o">=</span> <span class="n">Chem</span><span class="o">.</span><span class="n">MolFromSmiles</span><span class="p">(</span><span class="n">smiles</span><span class="p">[</span><span class="n">stoffnavn</span><span class="p">])</span>
+    <span class="n">mal</span> <span class="o">=</span> <span class="n">Chem</span><span class="o">.</span><span class="n">MolFromSmarts</span><span class="p">(</span><span class="n">monstre</span><span class="p">[</span><span class="s2">&quot;ester&quot;</span><span class="p">])</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">stoffnavn</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">molekyl</span><span class="o">.</span><span class="n">GetSubstructMatches</span><span class="p">(</span><span class="n">mal</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="del-4-fra-2d-til-3d">
+<h2>Del 4: Fra 2D til 3D<a class="headerlink" href="#del-4-fra-2d-til-3d" title="Permalink to this heading">#</a></h2>
+<p>En SMILES-kode sier hvilke atomer som er bundet sammen, men ingenting om geometrien. RDKit kan lage et forslag til en 3D-struktur i flere trinn:</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Kode</p></th>
+<th class="head"><p>Hva som skjer</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Chem.AddHs(molekyl)</span></code></p></td>
+<td><p>legger til H-atomene som er utelatt i SMILES</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">AllChem.EmbedMolecule(molekyl,</span> <span class="pre">randomSeed=42)</span></code></p></td>
+<td><p>lager startkoordinater i 3D</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">AllChem.MMFFOptimizeMolecule(molekyl)</span></code></p></td>
+<td><p>justerer geometrien med et klassisk kraftfelt</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Chem.MolToMolBlock(molekyl)</span></code></p></td>
+<td><p>gjør strukturen om til tekst i et standardisert filformat</p></td>
+</tr>
+</tbody>
+</table>
+<div class="viktig">
+<p>Resultatet er én <em>konformasjon</em>: en rimelig geometri, men ikke nødvendigvis den eneste eller den mest stabile.</p>
+</div><div class="diskuter">
+<p><strong>Diskuter:</strong> Hva tror du tallene i molblokken betyr? Hvor mange atomer og bindinger har etanol?</p>
+</div><section id="visualisering-med-py3dmol">
+<h3>Visualisering med py3Dmol<a class="headerlink" href="#visualisering-med-py3dmol" title="Permalink to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">py3Dmol</span></code> tegner interaktive 3D-modeller i notebooken. Den kan lese molblokken fra RDKit direkte. Her ser vi poenget med standardiserte filformater: to biblioteker som ikke er laget sammen, kan likevel utveksle strukturer.</p>
+<div class="bilde-hoyre" style="width:35%">
+<p><img alt="Molekylbyggesett" src="../../_images/molekylmodeller.jpg" /></p>
+</div>
+<p>Vi kan velge mellom ulike representasjoner, og de tilsvarer modellene vi kjenner fra kjemiundervisningen:</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Stil i py3Dmol</p></th>
+<th class="head"><p>Modell</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">{&quot;stick&quot;:</span> <span class="pre">{}}</span></code></p></td>
+<td><p>pinnemodell</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">{&quot;sphere&quot;:</span> <span class="pre">{}}</span></code></p></td>
+<td><p>kalottmodell (atomene med van der Waals-radius)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">{&quot;stick&quot;:</span> <span class="pre">{},</span> <span class="pre">&quot;sphere&quot;:</span> <span class="pre">{&quot;scale&quot;:</span> <span class="pre">0.3}}</span></code></p></td>
+<td><p>kule-pinne-modell</p></td>
+</tr>
+</tbody>
+</table>
+<div class="diskuter">
+<p><strong>Diskuter:</strong> Hvilken modell gir best inntrykk av størrelsen og formen til molekylet? Hvilken viser bindingene best?</p>
+</div><div class="oppgave">
+<p><strong>Prøv selv:</strong> Fullfør funksjonen <code class="docutils literal notranslate"><span class="pre">vis_3d</span></code> slik at den tar inn en SMILES-kode og viser en 3D-modell. Bruk den på ibuprofen med ulike stiler.</p>
+</div><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">vis_3d</span><span class="p">(</span><span class="n">smiles_kode</span><span class="p">,</span> <span class="n">stil</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;stick&quot;</span><span class="p">:</span> <span class="p">{}}):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Viser en 3D-modell av molekylet gitt ved SMILES-koden.&quot;&quot;&quot;</span>
+    <span class="c1"># 1. Les inn SMILES og legg til hydrogenatomer</span>
+    <span class="n">molekyl</span> <span class="o">=</span> <span class="o">??</span>
+
+    <span class="c1"># 2. Lag 3D-koordinater og optimer geometrien</span>
+    <span class="o">??</span>
+    <span class="o">??</span>
+
+    <span class="c1"># 3. Tegn molekylet</span>
+    <span class="n">visning</span> <span class="o">=</span> <span class="n">py3Dmol</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">400</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
+    <span class="n">visning</span><span class="o">.</span><span class="n">addModel</span><span class="p">(</span><span class="n">Chem</span><span class="o">.</span><span class="n">MolToMolBlock</span><span class="p">(</span><span class="n">molekyl</span><span class="p">),</span> <span class="s2">&quot;mol&quot;</span><span class="p">)</span>
+    <span class="n">visning</span><span class="o">.</span><span class="n">setStyle</span><span class="p">(</span><span class="n">stil</span><span class="p">)</span>
+    <span class="n">visning</span><span class="o">.</span><span class="n">zoomTo</span><span class="p">()</span>
+    <span class="n">visning</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="n">vis_3d</span><span class="p">(</span><span class="n">smiles</span><span class="p">[</span><span class="s2">&quot;ibuprofen&quot;</span><span class="p">])</span>
+<span class="n">vis_3d</span><span class="p">(</span><span class="n">smiles</span><span class="p">[</span><span class="s2">&quot;ibuprofen&quot;</span><span class="p">],</span> <span class="n">stil</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;sphere&quot;</span><span class="p">:</span> <span class="p">{}})</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="proteiner-fra-protein-data-bank">
+<h3>Proteiner fra Protein Data Bank<a class="headerlink" href="#proteiner-fra-protein-data-bank" title="Permalink to this heading">#</a></h3>
+<p>Store biomolekyler lager vi ikke fra SMILES. Eksperimentelt bestemte strukturer ligger i Protein Data Bank (PDB), der hver struktur har en ID på fire tegn. <code class="docutils literal notranslate"><span class="pre">py3Dmol</span></code> kan hente strukturen direkte.</p>
+<p>Vi ser på hemoglobin (PDB-ID <code class="docutils literal notranslate"><span class="pre">4HHB</span></code>). Proteinet består av fire kjeder, og hver kjede har en hemgruppe der O2 bindes til et jernatom. Vi viser proteinet som <em>cartoon</em>, som viser sekundærstrukturen (α-helikser), og hemgruppene som pinnemodell.</p>
+<div class="oppgave">
+<p><strong>Prøv selv:</strong> Vis keratin (PDB-ID <code class="docutils literal notranslate"><span class="pre">6EC0</span></code>) eller et enzym du selv velger. Prøv å fargelegge kjedene ulikt med <code class="docutils literal notranslate"><span class="pre">{&quot;cartoon&quot;:</span> <span class="pre">{&quot;colorscheme&quot;:</span> <span class="pre">&quot;chain&quot;}}</span></code>. Hvilken sekundærstruktur dominerer i keratin, og hvordan passer det med at keratin finnes i hår og negler?</p>
+<p><em>Alternativ:</em> Biblioteket <code class="docutils literal notranslate"><span class="pre">nglview</span></code> er laget spesielt for store biomolekyler og simuleringsdata, og kan være nyttig når vi skal se på trajektorier senere.</p>
+</div></section>
+</section>
+<section id="del-5-nar-bor-vi-skrive-koden-selv">
+<h2>Del 5: Når bør vi skrive koden selv?<a class="headerlink" href="#del-5-nar-bor-vi-skrive-koden-selv" title="Permalink to this heading">#</a></h2>
+<p>Noen biblioteker har ferdige funksjoner for stoffmengde, fortynning og liknende. For så enkle beregninger er det ofte bedre å skrive funksjonene selv. Da blir sammenhengen mellom kjemien og koden synlig, og koden er lett å tilpasse.</p>
+<p>Funksjonen nedenfor bruker RDKit til det som er vanskelig (å tolke strukturen), og så kan vi bygge egne funksjoner oppå den.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">molar_masse</span><span class="p">(</span><span class="n">smiles_kode</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Molar masse i g/mol for et molekyl gitt ved SMILES.&quot;&quot;&quot;</span>
+    <span class="n">molekyl</span> <span class="o">=</span> <span class="n">Chem</span><span class="o">.</span><span class="n">MolFromSmiles</span><span class="p">(</span><span class="n">smiles_kode</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">molekyl</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Ugyldig SMILES: &quot;</span> <span class="o">+</span> <span class="n">smiles_kode</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">Descriptors</span><span class="o">.</span><span class="n">MolWt</span><span class="p">(</span><span class="n">molekyl</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="oppgave">
+<p><strong>Prøv selv:</strong> Skriv funksjonene <code class="docutils literal notranslate"><span class="pre">stoffmengde(masse,</span> <span class="pre">smiles_kode)</span></code> og <code class="docutils literal notranslate"><span class="pre">konsentrasjon(masse,</span> <span class="pre">smiles_kode,</span> <span class="pre">volum_liter)</span></code>. Begge skal bruke <code class="docutils literal notranslate"><span class="pre">molar_masse</span></code>. En tablett inneholder 500 mg paracetamol. Hvor mange mol er det, og hva blir konsentrasjonen hvis tabletten løses i 0,250 L vann? Kontroller svaret for hånd.</p>
+</div><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">stoffmengde</span><span class="p">(</span><span class="n">masse</span><span class="p">,</span> <span class="n">smiles_kode</span><span class="p">):</span>
+    <span class="o">??</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">konsentrasjon</span><span class="p">(</span><span class="n">masse</span><span class="p">,</span> <span class="n">smiles_kode</span><span class="p">,</span> <span class="n">volum_liter</span><span class="p">):</span>
+    <span class="o">??</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">stoffmengde</span><span class="p">(</span><span class="mf">0.500</span><span class="p">,</span> <span class="n">smiles</span><span class="p">[</span><span class="s2">&quot;paracetamol&quot;</span><span class="p">]),</span> <span class="s2">&quot;mol&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">konsentrasjon</span><span class="p">(</span><span class="mf">0.500</span><span class="p">,</span> <span class="n">smiles</span><span class="p">[</span><span class="s2">&quot;paracetamol&quot;</span><span class="p">],</span> <span class="mf">0.250</span><span class="p">),</span> <span class="s2">&quot;mol/L&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="vurdere-et-bibliotek">
+<h3>Vurdere et bibliotek<a class="headerlink" href="#vurdere-et-bibliotek" title="Permalink to this heading">#</a></h3>
+<div class="viktig">
+<p>Det viktigste er ikke å huske syntaksen, men å kunne vurdere om et bibliotek passer til oppgaven:</p>
+<ol class="arabic simple">
+<li><p>Er biblioteket vedlikeholdt og dokumentert?</p></li>
+<li><p>Hva tilfører det? Data, algoritmer eller standardisering?</p></li>
+<li><p>Hvilke avhengigheter og begrensninger har det?</p></li>
+<li><p>Kan vi kontrollere resultatet mot en håndberegning, en tabellverdi eller en annen kilde?</p></li>
+</ol>
+</div>
+<p>Dette gjelder også kode fra KI-verktøy. De kan foreslå funksjoner og biblioteker som ser riktige ut, men som ikke finnes eller brukes på en annen måte.</p>
+<div class="diskuter">
+<p><strong>Menti:</strong> Du ber en KI-chatbot om kode, og den bruker et kjemibibliotek du aldri har hørt om. Hva sjekker du før du stoler på resultatet?</p>
+</div><p><strong>Oppgaver</strong>:</p>
+<ol class="arabic simple">
+<li><p>Plott første ioniseringsenergi for grunnstoffene i tredje periode (Na til Ar). Beskriv trenden og forklar spesielt hvorfor den brytes ved Al og S.</p></li>
+<li><p>Plott atomradius (<code class="docutils literal notranslate"><span class="pre">atomic_radius</span></code>) som funksjon av atomnummer for grunnstoff 19 til 36. Forklar hva du ser, og hvorfor overgangsmetallene skiller seg ut.</p></li>
+<li><p>Velg fem legemidler eller naturstoffer. Hent SMILES fra PubChem, tegn strukturene i et rutenett og beregn logP og TPSA for hvert stoff. Lag et spredningsplott av logP mot TPSA og beskriv sammenhengen du ser.</p></li>
+<li><p>Lag en 3D-modell av benzosyre som kule-pinne-modell og som kalottmodell. Vis deretter keratin (PDB-ID <code class="docutils literal notranslate"><span class="pre">6EC0</span></code>) eller et annet protein du velger.</p></li>
+<li><p><em>(Hvis vi har gått gjennom SMARTS)</em> Lag SMARTS-mønstre for keton og eter, og test dem på minst fem molekyler der du kjenner strukturen. Fant du treff du ikke ventet?</p></li>
+</ol>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "kjemi"
+        },
+        kernelOptions: {
+            name: "kjemi",
+            path: "./docs/forelesninger"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'kjemi'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hvorfor-bruke-biblioteker">Hvorfor bruke biblioteker?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installasjon">Installasjon</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#del-1-grunnstoffdata-med-mendeleev">Del 1: Grunnstoffdata med mendeleev</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#trender-i-en-periode">Trender i en periode</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#manglende-verdier">Manglende verdier</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ioniseringsenergier">Ioniseringsenergier</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#del-2-data-om-forbindelser-med-pubchempy">Del 2: Data om forbindelser med PubChemPy</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#del-3-molekyler-som-struktur-med-rdkit">Del 3: Molekyler som struktur med RDKit</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#smiles">SMILES</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#flere-molekyler-samtidig">Flere molekyler samtidig</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fra-struktur-til-egenskap">Fra struktur til egenskap</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#finne-funksjonelle-grupper-med-smarts-hvis-tid">Finne funksjonelle grupper med SMARTS (hvis tid)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#del-4-fra-2d-til-3d">Del 4: Fra 2D til 3D</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualisering-med-py3dmol">Visualisering med py3Dmol</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#proteiner-fra-protein-data-bank">Proteiner fra Protein Data Bank</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#del-5-nar-bor-vi-skrive-koden-selv">Del 5: Når bør vi skrive koden selv?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vurdere-et-bibliotek">Vurdere et bibliotek</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Andreas Haraldsrud
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
