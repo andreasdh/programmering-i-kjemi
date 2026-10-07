@@ -86,7 +86,7 @@ En student foreslår å erstatte den manglende absorbansen med 0. Forklar først
 ```{admonition} Hint til datarydding
 :class: tip dropdown
 
-`df.copy()` lager en arbeidskopi. `df.isna().sum()` teller manglende verdier per kolonne. `df.dropna(subset=["kolonnenavn"])` utelater rader som mangler verdi i den angitte kolonnen.
+`df.copy()` lager en arbeidskopi. `mangler = df.isna()` markerer manglende verdier. Deretter teller `mangler.sum()` hvor mange som mangler i hver kolonne. `df.dropna(subset=["kolonnenavn"])` utelater rader som mangler verdi i den angitte kolonnen.
 
 ```
 
@@ -159,9 +159,9 @@ $$
 
 Her er $A$ absorbans, $c$ konsentrasjon i µmol/L, $a$ stigningstall og $b$ konstantledd. Vi lar konstantleddet være fritt fordi nullstandarden kan ha et bakgrunnssignal.
 
-Gjør en lineær regresjon av målingene fra og med 0 til og med 60 µmol/L i `lineare_data`. Tilpass modellen til **alle gyldige enkeltmålinger** i dette området. Utvid koden med en figur som viser alle kalibreringsmålingene og den tilpassede linjen. Vis også hvordan linjen ville fortsette fram til 80 µmol/L, men merk denne delen som ekstrapolasjon.
+Lag utvalget `lineare_data` med målingene fra og med 0 til og med 60 µmol/L. Tilpass en rett linje til alle gyldige enkeltmålinger i dette utvalget. Lag en figur som viser gjennomsnittlig absorbans ved hvert kalibreringsnivå som punkter, sammen med den tilpassede linjen. Ta med gjennomsnittene ved 70 og 80 µmol/L, slik at du kan vurdere avvik fra modellen. Vis linjens fortsettelse fra 60 til 80 µmol/L som en stiplet linje merket «ekstrapolasjon».
 
-Tilpass så en annen rett linje til alle nivåene fra 0 til 80 µmol/L, med egne variabelnavn, og vis den i samme figur. Bruk figurene og laboratorienotatet til å begrunne hvilken modell du vil bruke videre.
+Tilpass så en annen rett linje til alle gyldige enkeltmålinger fra 0 til 80 µmol/L, med egne variabelnavn, og vis den i samme figur. Bruk figurene og laboratorienotatet til å begrunne hvilken modell du vil bruke videre.
 
 Forklar den kjemiske betydningen av $a$ og $b$, og angi enhetene. Hva er problemet med å velge en modell bare fordi programmet klarer å tilpasse en rett linje?
 
@@ -169,7 +169,7 @@ Forklar den kjemiske betydningen av $a$ og $b$, og angi enhetene. Hva er problem
 ```{admonition} Hint til utvalg og hjelp dersom du står fast
 :class: tip dropdown
 
-To vilkår kan kombineres slik: `(kolonne >= nedre) & (kolonne <= ovre)`. Hvert vilkår må stå i parentes. Regresjonslinjen tegnes ved å beregne `a*x_linje + b` for selvvalgte x-verdier.
+Du kan velge kalibreringsområdet i to trinn: Behold først radene med konsentrasjon større enn eller lik 0, og velg deretter radene med konsentrasjon mindre enn eller lik 60 fra dette utvalget. Regresjonslinjen tegnes ved å beregne `a*x_linje + b` for selvvalgte x-verdier.
 
 Hvis du ikke får til regresjonen, kan du midlertidig bruke `a = 0.0100` og `b = 0.0120` for å arbeide videre. Oppgi at du har brukt disse hjelpeverdiene, og gå tilbake til kalibreringen før innlevering. De er avrundede kontrollverdier, ikke en erstatning for del 3a.
 
@@ -203,32 +203,19 @@ For hver vannprøve (V01–V06) skal du beregne to gjennomsnittlige konsentrasjo
 - Gjennomsnittet av de tre målingene av den ufiltrerte delen.
 - Gjennomsnittet av de tre målingene av den filtrerte delen.
 
-Begynn med V01. Velg radene der prove_id er "V01" og behandling er "ufiltrert", og beregn gjennomsnittet av konsentrasjonene. Gjør deretter det samme for den filtrerte delen av V01.
+Lag en løkke som beregner gjennomsnittene for alle seks vannprøvene. Lagre dem i listene `ufiltrert_snitt` og `filtrert_snitt`, slik at verdier med samme indeks tilhører samme prøve.
 
-Bruk dette som utgangspunkt for en løkke som gjentar beregningene for alle seks vannprøvene. Lagre gjennomsnittene i to lister, slik at verdier med samme indeks tilhører samme vannprøve.
+Skriv ut de to gjennomsnittene for hver prøve. Kontroller resultatene for V01 mot målingene som hører til denne prøven. Forklar hvordan du sikrer at riktige prøvedeler hører sammen, selv om radene i rådatafilen er usortert.
 
-Bruk programmet nedenfor som et utgangspunkt for analysen, eller lag din egen løsning.
+Du trenger ikke beregne standardavvik for hver prøvedel eller lage en ny DataFrame i denne delen.
 
-```python
-prove_ider = sorted(prover["prove_id"].unique())
-ufiltrert_snitt = []
-filtrert_snitt = []
-ufiltrert_sd = []
-filtrert_sd = []
+```{admonition} Hint til utvalg og løkke
+:class: tip dropdown
 
-for prove_id in prove_ider:
-    # Velg avlesningene for riktig prove_id OG riktig behandling.
-    # Beregn og lagre gjennomsnitt og standardavvik for hver prøvedel.
+Bruk samme framgangsmåte som da du valgte ett kalibreringsnivå i del 2. Her må du velge både behandling og prøve-ID. Det kan gjøres i to trinn: Velg først alle ufiltrerte målinger, og velg deretter én prøve fra dette utvalget. Gjør tilsvarende for filtrerte målinger.
 
+Prøv først med V01. Når det fungerer, lar du en løkke gå gjennom prøve-ID-ene i samme rekkefølge for begge behandlingene. Bruk `.append()` til å legge hvert gjennomsnitt til riktig liste.
 
-# Når listene er fylt, kan du samle dem slik:
-# resultat = pd.DataFrame({
-#     "prove_id": prove_ider,
-#     "ufiltrert_umol_L": ufiltrert_snitt,
-#     "filtrert_umol_L": filtrert_snitt,
-#     "sd_ufiltrert_umol_L": ufiltrert_sd,
-#     "sd_filtrert_umol_L": filtrert_sd
-# })
 ```
 
 ### 4b. Beskriv forskjellen med tall og figur
@@ -241,27 +228,47 @@ $$
 r = 100\frac{c_{\text{ufiltrert}}-c_{\text{filtrert}}}{c_{\text{ufiltrert}}}.
 $$
 
-Legg resultatene i nye kolonner. Oppgi også gjennomsnittlig absolutt reduksjon for de seks prøveparene og standardavviket mellom disse reduksjonene.
+Bruk gjennomsnittene fra 4a. Lagre de absolutte reduksjonene i en liste som heter `differanser`. Skriv ut absolutt og prosentvis reduksjon for hvert prøvepar.
 
-Lag en figur som viser hvilke ufiltrerte og filtrerte resultater som hører sammen. Husk figurtekst, aksetittel og merkelapper. Hvilken informasjon ville blitt skjult dersom du bare viste ett samlet gjennomsnitt før og ett etter filtrering?
+Oppgi også gjennomsnittlig absolutt reduksjon for de seks prøveparene og det empiriske standardavviket mellom disse reduksjonene. Forklar hva dette standardavviket beskriver.
+
+```{admonition} Hint til å sammenlikne listene
+:class: tip dropdown
+
+Verdier med samme indeks tilhører samme prøve. La en løkke gå gjennom indeksene, og hent én verdi fra hver liste i hver runde. Beregn forskjellen og legg den til i `differanser`. Prosentvis reduksjon beregnes i forhold til den ufiltrerte prøvedelen.
+
+```
+
+Lag en figur som viser hvilke ufiltrerte og filtrerte resultater som hører sammen. Forklar hva figuren viser, og skriv en figurtekst. Husk aksetitler og relevante merkelapper. Hvilken informasjon ville blitt skjult dersom du bare viste ett samlet gjennomsnitt før og ett etter filtrering?
+
+```{admonition} Hint til figuren
+:class: tip dropdown
+
+Du kan plassere «Ufiltrert» og «Filtrert» på x-aksen og konsentrasjon på y-aksen. Vis de to gjennomsnittene for én prøve som punkter forbundet med en linje. Gjenta for de andre prøvene i samme figur. Bruk prøve-ID som merkelapp, slik at det går fram hvilke punkter som hører sammen.
+
+```
+
+Les av hvilke prøver som har minst 20 % reduksjon. Du trenger ikke programmere en egen opptelling.
 
 ### 4c. Vurder et kodeforslag som kan kjøres
 
 En kollega foreslår koden nedenfor. **Dette er et konstruert løsningsforslag for vurdering, ikke et faktisk svar fra en bestemt KI.**
 
-Les koden før du eventuelt kjører den. Forklar hva som havner i hver liste, hvor mange observasjoner testen vil behandle i hver gruppe, og vurder om forslaget passer til forsøksdesignet.
+Les koden før du eventuelt kjører den. Forklar hvilke målinger som havner i hver gruppe, hvor mange observasjoner testen vil behandle i hver gruppe, og vurder om forslaget passer til forsøksdesignet.
 
 ```python
 # Vurder denne koden. Ikke bruk resultatet som din endelige analyse.
 # Fjern kommentartegnene dersom du vil undersøke resultatet.
 
-# ufiltrert_alle = prover[prover["behandling"] == "ufiltrert"]["konsentrasjon_umol_L"]
-# filtrert_alle = prover[prover["behandling"] == "filtrert"]["konsentrasjon_umol_L"]
+# utvalg_u = prover[prover["behandling"] == "ufiltrert"]
+# utvalg_f = prover[prover["behandling"] == "filtrert"]
+# ufiltrert_alle = utvalg_u["konsentrasjon_umol_L"]
+# filtrert_alle = utvalg_f["konsentrasjon_umol_L"]
 # test_forslag = stats.ttest_ind(ufiltrert_alle, filtrert_alle, equal_var=False)
 # print(test_forslag.pvalue)
 ```
 
-Lag deretter en egnet t-test med utgangspunkt i de sammenfattede resultatene fra 4a. Forklar hvorfor testen passer, og formuler nullhypotesen. Bruk  signifikansnivå 0,05. I denne oppgaven legger vi til grunn at forskjellene mellom uavhengige prøvepar kan beskrives med en tilnærmet normalfordeling. Du trenger ikke gjennomføre en egen normalitetstest.
+Lag deretter en egnet t-test med utgangspunkt i gjennomsnittslistene fra 4a eller listen `differanser` fra 4b. Forklar hvorfor testen passer, og formuler nullhypotesen. Bruk signifikansnivå 0,05. I denne oppgaven legger vi til grunn at forskjellene mellom uavhengige prøvepar kan beskrives med en tilnærmet normalfordeling. Du trenger ikke gjennomføre en egen normalitetstest.
 
 Tolk p-verdien sammen med størrelsen på reduksjonen. Oppgi hvor mange uavhengige prøvepar analysen bygger på. Forklar hvorfor en liten p-verdi alene ikke viser at reduksjonen er stor, at filteret fungerer for alle prøver, eller at fargestoffet er brutt ned.
 
