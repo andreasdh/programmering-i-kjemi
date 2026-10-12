@@ -150,3 +150,10 @@
 .reveal .jp-RenderedHTMLCommon ul {
   display: block;
 }
+
+/* Bokser legger seg ved siden av flytende bilder i stedet for under dem */
+.jp-RenderedHTMLCommon .viktig,
+.jp-RenderedHTMLCommon .oppgave,
+.jp-RenderedHTMLCommon .diskuter {
+  overflow: hidden;
+}
