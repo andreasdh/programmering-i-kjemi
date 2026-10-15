@@ -51,6 +51,7 @@ parts:
 - caption: Emneressurser (IN-KJM1900)
   chapters:
   - file: docs/forelesninger/forelesninger/forelesning1_kjemiske_biblioteker
+  - file: docs/forelesninger/forelesninger/forelesning2_datahandtering
   
     sections:
       - file: docs/forelesninger/forelesning1_kjemiske_biblioteker
