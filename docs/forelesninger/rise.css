@@ -157,3 +157,14 @@
 .jp-RenderedHTMLCommon .diskuter {
   overflow: hidden;
 }
+
+/* Rulling: lysbilder som blir for lange (for eksempel når vi livekoder), får rullefelt.
+   Lysbilder med kode legges øverst, slik at det er plass til programmet og utskriften. */
+.reveal .slides section.present > section.present {
+  max-height: calc(100vh - 20px);
+  overflow-y: auto !important;
+}
+.reveal .slides section > section:has(.jp-CodeCell) {
+  top: 0 !important;
+  padding-top: 10px;
+}
