@@ -5,6 +5,7 @@ parts:
   chapters:
   - file: docs/grunnleggende_programmering/introduksjon
   - file: docs/grunnleggende_programmering/vscode
+  - file: docs/grunnleggende_programmering/notebook_til_pdf
 - caption: Grunnleggende programmering
   chapters:
   - file: docs/grunnleggende_programmering/tall_variabler
