@@ -1,0 +1,157 @@
+[
+  {
+    "question": "What is the output?",
+    "code": "print(array([1, 2, 3]) + array([1, 2, 3]))",
+    "type": "multiple_choice",
+    "answers": [
+      {"answer": "An error message", "correct": false, "feedback": "Incorrect. This is valid syntax."},
+      {"answer": "12", "correct": false, "feedback": "Incorrect. The numbers are not summed into a single value."},
+      {"answer": "[1, 2, 3, 1, 2, 3]", "correct": false, "feedback": "Incorrect. Array addition does not work like list addition."},
+      {"answer": "[2. 4. 6.]", "correct": true, "feedback": "Correct. Arrays are added element by element, like vectors. The dots appear because the values are treated as floats, and arrays print without commas."}
+    ]
+  },
+  {
+    "question": "What are the values of a and b?",
+    "code": "a = [1, 2, 3] + 4\nb = array([1, 2, 3]) + 4",
+    "type": "multiple_choice",
+    "answers": [
+      {"answer": "a = [1, 2, 3, 4] and b = [1, 2, 3, 4]", "correct": false, "feedback": "Incorrect for both. A list can only be added to another list, and arrays are added element by element."},
+      {"answer": "a = [1, 2, 3, 4] and b = [1 2 3 4]", "correct": false, "feedback": "Incorrect for both. A list can only be added to another list."},
+      {"answer": "a = [5, 6, 7] and b = [5 6 7]", "correct": false, "feedback": "Incorrect for a, correct for b. Lists are not added element by element."},
+      {"answer": "The first line raises an error, and b = [5 6 7]", "correct": true, "feedback": "Correct. A list can only be added to another list, while an array is added element by element with the number."}
+    ]
+  },
+  {
+    "question": "What is the output when this program runs?",
+    "code": "a = arange(3, 11, 2)\nprint(a[2:]**2)",
+    "type": "multiple_choice",
+    "answers": [
+      {"answer": "[49 81 121]", "correct": false, "feedback": "Incorrect. `arange` stops before the end value, so 11 is not included."},
+      {"answer": "[49, 81]", "correct": false, "feedback": "Incorrect. Commas mark a list. This is an array, which prints without commas."},
+      {"answer": "[49 81]", "correct": true, "feedback": "Correct. `a` is [3 5 7 9], and `a[2:]` gives [7 9]."},
+      {"answer": "[25 49 81]", "correct": false, "feedback": "Incorrect. `a[2:]` means from element 2 onwards, and numbering starts at 0."}
+    ]
+  },
+  {
+    "question": "What is the output of the following code?",
+    "code": "a = linspace(2, 6, 5)\nb = a + 2.0\nprint(sum(b))",
+    "type": "numeric",
+    "precision": 0,
+    "answers": [
+      {"type": "value", "value": 30, "correct": true, "feedback": "Correct. `a` is [2 3 4 5 6], so `b` is [4 5 6 7 8]."},
+      {"type": "value", "value": 20, "correct": false, "feedback": "Incorrect. You forgot that 2.0 is added to every element."},
+      {"type": "default", "feedback": "Incorrect. Remember that `linspace` includes both endpoints, and that there should be 5 numbers in the interval."}
+    ]
+  },
+  {
+    "question": "Which lines of code give the output [3 5 7 9] (or [3. 5. 7. 9.])?",
+    "type": "many_choice",
+    "answers": [
+      {"answer": "print(linspace(3, 10, 2))", "correct": false, "feedback": "Incorrect. The last parameter of `linspace` is the number of values, not the step."},
+      {"answer": "print(linspace(3, 9, 4))", "correct": true, "feedback": "Correct. Four values evenly spaced from 3 to 9, both included."},
+      {"answer": "print(arange(3, 9, 2))", "correct": false, "feedback": "Incorrect. `arange` stops before the end value, so 9 falls outside."},
+      {"answer": "print(arange(3, 10, 2))", "correct": true, "feedback": "Correct. Step 2 starting at 3, and 10 is not included."},
+      {"answer": "print(linspace(3, 10, 4))", "correct": false, "feedback": "Incorrect. Then the values are spread evenly all the way up to 10."},
+      {"answer": "print(arange(3, 9))", "correct": false, "feedback": "Incorrect. Without a step it defaults to 1, and 9 is not included."}
+    ]
+  },
+  {
+    "question": "Which option gives 190.2 as output?",
+    "code": "elements = {\"hydrogen\": 1.008, \"sulfur\": 32.07, \"copper\": 58.93, \"osmium\": 190.2, \"iodine\": 126.9}",
+    "type": "multiple_choice",
+    "answers": [
+      {"answer": "print(elements[3])", "correct": false, "feedback": "Incorrect. In a dictionary we look things up by key, not by position number."},
+      {"answer": "print(elements[osmium])", "correct": false, "feedback": "Incorrect. Without quotation marks, `osmium` is read as a variable name."},
+      {"answer": "print(elements[\"osmium\"])", "correct": true, "feedback": "Correct. The key is a string and must be in quotation marks."},
+      {"answer": "print(elements(\"osmium\"))", "correct": false, "feedback": "Incorrect. Lookup uses square brackets, not parentheses."}
+    ]
+  },
+  {
+    "question": "What should go on the blank line so that the output is:\nhydrogen is a gas\nsulfur is a solid\nmercury is a liquid",
+    "code": "state = {\"hydrogen\": \"a gas\", \"sulfur\": \"a solid\", \"mercury\": \"a liquid\"}\nfor element in state:\n    _______",
+    "type": "multiple_choice",
+    "answers": [
+      {"answer": "print(element, \"is\", state[element])", "correct": true, "feedback": "Correct. Looping over a dictionary gives the keys, and the value is fetched by lookup."},
+      {"answer": "print(state[element], \"is\", element)", "correct": false, "feedback": "Incorrect. That reverses the order: \"a gas is hydrogen\"."},
+      {"answer": "print(element, \"is\", state.key(element))", "correct": false, "feedback": "Incorrect. `key()` does not exist — use lookup with square brackets."},
+      {"answer": "print(state[element], \"is\", state.value(element))", "correct": false, "feedback": "Incorrect. `value()` does not exist, and the order is reversed as well."}
+    ]
+  },
+  {
+    "question": "Which option prints all the atomic masses in the dictionary below?",
+    "code": "elements = {\"hydrogen\": 1.008, \"sulfur\": 32.07, \"copper\": 58.93, \"osmium\": 190.2, \"iodine\": 126.9}",
+    "type": "multiple_choice",
+    "answers": [
+      {"answer": "print(elements.keys())", "correct": false, "feedback": "Incorrect. This gives the keys, that is, the names of the elements."},
+      {"answer": "print(elements.values())", "correct": true, "feedback": "Correct. `values()` gives the values."},
+      {"answer": "print(keys(elements))", "correct": false, "feedback": "Incorrect. This is not valid syntax."},
+      {"answer": "print(values(elements))", "correct": false, "feedback": "Incorrect. This is not valid syntax."}
+    ]
+  },
+  {
+    "question": "What is the output?",
+    "code": "numbers = [1, 2, 3]\nrow = array([1, 2, 3])\nprint(numbers * 2)\nprint(row * 2)",
+    "type": "multiple_choice",
+    "answers": [
+      {"answer": "[1, 2, 3, 1, 2, 3] and [2 4 6]", "correct": true, "feedback": "Correct. Multiplication repeats a list, but scales every element of an array."},
+      {"answer": "[2, 4, 6] and [2 4 6]", "correct": false, "feedback": "Incorrect. Lists are not multiplied element by element — they are repeated."},
+      {"answer": "[1, 2, 3, 1, 2, 3] and [1 2 3 1 2 3]", "correct": false, "feedback": "Incorrect. Arrays are computed with element by element, like vectors."},
+      {"answer": "An error from the first print", "correct": false, "feedback": "Incorrect. A list can be multiplied by an integer."}
+    ]
+  },
+  {
+    "question": "What is printed?",
+    "code": "a = arange(0, 10, 2)\nprint(a.sum())",
+    "type": "numeric",
+    "precision": 0,
+    "answers": [
+      {"type": "value", "value": 20, "correct": true, "feedback": "Correct. `a` is [0 2 4 6 8]."},
+      {"type": "value", "value": 30, "correct": false, "feedback": "Incorrect. The end value 10 is not included in `arange`."},
+      {"type": "default", "feedback": "Incorrect. Write down which numbers `arange(0, 10, 2)` actually gives, and add them up."}
+    ]
+  },
+  {
+    "question": "What happens to the dictionary when this line runs?",
+    "code": "masses = {\"hydrogen\": 1.008, \"carbon\": 12.011}\nmasses[\"nitrogen\"] = 14.007",
+    "type": "multiple_choice",
+    "answers": [
+      {"answer": "A new pair is added, so the dictionary has three pairs.", "correct": true, "feedback": "Correct. Assigning to a key that does not exist yet adds a new pair."},
+      {"answer": "We get an error, since the key does not exist yet.", "correct": false, "feedback": "Incorrect. Only looking up an unknown key raises an error, not assigning to one."},
+      {"answer": "The value for \"carbon\" is overwritten.", "correct": false, "feedback": "Incorrect. Only the key in the square brackets is affected."},
+      {"answer": "Nothing, dictionaries cannot be changed.", "correct": false, "feedback": "Incorrect. Dictionaries can be modified after they are created."}
+    ]
+  },
+  {
+    "question": "What is printed?",
+    "code": "masses = {\"hydrogen\": 1.008, \"carbon\": 12.011}\nfor name, mass in masses.items():\n    print(name, mass)",
+    "type": "multiple_choice",
+    "answers": [
+      {"answer": "Name and mass on separate lines, for both elements", "correct": true, "feedback": "Correct. `items()` gives key and value together, one pair per pass."},
+      {"answer": "Only the names", "correct": false, "feedback": "Incorrect. `keys()` is what gives only the keys."},
+      {"answer": "Only the masses", "correct": false, "feedback": "Incorrect. `values()` is what gives only the values."},
+      {"answer": "An error, since a loop can only have one variable", "correct": false, "feedback": "Incorrect. A loop can unpack several values per pass, which is what `items()` provides."}
+    ]
+  },
+  {
+    "question": "Which expressions give an array of five zeros?",
+    "type": "many_choice",
+    "answers": [
+      {"answer": "zeros(5)", "correct": true, "feedback": "Correct. `zeros` creates an array filled with zeros."},
+      {"answer": "0 * ones(5)", "correct": true, "feedback": "Correct, if roundabout — `ones(5)` multiplied by 0 gives five zeros."},
+      {"answer": "[0] * 5", "correct": false, "feedback": "Incorrect. This gives a list of five zeros, not an array."},
+      {"answer": "zeros(5, 1)", "correct": false, "feedback": "Incorrect. The second argument is not read as a count — for more dimensions you pass a tuple, as in `zeros((5, 1))`."},
+      {"answer": "linspace(0, 0, 5)", "correct": true, "feedback": "Correct — five values evenly spaced from 0 to 0 are five zeros."}
+    ]
+  },
+  {
+    "question": "What is printed?",
+    "code": "concentrations = array([0.10, 0.25, 0.40, 0.55])\nprint(concentrations[concentrations > 0.3])",
+    "type": "multiple_choice",
+    "answers": [
+      {"answer": "[0.4  0.55]", "correct": true, "feedback": "Correct. An array can be indexed by a condition, returning only the elements that satisfy it."},
+      {"answer": "[False False True True]", "correct": false, "feedback": "Incorrect. The condition on its own gives an array of true and false values, but used as an index it picks out the numbers themselves."},
+      {"answer": "[2 3]", "correct": false, "feedback": "Incorrect. We get the values, not the indices."},
+      {"answer": "An error message", "correct": false, "feedback": "Incorrect. This is valid array indexing."}
+    ]
+  }
+]

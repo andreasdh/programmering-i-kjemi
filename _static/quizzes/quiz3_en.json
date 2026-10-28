@@ -1,0 +1,184 @@
+[
+  {
+    "question": "What is the output of the following code?",
+    "code": "list1 = [-1, 2, 4, 4, -3]\nif list1[3] > 0:\n    list1[1] = 1\nif list1[2] < 2:\n    list1.append(3)\nelse:\n    del list1[2:4]\nprint(list1)",
+    "type": "multiple_choice",
+    "answers": [
+      {"answer": "[-1, 1, -3]", "correct": true, "feedback": "Correct. The first test is true, so element 1 becomes 1. The second is false (4 is not less than 2), so the else branch deletes elements 2 and 3."},
+      {"answer": "[-1, 1, 4, 4, -3, 3]", "correct": false, "feedback": "Incorrect. `list1[2]` is 4, which is not less than 2 — the else branch runs."},
+      {"answer": "[-1, 2, -3]", "correct": false, "feedback": "Incorrect. The first if is true, so element 1 changes from 2 to 1."},
+      {"answer": "[-1, 1, 4, 4, -3]", "correct": false, "feedback": "Incorrect. Both if statements run, and the second one deletes two elements."}
+    ]
+  },
+  {
+    "question": "What is the output of the following code?",
+    "code": "a = 7\nif a >= 7:\n    print(\"The number is greater than or equal to 7.\")\nif a == 7:\n    print(\"The number is 7.\")\nelse:\n    print(\"The number is not 7.\")",
+    "type": "multiple_choice",
+    "answers": [
+      {"answer": "The number is greater than or equal to 7.", "correct": false, "feedback": "Incorrect. Both if statements run, since they are independent of each other."},
+      {"answer": "The number is 7.", "correct": false, "feedback": "Incorrect. Both if statements run."},
+      {"answer": "The number is greater than or equal to 7.\nThe number is 7.", "correct": true, "feedback": "Correct. These are two separate if statements, so both are tested."},
+      {"answer": "The number is not 7.", "correct": false, "feedback": "Incorrect. An else branch runs only when the if directly above it is false."}
+    ]
+  },
+  {
+    "question": "What is the output of the following code?",
+    "code": "a = 7\nif a >= 7:\n    print(\"The number is greater than or equal to 7.\")\nelif a == 7:\n    print(\"The number is 7.\")\nelse:\n    print(\"The number is not 7.\")",
+    "type": "multiple_choice",
+    "answers": [
+      {"answer": "The number is greater than or equal to 7.", "correct": true, "feedback": "Correct. Once an if test is true, all following elif and else branches are skipped."},
+      {"answer": "The number is 7.", "correct": false, "feedback": "Incorrect. The first test is true, so the elif is never evaluated."},
+      {"answer": "The number is greater than or equal to 7.\nThe number is 7.", "correct": false, "feedback": "Incorrect. Only one branch of an if–elif–else chain runs."},
+      {"answer": "The number is not 7.", "correct": false, "feedback": "Incorrect. Else runs only when none of the preceding tests are true."}
+    ]
+  },
+  {
+    "question": "What is the output of the following code?",
+    "code": "a = 6\nif a > 7:\n    print(\"The number is greater than 7.\")\nelif a == 7:\n    print(\"The number is 7.\")\nelse:\n    print(\"The number is not 7.\")",
+    "type": "multiple_choice",
+    "answers": [
+      {"answer": "The number is greater than 7.", "correct": false, "feedback": "Incorrect. 6 is not greater than 7."},
+      {"answer": "The number is 7.", "correct": false, "feedback": "Incorrect. `a` is 6."},
+      {"answer": "The number is greater than 7.\nThe number is 7.", "correct": false, "feedback": "Incorrect. Neither condition is true."},
+      {"answer": "The number is not 7.", "correct": true, "feedback": "Correct. Neither condition is true, so the else branch runs."}
+    ]
+  },
+  {
+    "question": "We have `a = \"potato\"`. Which of the following lines checks whether a is a string?",
+    "type": "multiple_choice",
+    "answers": [
+      {"answer": "if type(a) = str:", "correct": false, "feedback": "Incorrect. Equality uses a double equals sign; a single one is assignment."},
+      {"answer": "if type(a) = string:", "correct": false, "feedback": "Incorrect. The type is called `str`, and equality uses `==`."},
+      {"answer": "if type(a) == str:", "correct": true, "feedback": "Correct. The string type is called `str`."},
+      {"answer": "if type(a) == string:", "correct": false, "feedback": "Incorrect. The type is called `str`, not `string`."}
+    ]
+  },
+  {
+    "question": "What is the output of the following program?",
+    "code": "a = 10\nb = 3\nc = 9\nif a > b:\n    a = b\nif a > c:\n    c = a + b\nif b != a:\n    c = a\nprint(a, b, c)",
+    "type": "multiple_choice",
+    "answers": [
+      {"answer": "10 3 13", "correct": false, "feedback": "Incorrect. The first if changes `a` to 3."},
+      {"answer": "10 3 9", "correct": false, "feedback": "Incorrect. The first if is true, so `a` becomes 3."},
+      {"answer": "3 3 13", "correct": false, "feedback": "Incorrect. Once `a` is 3, `a > c` is no longer true."},
+      {"answer": "3 3 9", "correct": true, "feedback": "Correct. `a` becomes 3, and the last two tests are both false."}
+    ]
+  },
+  {
+    "question": "What must go in the blank to make the program print 15?",
+    "code": "a = 10\nb = 5\nif a ___ b:\n    print(a + b)",
+    "type": "many_choice",
+    "answers": [
+      {"answer": "<", "correct": false, "feedback": "Incorrect. 10 is not less than 5."},
+      {"answer": "==", "correct": false, "feedback": "Incorrect. 10 is not equal to 5."},
+      {"answer": "!=", "correct": true, "feedback": "Correct. `!=` means \"not equal\", and 10 is not equal to 5."},
+      {"answer": ">", "correct": true, "feedback": "Correct. 10 is greater than 5."}
+    ]
+  },
+  {
+    "question": "What is the output of the following program?",
+    "code": "a = [1, 3, 4, 5]\nif 3 in a:\n    a.remove(1)\nelse:\n    a.append(2)\nprint(sum(a))",
+    "type": "numeric",
+    "precision": 0,
+    "answers": [
+      {"type": "value", "value": 12, "correct": true, "feedback": "Correct. 3 is in the list, so 1 is removed: 3 + 4 + 5."},
+      {"type": "value", "value": 13, "correct": false, "feedback": "Incorrect. The list is not unchanged after the conditional."},
+      {"type": "value", "value": 15, "correct": false, "feedback": "Incorrect. 3 is in the list, so the if branch runs, not the else."},
+      {"type": "value", "value": 14, "correct": false, "feedback": "Incorrect. Only one branch runs."},
+      {"type": "default", "feedback": "Incorrect. Check which branch runs, and what the list contains afterwards."}
+    ]
+  },
+  {
+    "question": "Which values of a, b, c and d make the program print exactly \"Conditions a, c and d are true\" and nothing else?",
+    "code": "l = [4, 5, 6, 1, 1, 2, 7]\nif a == l[3]:\n    if b == l[0]:\n        print(\"Conditions a and b are true\")\n    if c == l[5]:\n        if d == l[2]:\n            print(\"Conditions a, c and d are true\")",
+    "type": "multiple_choice",
+    "answers": [
+      {"answer": "a = 1, b = 5, c = 2, d = 6", "correct": true, "feedback": "Correct. a matches l[3] = 1, c matches l[5] = 2 and d matches l[2] = 6, while b is not 4."},
+      {"answer": "a = 6, b = 1, c = 1, d = 5", "correct": false, "feedback": "Incorrect. `a` must equal `l[3]`, which is 1, or nothing runs at all."},
+      {"answer": "a = 1, b = 4, c = 2, d = 3", "correct": false, "feedback": "Incorrect. This prints the first line, and `d` does not match `l[2]`."},
+      {"answer": "a = 1, b = 4, c = 2, d = 6", "correct": false, "feedback": "Incorrect. The right line is printed, but since b = 4 = l[0] the first line is printed too."},
+      {"answer": "No combination can give this output.", "correct": false, "feedback": "Incorrect. One of the options works."}
+    ]
+  },
+  {
+    "question": "What is printed when this program runs?",
+    "code": "l = [0.1, 3, \"molecule\"]\nif type(l[2]) == str:\n    print(\"First condition true\")\n    if l[1] <= 0.15:\n        print(\"Second condition true\")\n    if len(l) == 3:\n        print(\"Third condition true\")",
+    "type": "multiple_choice",
+    "answers": [
+      {"answer": "First condition true", "correct": false, "feedback": "Incorrect. The third test is true as well."},
+      {"answer": "Second condition true", "correct": false, "feedback": "Incorrect. `l[1]` is 3, which is not less than or equal to 0.15."},
+      {"answer": "First condition true\nThird condition true", "correct": true, "feedback": "Correct. `l[2]` is a string and the list has three elements, but `l[1]` is not below 0.15."},
+      {"answer": "First condition true\nSecond condition true", "correct": false, "feedback": "Incorrect. `l[1]` is 3, not 0.1 — watch the indexing."},
+      {"answer": "Second condition true\nThird condition true", "correct": false, "feedback": "Incorrect. Both inner tests sit inside the first one, which also prints something."},
+      {"answer": "All three conditions are printed.", "correct": false, "feedback": "Incorrect. The second test is false."}
+    ]
+  },
+  {
+    "question": "Which number will be printed?",
+    "code": "a = 0\nif a == 0:\n    a += 1\nelif a == 1:\n    a += 1\nelse:\n    a += 1\nprint(a)",
+    "type": "multiple_choice",
+    "answers": [
+      {"answer": "0", "correct": false, "feedback": "Incorrect. One branch always runs, and all of them increase `a` by 1."},
+      {"answer": "1", "correct": true, "feedback": "Correct. Only the first branch runs, so `a` is increased once."},
+      {"answer": "2", "correct": false, "feedback": "Incorrect. Only one branch of an if–elif–else chain runs."},
+      {"answer": "3", "correct": false, "feedback": "Incorrect. The branches exclude each other."},
+      {"answer": "4", "correct": false, "feedback": "Incorrect. The branches exclude each other."}
+    ]
+  },
+  {
+    "question": "Let `num1` and `num2` be numeric values. Which of the tests are valid?",
+    "type": "many_choice",
+    "answers": [
+      {"answer": "if num1 < 0 og num2 < 0:", "correct": false, "feedback": "Incorrect. The keyword is `and`, not `og`."},
+      {"answer": "if num1 != num2:", "correct": true, "feedback": "Correct. `!=` means \"not equal\"."},
+      {"answer": "if num1 > 3 and maybe num2 > 3:", "correct": false, "feedback": "Incorrect. `maybe` does not exist in Python."},
+      {"answer": "if num1 >= 1 and num2 < 10:", "correct": true, "feedback": "Correct. `and` checks whether two conditions hold at the same time."},
+      {"answer": "if num1 == 10 or num2 != 10:", "correct": true, "feedback": "Correct. `or` checks whether at least one condition holds."},
+      {"answer": "if num1 = num2:", "correct": false, "feedback": "Incorrect. Equality requires a double equals sign: `==`."}
+    ]
+  },
+  {
+    "question": "What is printed?",
+    "code": "concentration = 0\nif concentration:\n    print(\"The solution contains the substance\")\nelse:\n    print(\"No concentration recorded\")",
+    "type": "multiple_choice",
+    "answers": [
+      {"answer": "No concentration recorded", "correct": true, "feedback": "Correct. The number 0 counts as false in Python, so the else branch runs."},
+      {"answer": "The solution contains the substance", "correct": false, "feedback": "Incorrect. The number 0 counts as false, while every other number counts as true."},
+      {"answer": "An error, since `concentration` is not a comparison", "correct": false, "feedback": "Incorrect. An if test accepts any value, not just comparisons."},
+      {"answer": "Nothing", "correct": false, "feedback": "Incorrect. One of the two branches always runs."}
+    ]
+  },
+  {
+    "question": "What is printed?",
+    "code": "formula = \"NaCl\"\nif \"Na\" in formula:\n    print(\"Contains sodium\")\nif \"na\" in formula:\n    print(\"Also contains na\")",
+    "type": "multiple_choice",
+    "answers": [
+      {"answer": "Contains sodium", "correct": true, "feedback": "Correct. `in` searches for a substring, and the search is case sensitive."},
+      {"answer": "Contains sodium\nAlso contains na", "correct": false, "feedback": "Incorrect. `in` is case sensitive, so `\"na\"` is not found in `\"NaCl\"`."},
+      {"answer": "Nothing", "correct": false, "feedback": "Incorrect. `\"Na\"` is part of `\"NaCl\"`."},
+      {"answer": "An error, since `in` only works on lists", "correct": false, "feedback": "Incorrect. `in` works on strings too, where it looks for a substring."}
+    ]
+  },
+  {
+    "question": "A solution has pH = 7.0. What is printed?",
+    "code": "pH = 7.0\nif pH < 7:\n    print(\"acidic\")\nelif pH > 7:\n    print(\"basic\")\nelse:\n    print(\"neutral\")",
+    "type": "multiple_choice",
+    "answers": [
+      {"answer": "neutral", "correct": true, "feedback": "Correct. Neither `<` nor `>` is true when pH is exactly 7."},
+      {"answer": "acidic", "correct": false, "feedback": "Incorrect. 7.0 is not less than 7."},
+      {"answer": "basic", "correct": false, "feedback": "Incorrect. 7.0 is not greater than 7."},
+      {"answer": "acidic\nneutral", "correct": false, "feedback": "Incorrect. Only one branch of an if–elif–else chain runs."}
+    ]
+  },
+  {
+    "question": "Which of the tests below are true when `pH = 4.5`?",
+    "type": "many_choice",
+    "answers": [
+      {"answer": "pH < 7 and pH > 0", "correct": true, "feedback": "Correct. Both parts are true."},
+      {"answer": "0 < pH < 7", "correct": true, "feedback": "Correct. Python allows chained comparisons, and they mean the same as `and`."},
+      {"answer": "pH > 7 or pH == 4.5", "correct": true, "feedback": "Correct. With `or` it is enough that one part is true."},
+      {"answer": "pH > 7 and pH == 4.5", "correct": false, "feedback": "Incorrect. With `and` both parts must be true, and pH is not above 7."},
+      {"answer": "not pH < 7", "correct": false, "feedback": "Incorrect. `pH < 7` is true, and `not` flips it to false."}
+    ]
+  }
+]
