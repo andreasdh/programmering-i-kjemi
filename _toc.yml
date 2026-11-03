@@ -57,6 +57,8 @@ parts:
       - file: docs/forelesninger/forelesning2_datahandtering
       - file: docs/forelesninger/forelesning3_deskriptiv_statistikk
       - file: docs/forelesninger/forelesning4_kalibrering_inferens
+      - file: docs/forelesninger/forelesning5_likninger_nullpunkter
+      - file: docs/forelesninger/forelesning6_numerisk_derivasjon
   - file: docs/forelesninger/workshops
     sections:
       - file: docs/forelesninger/workshop1
