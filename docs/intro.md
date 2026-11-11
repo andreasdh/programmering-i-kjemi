@@ -11,6 +11,6 @@ Den digitale læreboka er utformet med bakgrunn i emnet IN-KJM1900 og inneholder
 - Programmer og oppgaver fra forelesninger i IN-KJM1900.
 ```
 
-Når du gjennomgår fagstoffet på sidene, bør du gjøre underveisoppgavene. Da får du øvd deg regelmessig på aktuelle problemer. Dette er mye mer effektivt enn å bare lese om programmering! Noen ganger får du også muligheten til å bruke en interaktiv editor til å gjøre oppgaver, for eksempel fylle inn noe som mangler eller rette opp feil. Du kan velge å bruke disse eller kopiere over i en egen editor. Det viktigste er at du får øvd deg på å programmere.
+Når du gjennomgår fagstoffet på sidene, bør du gjøre underveisoppgavene. Da får du øvd deg regelmessig på aktuelle problemer. Dette er mye mer effektivt enn å bare lese om programmering! Noen ganger får du også muligheten til å bruke en interaktiv editor til å gjøre oppgaver, for eksempel fylle inn noe som mangler eller rette opp feil. Du kan velge å bruke denne editoren eller kopiere over i en egen editor. Det viktigste er at du får øvd deg på å programmere.
 
 Lykke til!
