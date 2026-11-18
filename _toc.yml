@@ -61,6 +61,8 @@ parts:
       - file: docs/forelesninger/forelesning6_numerisk_derivasjon
       - file: docs/forelesninger/forelesning7_numerisk_integrasjon
       - file: docs/forelesninger/forelesning8_difflikninger_euler
+      - file: docs/forelesninger/forelesning9_fartslover
+      - file: docs/forelesninger/forelesning10_molekyldynamikk
 
   - file: docs/forelesninger/workshops
     sections:
