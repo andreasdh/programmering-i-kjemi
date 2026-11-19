@@ -1,0 +1,159 @@
+[
+  {
+    "question": "Gitt en liste `a = [1, 2, 4, 9, 16, 25]`, hvilken kommando gir følgende output: [4, 9]?",
+    "type": "multiple_choice",
+    "answers": [
+      {"answer": "a[3:4]", "correct": false, "feedback": "Feil. Husk at indekseringen starter på 0."},
+      {"answer": "a[2:3]", "correct": false, "feedback": "Feil. Husk at indeksering gir til, men ikke med, siste verdi."},
+      {"answer": "a[2:4]", "correct": true, "feedback": "Riktig. Indekseringen starter på 0 og gir til, men ikke med, siste verdi."},
+      {"answer": "a[3:5]", "correct": false, "feedback": "Feil. Husk at indekseringen starter på 0."}
+    ]
+  },
+  {
+    "question": "Hva er output fra følgende kode?",
+    "code": "liste_a = [0, 1, 2, 3, 4, 5, 6, 7]\nliste_b = liste_a[1:-1]\nliste_c = liste_b[3:5]\nprint(liste_c)",
+    "type": "multiple_choice",
+    "answers": [
+      {"answer": "[3, 4, 5]", "correct": false, "feedback": "Feil. `[3:5]` gir to elementer, ikke tre."},
+      {"answer": "[3, 4]", "correct": false, "feedback": "Feil. `liste_b` starter på 1, så indeks 3 i `liste_b` er tallet 4."},
+      {"answer": "[4, 5]", "correct": true, "feedback": "Riktig. `liste_b` er [1, 2, 3, 4, 5, 6], og element 3 og 4 der er 4 og 5."},
+      {"answer": "[4]", "correct": false, "feedback": "Feil. `[3:5]` gir to elementer."}
+    ]
+  },
+  {
+    "question": "Hvilken kommando vil gi lista [2, 4, 6] fra følgende liste?",
+    "code": "liste = [0, 2, 4, 6, 8, 10]",
+    "type": "multiple_choice",
+    "answers": [
+      {"answer": "liste[1:3]", "correct": false, "feedback": "Feil. `[fra:til]` gir til, men ikke med, siste verdi — dette gir bare to elementer."},
+      {"answer": "liste[1:4]", "correct": true, "feedback": "Riktig, for `[fra:til]` gir til, men ikke med, siste verdi."},
+      {"answer": "liste[2, 4, 6]", "correct": false, "feedback": "Feil. Dette er ikke gyldig indeksering av en liste."},
+      {"answer": "liste[0:3]", "correct": false, "feedback": "Feil. Indeks 0 gir det første elementet, altså 0."}
+    ]
+  },
+  {
+    "question": "Hva blir output fra følgende program?",
+    "code": "tall = [1, 1, 13, 5, 55, 3, 4, 12, 10, 4]\nprint(tall[4])\ntall.remove(4)\nprint(tall[-2])\ntall.append(3)\nprint(tall[:3])",
+    "type": "multiple_choice",
+    "answers": [
+      {"answer": "55, 10, [1, 1, 13]", "correct": true, "feedback": "Riktig. `remove(4)` fjerner den første firern, og `[:3]` gir de tre første elementene."},
+      {"answer": "55, 4, [1, 1, 13]", "correct": false, "feedback": "Feil. Etter `remove` og før `append` er nest siste element 10."},
+      {"answer": "55, 10, 5", "correct": false, "feedback": "Feil. `tall[:3]` gir en liste, ikke ett tall."},
+      {"answer": "55, 10, [1, 1, 13, 5]", "correct": false, "feedback": "Feil. `[:3]` gir til, men ikke med, indeks 3."}
+    ]
+  },
+  {
+    "question": "Hvordan kan vi slette tallet 7 fra følgende liste?",
+    "code": "liste = [1, 3, 5, 7]",
+    "type": "many_choice",
+    "answers": [
+      {"answer": "liste.pop(7)", "correct": false, "feedback": "Feil. `pop` tar indeks som argument, ikke selve tallet. `pop(3)` ville fungert."},
+      {"answer": "del liste[3]", "correct": true, "feedback": "Riktig. 7 ligger på indeks 3."},
+      {"answer": "liste.delete(7)", "correct": false, "feedback": "Feil. `delete` finnes ikke i Python."},
+      {"answer": "liste.remove(7)", "correct": true, "feedback": "Riktig. `remove` tar selve elementet."},
+      {"answer": "liste.remove(3)", "correct": false, "feedback": "Feil. `remove` tar ikke indeks, men elementet — dette fjerner tallet 3."}
+    ]
+  },
+  {
+    "question": "Hva er output fra følgende program?",
+    "code": "liste = [1, 2, 3]\nprint(2*(liste[0] + liste[1]*2) + 2*(liste[0] + liste[-1]*2))",
+    "type": "numeric",
+    "precision": 2,
+    "answers": [
+      {"type": "value", "value": 24, "correct": true, "feedback": "Riktig. `2*(1 + 4) + 2*(1 + 6) = 10 + 14`."},
+      {"type": "range", "range": [-1000, 23.99], "correct": false, "feedback": "Feil. Tallet skal være større."},
+      {"type": "range", "range": [24.01, 1000], "correct": false, "feedback": "Feil. Tallet skal være mindre."},
+      {"type": "default", "feedback": "Feil."}
+    ]
+  },
+  {
+    "question": "Hvilket output gir følgende program?",
+    "code": "liste = ['a', 'b', 'a']\nprint(2*(liste[0] + liste[1]*2) + liste[0] + liste[-1]*2)",
+    "type": "multiple_choice",
+    "answers": [
+      {"answer": "ababaa", "correct": false, "feedback": "Feil. Regn ut parentesen først: `'a' + 'bb'` blir `'abb'`."},
+      {"answer": "abba", "correct": false, "feedback": "Feil. Her er det logikk, ikke kunnskap om populærkultur, som gjelder."},
+      {"answer": "abbabbaaa", "correct": true, "feedback": "Riktig. `2*'abb'` gir `'abbabb'`, så `+ 'a' + 'aa'`."},
+      {"answer": "abaabaaba", "correct": false, "feedback": "Feil. Multiplikasjonen inne i parentesen gjøres før sammenslåingen."},
+      {"answer": "Vi får en feilmelding.", "correct": false, "feedback": "Feil. En streng kan multipliseres med et heltall n — da gjentas strengen n ganger."}
+    ]
+  },
+  {
+    "question": "Hva er korrekt om følgende program?",
+    "code": "tall = [1, 2, 3, 4, 5]\n# a)\nprint(tall)\n# b)\nprint(tall[0:5])\n# c)\nprint(tall[:])",
+    "type": "multiple_choice",
+    "answers": [
+      {"answer": "Output i b) er forskjellig fra a) og c).", "correct": false, "feedback": "Feil. `[0:5]` dekker hele lista."},
+      {"answer": "Output i a) er forskjellig fra b) og c).", "correct": false, "feedback": "Feil. Alle tre gir hele lista."},
+      {"answer": "Output i c) er forskjellig fra a) og b).", "correct": false, "feedback": "Feil. `[:]` gir hele lista."},
+      {"answer": "Ingen av outputene er like.", "correct": false, "feedback": "Feil. Alle tre gir samme utskrift."},
+      {"answer": "Alle outputene er like.", "correct": true, "feedback": "Riktig. Alle tre skriver ut hele lista."}
+    ]
+  },
+  {
+    "question": "Vi har en liste `N = [1, 2, 3, 4, 5]`. Hva blir lista når vi kjører følgende kodesnutt?",
+    "code": "N[3] = 0\nprint(N)",
+    "type": "multiple_choice",
+    "answers": [
+      {"answer": "[1, 2, 3, 0, 5]", "correct": true, "feedback": "Riktig. Indeks 3 er det fjerde elementet."},
+      {"answer": "[1, 2, 0, 4, 5]", "correct": false, "feedback": "Feil. Husk at indekseringen starter på 0."},
+      {"answer": "[1, 2, 3, 0, 0]", "correct": false, "feedback": "Feil. Bare ett element endres."},
+      {"answer": "[0, 0, 0, 4, 5]", "correct": false, "feedback": "Feil. Bare ett element endres."},
+      {"answer": "Dette endrer ikke lista.", "correct": false, "feedback": "Feil. Lister kan endres etter at de er laget."}
+    ]
+  },
+  {
+    "question": "Hva skrives ut?",
+    "code": "a = [1, 2, 3]\nb = a\nb[0] = 9\nprint(a)",
+    "type": "multiple_choice",
+    "answers": [
+      {"answer": "[9, 2, 3]", "correct": true, "feedback": "Riktig. `b = a` lager ingen kopi — begge navnene peker på den samme lista. Vil du ha en kopi, bruk `b = a.copy()`."},
+      {"answer": "[1, 2, 3]", "correct": false, "feedback": "Feil. `b = a` kopierer ikke lista, den gir den bare et navn til. Endringen via `b` treffer også `a`."},
+      {"answer": "[9, 2, 3, 1, 2, 3]", "correct": false, "feedback": "Feil. Ingenting legges til lista."},
+      {"answer": "En feilmelding", "correct": false, "feedback": "Feil. Dette er gyldig Python."}
+    ]
+  },
+  {
+    "question": "Hva skrives ut?",
+    "code": "a = [3, 1, 2]\nb = a.sort()\nprint(b)",
+    "type": "multiple_choice",
+    "answers": [
+      {"answer": "None", "correct": true, "feedback": "Riktig. `sort()` sorterer lista på plass og returnerer ingenting. Vil du ha en sortert kopi, bruk `b = sorted(a)`."},
+      {"answer": "[1, 2, 3]", "correct": false, "feedback": "Feil. `a` blir sortert, men `sort()` returnerer ikke lista — bruk `sorted(a)` hvis du vil ha en verdi tilbake."},
+      {"answer": "[3, 1, 2]", "correct": false, "feedback": "Feil. `b` får verdien `sort()` returnerer, ikke den opprinnelige lista."},
+      {"answer": "En feilmelding", "correct": false, "feedback": "Feil. Dette er gyldig Python."}
+    ]
+  },
+  {
+    "question": "Hva skrives ut?",
+    "code": "tall = [0, 1, 2, 3, 4, 5, 6]\nprint(tall[::2])",
+    "type": "multiple_choice",
+    "answers": [
+      {"answer": "[0, 2, 4, 6]", "correct": true, "feedback": "Riktig. Det tredje tallet i indekseringen er steglengden, så vi tar annethvert element fra start."},
+      {"answer": "[0, 1]", "correct": false, "feedback": "Feil. Med to kolon er det siste tallet steglengde, ikke sluttindeks."},
+      {"answer": "[2, 3, 4, 5, 6]", "correct": false, "feedback": "Feil. Vi starter på begynnelsen av lista — 2 er steglengden."},
+      {"answer": "[1, 3, 5]", "correct": false, "feedback": "Feil. Uten startindeks begynner vi på indeks 0."}
+    ]
+  },
+  {
+    "question": "Hvilke uttrykk gir det siste elementet i lista `masser = [1.008, 12.011, 15.999, 32.06]`?",
+    "type": "many_choice",
+    "answers": [
+      {"answer": "masser[-1]", "correct": true, "feedback": "Riktig. Negative indekser teller bakfra."},
+      {"answer": "masser[4]", "correct": false, "feedback": "Feil. Lista har fire elementer, men siste indeks er 3. Dette gir en `IndexError`."},
+      {"answer": "masser[3]", "correct": true, "feedback": "Riktig, siden lista har fire elementer."},
+      {"answer": "masser[len(masser) - 1]", "correct": true, "feedback": "Riktig — og dette virker uansett hvor lang lista er."},
+      {"answer": "masser[len(masser)]", "correct": false, "feedback": "Feil. Det er én for langt ute og gir `IndexError`."}
+    ]
+  },
+  {
+    "question": "Atommassene til C, H og O ligger i en liste. Hva skrives ut?",
+    "code": "masser = [12.011, 1.008, 15.999]\nprint(round(sum(masser), 3))",
+    "type": "numeric",
+    "precision": 3,
+    "answers": [
+      {"type": "value", "value": 29.018, "correct": true, "feedback": "Riktig. `sum` legger sammen alle elementene i lista."},
+      {"type": "default", "feedback": "Feil. `sum` legger sammen alle tallene i lista — summer de tre verdiene og rund av til tre desimaler."}
+    ]
+  }
+]
